@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/glasscn/glass-card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { GlassButton } from "./ui/glasscn/glass-button"
+import { GlassButton } from "../ui/glasscn/glass-button"
 
 type CardDemoProps = {
   variant?: FrostGlassVariant

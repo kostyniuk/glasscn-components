@@ -1,5 +1,6 @@
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
-import { CardDemo } from "@/components/card-demo"
+import { CardDemo } from "@/components/demo/card-demo"
+import { AlertDemo } from "@/components/demo/alert-demo"
 
 export default function Page() {
   return (
@@ -46,6 +47,7 @@ export default function Page() {
             <CardDemo variant="subtle" />
           </div>
         </section>
+        <AlertDemo />
       </div>
     </div>
   )
