@@ -115,6 +115,19 @@
       ]
     },
     {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
@@ -178,6 +191,23 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-combobox.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-select",
+      "type": "registry:component",
+      "title": "Glass Select",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/select",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Select with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-select.tsx",
           "type": "registry:component"
         }
       ]

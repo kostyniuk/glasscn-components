@@ -4,6 +4,7 @@ import { CalendarDemo } from "@/components/demo/calendar-demo"
 import { CheckboxDemo } from "@/components/demo/checkbox-demo"
 import { ComboboxDemo } from "@/components/demo/combobox-demo"
 import { CardDemo } from "@/components/demo/card-demo"
+import { SelectDemo } from "@/components/demo/select-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
 
@@ -100,6 +101,23 @@ export default function Page() {
             <ComboboxDemo variant="clear" />
             <ComboboxDemo variant="frosted" />
             <ComboboxDemo variant="subtle" />
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">
+              Glass Selects
+            </h2>
+            <p className="text-sm leading-6 text-foreground">
+              Custom select menus with glass treatment applied to both the
+              trigger surface and the popup content.
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <SelectDemo variant="clear" />
+            <SelectDemo variant="frosted" />
+            <SelectDemo variant="subtle" />
           </div>
         </section>
 
