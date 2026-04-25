@@ -11,13 +11,15 @@ import {
   AlertDialogTrigger,
 } from "../alert-dialog"
 import { cn } from "@/lib/utils"
-import { type FrostGlassVariant, glassVariantStyles } from "./glass-variants"
+import {
+  FrostGlassVariantProp,
+  glassVariantStyles,
+} from "./glass-variants"
 
 type GlassAlertDialogContentProps = React.ComponentProps<
   typeof AlertDialogContent
-> & {
-  variant?: FrostGlassVariant
-}
+> &
+  FrostGlassVariantProp
 
 function GlassAlertDialogContent({
   className,

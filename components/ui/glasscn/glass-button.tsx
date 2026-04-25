@@ -1,13 +1,12 @@
 import { Button } from "../button"
 import { cn } from "@/lib/utils";
 import {
-  type FrostGlassVariant,
-  glassVariantStyles,
+    FrostGlassVariantProp,
+    glassVariantStyles,
 } from "./glass-variants"
 
-type GlassButtonProps = Omit<React.ComponentProps<typeof Button>, "variant"> & {
-    variant?: FrostGlassVariant
-}
+type GlassButtonProps = Omit<React.ComponentProps<typeof Button>, "variant"> &
+    FrostGlassVariantProp
 
 function GlassButton({
     className,
@@ -20,7 +19,7 @@ function GlassButton({
             data-variant={variant}
             className={
                 cn(
-                    "text-white cursor-pointer", glassVariantStyles[variant], className)
+                    "text-black dark:text-white cursor-pointer", glassVariantStyles[variant], className)
             }
             {...props}
         />

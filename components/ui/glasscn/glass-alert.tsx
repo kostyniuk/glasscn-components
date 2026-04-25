@@ -1,13 +1,12 @@
 import { Alert } from "../alert"
 import { cn } from "@/lib/utils"
 import {
-  type FrostGlassVariant,
+  FrostGlassVariantProp,
   glassVariantStyles,
 } from "./glass-variants"
 
-type GlassAlertProps = Omit<React.ComponentProps<typeof Alert>, "variant"> & {
-  variant?: FrostGlassVariant
-}
+type GlassAlertProps = Omit<React.ComponentProps<typeof Alert>, "variant"> &
+  FrostGlassVariantProp
 
 function GlassAlert({
   className,
