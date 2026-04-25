@@ -77,7 +77,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card variant="outline" className="pb-4!">
           <CardHeader>
             <SectionTitle>Glass Cards</SectionTitle>
             <SectionDescription>
