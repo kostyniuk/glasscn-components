@@ -1,6 +1,7 @@
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { CalendarDemo } from "@/components/demo/calendar-demo"
+import { CheckboxDemo } from "@/components/demo/checkbox-demo"
 import { CardDemo } from "@/components/demo/card-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
@@ -64,6 +65,23 @@ export default function Page() {
             <CardDemo variant="clear" />
             <CardDemo variant="frosted" />
             <CardDemo variant="subtle" />
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">
+              Glass Checkboxes
+            </h2>
+            <p className="text-sm leading-6 text-foreground">
+              Checkboxes for compact boolean choices, using the same clear,
+              frosted, and subtle glass treatments.
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <CheckboxDemo variant="clear" />
+            <CheckboxDemo variant="frosted" />
+            <CheckboxDemo variant="subtle" />
           </div>
         </section>
 
