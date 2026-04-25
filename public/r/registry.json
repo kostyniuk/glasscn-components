@@ -7,10 +7,7 @@
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "lib/utils.ts",
@@ -22,13 +19,8 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "registryDependencies": [
-        "@glasscn/utils"
-      ],
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
-      ],
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "files": [
         {
           "path": "components/ui/button.tsx",
@@ -40,10 +32,7 @@
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
-      "registryDependencies": [
-        "@glasscn/utils",
-        "@glasscn/button"
-      ],
+      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
       "description": "Glass Button with 3 different variants to achieve desired frosted view",
       "files": [
         {
@@ -56,9 +45,7 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "registryDependencies": [
-        "@glasscn/utils"
-      ],
+      "registryDependencies": ["@glasscn/utils"],
       "files": [
         {
           "path": "components/ui/card.tsx",
@@ -70,14 +57,37 @@
       "name": "glass-card",
       "type": "registry:component",
       "title": "Glass Card",
-      "registryDependencies": [
-        "@glasscn/utils",
-        "@glasscn/card"
-      ],
+      "registryDependencies": ["@glasscn/utils", "@glasscn/card"],
       "description": "Glass Card with 3 different variants to achieve desired frosted view",
       "files": [
         {
           "path": "components/ui/glasscn/glass-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-alert",
+      "type": "registry:component",
+      "title": "Glass Alert",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/alert"],
+      "description": "Glass Alert with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-alert.tsx",
           "type": "registry:component"
         }
       ]

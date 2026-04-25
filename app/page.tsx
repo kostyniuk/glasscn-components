@@ -11,8 +11,8 @@ export default function Page() {
             Glass Components
           </h1>
           <p className="text-base leading-7 text-foreground/90">
-            This demo shows reusable glass button and card components with three
-            visual variants.
+            A small set of reusable UI primitives with glassmorphism styling,
+            each available in clear, frosted, and subtle variants.
           </p>
         </div>
 
@@ -22,8 +22,8 @@ export default function Page() {
               Glass Buttons
             </h2>
             <p className="text-sm leading-6 text-foreground">
-              Compare the <strong>clear</strong>, <strong>frosted</strong>, and{" "}
-              <strong>subtle</strong> styles below in both light and dark mode.
+              Buttons for primary actions, secondary actions, and compact
+              controls, shown here across the three glass surface treatments.
             </p>
           </div>
           <div className="mt-3 flex flex-wrap gap-3">
@@ -37,8 +37,8 @@ export default function Page() {
           <div className="space-y-1">
             <h2 className="text-xl font-medium tracking-tight">Glass Cards</h2>
             <p className="text-sm leading-6 text-foreground">
-              The same three variants are applied to a reusable <code>CardDemo</code>{" "}
-              component backed by <code>GlassCard</code>.
+              Cards for grouping related content, inputs, and actions inside a
+              reusable container with the same glass variants.
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
@@ -47,7 +47,22 @@ export default function Page() {
             <CardDemo variant="subtle" />
           </div>
         </section>
-        <AlertDemo />
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">Glass Alerts</h2>
+            <p className="text-sm leading-6 text-foreground">
+              Alerts for status messages and inline feedback, styled with the
+              same glass variants to stay consistent with the rest of the
+              system.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <AlertDemo variant="clear" />
+            <AlertDemo variant="frosted" />
+            <AlertDemo variant="subtle" />
+          </div>
+        </section>
       </div>
     </div>
   )

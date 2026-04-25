@@ -1,30 +1,24 @@
-import { CheckCircle2Icon, InfoIcon } from "lucide-react"
+import { CheckCircle2Icon } from "lucide-react"
 
+import { AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from "@/components/ui/alert"
+  GlassAlert,
+  type FrostGlassVariant,
+} from "@/components/ui/glasscn/glass-alert"
 
-export function AlertDemo() {
-    return (
-        <div className="grid w-full max-w-md items-start gap-4">
-            <Alert>
-                <CheckCircle2Icon />
-                <AlertTitle>Payment successful</AlertTitle>
-                <AlertDescription>
-                    Your payment of $29.99 has been processed. A receipt has been sent to
-                    your email address.
-                </AlertDescription>
-            </Alert>
-            <Alert>
-                <InfoIcon />
-                <AlertTitle>New feature available</AlertTitle>
-                <AlertDescription>
-                    We&apos;ve added dark mode support. You can enable it in your account
-                    settings.
-                </AlertDescription>
-            </Alert>
-        </div>
-    )
+type AlertDemoProps = {
+  variant?: FrostGlassVariant
+}
+
+export function AlertDemo({ variant = "clear" }: AlertDemoProps) {
+  return (
+    <GlassAlert variant={variant} className="w-full max-w-md">
+      <CheckCircle2Icon />
+      <AlertTitle>Payment successful</AlertTitle>
+      <AlertDescription>
+        Your payment of $29.99 has been processed. A receipt has been sent to
+        your email address.
+      </AlertDescription>
+    </GlassAlert>
+  )
 }
