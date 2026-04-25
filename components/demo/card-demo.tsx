@@ -24,7 +24,7 @@ export function CardDemo({ variant = "clear" }: CardDemoProps) {
     <GlassCard variant={variant} className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>
-        <CardDescription>
+        <CardDescription className={'text-foreground/80'}>
           Enter your email below to login to your account
         </CardDescription>
         <CardAction>
