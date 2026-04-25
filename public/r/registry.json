@@ -51,6 +51,36 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-card",
+      "type": "registry:component",
+      "title": "Glass Card",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/card"
+      ],
+      "description": "Glass Card with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-card.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
