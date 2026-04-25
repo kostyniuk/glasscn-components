@@ -1,11 +1,14 @@
-import { Card } from "../card"
+import { Card, CardFooter } from "../card"
 import { cn } from "@/lib/utils"
 import {
-  type FrostGlassVariant,
-  glassVariantStyles,
+    type FrostGlassVariant,
+    FrostGlassVariantProp,
+    glassVariantStyles,
 } from "./glass-variants"
 
-type GlassCardProps = Omit<React.ComponentProps<typeof Card>, "variant"> & {
+type GlassCardProps = Omit<React.ComponentProps<typeof Card>, "variant"> & FrostGlassVariantProp
+
+type GlassCardFooterProps = Omit<React.ComponentProps<typeof CardFooter>, "variant"> & {
     variant?: FrostGlassVariant
 }
 
@@ -24,4 +27,13 @@ function GlassCard({
     )
 }
 
-export { GlassCard }
+function GlassCardFooter({ className, ...props }: GlassCardFooterProps) {
+    return (
+        <CardFooter
+            className={cn("bg-muted/30", className)}
+            {...props}
+        />
+    )
+}
+
+export { GlassCard, GlassCardFooter }

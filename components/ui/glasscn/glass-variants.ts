@@ -1,4 +1,7 @@
-export type FrostGlassVariant = "clear" | "frosted" | "subtle"
+export type FrostGlassVariant = "clear" | "frosted" | "subtle";
+export type FrostGlassVariantProp = {
+  variant?: FrostGlassVariant;
+};
 
 export const glassVariantStyles: Record<FrostGlassVariant, string> = {
   clear: [
@@ -19,4 +22,4 @@ export const glassVariantStyles: Record<FrostGlassVariant, string> = {
     "border border-black/[0.05] dark:border-white/[0.08]",
     "shadow-sm",
   ].join(" "),
-}
+};

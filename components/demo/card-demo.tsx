@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import {
   GlassCard,
+  GlassCardFooter,
 } from "@/components/ui/glasscn/glass-card"
 import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants"
 import { Input } from "@/components/ui/input"
@@ -58,14 +59,14 @@ export function CardDemo({ variant = "clear" }: CardDemoProps) {
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
+      <GlassCardFooter className="flex-col gap-2">
         <Button type="submit" className="w-full">
           Login
         </Button>
         <GlassButton className="w-full text-black dark:text-white">
           Login with Google
         </GlassButton>
-      </CardFooter>
+      </GlassCardFooter>
     </GlassCard>
   )
 }
