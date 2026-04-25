@@ -1,6 +1,7 @@
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { CardDemo } from "@/components/demo/card-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
+import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
 
 export default function Page() {
   return (
@@ -61,6 +62,23 @@ export default function Page() {
             <AlertDemo variant="clear" />
             <AlertDemo variant="frosted" />
             <AlertDemo variant="subtle" />
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">
+              Glass Alert Dialogs
+            </h2>
+            <p className="text-sm leading-6 text-foreground">
+              Modal confirmation dialogs with the same clear, frosted, and
+              subtle glass treatments applied to the popup surface and actions.
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <AlertDialogDemo variant="clear" />
+            <AlertDialogDemo variant="frosted" />
+            <AlertDialogDemo variant="subtle" />
           </div>
         </section>
       </div>

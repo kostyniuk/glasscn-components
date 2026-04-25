@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert",
   "title": "Alert",
-  "dependencies": ["class-variance-authority"],
-  "registryDependencies": ["@glasscn/utils"],
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@glasscn/utils"
+  ],
   "files": [
     {
       "path": "components/ui/alert.tsx",

@@ -99,6 +99,19 @@
       ]
     },
     {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "registryDependencies": ["@glasscn/button", "@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-alert",
       "type": "registry:component",
       "title": "Glass Alert",
@@ -111,6 +124,25 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-alert.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-alert-dialog",
+      "type": "registry:component",
+      "title": "Glass Alert Dialog",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/glass-button",
+        "@glasscn/alert-dialog",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Alert Dialog with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-alert-dialog.tsx",
           "type": "registry:component"
         }
       ]
