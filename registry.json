@@ -55,6 +55,66 @@
       ]
     },
     {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "registryDependencies": ["@glasscn/utils"],
+      "files": [
+        {
+          "path": "components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/input",
+        "@glasscn/textarea"
+      ],
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/input-group"
+      ],
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
@@ -101,6 +161,23 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-checkbox.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-combobox",
+      "type": "registry:component",
+      "title": "Glass Combobox",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/combobox",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Combobox with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-combobox.tsx",
           "type": "registry:component"
         }
       ]
