@@ -1,5 +1,6 @@
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
+import { CalendarDemo } from "@/components/demo/calendar-demo"
 import { CardDemo } from "@/components/demo/card-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
@@ -63,6 +64,23 @@ export default function Page() {
             <CardDemo variant="clear" />
             <CardDemo variant="frosted" />
             <CardDemo variant="subtle" />
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">
+              Glass Calendars
+            </h2>
+            <p className="text-sm leading-6 text-foreground">
+              Calendars for date selection and scheduling flows, using the same
+              clear, frosted, and subtle glass surface treatments.
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <CalendarDemo variant="clear" />
+            <CalendarDemo variant="frosted" />
+            <CalendarDemo variant="subtle" />
           </div>
         </section>
 

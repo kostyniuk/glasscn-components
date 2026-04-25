@@ -105,6 +105,36 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
+      "dependencies": ["date-fns", "lucide-react", "react-day-picker"],
+      "files": [
+        {
+          "path": "components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-calendar",
+      "type": "registry:component",
+      "title": "Glass Calendar",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/calendar",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Calendar with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-calendar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glass-variants",
       "type": "registry:lib",
       "title": "Glass Variants",
