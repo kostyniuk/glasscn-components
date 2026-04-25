@@ -1,4 +1,5 @@
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
+import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { CardDemo } from "@/components/demo/card-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
@@ -31,6 +32,22 @@ export default function Page() {
             <GlassButton variant="clear">Clear</GlassButton>
             <GlassButton variant="frosted">Frosted</GlassButton>
             <GlassButton variant="subtle">Subtle</GlassButton>
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <div className="space-y-1">
+            <h2 className="text-xl font-medium tracking-tight">Glass Badges</h2>
+            <p className="text-sm leading-6 text-foreground">
+              Badges for compact status labels and metadata, using the same
+              clear, frosted, and subtle glass treatments as the rest of the
+              set.
+            </p>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-3">
+            <GlassBadge variant="clear">Clear</GlassBadge>
+            <GlassBadge variant="frosted">Frosted</GlassBadge>
+            <GlassBadge variant="subtle">Subtle</GlassBadge>
           </div>
         </section>
 

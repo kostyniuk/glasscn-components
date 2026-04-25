@@ -29,6 +29,19 @@
       ]
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
@@ -41,6 +54,23 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-badge",
+      "type": "registry:component",
+      "title": "Glass Badge",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/badge",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Badge with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-badge.tsx",
           "type": "registry:component"
         }
       ]
