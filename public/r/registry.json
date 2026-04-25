@@ -32,7 +32,11 @@
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/glass-variants"
+      ],
       "description": "Glass Button with 3 different variants to achieve desired frosted view",
       "files": [
         {
@@ -57,12 +61,27 @@
       "name": "glass-card",
       "type": "registry:component",
       "title": "Glass Card",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/card"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/card",
+        "@glasscn/glass-variants"
+      ],
       "description": "Glass Card with 3 different variants to achieve desired frosted view",
       "files": [
         {
           "path": "components/ui/glasscn/glass-card.tsx",
           "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-variants",
+      "type": "registry:lib",
+      "title": "Glass Variants",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-variants.ts",
+          "type": "registry:lib"
         }
       ]
     },
@@ -83,7 +102,11 @@
       "name": "glass-alert",
       "type": "registry:component",
       "title": "Glass Alert",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/alert"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/alert",
+        "@glasscn/glass-variants"
+      ],
       "description": "Glass Alert with 3 different variants to achieve desired frosted view",
       "files": [
         {

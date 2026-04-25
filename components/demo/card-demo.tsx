@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/card"
 import {
   GlassCard,
-  type FrostGlassVariant,
 } from "@/components/ui/glasscn/glass-card"
+import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { GlassButton } from "../ui/glasscn/glass-button"
