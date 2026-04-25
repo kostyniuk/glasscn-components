@@ -1,0 +1,56 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "glasscn",
+  "homepage": "https://glasscn.vercel.app/",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-button",
+      "type": "registry:component",
+      "title": "Glass Button",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button"
+      ],
+      "description": "Glass Button with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
