@@ -1,4 +1,4 @@
-import { Button } from "../ui/button"
+import { Button } from "../button"
 import { cn } from "@/lib/utils";
 
 type FrostGlassVariant = "clear" | "frosted" | "subtle";

@@ -1,4 +1,4 @@
-import { GlassButton } from "@/components/custom/glass-button"
+import { GlassButton } from "@/components/ui/glasscn/glass-button"
 
 export default function Page() {
   return (
