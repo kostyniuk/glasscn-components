@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-badge.tsx",
-      "content": "import { Badge } from \"../badge\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  FrostGlassVariantProp,\n  glassVariantStyles,\n} from \"./glass-variants\"\n\ntype GlassBadgeProps = Omit<React.ComponentProps<typeof Badge>, \"variant\"> &\n  FrostGlassVariantProp\n\nfunction GlassBadge({\n  className,\n  variant = \"clear\",\n  ...props\n}: GlassBadgeProps) {\n  return (\n    <Badge\n      data-slot=\"glass-badge\"\n      data-variant={variant}\n      className={cn(\n        \"text-foreground\",\n        glassVariantStyles[variant],\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { GlassBadge }\n",
+      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"../badge\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"./glass-variants\";\n\ntype GlassBadgeProps = Omit<React.ComponentProps<typeof Badge>, \"variant\"> & FrostGlassVariantProp;\n\nfunction GlassBadge({ className, variant = \"clear\", ...props }: GlassBadgeProps) {\n  return (\n    <Badge\n      data-slot=\"glass-badge\"\n      data-variant={variant}\n      className={cn(\"text-foreground\", glassVariantStyles[variant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassBadge };\n",
       "type": "registry:component"
     }
   ],
