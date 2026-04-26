@@ -8,6 +8,7 @@ import { CardDemo } from "@/components/demo/card-demo"
 import { SelectDemo } from "@/components/demo/select-demo"
 import { AlertDemo } from "@/components/demo/alert-demo"
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
+import { SidebarDemo } from "@/components/demo/sidebar-demo"
 import {
   Card,
   CardContent,
@@ -42,7 +43,7 @@ export default function Page() {
           </p>
         </div>
 
-        <Card variant="outline">
+        <Card id="button" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Buttons</SectionTitle>
             <SectionDescription>
@@ -59,7 +60,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="badge" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Badges</SectionTitle>
             <SectionDescription>
@@ -77,7 +78,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline" className="pb-4!">
+        <Card id="card" variant="outline" className="pb-4!">
           <CardHeader>
             <SectionTitle>Glass Cards</SectionTitle>
             <SectionDescription>
@@ -94,7 +95,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="checkbox" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Checkboxes</SectionTitle>
             <SectionDescription>
@@ -111,7 +112,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="combobox" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Comboboxes</SectionTitle>
             <SectionDescription>
@@ -128,7 +129,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="select" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Selects</SectionTitle>
             <SectionDescription>
@@ -145,7 +146,24 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="sidebar" variant="outline">
+          <CardHeader>
+            <SectionTitle>Glass Sidebars</SectionTitle>
+            <SectionDescription>
+              Compound side navigation with glass treatment applied to the main
+              shell, search field, menu states, and supporting surfaces.
+            </SectionDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 lg:grid-cols-3">
+              <SidebarDemo variant="clear" />
+              <SidebarDemo variant="frosted" />
+              <SidebarDemo variant="subtle" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card id="calendar" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Calendars</SectionTitle>
             <SectionDescription>
@@ -162,7 +180,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="alert" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Alerts</SectionTitle>
             <SectionDescription>
@@ -180,7 +198,7 @@ export default function Page() {
           </CardContent>
         </Card>
 
-        <Card variant="outline">
+        <Card id="alert-dialog" variant="outline">
           <CardHeader>
             <SectionTitle>Glass Alert Dialogs</SectionTitle>
             <SectionDescription>

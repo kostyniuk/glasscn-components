@@ -283,6 +283,100 @@
       ]
     },
     {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "registryDependencies": ["@glasscn/utils"],
+      "files": [
+        {
+          "path": "components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/input",
+        "@glasscn/separator",
+        "@glasscn/skeleton",
+        "@glasscn/tooltip"
+      ],
+      "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "glass-sidebar",
+      "type": "registry:component",
+      "title": "Glass Sidebar",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/input",
+        "@glasscn/sheet",
+        "@glasscn/sidebar",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Sidebar with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
