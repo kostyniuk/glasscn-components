@@ -21,12 +21,12 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
       <AlertDialog>
         <AlertDialogTrigger
           render={
-            <GlassButton variant={variant} className="text-black dark:text-white">
+            <GlassButton glassVariant={variant} className="text-black dark:text-white">
               Show Dialog
             </GlassButton>
           }
         />
-        <GlassAlertDialogContent variant={variant}>
+        <GlassAlertDialogContent glassVariant={variant}>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription className={"text-foreground/80"}>
@@ -34,7 +34,7 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="bg-muted/5 border-white/15 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
-            <AlertDialogCancel render={<GlassButton variant={variant} className="text-black dark:text-white" />}>
+            <AlertDialogCancel render={<GlassButton glassVariant={variant} className="text-black dark:text-white" />}>
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction className="">Continue</AlertDialogAction>

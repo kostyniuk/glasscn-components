@@ -11,9 +11,9 @@ const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("clear"
 
 type GlassSelectProps = React.ComponentProps<typeof Select> & FrostGlassVariantProp;
 
-function GlassSelect({ variant = "clear", ...props }: GlassSelectProps) {
+function GlassSelect({ glassVariant = "clear", ...props }: GlassSelectProps) {
   return (
-    <GlassSelectVariantContext.Provider value={variant}>
+    <GlassSelectVariantContext.Provider value={glassVariant}>
       <Select data-slot="glass-select" {...props} />
     </GlassSelectVariantContext.Provider>
   );

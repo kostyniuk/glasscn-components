@@ -358,6 +358,23 @@
       ]
     },
     {
+      "name": "glass-separator",
+      "type": "registry:component",
+      "title": "Glass Separator",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/separator",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Separator with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-separator.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glass-sidebar",
       "type": "registry:component",
       "title": "Glass Sidebar",
@@ -366,7 +383,8 @@
         "@glasscn/input",
         "@glasscn/sheet",
         "@glasscn/sidebar",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/glass-separator"
       ],
       "description": "Glass Sidebar with 3 different variants to achieve desired frosted view",
       "files": [

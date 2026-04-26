@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import { Badge } from "../badge";
 import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-type GlassBadgeProps = Omit<React.ComponentProps<typeof Badge>, "variant"> & FrostGlassVariantProp;
+type GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;
 
-function GlassBadge({ className, variant = "clear", ...props }: GlassBadgeProps) {
+function GlassBadge({ className, glassVariant = "clear", ...props }: GlassBadgeProps) {
   return (
     <Badge
       data-slot="glass-badge"
-      data-variant={variant}
-      className={cn("text-foreground", glassVariantStyles[variant], className)}
+      data-glass-variant={glassVariant}
+      className={cn("text-foreground", glassVariantStyles[glassVariant], className)}
       {...props}
     />
   );

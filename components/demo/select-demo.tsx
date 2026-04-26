@@ -18,7 +18,7 @@ type SelectDemoProps = { variant?: FrostGlassVariant };
 function SelectDemo({ variant = "clear" }: SelectDemoProps) {
   return (
     <GlassCard className="p-4">
-      <GlassSelect items={items} defaultValue={null} variant={variant}>
+      <GlassSelect items={items} defaultValue={null} glassVariant={variant}>
         <GlassSelectTrigger className="w-full max-w-48">
           <SelectValue placeholder="Select a fruit" />
         </GlassSelectTrigger>

@@ -26,6 +26,7 @@ const data = {
         { title: "Card", url: "/#card" },
         { title: "Checkbox", url: "/#checkbox" },
         { title: "Combobox", url: "/#combobox" },
+        { title: "Separator", url: "/#separator" },
         { title: "Sidebar", url: "/#sidebar" },
         { title: "Select", url: "/#select" },
       ],

@@ -7,6 +7,7 @@ import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { SelectDemo } from "@/components/demo/select-demo";
+import { SeparatorDemo } from "@/components/demo/separator-demo";
 import { SidebarDemo } from "@/components/demo/sidebar-demo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
@@ -42,9 +43,9 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-3">
-              <GlassButton variant="clear">Clear</GlassButton>
-              <GlassButton variant="frosted">Frosted</GlassButton>
-              <GlassButton variant="subtle">Subtle</GlassButton>
+              <GlassButton glassVariant="clear">Clear</GlassButton>
+              <GlassButton glassVariant="frosted">Frosted</GlassButton>
+              <GlassButton glassVariant="subtle">Subtle</GlassButton>
             </div>
           </CardContent>
         </Card>
@@ -59,9 +60,26 @@ export default function Page() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-3">
-              <GlassBadge variant="clear">Clear</GlassBadge>
-              <GlassBadge variant="frosted">Frosted</GlassBadge>
-              <GlassBadge variant="subtle">Subtle</GlassBadge>
+              <GlassBadge glassVariant="clear">Clear</GlassBadge>
+              <GlassBadge glassVariant="frosted">Frosted</GlassBadge>
+              <GlassBadge glassVariant="subtle">Subtle</GlassBadge>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card id="separator" variant="outline">
+          <CardHeader>
+            <SectionTitle>Glass Separators</SectionTitle>
+            <SectionDescription>
+              Horizontal dividers with glass surface treatment, separating sections of content while staying consistent
+              with the clear, frosted, and subtle glass variants.
+            </SectionDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 lg:grid-cols-3">
+              <SeparatorDemo variant="clear" />
+              <SeparatorDemo variant="frosted" />
+              <SeparatorDemo variant="subtle" />
             </div>
           </CardContent>
         </Card>

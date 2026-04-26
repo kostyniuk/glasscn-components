@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-separator",
+  "title": "Glass Separator",
+  "description": "Glass Separator with 3 different variants to achieve desired frosted view",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/separator",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-separator.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { Separator } from \"../separator\"\nimport { type FrostGlassVariant, type FrostGlassVariantProp } from \"./glass-variants\"\n\nconst separatorVariantStyles: Record<FrostGlassVariant, string> = {\n  clear: \"bg-white/[0.5] dark:bg-white/[0.12]\",\n  frosted: \"bg-white/[0.4] dark:bg-white/10\",\n  subtle: \"bg-black/[0.05] dark:bg-white/[0.08]\",\n}\n\ntype GlassSeparatorProps = React.ComponentProps<typeof Separator> & FrostGlassVariantProp\n\nfunction GlassSeparator({ className, glassVariant = \"clear\", ...props }: GlassSeparatorProps) {\n  return (\n    <Separator\n      data-slot=\"glass-separator\"\n      data-glass-variant={glassVariant}\n      className={cn(separatorVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  )\n}\n\nexport { GlassSeparator }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

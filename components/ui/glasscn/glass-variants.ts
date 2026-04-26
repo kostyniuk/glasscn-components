@@ -1,5 +1,5 @@
 export type FrostGlassVariant = "clear" | "frosted" | "subtle";
-export type FrostGlassVariantProp = { variant?: FrostGlassVariant };
+export type FrostGlassVariantProp = { glassVariant?: FrostGlassVariant };
 
 export const glassVariantStyles: Record<FrostGlassVariant, string> = {
   clear: [

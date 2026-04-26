@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import { Alert } from "../alert";
 import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-type GlassAlertProps = Omit<React.ComponentProps<typeof Alert>, "variant"> & FrostGlassVariantProp;
+type GlassAlertProps = React.ComponentProps<typeof Alert> & FrostGlassVariantProp;
 
-function GlassAlert({ className, variant = "clear", ...props }: GlassAlertProps) {
+function GlassAlert({ className, glassVariant = "clear", ...props }: GlassAlertProps) {
   return (
     <Alert
       data-slot="glass-alert"
-      data-variant={variant}
-      className={cn(glassVariantStyles[variant], className)}
+      data-glass-variant={glassVariant}
+      className={cn(glassVariantStyles[glassVariant], className)}
       {...props}
     />
   );

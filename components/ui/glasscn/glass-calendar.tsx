@@ -7,13 +7,13 @@ import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
 type GlassCalendarProps = React.ComponentProps<typeof Calendar> & FrostGlassVariantProp;
 
-function GlassCalendar({ className, variant = "clear", ...props }: GlassCalendarProps) {
+function GlassCalendar({ className, glassVariant = "clear", ...props }: GlassCalendarProps) {
   return (
     <Calendar
       data-slot="glass-calendar"
-      data-variant={variant}
+      data-glass-variant={glassVariant}
       className={cn(
-        glassVariantStyles[variant],
+        glassVariantStyles[glassVariant],
         "data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl",
         className,
       )}

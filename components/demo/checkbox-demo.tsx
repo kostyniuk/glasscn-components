@@ -18,7 +18,7 @@ function CheckboxDemo({ variant = "clear" }: CheckboxDemoProps) {
         <GlassCheckbox
           id={checkboxId}
           name={checkboxId}
-          variant={variant}
+          glassVariant={variant}
           checked={checked}
           onCheckedChange={setChecked}
         />

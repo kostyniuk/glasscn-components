@@ -8,7 +8,7 @@ type AlertDemoProps = { variant?: FrostGlassVariant };
 
 export function AlertDemo({ variant = "clear" }: AlertDemoProps) {
   return (
-    <GlassAlert variant={variant} className="w-full max-w-md">
+    <GlassAlert glassVariant={variant} className="w-full max-w-md">
       <CheckCircle2Icon />
       <AlertTitle>Payment successful</AlertTitle>
       <AlertDescription className={"text-foreground/80"}>

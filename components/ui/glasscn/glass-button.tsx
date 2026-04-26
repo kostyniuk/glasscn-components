@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import { Button } from "../button";
 import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-type GlassButtonProps = Omit<React.ComponentProps<typeof Button>, "variant"> & FrostGlassVariantProp;
+type GlassButtonProps = React.ComponentProps<typeof Button> & FrostGlassVariantProp;
 
-function GlassButton({ className, variant = "clear", ...props }: GlassButtonProps) {
+function GlassButton({ className, glassVariant = "clear", ...props }: GlassButtonProps) {
   return (
     <Button
       data-slot="glass-button"
-      data-variant={variant}
-      className={cn("text-foreground cursor-pointer", glassVariantStyles[variant], className)}
+      data-glass-variant={glassVariant}
+      className={cn("text-foreground cursor-pointer", glassVariantStyles[glassVariant], className)}
       {...props}
     />
   );

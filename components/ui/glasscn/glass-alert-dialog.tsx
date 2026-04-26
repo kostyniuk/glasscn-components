@@ -17,13 +17,13 @@ import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
 type GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;
 
-function GlassAlertDialogContent({ className, variant = "clear", ...props }: GlassAlertDialogContentProps) {
+function GlassAlertDialogContent({ className, glassVariant = "clear", ...props }: GlassAlertDialogContentProps) {
   return (
     <AlertDialogContent
       data-slot="glass-alert-dialog-content"
-      data-variant={variant}
+      data-glass-variant={glassVariant}
       className={cn(
-        glassVariantStyles[variant],
+        glassVariantStyles[glassVariant],
         "border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10",
         className,
       )}

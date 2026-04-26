@@ -13,7 +13,7 @@ type ComboboxDemoProps = { variant?: FrostGlassVariant };
 function ComboboxDemo({ variant = "clear" }: ComboboxDemoProps) {
   return (
     <GlassCard className="p-4">
-      <GlassCombobox items={frameworks} variant={variant}>
+      <GlassCombobox items={frameworks} glassVariant={variant}>
         <GlassComboboxInput placeholder="Select a framework" />
         <GlassComboboxContent>
           <ComboboxEmpty>No items found.</ComboboxEmpty>

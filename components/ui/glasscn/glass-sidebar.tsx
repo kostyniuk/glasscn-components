@@ -6,16 +6,9 @@ import { cn } from "@/lib/utils";
 
 import { Input } from "../input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../sheet";
-import {
-  Sidebar,
-  SidebarInset,
-  SidebarMenuButton,
-  SidebarMenuSubButton,
-  SidebarSeparator,
-  SidebarTrigger,
-  useSidebar,
-} from "../sidebar";
-import { type FrostGlassVariant, glassVariantStyles } from "./glass-variants";
+import { Sidebar, SidebarInset, SidebarMenuButton, SidebarMenuSubButton, SidebarTrigger, useSidebar } from "../sidebar";
+import { GlassSeparator } from "./glass-separator";
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 
@@ -100,9 +93,7 @@ function useGlassSidebarVariant(glassVariant?: FrostGlassVariant) {
   return glassVariant ?? inheritedVariant;
 }
 
-type GlassSidebarVariantProp = { glassVariant?: FrostGlassVariant };
-
-type GlassSidebarProps = React.ComponentProps<typeof Sidebar> & GlassSidebarVariantProp;
+type GlassSidebarProps = React.ComponentProps<typeof Sidebar> & FrostGlassVariantProp;
 
 function GlassSidebarVariantProvider({
   glassVariant,
@@ -197,7 +188,7 @@ function GlassSidebarTrigger({
   className,
   glassVariant,
   ...props
-}: React.ComponentProps<typeof SidebarTrigger> & GlassSidebarVariantProp) {
+}: React.ComponentProps<typeof SidebarTrigger> & FrostGlassVariantProp) {
   const resolvedVariant = useGlassSidebarVariant(glassVariant);
 
   return (
@@ -242,15 +233,7 @@ function GlassSidebarInput({ className, ...props }: React.ComponentProps<typeof 
   );
 }
 
-function GlassSidebarSeparator({ className, ...props }: React.ComponentProps<typeof SidebarSeparator>) {
-  return (
-    <SidebarSeparator
-      data-slot="glass-sidebar-separator"
-      className={cn("w-auto! bg-sidebar-border", className)}
-      {...props}
-    />
-  );
-}
+const GlassSidebarSeparator = GlassSeparator;
 
 function GlassSidebarMenuButton({ className, ...props }: React.ComponentProps<typeof SidebarMenuButton>) {
   return (

@@ -11,7 +11,7 @@ type CardDemoProps = { variant?: FrostGlassVariant };
 
 export function CardDemo({ variant = "clear" }: CardDemoProps) {
   return (
-    <GlassCard variant={variant} className="w-full max-w-sm">
+    <GlassCard glassVariant={variant} className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>
         <CardDescription className={"text-foreground/80"}>
