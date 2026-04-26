@@ -10,8 +10,10 @@ import { SelectDemo } from "@/components/demo/select-demo";
 import { SeparatorDemo } from "@/components/demo/separator-demo";
 import { SidebarDemo } from "@/components/demo/sidebar-demo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
+import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <CardTitle className="text-xl">{children}</CardTitle>;
@@ -198,6 +200,50 @@ export default function Page() {
               <AlertDemo variant="frosted" />
               <AlertDemo variant="subtle" />
             </div>
+          </CardContent>
+        </Card>
+
+        <Card id="code-block-command" variant="outline">
+          <CardHeader>
+            <SectionTitle>Code Block Command</SectionTitle>
+            <SectionDescription>A tabbed command block for displaying package manager commands.</SectionDescription>
+          </CardHeader>
+          <CardContent>
+            <PackageManagerProvider>
+              <div className="flex flex-col gap-3">
+                <CodeBlockCommand
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
+                <GlassCodeBlockCommand
+                  glassVariant="frosted"
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
+                <GlassCodeBlockCommand
+                  glassVariant="clear"
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
+                <GlassCodeBlockCommand
+                  glassVariant="subtle"
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
+              </div>
+            </PackageManagerProvider>
           </CardContent>
         </Card>
 

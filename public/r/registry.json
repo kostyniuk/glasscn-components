@@ -455,6 +455,53 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "code-block-command",
+      "type": "registry:ui",
+      "title": "Code Block Command",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/badge"
+      ],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/code-block-command.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/icons/package-manager-icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "lib/package-manager.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "glass-code-block-command",
+      "type": "registry:component",
+      "title": "Glass Code Block Command",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/code-block-command",
+        "@glasscn/glass-badge",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Code Block Command with 3 different variants to achieve desired frosted view",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-code-block-command.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
