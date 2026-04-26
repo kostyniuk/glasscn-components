@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 import { CodeBlockCommand, type CodeBlockCommandProps } from "../code-block-command";
 import { GlassBadge } from "./glass-badge";
-import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCodeBlockCommandProps = Omit<CodeBlockCommandProps, "className"> &
   FrostGlassVariantProp & { className?: string };

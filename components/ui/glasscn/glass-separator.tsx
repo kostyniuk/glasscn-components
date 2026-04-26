@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 
 import { Separator } from "../separator";
-import { type FrostGlassVariant, type FrostGlassVariantProp } from "./glass-variants";
+import { type FrostGlassVariant, type FrostGlassVariantProp } from "@/lib/glass-variants";
 
 const separatorVariantStyles: Record<FrostGlassVariant, string> = {
   clear: "bg-white/[0.5] dark:bg-white/[0.12]",

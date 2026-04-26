@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 import { Alert } from "../alert";
-import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassAlertProps = React.ComponentProps<typeof Alert> & FrostGlassVariantProp;
 

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 import { Card, CardFooter } from "../card";
-import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;
 

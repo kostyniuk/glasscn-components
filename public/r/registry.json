@@ -141,10 +141,6 @@
         {
           "path": "components/ui/glasscn/glass-button.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -162,10 +158,6 @@
         {
           "path": "components/ui/glasscn/glass-badge.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -183,10 +175,6 @@
         {
           "path": "components/ui/glasscn/glass-checkbox.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -204,10 +192,6 @@
         {
           "path": "components/ui/glasscn/glass-combobox.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -225,10 +209,6 @@
         {
           "path": "components/ui/glasscn/glass-select.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -258,10 +238,6 @@
         {
           "path": "components/ui/glasscn/glass-card.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -292,10 +268,6 @@
         {
           "path": "components/ui/glasscn/glass-calendar.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -305,7 +277,7 @@
       "title": "Glass Variants",
       "files": [
         {
-          "path": "components/ui/glasscn/glass-variants.ts",
+          "path": "lib/glass-variants.ts",
           "type": "registry:lib"
         }
       ]
@@ -399,10 +371,6 @@
         {
           "path": "components/ui/glasscn/glass-separator.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -423,14 +391,6 @@
         {
           "path": "components/ui/glasscn/glass-sidebar.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-separator.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -474,10 +434,6 @@
         {
           "path": "components/ui/glasscn/glass-alert.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -497,10 +453,6 @@
         {
           "path": "components/ui/glasscn/glass-alert-dialog.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -548,10 +500,6 @@
         {
           "path": "components/ui/glasscn/glass-code-block-command.tsx",
           "type": "registry:component"
-        },
-        {
-          "path": "components/ui/glasscn/glass-variants.ts",
-          "type": "registry:lib"
         }
       ]
     }

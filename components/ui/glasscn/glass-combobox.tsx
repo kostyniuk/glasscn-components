@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 import { Combobox, ComboboxContent, ComboboxInput } from "../combobox";
-import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 const GlassComboboxVariantContext = React.createContext<FrostGlassVariant>("clear");
 

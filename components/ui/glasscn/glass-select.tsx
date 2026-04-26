@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 import { Select, SelectContent, SelectTrigger } from "../select";
-import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("clear");
 

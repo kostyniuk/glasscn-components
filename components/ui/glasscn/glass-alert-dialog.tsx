@@ -13,7 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../alert-dialog";
-import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;
 

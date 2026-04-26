@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 
 import { Checkbox } from "../checkbox";
-import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCheckboxProps = React.ComponentProps<typeof Checkbox> & FrostGlassVariantProp;
 

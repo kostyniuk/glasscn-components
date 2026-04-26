@@ -8,7 +8,7 @@ import { Input } from "../input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../sheet";
 import { Sidebar, SidebarInset, SidebarMenuButton, SidebarMenuSubButton, SidebarTrigger, useSidebar } from "../sidebar";
 import { GlassSeparator } from "./glass-separator";
-import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 
@@ -271,4 +271,4 @@ export {
   GlassSidebarTrigger,
   glassSidebarVariableStyles,
 };
-export type { FrostGlassVariant } from "./glass-variants";
+export type { FrostGlassVariant } from "@/lib/glass-variants";
