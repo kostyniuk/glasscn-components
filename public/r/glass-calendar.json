@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-calendar.tsx",
-      "content": "\"use client\"\n\nimport { Calendar } from \"../calendar\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  FrostGlassVariantProp,\n  glassVariantStyles,\n} from \"./glass-variants\"\n\ntype GlassCalendarProps = React.ComponentProps<typeof Calendar> &\n  FrostGlassVariantProp\n\nfunction GlassCalendar({\n  className,\n  variant = \"clear\",\n  ...props\n}: GlassCalendarProps) {\n  return (\n    <Calendar\n      data-slot=\"glass-calendar\"\n      className={cn(\n        glassVariantStyles[variant],\n        \"bg-white/40 shadow-xl dark:bg-black/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { GlassCalendar }\n",
+      "content": "\"use client\"\n\nimport { Calendar } from \"../calendar\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  FrostGlassVariantProp,\n  glassVariantStyles,\n} from \"./glass-variants\"\n\ntype GlassCalendarProps = React.ComponentProps<typeof Calendar> &\n  FrostGlassVariantProp\n\nfunction GlassCalendar({\n  className,\n  variant = \"clear\",\n  ...props\n}: GlassCalendarProps) {\n  return (\n    <Calendar\n      data-slot=\"glass-calendar\"\n      data-variant={variant}\n      className={cn(\n        glassVariantStyles[variant],\n        \"data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { GlassCalendar }\n",
       "type": "registry:component"
     }
   ],

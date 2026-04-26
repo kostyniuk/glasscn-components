@@ -21,7 +21,7 @@ function GlassCalendar({
       data-variant={variant}
       className={cn(
         glassVariantStyles[variant],
-        "bg-white/40 shadow-xl dark:bg-black/40",
+        "data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl",
         className
       )}
       {...props}

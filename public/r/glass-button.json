@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-button.tsx",
-      "content": "import { Button } from \"../button\"\nimport { cn } from \"@/lib/utils\";\nimport {\n    FrostGlassVariantProp,\n    glassVariantStyles,\n} from \"./glass-variants\"\n\ntype GlassButtonProps = Omit<React.ComponentProps<typeof Button>, \"variant\"> &\n    FrostGlassVariantProp\n\nfunction GlassButton({\n    className,\n    variant = \"clear\",\n    ...props\n}: GlassButtonProps) {\n    return (\n        <Button\n            data-slot=\"glass-button\"\n            data-variant={variant}\n            className={\n                cn(\n                    \"text-black dark:text-white cursor-pointer\", glassVariantStyles[variant], className)\n            }\n            {...props}\n        />\n    )\n}\n\nexport { GlassButton }\n",
+      "content": "import { Button } from \"../button\"\nimport { cn } from \"@/lib/utils\";\nimport {\n  FrostGlassVariantProp,\n  glassVariantStyles,\n} from \"./glass-variants\"\n\ntype GlassButtonProps = Omit<React.ComponentProps<typeof Button>, \"variant\"> &\n  FrostGlassVariantProp\n\nfunction GlassButton({\n  className,\n  variant = \"clear\",\n  ...props\n}: GlassButtonProps) {\n  return (\n    <Button\n      data-slot=\"glass-button\"\n      data-variant={variant}\n      className={cn(\n        \"text-foreground cursor-pointer\",\n        glassVariantStyles[variant],\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { GlassButton }\n",
       "type": "registry:component"
     }
   ],
