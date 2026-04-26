@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["components/ui/*.tsx", "public", ".*", "*.config.*", "*.json", "tsconfig*", "bun.lock", "README.md", "next-env.d.ts", "hooks/use-mobile.ts", "lib/utils.ts"],
+  "printWidth": 120,
+  "objectWrap": "collapse",
+  "sortImports": true,
+  "sortTailwindcss": true
+}
