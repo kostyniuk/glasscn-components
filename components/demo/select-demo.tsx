@@ -2,7 +2,7 @@
 
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassSelect, GlassSelectContent, GlassSelectTrigger } from "@/components/ui/glasscn/glass-select";
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { FrostGlassVariant } from "@/lib/glass-variants";
 import { SelectGroup, SelectItem, SelectLabel, SelectValue } from "@/components/ui/select";
 
 const items = [

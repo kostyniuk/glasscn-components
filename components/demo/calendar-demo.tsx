@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { GlassCalendar } from "@/components/ui/glasscn/glass-calendar";
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { FrostGlassVariant } from "@/lib/glass-variants";
 
 type CalendarDemoProps = { variant?: FrostGlassVariant };
 

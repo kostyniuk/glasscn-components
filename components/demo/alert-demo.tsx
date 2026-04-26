@@ -2,7 +2,7 @@ import { CheckCircle2Icon } from "lucide-react";
 
 import { AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { GlassAlert } from "@/components/ui/glasscn/glass-alert";
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 
 type AlertDemoProps = { variant?: FrostGlassVariant };
 

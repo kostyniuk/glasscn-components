@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { Field, FieldContent, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { GlassCheckbox } from "@/components/ui/glasscn/glass-checkbox";
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { FrostGlassVariant } from "@/lib/glass-variants";
 
 type CheckboxDemoProps = { variant?: FrostGlassVariant };
 

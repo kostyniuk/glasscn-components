@@ -2,7 +2,7 @@
 
 import { ComboboxEmpty, ComboboxItem, ComboboxList } from "@/components/ui/combobox";
 import { GlassCombobox, GlassComboboxContent, GlassComboboxInput } from "@/components/ui/glasscn/glass-combobox";
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { FrostGlassVariant } from "@/lib/glass-variants";
 
 import { GlassCard } from "../ui/glasscn/glass-card";
 

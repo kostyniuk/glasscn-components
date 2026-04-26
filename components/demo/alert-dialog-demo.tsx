@@ -9,7 +9,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 
 import { GlassAlertDialogContent } from "../ui/glasscn/glass-alert-dialog";
 

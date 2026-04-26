@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { GlassCard, GlassCardFooter } from "@/components/ui/glasscn/glass-card";
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 

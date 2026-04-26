@@ -9,7 +9,7 @@ import {
   GlassSidebarMenuSubButton,
   GlassSidebarSeparator,
 } from "@/components/ui/glasscn/glass-sidebar";
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 import {
   SidebarContent,
   SidebarFooter,

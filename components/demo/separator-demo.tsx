@@ -1,5 +1,5 @@
 import { GlassSeparator } from "@/components/ui/glasscn/glass-separator";
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 
 const items = [
   { label: "Profile", description: "Manage your account details" },
