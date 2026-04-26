@@ -1,37 +1,50 @@
 import { Card, CardFooter } from "../card"
 import { cn } from "@/lib/utils"
 import {
-    FrostGlassVariantProp,
-    glassVariantStyles,
+  FrostGlassVariant,
+  FrostGlassVariantProp,
+  glassVariantStyles,
 } from "./glass-variants"
 
-type GlassCardProps = Omit<React.ComponentProps<typeof Card>, "variant"> & FrostGlassVariantProp
+type GlassCardProps = Omit<React.ComponentProps<typeof Card>, "variant"> &
+  FrostGlassVariantProp
 
 type GlassCardFooterProps = Omit<React.ComponentProps<typeof CardFooter>, "variant"> &
-    FrostGlassVariantProp
+  FrostGlassVariantProp
 
 function GlassCard({
-    className,
-    variant = "clear",
-    ...props
+  className,
+  variant = "clear",
+  ...props
 }: GlassCardProps) {
-    return (
-        <Card
-            data-slot="glass-card"
-            data-variant={variant}
-            className={cn(glassVariantStyles[variant], className)}
-            {...props}
-        />
-    )
+  return (
+    <Card
+      data-slot="glass-card"
+      data-variant={variant}
+      className={cn(glassVariantStyles[variant], className)}
+      {...props}
+    />
+  )
 }
 
-function GlassCardFooter({ className, ...props }: GlassCardFooterProps) {
-    return (
-        <CardFooter
-            className={cn("bg-muted/30", className)}
-            {...props}
-        />
-    )
+const footerVariantStyles: Record<FrostGlassVariant, string> = {
+  clear: "bg-white/10 dark:bg-black/10",
+  frosted: "bg-white/20 dark:bg-black/20",
+  subtle: "bg-white/15 dark:bg-white/[0.04]",
+}
+
+function GlassCardFooter({
+  className,
+  variant = "clear",
+  ...props
+}: GlassCardFooterProps) {
+  return (
+    <CardFooter
+      data-variant={variant}
+      className={cn(footerVariantStyles[variant], className)}
+      {...props}
+    />
+  )
 }
 
 export { GlassCard, GlassCardFooter }

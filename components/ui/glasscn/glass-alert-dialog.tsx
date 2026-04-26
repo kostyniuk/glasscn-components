@@ -29,6 +29,7 @@ function GlassAlertDialogContent({
   return (
     <AlertDialogContent
       data-slot="glass-alert-dialog-content"
+      data-variant={variant}
       className={cn(
         glassVariantStyles[variant],
         "border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10",

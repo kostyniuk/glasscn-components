@@ -34,9 +34,10 @@ function GlassSelectTrigger({
 
   return (
     <SelectTrigger
+      data-slot="glass-select-trigger"
       className={cn(
         glassVariantStyles[variant],
-        "border-white/40 bg-white/40 text-black shadow-[0_8px_30px_rgba(255,255,255,0.08)] data-placeholder:text-foreground/75 dark:data-placeholder:text-foreground/60 dark:border-white/12 dark:bg-black/40 dark:text-white",
+        "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] data-placeholder:text-foreground/75 dark:data-placeholder:text-foreground/60 dark:border-white/12 dark:bg-black/40",
         className
       )}
       {...props}
@@ -52,9 +53,10 @@ function GlassSelectContent({
 
   return (
     <SelectContent
+      data-slot="glass-select-content"
       className={cn(
         glassVariantStyles[variant],
-        "rounded-xl border border-white/30 bg-white/60 text-black shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:text-white dark:ring-white/10",
+        "rounded-xl border border-white/30 bg-white/60 text-foreground shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:ring-white/10",
         "[&_[data-slot=select-item]:focus]:bg-white/70 [&_[data-slot=select-item]:focus]:text-black dark:[&_[data-slot=select-item]:focus]:bg-white/12 dark:[&_[data-slot=select-item]:focus]:text-white",
         className
       )}

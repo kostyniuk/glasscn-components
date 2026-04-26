@@ -18,7 +18,7 @@ function GlassBadge({
       data-slot="glass-badge"
       data-variant={variant}
       className={cn(
-        "text-black dark:text-white",
+        "text-foreground",
         glassVariantStyles[variant],
         className
       )}

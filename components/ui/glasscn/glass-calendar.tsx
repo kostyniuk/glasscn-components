@@ -18,6 +18,7 @@ function GlassCalendar({
   return (
     <Calendar
       data-slot="glass-calendar"
+      data-variant={variant}
       className={cn(
         glassVariantStyles[variant],
         "bg-white/40 shadow-xl dark:bg-black/40",
