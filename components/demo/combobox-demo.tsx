@@ -1,29 +1,14 @@
-"use client"
+"use client";
 
-import {
-  ComboboxEmpty,
-  ComboboxItem,
-  ComboboxList,
-} from "@/components/ui/combobox"
-import {
-  GlassCombobox,
-  GlassComboboxContent,
-  GlassComboboxInput,
-} from "@/components/ui/glasscn/glass-combobox"
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants"
-import { GlassCard } from "../ui/glasscn/glass-card"
+import { ComboboxEmpty, ComboboxItem, ComboboxList } from "@/components/ui/combobox";
+import { GlassCombobox, GlassComboboxContent, GlassComboboxInput } from "@/components/ui/glasscn/glass-combobox";
+import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
 
-const frameworks = [
-  "Next.js",
-  "SvelteKit",
-  "Nuxt.js",
-  "Remix",
-  "Astro",
-] as const
+import { GlassCard } from "../ui/glasscn/glass-card";
 
-type ComboboxDemoProps = {
-  variant?: FrostGlassVariant
-}
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"] as const;
+
+type ComboboxDemoProps = { variant?: FrostGlassVariant };
 
 function ComboboxDemo({ variant = "clear" }: ComboboxDemoProps) {
   return (
@@ -42,7 +27,7 @@ function ComboboxDemo({ variant = "clear" }: ComboboxDemoProps) {
         </GlassComboboxContent>
       </GlassCombobox>
     </GlassCard>
-  )
+  );
 }
 
-export { ComboboxDemo }
+export { ComboboxDemo };

@@ -1,16 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { Input } from "../input"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from "../sheet"
+import { cn } from "@/lib/utils";
+
+import { Input } from "../input";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../sheet";
 import {
   Sidebar,
   SidebarInset,
@@ -19,15 +14,12 @@ import {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-} from "../sidebar"
-import {
-  type FrostGlassVariant,
-  glassVariantStyles,
-} from "./glass-variants"
+} from "../sidebar";
+import { type FrostGlassVariant, glassVariantStyles } from "./glass-variants";
 
-const SIDEBAR_WIDTH_MOBILE = "18rem"
+const SIDEBAR_WIDTH_MOBILE = "18rem";
 
-const GlassSidebarVariantContext = React.createContext<FrostGlassVariant>("clear")
+const GlassSidebarVariantContext = React.createContext<FrostGlassVariant>("clear");
 
 const glassSidebarVariableStyles: Record<FrostGlassVariant, string> = {
   clear: [
@@ -72,7 +64,7 @@ const glassSidebarVariableStyles: Record<FrostGlassVariant, string> = {
     "dark:[--sidebar-border:rgba(255,255,255,0.08)]",
     "dark:[--sidebar-ring:rgba(255,255,255,0.12)]",
   ].join(" "),
-}
+};
 
 const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
   clear: [
@@ -93,51 +85,44 @@ const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
     "[&>[data-slot=sidebar-inner]]:shadow-[0_24px_80px_rgba(15,23,42,0.08)]",
     "dark:[&>[data-slot=sidebar-inner]]:shadow-[0_24px_80px_rgba(0,0,0,0.28)]",
   ].join(" "),
-}
+};
 
 const glassSidebarFloatingInnerStyles = [
   "[&>[data-slot=sidebar-inner]]:group-data-[variant=floating]:rounded-[1.25rem]",
   "[&>[data-slot=sidebar-inner]]:group-data-[variant=floating]:ring-1",
   "[&>[data-slot=sidebar-inner]]:group-data-[variant=floating]:ring-white/25",
   "dark:[&>[data-slot=sidebar-inner]]:group-data-[variant=floating]:ring-white/10",
-].join(" ")
+].join(" ");
 
 function useGlassSidebarVariant(glassVariant?: FrostGlassVariant) {
-  const inheritedVariant = React.useContext(GlassSidebarVariantContext)
+  const inheritedVariant = React.useContext(GlassSidebarVariantContext);
 
-  return glassVariant ?? inheritedVariant
+  return glassVariant ?? inheritedVariant;
 }
 
-type GlassSidebarVariantProp = {
-  glassVariant?: FrostGlassVariant
-}
+type GlassSidebarVariantProp = { glassVariant?: FrostGlassVariant };
 
-type GlassSidebarProps = React.ComponentProps<typeof Sidebar> &
-  GlassSidebarVariantProp
+type GlassSidebarProps = React.ComponentProps<typeof Sidebar> & GlassSidebarVariantProp;
 
 function GlassSidebarVariantProvider({
   glassVariant,
   children,
 }: React.PropsWithChildren<{ glassVariant: FrostGlassVariant }>) {
-  return (
-    <GlassSidebarVariantContext.Provider value={glassVariant}>
-      {children}
-    </GlassSidebarVariantContext.Provider>
-  )
+  return <GlassSidebarVariantContext.Provider value={glassVariant}>{children}</GlassSidebarVariantContext.Provider>;
 }
 
 function getGlassSidebarRootClasses({
   glassVariant,
   variant,
 }: {
-  glassVariant: FrostGlassVariant
-  variant: GlassSidebarProps["variant"]
+  glassVariant: FrostGlassVariant;
+  variant: GlassSidebarProps["variant"];
 }) {
   return cn(
     glassSidebarVariableStyles[glassVariant],
     glassSidebarInnerSurfaceStyles[glassVariant],
-    variant === "floating" && glassSidebarFloatingInnerStyles
-  )
+    variant === "floating" && glassSidebarFloatingInnerStyles,
+  );
 }
 
 function getGlassSidebarStandaloneClasses(glassVariant: FrostGlassVariant) {
@@ -145,8 +130,8 @@ function getGlassSidebarStandaloneClasses(glassVariant: FrostGlassVariant) {
     glassVariantStyles[glassVariant],
     glassSidebarVariableStyles[glassVariant],
     "overflow-hidden",
-    "shadow-[0_24px_80px_rgba(15,23,42,0.08)] dark:shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
-  )
+    "shadow-[0_24px_80px_rgba(15,23,42,0.08)] dark:shadow-[0_24px_80px_rgba(0,0,0,0.28)]",
+  );
 }
 
 function GlassSidebar({
@@ -159,7 +144,7 @@ function GlassSidebar({
   children,
   ...props
 }: GlassSidebarProps) {
-  const { isMobile, openMobile, setOpenMobile } = useSidebar()
+  const { isMobile, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible !== "none" && isMobile) {
     return (
@@ -172,13 +157,9 @@ function GlassSidebar({
             data-mobile="true"
             className={cn(
               "w-(--sidebar-width) p-0 text-sidebar-foreground [&>button]:hidden",
-              getGlassSidebarStandaloneClasses(glassVariant)
+              getGlassSidebarStandaloneClasses(glassVariant),
             )}
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-              } as React.CSSProperties
-            }
+            style={{ "--sidebar-width": SIDEBAR_WIDTH_MOBILE } as React.CSSProperties}
             side={side}
           >
             <SheetHeader className="sr-only">
@@ -189,7 +170,7 @@ function GlassSidebar({
           </SheetContent>
         </Sheet>
       </GlassSidebarVariantProvider>
-    )
+    );
   }
 
   return (
@@ -202,14 +183,14 @@ function GlassSidebar({
           collapsible === "none"
             ? getGlassSidebarStandaloneClasses(glassVariant)
             : getGlassSidebarRootClasses({ glassVariant, variant }),
-          className
+          className,
         )}
         {...props}
       >
         {children}
       </Sidebar>
     </GlassSidebarVariantProvider>
-  )
+  );
 }
 
 function GlassSidebarTrigger({
@@ -217,7 +198,7 @@ function GlassSidebarTrigger({
   glassVariant,
   ...props
 }: React.ComponentProps<typeof SidebarTrigger> & GlassSidebarVariantProp) {
-  const resolvedVariant = useGlassSidebarVariant(glassVariant)
+  const resolvedVariant = useGlassSidebarVariant(glassVariant);
 
   return (
     <SidebarTrigger
@@ -226,33 +207,27 @@ function GlassSidebarTrigger({
         glassSidebarVariableStyles[resolvedVariant],
         glassVariantStyles[resolvedVariant],
         "border-sidebar-border bg-sidebar text-sidebar-foreground hover:bg-sidebar-accent",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function GlassSidebarInset({
-  className,
-  ...props
-}: React.ComponentProps<typeof SidebarInset>) {
+function GlassSidebarInset({ className, ...props }: React.ComponentProps<typeof SidebarInset>) {
   return (
     <SidebarInset
       data-slot="glass-sidebar-inset"
       className={cn(
         "md:peer-data-[variant=inset]:bg-white/10 md:peer-data-[variant=inset]:backdrop-blur-xl md:peer-data-[variant=inset]:ring-1 md:peer-data-[variant=inset]:ring-white/20 dark:md:peer-data-[variant=inset]:bg-black/20 dark:md:peer-data-[variant=inset]:ring-white/10",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function GlassSidebarInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof Input>) {
+function GlassSidebarInput({ className, ...props }: React.ComponentProps<typeof Input>) {
   return (
     <Input
       data-slot="glass-sidebar-input"
@@ -260,56 +235,47 @@ function GlassSidebarInput({
       className={cn(
         "h-8 w-full placeholder:text-foreground/75",
         "border-sidebar-border bg-sidebar text-sidebar-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function GlassSidebarSeparator({
-  className,
-  ...props
-}: React.ComponentProps<typeof SidebarSeparator>) {
+function GlassSidebarSeparator({ className, ...props }: React.ComponentProps<typeof SidebarSeparator>) {
   return (
     <SidebarSeparator
       data-slot="glass-sidebar-separator"
       className={cn("w-auto! bg-sidebar-border", className)}
       {...props}
     />
-  )
+  );
 }
 
-function GlassSidebarMenuButton({
-  className,
-  ...props
-}: React.ComponentProps<typeof SidebarMenuButton>) {
+function GlassSidebarMenuButton({ className, ...props }: React.ComponentProps<typeof SidebarMenuButton>) {
   return (
     <SidebarMenuButton
       data-slot="glass-sidebar-menu-button"
       className={cn(
         "border border-transparent hover:border-sidebar-border hover:bg-sidebar-accent/60 data-active:border-sidebar-border data-active:bg-sidebar-accent data-active:shadow-[0_14px_40px_rgba(255,255,255,0.12)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function GlassSidebarMenuSubButton({
-  className,
-  ...props
-}: React.ComponentProps<typeof SidebarMenuSubButton>) {
+function GlassSidebarMenuSubButton({ className, ...props }: React.ComponentProps<typeof SidebarMenuSubButton>) {
   return (
     <SidebarMenuSubButton
       data-slot="glass-sidebar-menu-sub-button"
       className={cn(
         "rounded-lg border border-transparent hover:border-sidebar-border hover:bg-sidebar-accent/60 data-active:border-sidebar-border data-active:bg-sidebar-accent data-active:shadow-[0_14px_40px_rgba(255,255,255,0.12)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -321,5 +287,5 @@ export {
   GlassSidebarSeparator,
   GlassSidebarTrigger,
   glassSidebarVariableStyles,
-}
-export type { FrostGlassVariant } from "./glass-variants"
+};
+export type { FrostGlassVariant } from "./glass-variants";

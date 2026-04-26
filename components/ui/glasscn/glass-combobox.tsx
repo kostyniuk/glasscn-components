@@ -1,43 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxInput,
-} from "../combobox"
-import { cn } from "@/lib/utils"
-import {
-  type FrostGlassVariant,
-  type FrostGlassVariantProp,
-  glassVariantStyles,
-} from "./glass-variants"
+import { cn } from "@/lib/utils";
 
-const GlassComboboxVariantContext = React.createContext<FrostGlassVariant>("clear")
+import { Combobox, ComboboxContent, ComboboxInput } from "../combobox";
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-type GlassComboboxProps<T extends readonly string[]> = React.ComponentProps<
-  typeof Combobox<T>
-> &
-  FrostGlassVariantProp
+const GlassComboboxVariantContext = React.createContext<FrostGlassVariant>("clear");
 
-function GlassCombobox<T extends readonly string[]>({
-  variant = "clear",
-  ...props
-}: GlassComboboxProps<T>) {
+type GlassComboboxProps<T extends readonly string[]> = React.ComponentProps<typeof Combobox<T>> & FrostGlassVariantProp;
+
+function GlassCombobox<T extends readonly string[]>({ variant = "clear", ...props }: GlassComboboxProps<T>) {
   return (
     <GlassComboboxVariantContext.Provider value={variant}>
       <Combobox data-slot="glass-combobox" {...props} />
     </GlassComboboxVariantContext.Provider>
-  )
+  );
 }
 
-function GlassComboboxInput({
-  className,
-  inputClassName,
-  ...props
-}: React.ComponentProps<typeof ComboboxInput>) {
-  const variant = React.useContext(GlassComboboxVariantContext)
+function GlassComboboxInput({ className, inputClassName, ...props }: React.ComponentProps<typeof ComboboxInput>) {
+  const variant = React.useContext(GlassComboboxVariantContext);
 
   return (
     <ComboboxInput
@@ -50,14 +33,11 @@ function GlassComboboxInput({
       inputClassName={cn("placeholder:text-foreground/75", inputClassName)}
       {...props}
     />
-  )
+  );
 }
 
-function GlassComboboxContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof ComboboxContent>) {
-  const variant = React.useContext(GlassComboboxVariantContext)
+function GlassComboboxContent({ className, ...props }: React.ComponentProps<typeof ComboboxContent>) {
+  const variant = React.useContext(GlassComboboxVariantContext);
 
   return (
     <ComboboxContent
@@ -66,11 +46,11 @@ function GlassComboboxContent({
         glassVariantStyles[variant],
         "rounded-xl border border-white/30 bg-white/60 text-foreground shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:ring-white/10",
         "[&_[data-slot=combobox-item][data-highlighted]]:bg-white/70 [&_[data-slot=combobox-item][data-highlighted]]:text-black dark:[&_[data-slot=combobox-item][data-highlighted]]:bg-white/12 dark:[&_[data-slot=combobox-item][data-highlighted]]:text-white",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { GlassCombobox, GlassComboboxContent, GlassComboboxInput }
+export { GlassCombobox, GlassComboboxContent, GlassComboboxInput };

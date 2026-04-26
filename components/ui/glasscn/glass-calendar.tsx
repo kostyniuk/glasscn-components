@@ -1,20 +1,13 @@
-"use client"
+"use client";
 
-import { Calendar } from "../calendar"
-import { cn } from "@/lib/utils"
-import {
-  FrostGlassVariantProp,
-  glassVariantStyles,
-} from "./glass-variants"
+import { cn } from "@/lib/utils";
 
-type GlassCalendarProps = React.ComponentProps<typeof Calendar> &
-  FrostGlassVariantProp
+import { Calendar } from "../calendar";
+import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-function GlassCalendar({
-  className,
-  variant = "clear",
-  ...props
-}: GlassCalendarProps) {
+type GlassCalendarProps = React.ComponentProps<typeof Calendar> & FrostGlassVariantProp;
+
+function GlassCalendar({ className, variant = "clear", ...props }: GlassCalendarProps) {
   return (
     <Calendar
       data-slot="glass-calendar"
@@ -22,11 +15,11 @@ function GlassCalendar({
       className={cn(
         glassVariantStyles[variant],
         "data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { GlassCalendar }
+export { GlassCalendar };

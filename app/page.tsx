@@ -1,32 +1,23 @@
-import React from "react"
-import { GlassButton } from "@/components/ui/glasscn/glass-button"
-import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
-import { CalendarDemo } from "@/components/demo/calendar-demo"
-import { CheckboxDemo } from "@/components/demo/checkbox-demo"
-import { ComboboxDemo } from "@/components/demo/combobox-demo"
-import { CardDemo } from "@/components/demo/card-demo"
-import { SelectDemo } from "@/components/demo/select-demo"
-import { AlertDemo } from "@/components/demo/alert-demo"
-import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo"
-import { SidebarDemo } from "@/components/demo/sidebar-demo"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import React from "react";
+
+import { AlertDemo } from "@/components/demo/alert-demo";
+import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
+import { CalendarDemo } from "@/components/demo/calendar-demo";
+import { CardDemo } from "@/components/demo/card-demo";
+import { CheckboxDemo } from "@/components/demo/checkbox-demo";
+import { ComboboxDemo } from "@/components/demo/combobox-demo";
+import { SelectDemo } from "@/components/demo/select-demo";
+import { SidebarDemo } from "@/components/demo/sidebar-demo";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
+import { GlassButton } from "@/components/ui/glasscn/glass-button";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <CardTitle className="text-xl">{children}</CardTitle>
+  return <CardTitle className="text-xl">{children}</CardTitle>;
 }
 
 function SectionDescription({ children }: { children: React.ReactNode }) {
-  return (
-    <CardDescription className="text-sm leading-6 text-foreground">
-      {children}
-    </CardDescription>
-  )
+  return <CardDescription className="text-foreground text-sm leading-6">{children}</CardDescription>;
 }
 
 export default function Page() {
@@ -34,12 +25,10 @@ export default function Page() {
     <div className="flex min-h-svh justify-center p-6">
       <div className="flex w-full max-w-6xl min-w-0 flex-col gap-10 py-10">
         <div className="space-y-3">
-          <h1 className="text-3xl font-medium tracking-tight">
-            Glass Components
-          </h1>
-          <p className="text-base leading-7 text-foreground/90">
-            A small set of reusable UI primitives with glassmorphism styling,
-            each available in clear, frosted, and subtle variants.
+          <h1 className="text-3xl font-medium tracking-tight">Glass Components</h1>
+          <p className="text-foreground/90 text-base leading-7">
+            A small set of reusable UI primitives with glassmorphism styling, each available in clear, frosted, and
+            subtle variants.
           </p>
         </div>
 
@@ -47,8 +36,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Buttons</SectionTitle>
             <SectionDescription>
-              Buttons for primary actions, secondary actions, and compact
-              controls, shown here across the three glass surface treatments.
+              Buttons for primary actions, secondary actions, and compact controls, shown here across the three glass
+              surface treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -64,9 +53,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Badges</SectionTitle>
             <SectionDescription>
-              Badges for compact status labels and metadata, using the same
-              clear, frosted, and subtle glass treatments as the rest of the
-              set.
+              Badges for compact status labels and metadata, using the same clear, frosted, and subtle glass treatments
+              as the rest of the set.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -82,8 +70,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Cards</SectionTitle>
             <SectionDescription>
-              Cards for grouping related content, inputs, and actions inside a
-              reusable container with the same glass variants.
+              Cards for grouping related content, inputs, and actions inside a reusable container with the same glass
+              variants.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -99,8 +87,7 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Checkboxes</SectionTitle>
             <SectionDescription>
-              Checkboxes for compact boolean choices, using the same clear,
-              frosted, and subtle glass treatments.
+              Checkboxes for compact boolean choices, using the same clear, frosted, and subtle glass treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -116,8 +103,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Comboboxes</SectionTitle>
             <SectionDescription>
-              Comboboxes for searchable selection flows, with glass treatment
-              applied to both the input surface and the popup list.
+              Comboboxes for searchable selection flows, with glass treatment applied to both the input surface and the
+              popup list.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -133,8 +120,7 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Selects</SectionTitle>
             <SectionDescription>
-              Custom select menus with glass treatment applied to both the
-              trigger surface and the popup content.
+              Custom select menus with glass treatment applied to both the trigger surface and the popup content.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -150,8 +136,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Sidebars</SectionTitle>
             <SectionDescription>
-              Compound side navigation with glass treatment applied to the main
-              shell, search field, menu states, and supporting surfaces.
+              Compound side navigation with glass treatment applied to the main shell, search field, menu states, and
+              supporting surfaces.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -167,8 +153,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Calendars</SectionTitle>
             <SectionDescription>
-              Calendars for date selection and scheduling flows, using the same
-              clear, frosted, and subtle glass surface treatments.
+              Calendars for date selection and scheduling flows, using the same clear, frosted, and subtle glass surface
+              treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -184,9 +170,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Alerts</SectionTitle>
             <SectionDescription>
-              Alerts for status messages and inline feedback, styled with the
-              same glass variants to stay consistent with the rest of the
-              system.
+              Alerts for status messages and inline feedback, styled with the same glass variants to stay consistent
+              with the rest of the system.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -202,8 +187,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Alert Dialogs</SectionTitle>
             <SectionDescription>
-              Modal confirmation dialogs with the same clear, frosted, and
-              subtle glass treatments applied to the popup surface and actions.
+              Modal confirmation dialogs with the same clear, frosted, and subtle glass treatments applied to the popup
+              surface and actions.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -216,5 +201,5 @@ export default function Page() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

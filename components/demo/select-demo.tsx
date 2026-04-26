@@ -1,18 +1,9 @@
-"use client"
+"use client";
 
-import {
-  GlassSelect,
-  GlassSelectContent,
-  GlassSelectTrigger,
-} from "@/components/ui/glasscn/glass-select"
-import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants"
-import { GlassCard } from "@/components/ui/glasscn/glass-card"
-import {
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectValue,
-} from "@/components/ui/select"
+import { GlassCard } from "@/components/ui/glasscn/glass-card";
+import { GlassSelect, GlassSelectContent, GlassSelectTrigger } from "@/components/ui/glasscn/glass-select";
+import { FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
+import { SelectGroup, SelectItem, SelectLabel, SelectValue } from "@/components/ui/select";
 
 const items = [
   { label: "Apple", value: "apple" },
@@ -20,11 +11,9 @@ const items = [
   { label: "Blueberry", value: "blueberry" },
   { label: "Grapes", value: "grapes" },
   { label: "Pineapple", value: "pineapple" },
-] as const
+] as const;
 
-type SelectDemoProps = {
-  variant?: FrostGlassVariant
-}
+type SelectDemoProps = { variant?: FrostGlassVariant };
 
 function SelectDemo({ variant = "clear" }: SelectDemoProps) {
   return (
@@ -45,7 +34,7 @@ function SelectDemo({ variant = "clear" }: SelectDemoProps) {
         </GlassSelectContent>
       </GlassSelect>
     </GlassCard>
-  )
+  );
 }
 
-export { SelectDemo }
+export { SelectDemo };

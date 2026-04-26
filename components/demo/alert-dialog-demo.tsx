@@ -7,14 +7,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { GlassButton } from "@/components/ui/glasscn/glass-button"
-import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants"
-import { GlassAlertDialogContent } from "../ui/glasscn/glass-alert-dialog"
+} from "@/components/ui/alert-dialog";
+import { GlassButton } from "@/components/ui/glasscn/glass-button";
+import { type FrostGlassVariant } from "@/components/ui/glasscn/glass-variants";
 
-type AlertDialogDemoProps = {
-  variant?: FrostGlassVariant
-}
+import { GlassAlertDialogContent } from "../ui/glasscn/glass-alert-dialog";
+
+type AlertDialogDemoProps = { variant?: FrostGlassVariant };
 
 export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
   return (
@@ -22,10 +21,7 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
       <AlertDialog>
         <AlertDialogTrigger
           render={
-            <GlassButton
-              variant={variant}
-              className="text-black dark:text-white"
-            >
+            <GlassButton variant={variant} className="text-black dark:text-white">
               Show Dialog
             </GlassButton>
           }
@@ -33,28 +29,18 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
         <GlassAlertDialogContent variant={variant}>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription className={'text-foreground/80'}>
-              This action cannot be undone. This will permanently delete your
-              account from our servers.
+            <AlertDialogDescription className={"text-foreground/80"}>
+              This action cannot be undone. This will permanently delete your account from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="border-white/15 supports-backdrop-filter:backdrop-blur-md dark:border-white/10 bg-muted/5">
-            <AlertDialogCancel
-              render={
-                <GlassButton
-                  variant={variant}
-                  className="text-black dark:text-white"
-                />
-              }
-            >
+          <AlertDialogFooter className="bg-muted/5 border-white/15 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
+            <AlertDialogCancel render={<GlassButton variant={variant} className="text-black dark:text-white" />}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className="">
-              Continue
-            </AlertDialogAction>
+            <AlertDialogAction className="">Continue</AlertDialogAction>
           </AlertDialogFooter>
         </GlassAlertDialogContent>
       </AlertDialog>
     </div>
-  )
+  );
 }

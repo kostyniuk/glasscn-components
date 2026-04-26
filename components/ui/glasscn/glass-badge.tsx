@@ -1,30 +1,19 @@
-import { Badge } from "../badge"
-import { cn } from "@/lib/utils"
-import {
-  FrostGlassVariantProp,
-  glassVariantStyles,
-} from "./glass-variants"
+import { cn } from "@/lib/utils";
 
-type GlassBadgeProps = Omit<React.ComponentProps<typeof Badge>, "variant"> &
-  FrostGlassVariantProp
+import { Badge } from "../badge";
+import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-function GlassBadge({
-  className,
-  variant = "clear",
-  ...props
-}: GlassBadgeProps) {
+type GlassBadgeProps = Omit<React.ComponentProps<typeof Badge>, "variant"> & FrostGlassVariantProp;
+
+function GlassBadge({ className, variant = "clear", ...props }: GlassBadgeProps) {
   return (
     <Badge
       data-slot="glass-badge"
       data-variant={variant}
-      className={cn(
-        "text-foreground",
-        glassVariantStyles[variant],
-        className
-      )}
+      className={cn("text-foreground", glassVariantStyles[variant], className)}
       {...props}
     />
-  )
+  );
 }
 
-export { GlassBadge }
+export { GlassBadge };

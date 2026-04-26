@@ -1,18 +1,11 @@
-import { Alert } from "../alert"
-import { cn } from "@/lib/utils"
-import {
-  FrostGlassVariantProp,
-  glassVariantStyles,
-} from "./glass-variants"
+import { cn } from "@/lib/utils";
 
-type GlassAlertProps = Omit<React.ComponentProps<typeof Alert>, "variant"> &
-  FrostGlassVariantProp
+import { Alert } from "../alert";
+import { FrostGlassVariantProp, glassVariantStyles } from "./glass-variants";
 
-function GlassAlert({
-  className,
-  variant = "clear",
-  ...props
-}: GlassAlertProps) {
+type GlassAlertProps = Omit<React.ComponentProps<typeof Alert>, "variant"> & FrostGlassVariantProp;
+
+function GlassAlert({ className, variant = "clear", ...props }: GlassAlertProps) {
   return (
     <Alert
       data-slot="glass-alert"
@@ -20,7 +13,7 @@ function GlassAlert({
       className={cn(glassVariantStyles[variant], className)}
       {...props}
     />
-  )
+  );
 }
 
-export { GlassAlert }
+export { GlassAlert };

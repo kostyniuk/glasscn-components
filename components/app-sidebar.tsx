@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
+import { GlassSidebar, GlassSidebarMenuButton } from "@/components/ui/glasscn/glass-sidebar";
 import {
   SidebarContent,
   SidebarGroup,
@@ -10,11 +11,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import {
-  GlassSidebar,
-  GlassSidebarMenuButton,
-} from "@/components/ui/glasscn/glass-sidebar"
+} from "@/components/ui/sidebar";
 
 const data = {
   navMain: [
@@ -34,27 +31,18 @@ const data = {
       ],
     },
   ],
-}
-export function AppSidebar({
-  ...props
-}: React.ComponentProps<typeof GlassSidebar>) {
-  const [activeHash, setActiveHash] = React.useState(() =>
-    typeof window === "undefined" ? "" : window.location.hash
-  )
+};
+export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSidebar>) {
+  const [activeHash, setActiveHash] = React.useState(() => (typeof window === "undefined" ? "" : window.location.hash));
 
   React.useEffect(() => {
-    const onHashChange = () => setActiveHash(window.location.hash)
-    window.addEventListener("hashchange", onHashChange)
-    return () => window.removeEventListener("hashchange", onHashChange)
-  }, [])
+    const onHashChange = () => setActiveHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   return (
-    <GlassSidebar
-      {...props}
-      variant="floating"
-      glassVariant="frosted"
-      className="h-fit"
-    >
+    <GlassSidebar {...props} variant="floating" glassVariant="frosted" className="h-fit">
       <SidebarContent>
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title} className="bg-transparent">
@@ -78,5 +66,5 @@ export function AppSidebar({
       </SidebarContent>
       <SidebarRail />
     </GlassSidebar>
-  )
+  );
 }
