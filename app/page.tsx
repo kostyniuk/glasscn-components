@@ -177,7 +177,7 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               <SidebarDemo variant="clear" />
               <SidebarDemo variant="frosted" />
               <SidebarDemo variant="subtle" />
