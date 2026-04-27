@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-calendar",
   "title": "Glass Calendar",
-  "description": "Glass Calendar with 3 different variants to achieve desired frosted view",
+  "description": "Glass Calendar with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/calendar",
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-calendar.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Calendar } from \"../calendar\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassCalendarProps = React.ComponentProps<typeof Calendar> & FrostGlassVariantProp;\n\nfunction GlassCalendar({ className, glassVariant = \"clear\", ...props }: GlassCalendarProps) {\n  return (\n    <Calendar\n      data-slot=\"glass-calendar\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCalendar };\n",
+      "content": "\"use client\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Calendar } from \"../calendar\";\n\ntype GlassCalendarProps = React.ComponentProps<typeof Calendar> & FrostGlassVariantProp;\n\nfunction GlassCalendar({ className, glassVariant = \"clear\", ...props }: GlassCalendarProps) {\n  return (\n    <Calendar\n      data-slot=\"glass-calendar\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCalendar };\n",
       "type": "registry:component"
     }
   ],

@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-alert",
   "title": "Glass Alert",
-  "description": "Glass Alert with 3 different variants to achieve desired frosted view",
+  "description": "Glass Alert with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/alert",
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-alert.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Alert } from \"../alert\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassAlertProps = React.ComponentProps<typeof Alert> & FrostGlassVariantProp;\n\nfunction GlassAlert({ className, glassVariant = \"clear\", ...props }: GlassAlertProps) {\n  return (\n    <Alert\n      data-slot=\"glass-alert\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassAlert };\n",
+      "content": "import { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Alert } from \"../alert\";\n\ntype GlassAlertProps = React.ComponentProps<typeof Alert> & FrostGlassVariantProp;\n\nfunction GlassAlert({ className, glassVariant = \"clear\", ...props }: GlassAlertProps) {\n  return (\n    <Alert\n      data-slot=\"glass-alert\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassAlert };\n",
       "type": "registry:component"
     }
   ],

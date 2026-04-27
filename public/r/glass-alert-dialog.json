@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-alert-dialog",
   "title": "Glass Alert Dialog",
-  "description": "Glass Alert Dialog with 3 different variants to achieve desired frosted view",
+  "description": "Glass Alert Dialog with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/button",
@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-alert-dialog.tsx",
-      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"../alert-dialog\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;\n\nfunction GlassAlertDialogContent({ className, glassVariant = \"clear\", ...props }: GlassAlertDialogContentProps) {\n  return (\n    <AlertDialogContent\n      data-slot=\"glass-alert-dialog-content\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n  GlassAlertDialogContent,\n};\n",
+      "content": "import * as React from \"react\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"../alert-dialog\";\n\ntype GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;\n\nfunction GlassAlertDialogContent({ className, glassVariant = \"clear\", ...props }: GlassAlertDialogContentProps) {\n  return (\n    <AlertDialogContent\n      data-slot=\"glass-alert-dialog-content\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n  GlassAlertDialogContent,\n};\n",
       "type": "registry:component"
     }
   ],

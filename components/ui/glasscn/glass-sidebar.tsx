@@ -2,13 +2,13 @@
 
 import * as React from "react";
 
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Input } from "../input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../sheet";
 import { Sidebar, SidebarInset, SidebarMenuButton, SidebarMenuSubButton, SidebarTrigger, useSidebar } from "../sidebar";
 import { GlassSeparator } from "./glass-separator";
-import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 
@@ -71,6 +71,20 @@ const glassSidebarVariableStyles: Record<FrostGlassVariant, string> = {
     "dark:[--sidebar-border:rgba(255,255,255,0.16)]",
     "dark:[--sidebar-ring:rgba(255,255,255,0.20)]",
   ].join(" "),
+  "liquid-bold": [
+    "[--sidebar:rgba(255,255,255,0.18)]",
+    "[--sidebar-foreground:oklch(0.145_0_0)]",
+    "[--sidebar-accent:rgba(255,255,255,0.62)]",
+    "[--sidebar-accent-foreground:oklch(0.145_0_0)]",
+    "[--sidebar-border:rgba(255,255,255,0.55)]",
+    "[--sidebar-ring:rgba(255,255,255,0.55)]",
+    "dark:[--sidebar:rgba(255,255,255,0.05)]",
+    "dark:[--sidebar-foreground:oklch(0.985_0_0)]",
+    "dark:[--sidebar-accent:rgba(255,255,255,0.14)]",
+    "dark:[--sidebar-accent-foreground:oklch(0.985_0_0)]",
+    "dark:[--sidebar-border:rgba(255,255,255,0.18)]",
+    "dark:[--sidebar-ring:rgba(255,255,255,0.22)]",
+  ].join(" "),
 };
 
 const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
@@ -99,6 +113,16 @@ const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
     "dark:[&>[data-slot=sidebar-inner]]:backdrop-brightness-[0.95]",
     "[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55),inset_0_-14px_28px_-10px_rgba(255,255,255,0.40),0_28px_80px_-12px_rgba(15,23,42,0.18)]",
     "dark:[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),inset_0_-14px_28px_-10px_rgba(180,210,255,0.16),0_32px_90px_-10px_rgba(0,0,0,0.55)]",
+  ].join(" "),
+  "liquid-bold": [
+    "[&>[data-slot=sidebar-inner]]:backdrop-blur-[10px]",
+    "[&>[data-slot=sidebar-inner]]:backdrop-saturate-[2.2]",
+    "[&>[data-slot=sidebar-inner]]:backdrop-brightness-[1.10]",
+    "[&>[data-slot=sidebar-inner]]:backdrop-contrast-[1.05]",
+    "dark:[&>[data-slot=sidebar-inner]]:backdrop-saturate-[1.9]",
+    "dark:[&>[data-slot=sidebar-inner]]:backdrop-brightness-[0.95]",
+    "[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1.5px_0_0_rgba(255,255,255,0.85),inset_0_-16px_30px_-10px_rgba(255,255,255,0.55),0_32px_80px_-12px_rgba(15,23,42,0.22)]",
+    "dark:[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1.5px_0_0_rgba(255,255,255,0.42),inset_0_-16px_30px_-10px_rgba(180,210,255,0.22),0_36px_90px_-10px_rgba(0,0,0,0.60)]",
   ].join(" "),
 };
 
@@ -232,7 +256,7 @@ function GlassSidebarInset({ className, ...props }: React.ComponentProps<typeof 
     <SidebarInset
       data-slot="glass-sidebar-inset"
       className={cn(
-        "md:peer-data-[variant=inset]:bg-white/10 md:peer-data-[variant=inset]:backdrop-blur-xl md:peer-data-[variant=inset]:ring-1 md:peer-data-[variant=inset]:ring-white/20 dark:md:peer-data-[variant=inset]:bg-black/20 dark:md:peer-data-[variant=inset]:ring-white/10",
+        "md:peer-data-[variant=inset]:bg-white/10 md:peer-data-[variant=inset]:ring-1 md:peer-data-[variant=inset]:ring-white/20 md:peer-data-[variant=inset]:backdrop-blur-xl dark:md:peer-data-[variant=inset]:bg-black/20 dark:md:peer-data-[variant=inset]:ring-white/10",
         className,
       )}
       {...props}

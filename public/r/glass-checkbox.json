@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-checkbox",
   "title": "Glass Checkbox",
-  "description": "Glass Checkbox with 3 different variants to achieve desired frosted view",
+  "description": "Glass Checkbox with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/checkbox",
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-checkbox.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Checkbox } from \"../checkbox\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassCheckboxProps = React.ComponentProps<typeof Checkbox> & FrostGlassVariantProp;\n\nfunction GlassCheckbox({ className, glassVariant = \"clear\", ...props }: GlassCheckboxProps) {\n  return (\n    <Checkbox\n      data-slot=\"glass-checkbox\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"border-white/40 bg-white/30 text-black shadow-sm dark:border-white/12 dark:bg-black/30 dark:text-white data-checked:border-white/30 data-checked:bg-white/70 data-checked:text-black dark:data-checked:border-white/20 dark:data-checked:bg-white/20\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCheckbox };\n",
+      "content": "\"use client\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Checkbox } from \"../checkbox\";\n\ntype GlassCheckboxProps = React.ComponentProps<typeof Checkbox> & FrostGlassVariantProp;\n\nfunction GlassCheckbox({ className, glassVariant = \"clear\", ...props }: GlassCheckboxProps) {\n  return (\n    <Checkbox\n      data-slot=\"glass-checkbox\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassVariantStyles[glassVariant],\n        \"border-white/40 bg-white/30 text-black shadow-sm dark:border-white/12 dark:bg-black/30 dark:text-white data-checked:border-white/30 data-checked:bg-white/70 data-checked:text-black dark:data-checked:border-white/20 dark:data-checked:bg-white/20\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCheckbox };\n",
       "type": "registry:component"
     }
   ],

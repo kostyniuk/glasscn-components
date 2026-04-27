@@ -1,7 +1,7 @@
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Badge } from "../badge";
-import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;
 

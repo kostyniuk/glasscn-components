@@ -1,9 +1,9 @@
 "use client";
 
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Checkbox } from "../checkbox";
-import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCheckboxProps = React.ComponentProps<typeof Checkbox> & FrostGlassVariantProp;
 

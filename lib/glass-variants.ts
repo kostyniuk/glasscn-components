@@ -1,4 +1,4 @@
-export type FrostGlassVariant = "clear" | "frosted" | "subtle" | "liquid";
+export type FrostGlassVariant = "clear" | "frosted" | "subtle" | "liquid" | "liquid-bold";
 export type FrostGlassVariantProp = { glassVariant?: FrostGlassVariant };
 
 export const glassVariantStyles: Record<FrostGlassVariant, string> = {
@@ -48,6 +48,29 @@ export const glassVariantStyles: Record<FrostGlassVariant, string> = {
     "border border-white/[0.45] dark:border-white/[0.10]",
 
     // 6) Slow ambient drift; respects prefers-reduced-motion.
+    "animate-[liquid-drift_18s_ease-in-out_infinite] motion-reduce:animate-none",
+    "[will-change:background-position]",
+  ].join(" "),
+  // liquid-bold: pure-CSS, amped-up `liquid`. Heavier saturation & contrast,
+  // more pronounced bevel highlights and a glossier sheen.
+  "liquid-bold": [
+    "backdrop-blur-[10px] backdrop-saturate-[2.2] backdrop-brightness-[1.10] backdrop-contrast-[1.05]",
+    "dark:backdrop-saturate-[1.9] dark:backdrop-brightness-[0.95]",
+
+    "bg-white/[0.08] dark:bg-white/[0.03]",
+
+    // Stronger sheen — brighter top-left specular, richer warm bottom tint.
+    "[background-image:radial-gradient(120%_90%_at_15%_5%,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.24)_42%,rgba(255,255,255,0)_72%),radial-gradient(110%_85%_at_85%_100%,rgba(255,200,225,0.38)_0%,rgba(255,255,255,0)_62%),linear-gradient(180deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.14)_100%)]",
+    "dark:[background-image:radial-gradient(120%_90%_at_15%_5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_72%),radial-gradient(110%_85%_at_85%_100%,rgba(120,170,255,0.20)_0%,rgba(0,0,0,0)_62%),linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(0,0,0,0.22)_100%)]",
+    "[background-size:200%_200%,180%_180%,100%_100%]",
+    "[background-repeat:no-repeat]",
+
+    // Brighter chamfer + thicker bottom fish-eye glow + thicker side rails.
+    "shadow-[inset_0_1.5px_0_0_rgba(255,255,255,0.85),inset_0_-16px_30px_-10px_rgba(255,255,255,0.65),inset_2px_0_0_0_rgba(255,255,255,0.32),inset_-2px_0_0_0_rgba(255,255,255,0.26),0_28px_70px_-18px_rgba(15,23,42,0.35),0_10px_28px_-8px_rgba(15,23,42,0.20)]",
+    "dark:shadow-[inset_0_1.5px_0_0_rgba(255,255,255,0.42),inset_0_-16px_30px_-10px_rgba(180,210,255,0.26),inset_2px_0_0_0_rgba(255,255,255,0.16),inset_-2px_0_0_0_rgba(255,255,255,0.12),0_32px_80px_-18px_rgba(0,0,0,0.60),0_12px_30px_-8px_rgba(0,0,0,0.45)]",
+
+    "border border-white/[0.55] dark:border-white/[0.14]",
+
     "animate-[liquid-drift_18s_ease-in-out_infinite] motion-reduce:animate-none",
     "[will-change:background-position]",
   ].join(" "),

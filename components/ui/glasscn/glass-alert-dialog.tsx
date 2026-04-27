@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import {
@@ -13,7 +14,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../alert-dialog";
-import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;
 

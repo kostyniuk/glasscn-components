@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-card",
   "title": "Glass Card",
-  "description": "Glass Card with 3 different variants to achieve desired frosted view",
+  "description": "Glass Card with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/card",
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-card.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Card, CardFooter } from \"../card\";\nimport { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;\n\ntype GlassCardFooterProps = React.ComponentProps<typeof CardFooter> & FrostGlassVariantProp;\n\nfunction GlassCard({ className, glassVariant = \"clear\", ...props }: GlassCardProps) {\n  return (\n    <Card\n      data-slot=\"glass-card\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nconst footerVariantStyles: Record<FrostGlassVariant, string> = {\n  clear: \"bg-white/10 dark:bg-black/10\",\n  frosted: \"bg-white/20 dark:bg-black/20\",\n  subtle: \"bg-white/15 dark:bg-white/[0.04]\",\n  liquid: \"bg-white/15 dark:bg-white/[0.06] [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.45)]\",\n};\n\nfunction GlassCardFooter({ className, glassVariant = \"clear\", ...props }: GlassCardFooterProps) {\n  return (\n    <CardFooter\n      data-glass-variant={glassVariant}\n      className={cn(footerVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCard, GlassCardFooter };\n",
+      "content": "import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Card, CardFooter } from \"../card\";\n\ntype GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;\n\ntype GlassCardFooterProps = React.ComponentProps<typeof CardFooter> & FrostGlassVariantProp;\n\nfunction GlassCard({ className, glassVariant = \"clear\", ...props }: GlassCardProps) {\n  return (\n    <Card\n      data-slot=\"glass-card\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nconst footerVariantStyles: Record<FrostGlassVariant, string> = {\n  clear: \"bg-white/10 dark:bg-black/10\",\n  frosted: \"bg-white/20 dark:bg-black/20\",\n  subtle: \"bg-white/15 dark:bg-white/[0.04]\",\n  liquid: \"bg-white/15 dark:bg-white/[0.06] [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.45)]\",\n  \"liquid-bold\": \"bg-white/15 dark:bg-white/[0.06] [box-shadow:inset_0_1.5px_0_0_rgba(255,255,255,0.65)]\",\n};\n\nfunction GlassCardFooter({ className, glassVariant = \"clear\", ...props }: GlassCardFooterProps) {\n  return (\n    <CardFooter\n      data-glass-variant={glassVariant}\n      className={cn(footerVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassCard, GlassCardFooter };\n",
       "type": "registry:component"
     }
   ],

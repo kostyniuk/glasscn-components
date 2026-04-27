@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
+import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Select, SelectContent, SelectTrigger } from "../select";
-import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("clear");
 

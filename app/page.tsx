@@ -31,7 +31,7 @@ export default function Page() {
           <h1 className="text-3xl font-medium tracking-tight">Glass Components</h1>
           <p className="text-foreground/90 text-base leading-7">
             A small set of reusable UI primitives with glassmorphism styling, each available in clear, frosted, subtle,
-            and liquid variants.
+            liquid, and liquid-bold variants.
           </p>
         </div>
 
@@ -39,8 +39,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Buttons</SectionTitle>
             <SectionDescription>
-              Buttons for primary actions, secondary actions, and compact controls, shown here across the four glass
-              surface treatments.
+              Buttons for primary actions, secondary actions, and compact controls, shown here across all five glass
+              surface treatments, including the glossier <code>liquid-bold</code> finish.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -49,6 +49,7 @@ export default function Page() {
               <GlassButton glassVariant="frosted">Frosted</GlassButton>
               <GlassButton glassVariant="subtle">Subtle</GlassButton>
               <GlassButton glassVariant="liquid">Liquid</GlassButton>
+              <GlassButton glassVariant="liquid-bold">Liquid Bold</GlassButton>
             </div>
           </CardContent>
         </Card>
@@ -67,6 +68,7 @@ export default function Page() {
               <GlassBadge glassVariant="frosted">Frosted</GlassBadge>
               <GlassBadge glassVariant="subtle">Subtle</GlassBadge>
               <GlassBadge glassVariant="liquid">Liquid</GlassBadge>
+              <GlassBadge glassVariant="liquid-bold">Liquid Bold</GlassBadge>
             </div>
           </CardContent>
         </Card>
@@ -76,15 +78,16 @@ export default function Page() {
             <SectionTitle>Glass Separators</SectionTitle>
             <SectionDescription>
               Horizontal dividers with glass surface treatment, separating sections of content while staying consistent
-              with the clear, frosted, subtle, and liquid glass variants.
+              with the clear, frosted, subtle, liquid, and liquid-bold variants.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <SeparatorDemo variant="clear" />
               <SeparatorDemo variant="frosted" />
               <SeparatorDemo variant="subtle" />
               <SeparatorDemo variant="liquid" />
+              <SeparatorDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -98,11 +101,12 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               <CardDemo variant="clear" />
               <CardDemo variant="frosted" />
               <CardDemo variant="subtle" />
               <CardDemo variant="liquid" />
+              <CardDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -111,16 +115,17 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Checkboxes</SectionTitle>
             <SectionDescription>
-              Checkboxes for compact boolean choices, using the same clear, frosted, subtle, and liquid glass
+              Checkboxes for compact boolean choices, using the same clear, frosted, subtle, liquid, and liquid-bold
               treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <CheckboxDemo variant="clear" />
               <CheckboxDemo variant="frosted" />
               <CheckboxDemo variant="subtle" />
               <CheckboxDemo variant="liquid" />
+              <CheckboxDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -130,15 +135,16 @@ export default function Page() {
             <SectionTitle>Glass Comboboxes</SectionTitle>
             <SectionDescription>
               Comboboxes for searchable selection flows, with glass treatment applied to both the input surface and the
-              popup list.
+              popup list, including the stronger <code>liquid-bold</code> variant.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <ComboboxDemo variant="clear" />
               <ComboboxDemo variant="frosted" />
               <ComboboxDemo variant="subtle" />
               <ComboboxDemo variant="liquid" />
+              <ComboboxDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -147,15 +153,17 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Selects</SectionTitle>
             <SectionDescription>
-              Custom select menus with glass treatment applied to both the trigger surface and the popup content.
+              Custom select menus with glass treatment applied to both the trigger surface and the popup content,
+              including the stronger <code>liquid-bold</code> variant.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <SelectDemo variant="clear" />
               <SelectDemo variant="frosted" />
               <SelectDemo variant="subtle" />
               <SelectDemo variant="liquid" />
+              <SelectDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -165,15 +173,16 @@ export default function Page() {
             <SectionTitle>Glass Sidebars</SectionTitle>
             <SectionDescription>
               Compound side navigation with glass treatment applied to the main shell, search field, menu states, and
-              supporting surfaces.
+              supporting surfaces, including the stronger <code>liquid-bold</code> variant.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <SidebarDemo variant="clear" />
               <SidebarDemo variant="frosted" />
               <SidebarDemo variant="subtle" />
               <SidebarDemo variant="liquid" />
+              <SidebarDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -182,16 +191,17 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Calendars</SectionTitle>
             <SectionDescription>
-              Calendars for date selection and scheduling flows, using the same clear, frosted, subtle, and liquid glass
-              surface treatments.
+              Calendars for date selection and scheduling flows, using the same clear, frosted, subtle, liquid, and
+              liquid-bold surface treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
               <CalendarDemo variant="clear" />
               <CalendarDemo variant="frosted" />
               <CalendarDemo variant="subtle" />
               <CalendarDemo variant="liquid" />
+              <CalendarDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -200,8 +210,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Alerts</SectionTitle>
             <SectionDescription>
-              Alerts for status messages and inline feedback, styled with the same glass variants to stay consistent
-              with the rest of the system.
+              Alerts for status messages and inline feedback, styled with the same glass variants including
+              <code>liquid-bold</code> to stay consistent with the rest of the system.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -210,6 +220,7 @@ export default function Page() {
               <AlertDemo variant="frosted" />
               <AlertDemo variant="subtle" />
               <AlertDemo variant="liquid" />
+              <AlertDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>
@@ -217,7 +228,10 @@ export default function Page() {
         <Card id="code-block-command" variant="outline">
           <CardHeader>
             <SectionTitle>Code Block Command</SectionTitle>
-            <SectionDescription>A tabbed command block for displaying package manager commands.</SectionDescription>
+            <SectionDescription>
+              A tabbed command block for displaying package manager commands, including the stronger
+              <code>liquid-bold</code> variant.
+            </SectionDescription>
           </CardHeader>
           <CardContent>
             <PackageManagerProvider>
@@ -261,6 +275,14 @@ export default function Page() {
                   yarn="yarn add tailwindcss @tailwindcss/vite"
                   bun="bun add tailwindcss @tailwindcss/vite"
                 />
+                <GlassCodeBlockCommand
+                  glassVariant="liquid-bold"
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
               </div>
             </PackageManagerProvider>
           </CardContent>
@@ -270,16 +292,17 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Alert Dialogs</SectionTitle>
             <SectionDescription>
-              Modal confirmation dialogs with the same clear, frosted, subtle, and liquid glass treatments applied to
-              the popup surface and actions.
+              Modal confirmation dialogs with the same clear, frosted, subtle, liquid, and liquid-bold treatments
+              applied to the popup surface and actions.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               <AlertDialogDemo variant="clear" />
               <AlertDialogDemo variant="frosted" />
               <AlertDialogDemo variant="subtle" />
               <AlertDialogDemo variant="liquid" />
+              <AlertDialogDemo variant="liquid-bold" />
             </div>
           </CardContent>
         </Card>

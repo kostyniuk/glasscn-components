@@ -136,7 +136,7 @@
         "@glasscn/button",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Button with 3 different variants to achieve desired frosted view",
+      "description": "Glass Button with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-button.tsx",
@@ -153,7 +153,7 @@
         "@glasscn/badge",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Badge with 3 different variants to achieve desired frosted view",
+      "description": "Glass Badge with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-badge.tsx",
@@ -170,7 +170,7 @@
         "@glasscn/checkbox",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Checkbox with 3 different variants to achieve desired frosted view",
+      "description": "Glass Checkbox with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-checkbox.tsx",
@@ -187,7 +187,7 @@
         "@glasscn/combobox",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Combobox with 3 different variants to achieve desired frosted view",
+      "description": "Glass Combobox with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-combobox.tsx",
@@ -204,7 +204,7 @@
         "@glasscn/select",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Select with 3 different variants to achieve desired frosted view",
+      "description": "Glass Select with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-select.tsx",
@@ -233,7 +233,7 @@
         "@glasscn/card",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Card with 3 different variants to achieve desired frosted view",
+      "description": "Glass Card with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-card.tsx",
@@ -263,7 +263,7 @@
         "@glasscn/calendar",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Calendar with 3 different variants to achieve desired frosted view",
+      "description": "Glass Calendar with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-calendar.tsx",
@@ -283,9 +283,15 @@
       ],
       "css": {
         "@keyframes liquid-drift": {
-          "0%": { "background-position": "0% 0%, 100% 100%, 0% 0%" },
-          "50%": { "background-position": "30% 20%, 70% 80%, 0% 0%" },
-          "100%": { "background-position": "0% 0%, 100% 100%, 0% 0%" }
+          "0%": {
+            "background-position": "0% 0%, 100% 100%, 0% 0%"
+          },
+          "50%": {
+            "background-position": "30% 20%, 70% 80%, 0% 0%"
+          },
+          "100%": {
+            "background-position": "0% 0%, 100% 100%, 0% 0%"
+          }
         }
       }
     },
@@ -352,7 +358,11 @@
         "@glasscn/skeleton",
         "@glasscn/tooltip"
       ],
-      "dependencies": ["@base-ui/react", "class-variance-authority", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/sidebar.tsx",
@@ -373,7 +383,7 @@
         "@glasscn/separator",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Separator with 3 different variants to achieve desired frosted view",
+      "description": "Glass Separator with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-separator.tsx",
@@ -393,7 +403,7 @@
         "@glasscn/glass-variants",
         "@glasscn/glass-separator"
       ],
-      "description": "Glass Sidebar with 3 different variants to achieve desired frosted view",
+      "description": "Glass Sidebar with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-sidebar.tsx",
@@ -436,7 +446,7 @@
         "@glasscn/alert",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Alert with 3 different variants to achieve desired frosted view",
+      "description": "Glass Alert with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-alert.tsx",
@@ -455,7 +465,7 @@
         "@glasscn/alert-dialog",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Alert Dialog with 3 different variants to achieve desired frosted view",
+      "description": "Glass Alert Dialog with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-alert-dialog.tsx",
@@ -502,7 +512,7 @@
         "@glasscn/glass-badge",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Code Block Command with 3 different variants to achieve desired frosted view",
+      "description": "Glass Code Block Command with five variants: clear, frosted, subtle, liquid, and liquid-bold",
       "files": [
         {
           "path": "components/ui/glasscn/glass-code-block-command.tsx",

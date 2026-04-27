@@ -1,7 +1,7 @@
+import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Card, CardFooter } from "../card";
-import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;
 
@@ -23,6 +23,7 @@ const footerVariantStyles: Record<FrostGlassVariant, string> = {
   frosted: "bg-white/20 dark:bg-black/20",
   subtle: "bg-white/15 dark:bg-white/[0.04]",
   liquid: "bg-white/15 dark:bg-white/[0.06] [box-shadow:inset_0_1px_0_0_rgba(255,255,255,0.45)]",
+  "liquid-bold": "bg-white/15 dark:bg-white/[0.06] [box-shadow:inset_0_1.5px_0_0_rgba(255,255,255,0.65)]",
 };
 
 function GlassCardFooter({ className, glassVariant = "clear", ...props }: GlassCardFooterProps) {

@@ -43,7 +43,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSideba
   }, []);
 
   return (
-    <GlassSidebar {...props} variant="floating" glassVariant="frosted" className="h-fit">
+    <GlassSidebar {...props} variant="floating" glassVariant="liquid-bold" className="h-fit">
       <SidebarContent>
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title} className="bg-transparent">

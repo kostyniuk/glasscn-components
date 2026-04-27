@@ -1,7 +1,7 @@
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { Button } from "../button";
-import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassButtonProps = React.ComponentProps<typeof Button> & FrostGlassVariantProp;
 

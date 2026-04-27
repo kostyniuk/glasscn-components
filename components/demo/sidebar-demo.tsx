@@ -9,7 +9,6 @@ import {
   GlassSidebarMenuSubButton,
   GlassSidebarSeparator,
 } from "@/components/ui/glasscn/glass-sidebar";
-import { type FrostGlassVariant } from "@/lib/glass-variants";
 import {
   SidebarContent,
   SidebarFooter,
@@ -23,6 +22,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
 } from "@/components/ui/sidebar";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 
 const primaryItems = [
   { label: "Overview", icon: HomeIcon, active: true },

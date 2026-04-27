@@ -2,11 +2,11 @@
 
 import * as React from "react";
 
+import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
 import { CodeBlockCommand, type CodeBlockCommandProps } from "../code-block-command";
 import { GlassBadge } from "./glass-badge";
-import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 
 type GlassCodeBlockCommandProps = Omit<CodeBlockCommandProps, "className"> &
   FrostGlassVariantProp & { className?: string };
@@ -16,6 +16,7 @@ const borderStyles: Record<string, string> = {
   frosted: "border-white/[0.4] dark:border-white/10",
   subtle: "border-black/[0.05] dark:border-white/[0.08]",
   liquid: "border-white/[0.45] dark:border-white/[0.12]",
+  "liquid-bold": "border-white/[0.55] dark:border-white/[0.14]",
 };
 
 const headerBorderStyles: Record<string, string> = {
@@ -27,6 +28,8 @@ const headerBorderStyles: Record<string, string> = {
     "[&_[data-slot=code-block-command-header]]:border-b-black/[0.05] dark:[&_[data-slot=code-block-command-header]]:border-b-white/[0.06]",
   liquid:
     "[&_[data-slot=code-block-command-header]]:border-b-white/[0.35] dark:[&_[data-slot=code-block-command-header]]:border-b-white/[0.10]",
+  "liquid-bold":
+    "[&_[data-slot=code-block-command-header]]:border-b-white/[0.45] dark:[&_[data-slot=code-block-command-header]]:border-b-white/[0.14]",
 };
 
 const tabStyles =
@@ -50,7 +53,7 @@ export function GlassCodeBlockCommand({ glassVariant = "clear", className, ...pr
         headerBorderStyles[glassVariant],
         tabStyles,
         activeTabStyles,
-        "text-foreground bg-background/55",
+        "bg-background/55 text-foreground",
         className,
       )}
       {...props}

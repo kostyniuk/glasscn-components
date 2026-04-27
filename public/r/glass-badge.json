@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glass-badge",
   "title": "Glass Badge",
-  "description": "Glass Badge with 3 different variants to achieve desired frosted view",
+  "description": "Glass Badge with five variants: clear, frosted, subtle, liquid, and liquid-bold",
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/badge",
@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-badge.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"../badge\";\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\n\ntype GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;\n\nfunction GlassBadge({ className, glassVariant = \"clear\", ...props }: GlassBadgeProps) {\n  return (\n    <Badge\n      data-slot=\"glass-badge\"\n      data-glass-variant={glassVariant}\n      className={cn(\"text-foreground\", glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassBadge };\n",
+      "content": "import { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Badge } from \"../badge\";\n\ntype GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;\n\nfunction GlassBadge({ className, glassVariant = \"clear\", ...props }: GlassBadgeProps) {\n  return (\n    <Badge\n      data-slot=\"glass-badge\"\n      data-glass-variant={glassVariant}\n      className={cn(\"text-foreground\", glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassBadge };\n",
       "type": "registry:component"
     }
   ],
