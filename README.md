@@ -82,6 +82,7 @@ export default function Page() {
       <GlassButton>Clear Glass</GlassButton>
       <GlassButton glassVariant="frosted">Frosted Glass</GlassButton>
       <GlassButton glassVariant="subtle">Subtle Glass</GlassButton>
+      <GlassButton glassVariant="liquid">Liquid Glass</GlassButton>
     </div>
   );
 }

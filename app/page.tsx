@@ -30,8 +30,8 @@ export default function Page() {
         <div className="space-y-3">
           <h1 className="text-3xl font-medium tracking-tight">Glass Components</h1>
           <p className="text-foreground/90 text-base leading-7">
-            A small set of reusable UI primitives with glassmorphism styling, each available in clear, frosted, and
-            subtle variants.
+            A small set of reusable UI primitives with glassmorphism styling, each available in clear, frosted, subtle,
+            and liquid variants.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Buttons</SectionTitle>
             <SectionDescription>
-              Buttons for primary actions, secondary actions, and compact controls, shown here across the three glass
+              Buttons for primary actions, secondary actions, and compact controls, shown here across the four glass
               surface treatments.
             </SectionDescription>
           </CardHeader>
@@ -48,6 +48,7 @@ export default function Page() {
               <GlassButton glassVariant="clear">Clear</GlassButton>
               <GlassButton glassVariant="frosted">Frosted</GlassButton>
               <GlassButton glassVariant="subtle">Subtle</GlassButton>
+              <GlassButton glassVariant="liquid">Liquid</GlassButton>
             </div>
           </CardContent>
         </Card>
@@ -56,8 +57,8 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Badges</SectionTitle>
             <SectionDescription>
-              Badges for compact status labels and metadata, using the same clear, frosted, and subtle glass treatments
-              as the rest of the set.
+              Badges for compact status labels and metadata, using the same clear, frosted, subtle, and liquid glass
+              treatments as the rest of the set.
             </SectionDescription>
           </CardHeader>
           <CardContent>
@@ -65,6 +66,7 @@ export default function Page() {
               <GlassBadge glassVariant="clear">Clear</GlassBadge>
               <GlassBadge glassVariant="frosted">Frosted</GlassBadge>
               <GlassBadge glassVariant="subtle">Subtle</GlassBadge>
+              <GlassBadge glassVariant="liquid">Liquid</GlassBadge>
             </div>
           </CardContent>
         </Card>
@@ -74,14 +76,15 @@ export default function Page() {
             <SectionTitle>Glass Separators</SectionTitle>
             <SectionDescription>
               Horizontal dividers with glass surface treatment, separating sections of content while staying consistent
-              with the clear, frosted, and subtle glass variants.
+              with the clear, frosted, subtle, and liquid glass variants.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <SeparatorDemo variant="clear" />
               <SeparatorDemo variant="frosted" />
               <SeparatorDemo variant="subtle" />
+              <SeparatorDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -95,10 +98,11 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
               <CardDemo variant="clear" />
               <CardDemo variant="frosted" />
               <CardDemo variant="subtle" />
+              <CardDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -107,14 +111,16 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Checkboxes</SectionTitle>
             <SectionDescription>
-              Checkboxes for compact boolean choices, using the same clear, frosted, and subtle glass treatments.
+              Checkboxes for compact boolean choices, using the same clear, frosted, subtle, and liquid glass
+              treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <CheckboxDemo variant="clear" />
               <CheckboxDemo variant="frosted" />
               <CheckboxDemo variant="subtle" />
+              <CheckboxDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -128,10 +134,11 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <ComboboxDemo variant="clear" />
               <ComboboxDemo variant="frosted" />
               <ComboboxDemo variant="subtle" />
+              <ComboboxDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -144,10 +151,11 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <SelectDemo variant="clear" />
               <SelectDemo variant="frosted" />
               <SelectDemo variant="subtle" />
+              <SelectDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -161,10 +169,11 @@ export default function Page() {
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <SidebarDemo variant="clear" />
               <SidebarDemo variant="frosted" />
               <SidebarDemo variant="subtle" />
+              <SidebarDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -173,15 +182,16 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Calendars</SectionTitle>
             <SectionDescription>
-              Calendars for date selection and scheduling flows, using the same clear, frosted, and subtle glass surface
-              treatments.
+              Calendars for date selection and scheduling flows, using the same clear, frosted, subtle, and liquid glass
+              surface treatments.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
               <CalendarDemo variant="clear" />
               <CalendarDemo variant="frosted" />
               <CalendarDemo variant="subtle" />
+              <CalendarDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -199,6 +209,7 @@ export default function Page() {
               <AlertDemo variant="clear" />
               <AlertDemo variant="frosted" />
               <AlertDemo variant="subtle" />
+              <AlertDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
@@ -242,6 +253,14 @@ export default function Page() {
                   yarn="yarn add tailwindcss @tailwindcss/vite"
                   bun="bun add tailwindcss @tailwindcss/vite"
                 />
+                <GlassCodeBlockCommand
+                  glassVariant="liquid"
+                  prompt="Install Tailwind CSS and its Vite plugin"
+                  npm="npm install tailwindcss @tailwindcss/vite"
+                  pnpm="pnpm add tailwindcss @tailwindcss/vite"
+                  yarn="yarn add tailwindcss @tailwindcss/vite"
+                  bun="bun add tailwindcss @tailwindcss/vite"
+                />
               </div>
             </PackageManagerProvider>
           </CardContent>
@@ -251,15 +270,16 @@ export default function Page() {
           <CardHeader>
             <SectionTitle>Glass Alert Dialogs</SectionTitle>
             <SectionDescription>
-              Modal confirmation dialogs with the same clear, frosted, and subtle glass treatments applied to the popup
-              surface and actions.
+              Modal confirmation dialogs with the same clear, frosted, subtle, and liquid glass treatments applied to
+              the popup surface and actions.
             </SectionDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <AlertDialogDemo variant="clear" />
               <AlertDialogDemo variant="frosted" />
               <AlertDialogDemo variant="subtle" />
+              <AlertDialogDemo variant="liquid" />
             </div>
           </CardContent>
         </Card>
