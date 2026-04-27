@@ -519,6 +519,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "liquid-text",
+      "type": "registry:component",
+      "title": "Liquid Text",
+      "description": "Animated text filled with a liquid shader mask.",
+      "dependencies": ["@paper-design/shaders-react"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-text.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

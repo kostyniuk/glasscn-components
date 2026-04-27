@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-text",
+  "title": "Liquid Text",
+  "description": "Animated text filled with a liquid shader mask.",
+  "dependencies": [
+    "@paper-design/shaders-react"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/liquid-text.tsx",
+      "content": "\"use client\";\n\nimport { GemSmoke, type GemSmokeProps } from \"@paper-design/shaders-react\";\nimport { useEffect, useState } from \"react\";\n\ntype LiquidTextProps = {\n  text: string;\n  fontSize?: number;\n  padding?: number;\n  width?: number;\n  height?: number;\n} & Omit<GemSmokeProps, \"width\" | \"height\">;\n\ntype Box = {\n  w: number;\n  h: number;\n  ascent: number;\n};\n\nfunction escapeXml(value: string) {\n  return value\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll(\">\", \"&gt;\")\n    .replaceAll('\"', \"&quot;\")\n    .replaceAll(\"'\", \"&apos;\");\n}\n\nexport function LiquidText({ text, fontSize = 82, padding = 0, width, height, ...shaderProps }: LiquidTextProps) {\n  const [box, setBox] = useState<Box | null>(null);\n\n  useEffect(() => {\n    const canvas = document.createElement(\"canvas\");\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    ctx.font = `900 ${fontSize}px sans-serif`;\n    const metrics = ctx.measureText(text);\n\n    const ascent = metrics.actualBoundingBoxAscent;\n    const descent = metrics.actualBoundingBoxDescent;\n    const measuredW = Math.ceil(metrics.width) + padding * 2;\n    const measuredH = Math.ceil(ascent + descent) + padding * 2;\n    const measuredAscent = ascent + padding;\n\n    const finalW = width ?? measuredW;\n    const finalH = height ?? measuredH;\n\n    setBox({\n      w: finalW,\n      h: finalH,\n      ascent: measuredAscent + (finalH - measuredH) / 2,\n    });\n  }, [text, fontSize, padding, width, height]);\n\n  if (!box) return null;\n\n  const escapedText = escapeXml(text);\n  const svgMask = `\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 ${box.w} ${box.h}\">\n      <text\n        x=\"50%\" y=\"${box.ascent}\"\n        text-anchor=\"middle\"\n        dominant-baseline=\"alphabetic\"\n        font-size=\"${fontSize}\"\n        font-weight=\"900\"\n        font-family=\"sans-serif\"\n        fill=\"white\"\n      >${escapedText}</text>\n    </svg>\n  `;\n  const maskUrl = `url(\"data:image/svg+xml;utf8,${encodeURIComponent(svgMask)}\")`;\n\n  return (\n    <div\n      style={{\n        width: box.w,\n        height: box.h,\n        WebkitMaskImage: maskUrl,\n        maskImage: maskUrl,\n        WebkitMaskRepeat: \"no-repeat\",\n        maskRepeat: \"no-repeat\",\n        WebkitMaskSize: \"100% 100%\",\n        maskSize: \"100% 100%\",\n      }}\n    >\n      <GemSmoke\n        width={box.w}\n        height={box.h}\n        image=\"https://shaders.paper.design/images/logos/diamond.svg\"\n        colors={[\"#fff\"]}\n        colorBack=\"#f0efea\"\n        colorInner=\"#333333\"\n        shape=\"metaballs\"\n        innerDistortion={0.5}\n        outerDistortion={0}\n        outerGlow={0.51}\n        innerGlow={1}\n        offset={0}\n        angle={152}\n        size={0.35}\n        speed={1}\n        scale={4}\n        {...shaderProps}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
