@@ -15,6 +15,7 @@ const borderStyles: Record<string, string> = {
   clear: "border-white/[0.5] dark:border-white/[0.12]",
   frosted: "border-white/[0.4] dark:border-white/10",
   subtle: "border-black/[0.05] dark:border-white/[0.08]",
+  liquid: "border-white/[0.45] dark:border-white/[0.12]",
 };
 
 const headerBorderStyles: Record<string, string> = {
@@ -24,6 +25,8 @@ const headerBorderStyles: Record<string, string> = {
     "[&_[data-slot=code-block-command-header]]:border-b-black/[0.2] dark:[&_[data-slot=code-block-command-header]]:border-b-white/10",
   subtle:
     "[&_[data-slot=code-block-command-header]]:border-b-black/[0.05] dark:[&_[data-slot=code-block-command-header]]:border-b-white/[0.06]",
+  liquid:
+    "[&_[data-slot=code-block-command-header]]:border-b-white/[0.35] dark:[&_[data-slot=code-block-command-header]]:border-b-white/[0.10]",
 };
 
 const tabStyles =

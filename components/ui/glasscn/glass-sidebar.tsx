@@ -57,6 +57,20 @@ const glassSidebarVariableStyles: Record<FrostGlassVariant, string> = {
     "dark:[--sidebar-border:rgba(255,255,255,0.08)]",
     "dark:[--sidebar-ring:rgba(255,255,255,0.12)]",
   ].join(" "),
+  liquid: [
+    "[--sidebar:rgba(255,255,255,0.22)]",
+    "[--sidebar-foreground:oklch(0.145_0_0)]",
+    "[--sidebar-accent:rgba(255,255,255,0.55)]",
+    "[--sidebar-accent-foreground:oklch(0.145_0_0)]",
+    "[--sidebar-border:rgba(255,255,255,0.42)]",
+    "[--sidebar-ring:rgba(255,255,255,0.45)]",
+    "dark:[--sidebar:rgba(255,255,255,0.06)]",
+    "dark:[--sidebar-foreground:oklch(0.985_0_0)]",
+    "dark:[--sidebar-accent:rgba(255,255,255,0.12)]",
+    "dark:[--sidebar-accent-foreground:oklch(0.985_0_0)]",
+    "dark:[--sidebar-border:rgba(255,255,255,0.16)]",
+    "dark:[--sidebar-ring:rgba(255,255,255,0.20)]",
+  ].join(" "),
 };
 
 const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
@@ -77,6 +91,14 @@ const glassSidebarInnerSurfaceStyles: Record<FrostGlassVariant, string> = {
     "[&>[data-slot=sidebar-inner]]:backdrop-saturate-[1.5]",
     "[&>[data-slot=sidebar-inner]]:shadow-[0_24px_80px_rgba(15,23,42,0.08)]",
     "dark:[&>[data-slot=sidebar-inner]]:shadow-[0_24px_80px_rgba(0,0,0,0.28)]",
+  ].join(" "),
+  liquid: [
+    "[&>[data-slot=sidebar-inner]]:backdrop-blur-[12px]",
+    "[&>[data-slot=sidebar-inner]]:backdrop-saturate-[1.8]",
+    "[&>[data-slot=sidebar-inner]]:backdrop-brightness-[1.05]",
+    "dark:[&>[data-slot=sidebar-inner]]:backdrop-brightness-[0.95]",
+    "[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55),inset_0_-14px_28px_-10px_rgba(255,255,255,0.40),0_28px_80px_-12px_rgba(15,23,42,0.18)]",
+    "dark:[&>[data-slot=sidebar-inner]]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),inset_0_-14px_28px_-10px_rgba(180,210,255,0.16),0_32px_90px_-10px_rgba(0,0,0,0.55)]",
   ].join(" "),
 };
 
