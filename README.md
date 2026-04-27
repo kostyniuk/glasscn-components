@@ -4,6 +4,7 @@ A glassmorphism component library built on top of shadcn/ui. All components are 
 
 <img width="793" height="1035" alt="Screenshot 2026-04-27 at 11 24 04 AM" src="https://github.com/user-attachments/assets/5a0a0065-baba-42d3-94ec-1e41067634eb" />
 
+## Links
 **Homepage:** https://glasscn.vercel.app
 
 ## Installation
