@@ -42,29 +42,6 @@ Dependencies (including other registry items) are resolved and installed automat
 | Glass Separator | `npx shadcn add @glasscn/glass-separator` |
 | Glass Sidebar | `npx shadcn add @glasscn/glass-sidebar` |
 
-### UI primitives
-
-| Component | Install |
-|-----------|---------|
-| Alert | `npx shadcn add @glasscn/alert` |
-| Alert Dialog | `npx shadcn add @glasscn/alert-dialog` |
-| Badge | `npx shadcn add @glasscn/badge` |
-| Button | `npx shadcn add @glasscn/button` |
-| Calendar | `npx shadcn add @glasscn/calendar` |
-| Card | `npx shadcn add @glasscn/card` |
-| Checkbox | `npx shadcn add @glasscn/checkbox` |
-| Code Block Command | `npx shadcn add @glasscn/code-block-command` |
-| Combobox | `npx shadcn add @glasscn/combobox` |
-| Input | `npx shadcn add @glasscn/input` |
-| Input Group | `npx shadcn add @glasscn/input-group` |
-| Select | `npx shadcn add @glasscn/select` |
-| Separator | `npx shadcn add @glasscn/separator` |
-| Sheet | `npx shadcn add @glasscn/sheet` |
-| Sidebar | `npx shadcn add @glasscn/sidebar` |
-| Skeleton | `npx shadcn add @glasscn/skeleton` |
-| Textarea | `npx shadcn add @glasscn/textarea` |
-| Tooltip | `npx shadcn add @glasscn/tooltip` |
-
 ### Utilities
 
 | Item | Install |
