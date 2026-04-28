@@ -1,10 +1,7 @@
 import { Geist_Mono, Inter } from "next/font/google";
 
 import "./globals.css";
-import { AppSidebar } from "@/components/app-sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { GlassSidebarInset, GlassSidebarTrigger } from "@/components/ui/glasscn/glass-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -19,19 +16,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       suppressHydrationWarning
       className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
     >
-      <body className="min-h-screen bg-[url('/bg-light.png')] bg-cover bg-center bg-no-repeat dark:bg-[url('/bg-dark.png')]">
+      <body className="min-h-screen">
         <ThemeProvider>
-          <TooltipProvider>
-            <SidebarProvider>
-              <AppSidebar />
-              <GlassSidebarInset className="bg-transparent">
-                <header className="sticky top-0 z-10 flex h-12 items-center px-4">
-                  <GlassSidebarTrigger glassVariant="frosted" />
-                </header>
-                {children}
-              </GlassSidebarInset>
-            </SidebarProvider>
-          </TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

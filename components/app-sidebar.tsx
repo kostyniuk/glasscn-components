@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import * as React from "react";
 
 import { GlassSidebar, GlassSidebarMenuButton } from "@/components/ui/glasscn/glass-sidebar";
@@ -18,29 +19,24 @@ const data = {
     {
       title: "Components",
       items: [
-        { title: "Alert", url: "/#alert" },
-        { title: "Alert Dialog", url: "/#alert-dialog" },
-        { title: "Badge", url: "/#badge" },
-        { title: "Button", url: "/#button" },
-        { title: "Calendar", url: "/#calendar" },
-        { title: "Card", url: "/#card" },
-        { title: "Checkbox", url: "/#checkbox" },
-        { title: "Combobox", url: "/#combobox" },
-        { title: "Separator", url: "/#separator" },
-        { title: "Sidebar", url: "/#sidebar" },
-        { title: "Select", url: "/#select" },
+        { title: "Alert", url: "/components/glass-alert" },
+        { title: "Alert Dialog", url: "/components/glass-alert-dialog" },
+        { title: "Badge", url: "/components/glass-badge" },
+        { title: "Button", url: "/components/glass-button" },
+        { title: "Calendar", url: "/components/glass-calendar" },
+        { title: "Card", url: "/components/glass-card" },
+        { title: "Checkbox", url: "/components/glass-checkbox" },
+        { title: "Code Block Command", url: "/components/glass-code-block-command" },
+        { title: "Combobox", url: "/components/glass-combobox" },
+        { title: "Separator", url: "/components/glass-separator" },
+        { title: "Sidebar", url: "/components/glass-sidebar" },
+        { title: "Select", url: "/components/glass-select" },
       ],
     },
   ],
 };
 export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSidebar>) {
-  const [activeHash, setActiveHash] = React.useState(() => (typeof window === "undefined" ? "" : window.location.hash));
-
-  React.useEffect(() => {
-    const onHashChange = () => setActiveHash(window.location.hash);
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
+  const pathname = usePathname();
 
   return (
     <GlassSidebar {...props} variant="floating" glassVariant="liquid-bold" className="h-fit">
@@ -52,10 +48,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSideba
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <GlassSidebarMenuButton
-                      isActive={activeHash === item.url.split("/")[1]}
-                      render={<a href={item.url} />}
-                    >
+                    <GlassSidebarMenuButton isActive={pathname === item.url} render={<a href={item.url} />}>
                       {item.title}
                     </GlassSidebarMenuButton>
                   </SidebarMenuItem>

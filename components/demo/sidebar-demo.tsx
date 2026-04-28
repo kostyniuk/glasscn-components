@@ -40,8 +40,8 @@ type SidebarDemoProps = { variant?: FrostGlassVariant };
 
 function SidebarDemo({ variant = "clear" }: SidebarDemoProps) {
   return (
-    <SidebarProvider defaultOpen className="min-h-0">
-      <div className="overflow-hidden rounded-[1.75rem] border border-white/20 dark:border-white/10">
+    <SidebarProvider defaultOpen className="mx-auto min-h-0 w-full max-w-sm">
+      <div className="w-full overflow-hidden rounded-[1.75rem] border border-white/20 dark:border-white/10">
         <GlassSidebar collapsible="none" glassVariant={variant} className="w-full rounded-[1.75rem]">
           <SidebarHeader className="gap-2 px-3 pt-3 pb-1.5">
             <div className="flex items-center justify-between gap-3 px-2">
