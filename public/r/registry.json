@@ -128,6 +128,19 @@
       ]
     },
     {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
@@ -542,6 +555,20 @@
       "files": [
         {
           "path": "components/ui/glasscn/liquid-watch.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "liquid-switch",
+      "type": "registry:component",
+      "title": "Liquid Switch",
+      "description": "A liquid-glass switch wrapper built on top of the default switch component.",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/switch"],
+      "dependencies": ["@paper-design/shaders-react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-switch.tsx",
           "type": "registry:component"
         }
       ]
