@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-watch",
+  "title": "Liquid Watch",
+  "description": "Compact watch-style stacked time display built from liquid text inspired by Apple Watch.",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/liquid-text"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/liquid-watch.tsx",
+      "content": "import { LiquidText } from \"@/components/ui/glasscn/liquid-text\";\nimport { cn } from \"@/lib/utils\";\n\ntype LiquidWatchSize = \"sm\" | \"md\" | \"lg\";\n\ntype LiquidWatchProps = {\n  hours: number | string;\n  minutes: number | string;\n  size?: LiquidWatchSize;\n  className?: string;\n};\n\nconst sizeStyles: Record<LiquidWatchSize, { card: string; gap: string; inset: string; fontSize: number }> = {\n  sm: { card: \"rounded-2xl py-2.5\", gap: \"gap-2.5\", inset: \"px-3\", fontSize: 60 },\n  md: { card: \"rounded-[1.4rem] py-3\", gap: \"gap-3\", inset: \"px-4\", fontSize: 82 },\n  lg: { card: \"rounded-[1.75rem] py-4\", gap: \"gap-4\", inset: \"px-5\", fontSize: 104 },\n};\n\nfunction formatSegment(value: number | string) {\n  if (typeof value === \"number\") return value.toString().padStart(2, \"0\");\n\n  const trimmed = value.trim();\n  return trimmed.length >= 2 ? trimmed : trimmed.padStart(2, \"0\");\n}\n\nexport function LiquidWatch({ hours, minutes, size = \"md\", className }: LiquidWatchProps) {\n  const styles = sizeStyles[size];\n\n  return (\n    <div className={cn(\"w-fit border border-foreground/15 bg-background shadow-sm\", styles.card, className)}>\n      <div className={cn(\"flex flex-col\", styles.gap, styles.inset)}>\n        <LiquidText text={formatSegment(hours)} fontSize={styles.fontSize} />\n        <LiquidText text={formatSegment(minutes)} fontSize={styles.fontSize} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

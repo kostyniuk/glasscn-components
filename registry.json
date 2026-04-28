@@ -532,6 +532,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "liquid-watch",
+      "type": "registry:component",
+      "title": "Liquid Watch",
+      "description": "Compact watch-style stacked time display built from liquid text inspired by Apple Watch.",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/liquid-text"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-watch.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
