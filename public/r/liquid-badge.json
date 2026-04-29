@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-badge",
+  "title": "Liquid Badge",
+  "description": "A liquid-glass badge wrapper that keeps the base badge fill and applies the effect to the border.",
+  "dependencies": [
+    "@paper-design/shaders-react",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/badge"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/liquid-badge.tsx",
+      "content": "\"use client\";\n\nimport { type VariantProps } from \"class-variance-authority\";\nimport { LiquidMetal, type LiquidMetalProps } from \"@paper-design/shaders-react\";\nimport type { ComponentPropsWithoutRef } from \"react\";\n\nimport { Badge, badgeVariants } from \"@/components/ui/badge\";\nimport { cn } from \"@/lib/utils\";\n\ntype ShaderProps = Omit<LiquidMetalProps, \"className\" | \"style\" | \"shape\">;\n\ntype LiquidBadgeProps = ComponentPropsWithoutRef<\"span\"> &\n  VariantProps<typeof badgeVariants> &\n  Partial<ShaderProps> & {\n    wrapperClassName?: string;\n  };\n\nfunction LiquidBadge({\n  className,\n  wrapperClassName,\n  variant,\n  children,\n  speed = 0.45,\n  repetition = 3,\n  softness = 0.6,\n  shiftRed = 0.2,\n  shiftBlue = 0.15,\n  distortion = 0.08,\n  contour = 0.2,\n  angle = 35,\n  scale = 5,\n  offsetX = 0.15,\n  offsetY = -0.1,\n  ...props\n}: LiquidBadgeProps) {\n  return (\n    <span className={cn(\"relative isolate inline-flex w-fit shrink-0 rounded-3xl p-px\", wrapperClassName)} {...props}>\n      <LiquidMetal\n        className=\"pointer-events-none absolute inset-0 rounded-full opacity-70\"\n        shape=\"none\"\n        speed={speed}\n        repetition={repetition}\n        softness={softness}\n        shiftRed={shiftRed}\n        shiftBlue={shiftBlue}\n        distortion={distortion}\n        contour={contour}\n        angle={angle}\n        scale={scale}\n        offsetX={offsetX}\n        offsetY={offsetY}\n      />\n      <span className=\"pointer-events-none absolute inset-px rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8),inset_0_-1px_2px_rgba(17,12,8,0.08)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.3)]\" />\n      <Badge\n        variant={variant}\n        className={cn(\"relative z-10 rounded-[calc(var(--radius-xl)-1px)] border-transparent shadow-none\", className)}\n      >\n        {children}\n      </Badge>\n    </span>\n  );\n}\n\nexport { LiquidBadge };\nexport type { LiquidBadgeProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

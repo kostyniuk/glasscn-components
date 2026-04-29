@@ -572,6 +572,20 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "liquid-badge",
+      "type": "registry:component",
+      "title": "Liquid Badge",
+      "description": "A liquid-glass badge wrapper that keeps the base badge fill and applies the effect to the border.",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/badge"],
+      "dependencies": ["@paper-design/shaders-react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-badge.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
