@@ -1,7 +1,7 @@
 "use client";
 
-import { cva, type VariantProps } from "class-variance-authority";
 import { LiquidMetal, type LiquidMetalProps } from "@paper-design/shaders-react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { Switch, type SwitchProps } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
@@ -9,22 +9,13 @@ import { cn } from "@/lib/utils";
 type ShaderProps = Omit<LiquidMetalProps, "className" | "style" | "shape">;
 
 const liquidSwitchWrapperVariants = cva("relative inline-flex shrink-0 isolate rounded-full", {
-  variants: {
-    size: {
-      sm: "h-4 w-7",
-      default: "h-5 w-11",
-    },
-  },
-  defaultVariants: {
-    size: "default",
-  },
+  variants: { size: { sm: "h-4 w-7", default: "h-5 w-11" } },
+  defaultVariants: { size: "default" },
 });
 
 type LiquidSwitchProps = Omit<SwitchProps, "className"> &
   VariantProps<typeof liquidSwitchWrapperVariants> &
-  Partial<ShaderProps> & {
-    className?: string;
-  };
+  Partial<ShaderProps> & { className?: string };
 
 function LiquidSwitch({
   className,
@@ -69,8 +60,8 @@ function LiquidSwitch({
         offsetY={offsetY}
       />
       <span className="pointer-events-none absolute inset-px rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8),inset_0_-1px_2px_rgba(17,12,8,0.08)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.3)]" />
-      <span className="pointer-events-none absolute inset-[3px] rounded-full bg-background shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] transition-colors duration-300 peer-data-checked/liquid-switch:bg-emerald-500 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:peer-data-checked/liquid-switch:bg-emerald-500" />
-      <span className="pointer-events-none absolute inset-[3px] rounded-full bg-foreground/[0.02] transition-colors duration-300 peer-data-checked/liquid-switch:bg-transparent dark:bg-white/[0.02] dark:peer-data-checked/liquid-switch:bg-transparent" />
+      <span className="bg-background pointer-events-none absolute inset-[3px] rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] transition-colors duration-300 peer-data-checked/liquid-switch:bg-emerald-500 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:peer-data-checked/liquid-switch:bg-emerald-500" />
+      <span className="bg-foreground/[0.02] pointer-events-none absolute inset-[3px] rounded-full transition-colors duration-300 peer-data-checked/liquid-switch:bg-transparent dark:bg-white/[0.02] dark:peer-data-checked/liquid-switch:bg-transparent" />
       <span className="pointer-events-none absolute inset-[3px] rounded-full opacity-0 transition-opacity duration-300 peer-data-checked/liquid-switch:opacity-100 peer-data-checked/liquid-switch:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-6px_12px_rgba(5,46,22,0.16)] dark:peer-data-checked/liquid-switch:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-6px_12px_rgba(0,0,0,0.2)]" />
     </span>
   );

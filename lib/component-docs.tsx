@@ -79,6 +79,38 @@ function CodeBlockCommandDemo({ variant = "clear" }: { variant?: FrostGlassVaria
 
 const componentDocs: ComponentDoc[] = [
   {
+    slug: "glass-button",
+    registryName: "glass-button",
+    title: "Glass Button",
+    description: "A button for actions and controls with reusable glass variants.",
+    installName: "@glasscn/glass-button",
+    importPath: "@/components/ui/glasscn/glass-button",
+    Demo: ButtonDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { GlassButton } from "@/components/ui/glasscn/glass-button"
+
+export function ButtonDemo() {
+  return <GlassButton glassVariant="liquid-bold">Button</GlassButton>
+}`,
+    api: [glassVariantFor("GlassButton"), inheritedProps("GlassButton", "React.ComponentProps<typeof Button>")],
+  },
+  {
+    slug: "glass-badge",
+    registryName: "glass-badge",
+    title: "Glass Badge",
+    description: "A compact label for metadata and status using glass surface treatments.",
+    installName: "@glasscn/glass-badge",
+    importPath: "@/components/ui/glasscn/glass-badge",
+    Demo: BadgeDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
+
+export function BadgeDemo() {
+  return <GlassBadge glassVariant="liquid-bold">Badge</GlassBadge>
+}`,
+    api: [glassVariantFor("GlassBadge"), inheritedProps("GlassBadge", "React.ComponentProps<typeof Badge>")],
+  },
+  {
     slug: "glass-alert",
     registryName: "glass-alert",
     title: "Glass Alert",
@@ -104,80 +136,23 @@ export function AlertDemo() {
     api: [glassVariantFor("GlassAlert"), inheritedProps("GlassAlert", "React.ComponentProps<typeof Alert>")],
   },
   {
-    slug: "glass-alert-dialog",
-    registryName: "glass-alert-dialog",
-    title: "Glass Alert Dialog",
-    description: "A modal confirmation dialog with a glass-styled content surface.",
-    installName: "@glasscn/glass-alert-dialog",
-    importPath: "@/components/ui/glasscn/glass-alert-dialog",
-    Demo: AlertDialogDemo,
+    slug: "glass-separator",
+    registryName: "glass-separator",
+    title: "Glass Separator",
+    description: "A divider line tuned for glass UI surfaces.",
+    installName: "@glasscn/glass-separator",
+    importPath: "@/components/ui/glasscn/glass-separator",
+    Demo: SeparatorDemo,
     variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
-    usageCode: String.raw`import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  GlassAlertDialogContent,
-} from "@/components/ui/glasscn/glass-alert-dialog"
+    usageCode: String.raw`import { GlassSeparator } from "@/components/ui/glasscn/glass-separator"
 
-export function AlertDialogDemo() {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger>Show Dialog</AlertDialogTrigger>
-      <GlassAlertDialogContent glassVariant="liquid-bold">
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </GlassAlertDialogContent>
-    </AlertDialog>
-  )
+export function SeparatorDemo() {
+  return <GlassSeparator glassVariant="liquid-bold" />
 }`,
     api: [
-      glassVariantFor("GlassAlertDialogContent"),
-      inheritedProps("GlassAlertDialogContent", "React.ComponentProps<typeof AlertDialogContent>"),
-      inheritedProps("AlertDialog primitives", "Re-exported alert dialog primitive props"),
+      glassVariantFor("GlassSeparator"),
+      inheritedProps("GlassSeparator", "React.ComponentProps<typeof Separator>"),
     ],
-  },
-  {
-    slug: "glass-badge",
-    registryName: "glass-badge",
-    title: "Glass Badge",
-    description: "A compact label for metadata and status using glass surface treatments.",
-    installName: "@glasscn/glass-badge",
-    importPath: "@/components/ui/glasscn/glass-badge",
-    Demo: BadgeDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
-    usageCode: String.raw`import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
-
-export function BadgeDemo() {
-  return <GlassBadge glassVariant="liquid-bold">Badge</GlassBadge>
-}`,
-    api: [glassVariantFor("GlassBadge"), inheritedProps("GlassBadge", "React.ComponentProps<typeof Badge>")],
-  },
-  {
-    slug: "glass-button",
-    registryName: "glass-button",
-    title: "Glass Button",
-    description: "A button for actions and controls with reusable glass variants.",
-    installName: "@glasscn/glass-button",
-    importPath: "@/components/ui/glasscn/glass-button",
-    Demo: ButtonDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
-    usageCode: String.raw`import { GlassButton } from "@/components/ui/glasscn/glass-button"
-
-export function ButtonDemo() {
-  return <GlassButton glassVariant="liquid-bold">Button</GlassButton>
-}`,
-    api: [glassVariantFor("GlassButton"), inheritedProps("GlassButton", "React.ComponentProps<typeof Button>")],
   },
   {
     slug: "glass-calendar",
@@ -356,22 +331,47 @@ export function SelectDemo() {
     ],
   },
   {
-    slug: "glass-separator",
-    registryName: "glass-separator",
-    title: "Glass Separator",
-    description: "A divider line tuned for glass UI surfaces.",
-    installName: "@glasscn/glass-separator",
-    importPath: "@/components/ui/glasscn/glass-separator",
-    Demo: SeparatorDemo,
+    slug: "glass-alert-dialog",
+    registryName: "glass-alert-dialog",
+    title: "Glass Alert Dialog",
+    description: "A modal confirmation dialog with a glass-styled content surface.",
+    installName: "@glasscn/glass-alert-dialog",
+    importPath: "@/components/ui/glasscn/glass-alert-dialog",
+    Demo: AlertDialogDemo,
     variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
-    usageCode: String.raw`import { GlassSeparator } from "@/components/ui/glasscn/glass-separator"
+    usageCode: String.raw`import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  GlassAlertDialogContent,
+} from "@/components/ui/glasscn/glass-alert-dialog"
 
-export function SeparatorDemo() {
-  return <GlassSeparator glassVariant="liquid-bold" />
+export function AlertDialogDemo() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger>Show Dialog</AlertDialogTrigger>
+      <GlassAlertDialogContent glassVariant="liquid-bold">
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </GlassAlertDialogContent>
+    </AlertDialog>
+  )
 }`,
     api: [
-      glassVariantFor("GlassSeparator"),
-      inheritedProps("GlassSeparator", "React.ComponentProps<typeof Separator>"),
+      glassVariantFor("GlassAlertDialogContent"),
+      inheritedProps("GlassAlertDialogContent", "React.ComponentProps<typeof AlertDialogContent>"),
+      inheritedProps("AlertDialog primitives", "Re-exported alert dialog primitive props"),
     ],
   },
   {

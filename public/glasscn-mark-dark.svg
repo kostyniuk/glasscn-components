@@ -1,0 +1,65 @@
+<svg
+  width="80"
+  height="80"
+  viewBox="0 0 80 80"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="a" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="b" x1="10" y1="10" x2="70" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A0C4FF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#C4B5FD" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="c" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.08" />
+    </linearGradient>
+  </defs>
+  <rect
+    x="0"
+    y="0"
+    width="52"
+    height="52"
+    rx="14"
+    fill="url(#a)"
+    stroke="#FFFFFF"
+    stroke-opacity="0.2"
+    stroke-width="1"
+  />
+  <rect
+    x="14"
+    y="14"
+    width="52"
+    height="52"
+    rx="14"
+    fill="url(#b)"
+    stroke="#FFFFFF"
+    stroke-opacity="0.25"
+    stroke-width="1"
+  />
+  <rect
+    x="28"
+    y="28"
+    width="52"
+    height="52"
+    rx="14"
+    fill="url(#c)"
+    stroke="#FFFFFF"
+    stroke-opacity="0.35"
+    stroke-width="1"
+  />
+  <line
+    x1="34"
+    y1="36"
+    x2="34"
+    y2="56"
+    stroke="#FFFFFF"
+    stroke-opacity="0.3"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+</svg>
