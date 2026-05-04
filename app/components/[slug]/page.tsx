@@ -38,7 +38,7 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
   return (
     <div className="flex min-h-svh justify-center px-6 pb-16">
       <article className="w-full max-w-5xl min-w-0 py-20">
-        <GlassCard glassVariant="liquid" className="mb-8 border-white/20 dark:border-white/10">
+        <GlassCard glassVariant="subtle" className="mb-8 border-white/20 dark:border-white/10">
           <CardHeader className="space-y-3">
             {/* <GlassBadge glassVariant="clear" className="w-fit px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em]">
               Component Docs

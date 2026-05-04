@@ -85,7 +85,7 @@ export function ComponentPreviewTabs({
               </GlassButton>
             </div>
             {codeVisible ? (
-              <pre className="max-h-96 overflow-auto p-4 pt-12 text-sm leading-6">
+              <pre className="max-h-96 overflow-auto p-4 pr-16 text-sm leading-6">
                 <code className="text-foreground/85 font-mono">{code}</code>
               </pre>
             ) : (

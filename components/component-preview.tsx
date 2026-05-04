@@ -34,7 +34,7 @@ export function ComponentPreview({
       previewClassName={previewClassName ?? doc.previewClassName}
       align={align}
       hideCode={hideCode}
-      component={<Demo variant="liquid-bold" />}
+      component={<Demo variant="liquid" />}
       code={doc.usageCode}
       {...props}
     />
