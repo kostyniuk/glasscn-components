@@ -98,6 +98,19 @@
       ]
     },
     {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/separator"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
@@ -596,6 +609,19 @@
       "files": [
         {
           "path": "components/ui/glasscn/liquid-badge.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "preference",
+      "type": "registry:component",
+      "title": "Preference",
+      "description": "A weighted preference bar with icon badges, hover tinting, and tooltip descriptions.",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/badge", "@glasscn/item", "@glasscn/tooltip"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/preference.tsx",
           "type": "registry:component"
         }
       ]

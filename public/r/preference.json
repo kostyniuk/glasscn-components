@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preference",
+  "title": "Preference",
+  "description": "A weighted preference bar with icon badges, hover tinting, and tooltip descriptions.",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/badge",
+    "@glasscn/item",
+    "@glasscn/tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/preference.tsx",
+      "content": "import type { ComponentType, CSSProperties } from \"react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { ItemDescription, ItemTitle } from \"@/components/ui/item\";\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/components/ui/tooltip\";\nimport { cn } from \"@/lib/utils\";\n\ntype PreferenceIconProps = { className?: string };\n\ntype PreferenceIcon = ComponentType<PreferenceIconProps>;\n\ntype PreferenceItemProps = {\n  text: string;\n  description?: string;\n  Icon: PreferenceIcon;\n  className: string;\n  weight?: number;\n};\n\ntype PreferenceGroupProps = { title: string; description: string; items: PreferenceItemProps[] };\n\nfunction PreferenceItem({ className, description, Icon, text, weight = 1 }: PreferenceItemProps) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-(--preference-weight) items-center justify-center overflow-hidden transition-[filter,opacity] duration-300 group-hover/preference:not-[&:hover]:opacity-50 group-hover/preference:not-[&:hover]:saturate-50\",\n        className,\n      )}\n      style={{ \"--preference-weight\": weight } as CSSProperties}\n      aria-label={text}\n    >\n      <Tooltip>\n        <TooltipTrigger\n          render={\n            <Badge variant=\"secondary\" className=\"size-7 rounded-full p-0 [&>svg]:size-4!\">\n              <Icon className=\"size-full\" />\n            </Badge>\n          }\n        />\n        <TooltipContent className=\"flex max-w-48 flex-col items-start gap-0.5 px-3 py-2\">\n          <ItemTitle className=\"text-background text-xs\">{text}</ItemTitle>\n          {description ? <ItemDescription className=\"text-background/70 text-xs\">{description}</ItemDescription> : null}\n        </TooltipContent>\n      </Tooltip>\n    </div>\n  );\n}\n\nfunction PreferenceGroup({ title, description, items }: PreferenceGroupProps) {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <div className=\"flex flex-col\">\n        <ItemTitle>{title}</ItemTitle>\n        <ItemDescription>{description}</ItemDescription>\n      </div>\n      <div className=\"group/preference flex h-10 overflow-hidden rounded-full\">\n        {items.map((preference, i) => (\n          <PreferenceItem key={i} {...preference} />\n        ))}\n      </div>\n    </div>\n  );\n}\n\nexport type { PreferenceGroupProps, PreferenceIcon, PreferenceIconProps, PreferenceItemProps };\nexport { PreferenceGroup };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
