@@ -11,7 +11,7 @@ type GlassButtonProps = React.ComponentProps<typeof Button> & FrostGlassVariantP
 function GlassButton({ className, glassVariant = "clear", ...props }: GlassButtonProps) {
   if (glassVariant === "liquid-refract") {
     return (
-      <LiquidGlass className={typeof className === "string" ? className : undefined}>
+      <LiquidGlass>
         <Button
           data-slot="glass-button"
           data-glass-variant={glassVariant}
