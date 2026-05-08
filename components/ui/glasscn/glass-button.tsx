@@ -24,7 +24,7 @@ function GlassButton({ className, glassVariant = "clear", ...props }: GlassButto
   );
 
   if (glassVariant === "liquid-refract") {
-    return <LiquidGlass className="rounded-lg">{button}</LiquidGlass>;
+    return <LiquidGlass>{button}</LiquidGlass>;
   }
 
   return button;
