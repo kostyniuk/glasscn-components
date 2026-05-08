@@ -1,4 +1,4 @@
-import { Geist_Mono, Inter, Bebas_Neue } from "next/font/google";
+import { Geist_Mono, Inter, Righteous } from "next/font/google";
 
 import "./globals.css";
 import { AppBackground } from "@/components/app-background";
@@ -11,14 +11,14 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-display" });
+const righteous = Righteous({ weight: "400", subsets: ["latin"], variable: "--font-display" });
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable, bebasNeue.variable)}
+      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable, righteous.variable)}
     >
       <body className="min-h-screen overflow-x-hidden">
         <ThemeProvider>

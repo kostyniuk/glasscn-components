@@ -17,6 +17,7 @@ import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { Input } from "@/components/ui/input";
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
+import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs } from "@/lib/component-docs";
 
 import { GitHubLogo } from "./GitHubLogo";
@@ -33,8 +34,9 @@ export default function Page() {
             {/* Left column - Typography */}
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="font-[family-name:var(--font-display)] text-[clamp(4rem,15vw,12rem)] text-black dark:text-white">
-                  GLASSCN</h1>
+                <p className="font-[family-name:var(--font-display)] text-[164px] my-16 text-black font-mono">
+                  <MarkerText>glasscn</MarkerText>
+                </p>
                 <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
                   LIQUID
                   GLASS
