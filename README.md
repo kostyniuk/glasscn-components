@@ -64,7 +64,7 @@ export default function Page() {
       <GlassButton glassVariant="frosted">Frosted Glass</GlassButton>
       <GlassButton glassVariant="subtle">Subtle Glass</GlassButton>
       <GlassButton glassVariant="liquid">Liquid Glass</GlassButton>
-      <GlassButton glassVariant="liquid-bold">Liquid Bold</GlassButton>
+      <GlassButton glassVariant="liquid-refract">Liquid Refract</GlassButton>
     </div>
   )
 }
@@ -73,4 +73,4 @@ export default function Page() {
 ### Liquid variants
 
 - **`liquid`** — pure CSS. Heavy saturation + sheen + multi-layer bevel. Zero setup.
-- **`liquid-bold`** — pure CSS, stronger than `liquid`. Higher saturation, brighter edge highlights, and a glossier finish for the most pronounced liquid treatment.
+- **`liquid-refract`** — SVG displacement filter. Real lens-like refraction with curved glass effect.

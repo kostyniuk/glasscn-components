@@ -162,7 +162,7 @@
         "@glasscn/button",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Button with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Button with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-button.tsx",
@@ -179,7 +179,7 @@
         "@glasscn/badge",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Badge with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Badge with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-badge.tsx",
@@ -196,7 +196,7 @@
         "@glasscn/checkbox",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Checkbox with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Checkbox with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-checkbox.tsx",
@@ -213,7 +213,7 @@
         "@glasscn/combobox",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Combobox with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Combobox with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-combobox.tsx",
@@ -230,7 +230,7 @@
         "@glasscn/select",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Select with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Select with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-select.tsx",
@@ -259,7 +259,7 @@
         "@glasscn/card",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Card with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Card with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-card.tsx",
@@ -289,7 +289,7 @@
         "@glasscn/calendar",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Calendar with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Calendar with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-calendar.tsx",
@@ -422,7 +422,7 @@
         "@glasscn/separator",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Separator with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Separator with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-separator.tsx",
@@ -442,7 +442,7 @@
         "@glasscn/glass-variants",
         "@glasscn/glass-separator"
       ],
-      "description": "Glass Sidebar with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Sidebar with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-sidebar.tsx",
@@ -485,7 +485,7 @@
         "@glasscn/alert",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Alert with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Alert with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-alert.tsx",
@@ -504,7 +504,7 @@
         "@glasscn/alert-dialog",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Alert Dialog with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Alert Dialog with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-alert-dialog.tsx",
@@ -551,7 +551,7 @@
         "@glasscn/glass-badge",
         "@glasscn/glass-variants"
       ],
-      "description": "Glass Code Block Command with five variants: clear, frosted, subtle, liquid, and liquid-bold",
+      "description": "Glass Code Block Command with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
           "path": "components/ui/glasscn/glass-code-block-command.tsx",

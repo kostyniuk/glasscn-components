@@ -1,3 +1,4 @@
+import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassSeparator } from "@/components/ui/glasscn/glass-separator";
 import { type FrostGlassVariant } from "@/lib/glass-variants";
 
@@ -12,7 +13,7 @@ type SeparatorDemoProps = { variant?: FrostGlassVariant };
 
 function SeparatorDemo({ variant = "clear" }: SeparatorDemoProps) {
   return (
-    <div className="mx-auto w-full max-w-sm rounded-2xl border border-white/20 bg-white/20 p-4 shadow-[0_12px_40px_rgba(255,255,255,0.08)] backdrop-blur-sm dark:border-white/30 dark:bg-black/30">
+    <GlassCard glassVariant={variant === "liquid-refract" ? "clear" : variant} className="mx-auto w-full max-w-sm p-4">
       {items.map((item, index) => (
         <div key={item.label}>
           <div className="py-2.5">
@@ -22,7 +23,7 @@ function SeparatorDemo({ variant = "clear" }: SeparatorDemoProps) {
           {index < items.length - 1 && <GlassSeparator glassVariant={variant} />}
         </div>
       ))}
-    </div>
+    </GlassCard>
   );
 }
 

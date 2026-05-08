@@ -15,7 +15,7 @@ import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import type { FrostGlassVariant } from "@/lib/glass-variants";
 
-export const glassVariants = ["clear", "frosted", "subtle", "liquid", "liquid-bold"] as const;
+export const glassVariants = ["clear", "frosted", "subtle", "liquid", "liquid-refract"] as const;
 
 export type ApiProp = { component?: string; name: string; type: string; defaultValue?: string; description: string };
 
@@ -35,7 +35,7 @@ export type ComponentDoc = {
 
 const glassVariantApi: ApiProp = {
   name: "glassVariant",
-  type: '"clear" | "frosted" | "subtle" | "liquid" | "liquid-bold"',
+  type: '"clear" | "frosted" | "subtle" | "liquid" | "liquid-refract"',
   defaultValue: '"clear"',
   description: "Controls the glass surface treatment.",
 };
@@ -90,7 +90,7 @@ const componentDocs: ComponentDoc[] = [
     usageCode: String.raw`import { GlassButton } from "@/components/ui/glasscn/glass-button"
 
 export function ButtonDemo() {
-  return <GlassButton glassVariant="liquid-bold">Button</GlassButton>
+  return <GlassButton glassVariant="liquid">Button</GlassButton>
 }`,
     api: [glassVariantFor("GlassButton"), inheritedProps("GlassButton", "React.ComponentProps<typeof Button>")],
   },
@@ -106,7 +106,7 @@ export function ButtonDemo() {
     usageCode: String.raw`import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 
 export function BadgeDemo() {
-  return <GlassBadge glassVariant="liquid-bold">Badge</GlassBadge>
+  return <GlassBadge glassVariant="liquid">Badge</GlassBadge>
 }`,
     api: [glassVariantFor("GlassBadge"), inheritedProps("GlassBadge", "React.ComponentProps<typeof Badge>")],
   },
@@ -126,7 +126,7 @@ import { GlassAlert } from "@/components/ui/glasscn/glass-alert"
 
 export function AlertDemo() {
   return (
-    <GlassAlert glassVariant="liquid-bold">
+    <GlassAlert glassVariant="liquid">
       <CheckCircle2Icon />
       <AlertTitle>Payment successful</AlertTitle>
       <AlertDescription>Your payment has been processed.</AlertDescription>
@@ -147,7 +147,7 @@ export function AlertDemo() {
     usageCode: String.raw`import { GlassSeparator } from "@/components/ui/glasscn/glass-separator"
 
 export function SeparatorDemo() {
-  return <GlassSeparator glassVariant="liquid-bold" />
+  return <GlassSeparator glassVariant="liquid" />
 }`,
     api: [
       glassVariantFor("GlassSeparator"),
@@ -166,7 +166,7 @@ export function SeparatorDemo() {
     usageCode: String.raw`import { GlassCalendar } from "@/components/ui/glasscn/glass-calendar"
 
 export function CalendarDemo() {
-  return <GlassCalendar glassVariant="liquid-bold" mode="single" />
+  return <GlassCalendar glassVariant="liquid" mode="single" />
 }`,
     api: [glassVariantFor("GlassCalendar"), inheritedProps("GlassCalendar", "React.ComponentProps<typeof Calendar>")],
   },
@@ -189,13 +189,13 @@ import { GlassCard, GlassCardFooter } from "@/components/ui/glasscn/glass-card"
 
 export function CardDemo() {
   return (
-    <GlassCard glassVariant="liquid-bold">
+    <GlassCard glassVariant="liquid">
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>
         <CardDescription>Enter your email below to login.</CardDescription>
       </CardHeader>
       <CardContent>...</CardContent>
-      <GlassCardFooter glassVariant="liquid-bold">...</GlassCardFooter>
+      <GlassCardFooter glassVariant="liquid">...</GlassCardFooter>
     </GlassCard>
   )
 }`,
@@ -218,7 +218,7 @@ export function CardDemo() {
     usageCode: String.raw`import { GlassCheckbox } from "@/components/ui/glasscn/glass-checkbox"
 
 export function CheckboxDemo() {
-  return <GlassCheckbox glassVariant="liquid-bold" />
+  return <GlassCheckbox glassVariant="liquid" />
 }`,
     api: [glassVariantFor("GlassCheckbox"), inheritedProps("GlassCheckbox", "React.ComponentProps<typeof Checkbox>")],
   },
@@ -241,7 +241,7 @@ export function CodeBlockCommandDemo() {
   return (
     <PackageManagerProvider>
       <GlassCodeBlockCommand
-        glassVariant="liquid-bold"
+        glassVariant="liquid"
         npm="npx shadcn add @glasscn/glass-button"
         pnpm="pnpm dlx shadcn add @glasscn/glass-button"
         yarn="yarn dlx shadcn add @glasscn/glass-button"
@@ -278,7 +278,7 @@ const frameworks = ["Next.js", "SvelteKit", "Nuxt.js"] as const
 
 export function ComboboxDemo() {
   return (
-    <GlassCombobox items={frameworks} glassVariant="liquid-bold">
+    <GlassCombobox items={frameworks} glassVariant="liquid">
       <GlassComboboxInput placeholder="Select a framework" />
       <GlassComboboxContent>
         <ComboboxList>
@@ -313,7 +313,7 @@ import { SelectItem, SelectValue } from "@/components/ui/select"
 
 export function SelectDemo() {
   return (
-    <GlassSelect glassVariant="liquid-bold">
+    <GlassSelect glassVariant="liquid">
       <GlassSelectTrigger>
         <SelectValue placeholder="Select a fruit" />
       </GlassSelectTrigger>
@@ -355,7 +355,7 @@ export function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger>Show Dialog</AlertDialogTrigger>
-      <GlassAlertDialogContent glassVariant="liquid-bold">
+      <GlassAlertDialogContent glassVariant="liquid">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
@@ -399,7 +399,7 @@ import {
 export function SidebarDemo() {
   return (
     <SidebarProvider>
-      <GlassSidebar glassVariant="liquid-bold" collapsible="none">
+      <GlassSidebar glassVariant="liquid" collapsible="none">
         <SidebarContent>
           <GlassSidebarInput placeholder="Search" />
           <SidebarMenu>

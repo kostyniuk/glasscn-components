@@ -1,7 +1,7 @@
 "use client";
 
-import { type VariantProps } from "class-variance-authority";
 import { LiquidMetal, type LiquidMetalProps } from "@paper-design/shaders-react";
+import { type VariantProps } from "class-variance-authority";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { Badge, badgeVariants } from "@/components/ui/badge";
@@ -11,9 +11,7 @@ type ShaderProps = Omit<LiquidMetalProps, "className" | "style" | "shape">;
 
 type LiquidBadgeProps = ComponentPropsWithoutRef<"span"> &
   VariantProps<typeof badgeVariants> &
-  Partial<ShaderProps> & {
-    wrapperClassName?: string;
-  };
+  Partial<ShaderProps> & { wrapperClassName?: string };
 
 function LiquidBadge({
   className,

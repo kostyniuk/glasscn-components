@@ -6,6 +6,7 @@ import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles 
 import { cn } from "@/lib/utils";
 
 import { Combobox, ComboboxContent, ComboboxInput } from "../combobox";
+import { LiquidGlass } from "./liquid-glass";
 
 const GlassComboboxVariantContext = React.createContext<FrostGlassVariant>("clear");
 
@@ -22,11 +23,12 @@ function GlassCombobox<T extends readonly string[]>({ glassVariant = "clear", ..
 function GlassComboboxInput({ className, inputClassName, ...props }: React.ComponentProps<typeof ComboboxInput>) {
   const variant = React.useContext(GlassComboboxVariantContext);
 
-  return (
+  const input = (
     <ComboboxInput
       data-slot="glass-combobox-input"
       className={cn(
-        glassVariantStyles[variant],
+        variant !== "liquid-refract" && glassVariantStyles[variant],
+        variant === "liquid-refract" && "bg-transparent border-0 shadow-none",
         "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] dark:border-white/12 dark:bg-black/40",
         className,
       )}
@@ -34,6 +36,12 @@ function GlassComboboxInput({ className, inputClassName, ...props }: React.Compo
       {...props}
     />
   );
+
+  if (variant === "liquid-refract") {
+    return <LiquidGlass className="rounded-lg">{input}</LiquidGlass>;
+  }
+
+  return input;
 }
 
 function GlassComboboxContent({ className, ...props }: React.ComponentProps<typeof ComboboxContent>) {
@@ -43,7 +51,7 @@ function GlassComboboxContent({ className, ...props }: React.ComponentProps<type
     <ComboboxContent
       data-slot="glass-combobox-content"
       className={cn(
-        glassVariantStyles[variant],
+        variant !== "liquid-refract" && glassVariantStyles[variant],
         "rounded-xl border border-white/30 bg-white/60 text-foreground shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:ring-white/10",
         "[&_[data-slot=combobox-item][data-highlighted]]:bg-white/70 [&_[data-slot=combobox-item][data-highlighted]]:text-black dark:[&_[data-slot=combobox-item][data-highlighted]]:bg-white/12 dark:[&_[data-slot=combobox-item][data-highlighted]]:text-white",
         className,

@@ -40,11 +40,13 @@ export function CardDemo({ variant = "clear" }: CardDemoProps) {
           </div>
         </form>
       </CardContent>
-      <GlassCardFooter className="flex-col gap-2">
+      <GlassCardFooter glassVariant={variant} className="flex-col gap-2">
         <Button type="submit" className="w-full">
           Login
         </Button>
-        <GlassButton className="w-full text-black dark:text-white">Login with Google</GlassButton>
+        <GlassButton glassVariant={variant} className="w-full text-black dark:text-white">
+          Login with Google
+        </GlassButton>
       </GlassCardFooter>
     </GlassCard>
   );

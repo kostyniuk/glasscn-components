@@ -156,13 +156,25 @@ function Sidebar({
   className,
   children,
   dir,
+  renderInner,
   ...props
 }: React.ComponentProps<"div"> & {
   side?: "left" | "right"
   variant?: "sidebar" | "floating" | "inset"
   collapsible?: "offcanvas" | "icon" | "none"
+  renderInner?: (children: React.ReactNode) => React.ReactNode
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+
+  const inner = (
+    <div
+      data-sidebar="sidebar"
+      data-slot="sidebar-inner"
+      className="flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border"
+    >
+      {children}
+    </div>
+  )
 
   if (collapsible === "none") {
     return (
@@ -174,7 +186,7 @@ function Sidebar({
         )}
         {...props}
       >
-        {children}
+        {renderInner ? renderInner(children) : children}
       </div>
     )
   }
@@ -239,13 +251,7 @@ function Sidebar({
         )}
         {...props}
       >
-        <div
-          data-sidebar="sidebar"
-          data-slot="sidebar-inner"
-          className="flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border"
-        >
-          {children}
-        </div>
+        {renderInner ? renderInner(inner) : inner}
       </div>
     </div>
   )

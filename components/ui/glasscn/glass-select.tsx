@@ -6,6 +6,7 @@ import { type FrostGlassVariant, type FrostGlassVariantProp, glassVariantStyles 
 import { cn } from "@/lib/utils";
 
 import { Select, SelectContent, SelectTrigger } from "../select";
+import { LiquidGlass } from "./liquid-glass";
 
 const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("clear");
 
@@ -22,17 +23,24 @@ function GlassSelect({ glassVariant = "clear", ...props }: GlassSelectProps) {
 function GlassSelectTrigger({ className, ...props }: React.ComponentProps<typeof SelectTrigger>) {
   const variant = React.useContext(GlassSelectVariantContext);
 
-  return (
+  const trigger = (
     <SelectTrigger
       data-slot="glass-select-trigger"
       className={cn(
-        glassVariantStyles[variant],
+        variant !== "liquid-refract" && glassVariantStyles[variant],
+        variant === "liquid-refract" && "bg-transparent border-0 shadow-none",
         "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] data-placeholder:text-foreground/75 dark:data-placeholder:text-foreground/60 dark:border-white/12 dark:bg-black/40",
         className,
       )}
       {...props}
     />
   );
+
+  if (variant === "liquid-refract") {
+    return <LiquidGlass className="rounded-lg">{trigger}</LiquidGlass>;
+  }
+
+  return trigger;
 }
 
 function GlassSelectContent({ className, ...props }: React.ComponentProps<typeof SelectContent>) {
@@ -42,7 +50,7 @@ function GlassSelectContent({ className, ...props }: React.ComponentProps<typeof
     <SelectContent
       data-slot="glass-select-content"
       className={cn(
-        glassVariantStyles[variant],
+        variant !== "liquid-refract" && glassVariantStyles[variant],
         "rounded-xl border border-white/30 bg-white/60 text-foreground shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:ring-white/10",
         "[&_[data-slot=select-item]:focus]:bg-white/70 [&_[data-slot=select-item]:focus]:text-black dark:[&_[data-slot=select-item]:focus]:bg-white/12 dark:[&_[data-slot=select-item]:focus]:text-white",
         className,

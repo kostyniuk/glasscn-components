@@ -37,13 +37,13 @@ export function ComponentPreviewTabs({
     <Card
       data-slot="component-preview"
       variant="outline"
-      className={cn("mt-4 mb-12 gap-0 overflow-hidden py-0", className)}
+      className={cn("mt-4 mb-12 gap-0 overflow-hidden bg-transparent py-0", className)}
     >
       <div data-slot="preview" dir="ltr">
         <div
           data-align={align}
           className={cn(
-            "preview relative flex min-h-72 w-full justify-center bg-transparent p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+            "preview relative flex min-h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
             previewClassName,
           )}
         >
@@ -53,18 +53,14 @@ export function ComponentPreviewTabs({
       {!hideCode && (
         <>
           <GlassSeparator glassVariant="subtle" />
-          <div
-            data-slot="code"
-            data-code-visible={codeVisible}
-            className="group/code relative bg-white/[0.3] dark:bg-black/20"
-          >
+          <div data-slot="code" data-code-visible={codeVisible} className="group/code relative bg-transparent">
             <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
               {codeVisible && (
                 <GlassButton
                   type="button"
                   size="icon"
                   variant="outline"
-                  glassVariant="clear"
+                  glassVariant="liquid-refract"
                   className="text-foreground/80 hover:text-foreground h-7 w-7"
                   onClick={() => setCodeVisible(false)}
                 >
@@ -76,7 +72,7 @@ export function ComponentPreviewTabs({
                 type="button"
                 size="icon"
                 variant="outline"
-                glassVariant="clear"
+                glassVariant="liquid-refract"
                 className={cn("h-7 w-7 text-foreground/80 hover:text-foreground", !codeVisible && "bg-background/50")}
                 onClick={onCopy}
               >
@@ -98,7 +94,7 @@ export function ComponentPreviewTabs({
                     type="button"
                     size="sm"
                     variant="outline"
-                    glassVariant="frosted"
+                    glassVariant="liquid-refract"
                     onClick={() => setCodeVisible(true)}
                   >
                     View Code

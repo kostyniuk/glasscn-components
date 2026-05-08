@@ -38,7 +38,7 @@ const secondaryItems = [
 
 type SidebarDemoProps = { variant?: FrostGlassVariant };
 
-function SidebarDemo({ variant = "clear" }: SidebarDemoProps) {
+function SidebarDemo({ variant = "liquid-refract" }: SidebarDemoProps) {
   return (
     <SidebarProvider defaultOpen className="mx-auto min-h-0 w-full max-w-sm">
       <div className="w-full overflow-hidden rounded-[1.75rem] border border-white/20 dark:border-white/10">

@@ -14,14 +14,17 @@ export default function Page() {
 
   return (
     <main className="relative min-h-svh px-4 pt-24 pb-24 md:px-8">
-      <div className="relative z-10 mx-auto w-full max-w-7xl">
+      <div className="max-w-8xl relative z-10 mx-auto w-full">
         <section className="animate-in fade-in slide-in-from-bottom-8 mb-16 duration-1000">
-          <GlassCard glassVariant="clear" className="relative overflow-hidden rounded-[2.5rem] p-6 shadow-2xl md:p-12">
-            <div className="absolute inset-0 bg-[url('/bg-light.png')] bg-cover bg-center opacity-20 mix-blend-overlay dark:bg-[url('/bg-dark.png')]" />
+          <GlassCard
+            glassVariant="liquid-refract"
+            className="relative overflow-hidden rounded-[2.5rem] p-6 shadow-2xl md:p-12"
+          >
+            <div className="absolute inset-0 bg-[url('/bg-light.png')] bg-cover bg-center opacity-20 mix-blend-overlay dark:bg-[url('/image_dark.png')]" />
 
             <div className="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
               <div className="max-w-2xl">
-                <GlassBadge glassVariant="liquid" className="mb-6 gap-2 px-4 py-2">
+                <GlassBadge glassVariant="clear" className="mb-6 gap-2 px-4 py-2">
                   <BoxesIcon className="size-4" />
                   Component Registry
                 </GlassBadge>
@@ -34,19 +37,22 @@ export default function Page() {
                 </p>
               </div>
 
-              <Card variant="outline" className="p-6 backdrop-blur-2xl sm:p-8">
+              <Card variant="outline" className="bg-transparent p-6 sm:p-8">
                 <div className="mb-6 flex items-center justify-between gap-4">
                   <div>
                     <p className="text-base font-medium">Registry install</p>
                     <p className="text-muted-foreground mt-1 text-sm">Start with the button primitive.</p>
                   </div>
-                  <GlassCard glassVariant="clear" className="flex size-10 items-center justify-center rounded-full p-0">
+                  <GlassCard
+                    glassVariant="liquid-refract"
+                    className="flex size-10 items-center justify-center rounded-full p-0"
+                  >
                     <CommandIcon className="size-5" />
                   </GlassCard>
                 </div>
                 <PackageManagerProvider>
                   <GlassCodeBlockCommand
-                    glassVariant="frosted"
+                    glassVariant="liquid-refract"
                     npm="npx shadcn add @glasscn/glass-button"
                     pnpm="pnpm dlx shadcn add @glasscn/glass-button"
                     yarn="yarn dlx shadcn add @glasscn/glass-button"
@@ -80,7 +86,7 @@ export default function Page() {
                   className="group flex flex-col p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
                 >
                   <div className="flex min-h-40 items-center justify-center rounded-xl bg-white/5 p-4 dark:bg-black/5">
-                    <Demo variant="liquid-bold" />
+                    <Demo variant="liquid" />
                   </div>
                   <div className="mt-6 flex flex-1 flex-col">
                     <h3 className="text-lg font-medium">{doc.title}</h3>
@@ -127,11 +133,11 @@ export default function Page() {
                 <Card
                   key={doc.slug}
                   variant="outline"
-                  className="group flex min-h-64 flex-col p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                  className="group flex min-h-64 flex-col bg-transparent p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
                 >
-                  <Card variant="outline" className="mb-6 flex min-h-32 flex-1 items-center justify-center p-4">
-                    <Demo variant="liquid" />
-                  </Card>
+                  <div className="mb-6 flex min-h-32 flex-1 items-center justify-center overflow-hidden rounded-xl p-4">
+                    <Demo variant="liquid-refract" />
+                  </div>
                   <div className="flex flex-col justify-between">
                     <div>
                       <h3 className="text-lg font-medium tracking-tight">{doc.title}</h3>

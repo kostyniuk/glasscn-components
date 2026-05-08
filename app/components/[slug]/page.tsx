@@ -38,9 +38,9 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
   return (
     <div className="flex min-h-svh justify-center px-6 pb-16">
       <article className="w-full max-w-5xl min-w-0 py-20">
-        <GlassCard glassVariant="subtle" className="mb-8 border-white/20 dark:border-white/10">
+        <GlassCard glassVariant="liquid-refract" className="mb-8 border-white/20 dark:border-white/10">
           <CardHeader className="space-y-3">
-            {/* <GlassBadge glassVariant="clear" className="w-fit px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em]">
+            {/* <GlassBadge glassVariant="liquid-refract" className="w-fit px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em]">
               Component Docs
             </GlassBadge> */}
             <CardTitle className="text-3xl font-medium tracking-tight">{doc.title}</CardTitle>
@@ -84,7 +84,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function ApiTable({ api }: { api: ApiProp[] }) {
   return (
-    <GlassCard glassVariant="frosted" className="overflow-x-auto border-white/15 dark:border-white/10">
+    <GlassCard glassVariant="liquid-refract" className="overflow-x-auto border-white/15 dark:border-white/10">
       <CardContent className="px-0">
         <div className="bg-muted/40 grid min-w-3xl grid-cols-[minmax(8rem,1fr)_minmax(10rem,1.2fr)_minmax(6rem,0.6fr)_minmax(14rem,1.8fr)] px-4 py-3 text-sm font-medium">
           <div>Prop</div>
@@ -92,7 +92,7 @@ function ApiTable({ api }: { api: ApiProp[] }) {
           <div>Default</div>
           <div>Description</div>
         </div>
-        <GlassSeparator glassVariant="subtle" />
+        <GlassSeparator glassVariant="liquid-refract" />
         {api.map((item, index) => (
           <React.Fragment key={`${item.component ?? "root"}-${item.name}-${index}`}>
             <div className="grid min-w-3xl grid-cols-[minmax(8rem,1fr)_minmax(10rem,1.2fr)_minmax(6rem,0.6fr)_minmax(14rem,1.8fr)] gap-0 px-4 py-3 text-sm">
@@ -110,7 +110,7 @@ function ApiTable({ api }: { api: ApiProp[] }) {
               <code className="text-foreground/80 font-mono text-xs">{item.defaultValue ?? "-"}</code>
               <div className="text-foreground/80">{item.description}</div>
             </div>
-            {index < api.length - 1 ? <GlassSeparator glassVariant="subtle" /> : null}
+            {index < api.length - 1 ? <GlassSeparator glassVariant="liquid-refract" /> : null}
           </React.Fragment>
         ))}
       </CardContent>
@@ -124,12 +124,12 @@ function VariantsPreview({ doc }: { doc: ComponentDoc }) {
   return (
     <div className={cn("grid grid-cols-1 gap-4", doc.variantsGridClassName)}>
       {glassVariants.map((variant) => (
-        <Card key={variant} variant="outline" className="p-4">
+        <Card key={variant} variant="outline" className="bg-transparent p-4">
           <div>
             <GlassBadge glassVariant="clear" className="mb-3 px-2.5 py-1 font-mono text-xs">
               {variant}
             </GlassBadge>
-            <div className="flex min-h-32 items-center justify-center">
+            <div className="flex min-h-32 items-center justify-center overflow-hidden rounded-lg p-4">
               <Demo variant={variant} />
             </div>
           </div>

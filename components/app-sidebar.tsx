@@ -46,7 +46,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSideba
     <GlassSidebar
       {...props}
       variant="floating"
-      glassVariant="liquid"
+      glassVariant="clear"
       className="top-2 bottom-2 left-2 h-auto md:top-4 md:bottom-4 md:left-4 md:h-auto [&>[data-slot=sidebar-inner]]:rounded-[1.5rem]"
     >
       <SidebarContent className="px-3 pt-2">
