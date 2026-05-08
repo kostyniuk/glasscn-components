@@ -27,7 +27,7 @@ export async function SiteHeader() {
       const repo = await res.json();
       stars = repo.stargazers_count;
     }
-  } catch {}
+  } catch { }
 
   return (
     <div className="fixed z-50 flex w-full justify-center">
@@ -67,11 +67,11 @@ export async function SiteHeader() {
                 Components
               </Button>
             </Link>
-            <Link href="/liquid">
+            {/* <Link href="/liquid">
               <Button variant="ghost" className="px-2.5 sm:px-3">
                 Liquid
               </Button>
-            </Link>
+            </Link> */}
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5">
             <ThemeToggle />
