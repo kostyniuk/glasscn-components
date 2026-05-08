@@ -1,12 +1,22 @@
 import { ArrowRightIcon, CopyIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+import {
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
+import { Input } from "@/components/ui/input";
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import { getComponentDocs } from "@/lib/component-docs";
 
 import { GitHubLogo } from "./GitHubLogo";
@@ -65,16 +75,106 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Right column - Hero image */}
+            {/* Right column - Product surface */}
             <div className="relative flex items-center justify-center">
-              <div className="relative aspect-square w-full max-w-[700px]">
-                <Image
-                  src="/liquid-glass-hero.png"
-                  alt="Liquid Glass 3D Render"
-                  fill
-                  className="object-contain"
-                  priority
-                />
+              <div className="relative w-full max-w-[620px]">
+                <GlassCard
+                  glassVariant="liquid-refract"
+                  className="border-black/10 px-1 py-6 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10 sm:px-3 sm:py-8"
+                >
+                  <CardHeader className="gap-2 px-6 sm:px-8">
+                    <div className="flex items-center justify-between gap-4">
+                      <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
+                        The best Apple inspired shadcn/ui library
+                      </CardTitle>
+                      <GlassBadge
+                        glassVariant="subtle"
+                        className="h-8 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-[0.16em] uppercase"
+                      >
+                        2026
+                      </GlassBadge>
+                    </div>
+                    <CardDescription className="text-[15px] leading-relaxed text-black/55 dark:text-white/55">
+                      Liquid glass components with registry-first ownership, theme-aware variants, and a native-feeling
+                      shadcn workflow.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="px-6 sm:px-8">
+                    <form>
+                      <FieldGroup className="gap-5">
+                        <Field>
+                          <FieldLabel htmlFor="library-name">Full Name</FieldLabel>
+                          <Input
+                            id="library-name"
+                            readOnly
+                            value="glasscn"
+                            className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                          />
+                        </Field>
+                        <Field>
+                          <FieldLabel>GitHub</FieldLabel>
+                          <Item
+                            render={
+                              <Link href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />
+                            }
+                            variant="outline"
+                            className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
+                          >
+                            <ItemMedia variant="icon">
+                              <GitHubLogo className="size-4" />
+                            </ItemMedia>
+                            <ItemContent>
+                              <ItemTitle>kostyniuk/glasscn</ItemTitle>
+                              <ItemDescription>Open source registry components for shadcn/ui.</ItemDescription>
+                            </ItemContent>
+                          </Item>
+                        </Field>
+                        <div className="grid gap-5 sm:grid-cols-2">
+                          <Field>
+                            <FieldLabel htmlFor="author">Author</FieldLabel>
+                            <Input
+                              id="author"
+                              readOnly
+                              value="Alex Kostyniuk"
+                              className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                            />
+                          </Field>
+                          <Field>
+                            <FieldLabel htmlFor="year">Year</FieldLabel>
+                            <Input
+                              id="year"
+                              readOnly
+                              value="2026"
+                              className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                            />
+                          </Field>
+                        </div>
+                        <Field>
+                          <FieldLabel>Variants</FieldLabel>
+                          {/* <ButtonGroup className="w-full flex-wrap rounded-xl border border-black/10 bg-black/[0.03] p-1.5 dark:border-white/10 dark:bg-white/[0.04]">
+                            {["clear", "frosted", "subtle", "liquid", "refract"].map((variant, index) => (
+                              <Button
+                                key={variant}
+                                type="button"
+                                size="sm"
+                              >
+                                {variant}
+                              </Button>
+                            ))}
+                          </ButtonGroup> */}
+                          <ButtonGroup>
+                            {["clear", "frosted", "subtle", "liquid", "refract"].map((variant) => (
+                              <Button variant="outline">{variant}</Button>
+                            ))}
+                          </ButtonGroup>
+                          <FieldDescription>
+                            Five glass treatments, from barely-there clarity to full liquid refraction.
+                          </FieldDescription>
+                        </Field>
+                      </FieldGroup>
+                    </form>
+                  </CardContent>
+                </GlassCard>
               </div>
 
               {/* Decorative elements */}
@@ -130,6 +230,7 @@ export default function Page() {
                 glassVariant="liquid-refract"
                 size="lg"
                 className="h-12 gap-2 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white"
+                nativeButton={false}
                 render={<a href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />}
               >
                 <GitHubLogo className="size-4" />
@@ -214,6 +315,7 @@ export default function Page() {
                     glassVariant="liquid-refract"
                     size="sm"
                     className="h-8 gap-1.5 rounded-lg border-black/10 px-3 font-mono text-xs text-black/70 hover:text-black dark:border-white/10 dark:text-white/70 dark:hover:text-white"
+                    nativeButton={false}
                     render={<Link href={`/components/${doc.slug}`} />}
                   >
                     <CopyIcon className="size-3" /> add
