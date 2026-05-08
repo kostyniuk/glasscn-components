@@ -31,14 +31,14 @@ export default function Page() {
             {/* Left column - Typography */}
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="font-[family-name:var(--font-display)] text-[clamp(4rem,15vw,12rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
+                <h1 className="font-[family-name:var(--font-display)] text-[clamp(4rem,15vw,12rem)] text-black dark:text-white">
+                  GLASSCN</h1>
+                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
                   LIQUID
-                  <br />
                   GLASS
-                </h1>
+                </h2>
 
                 <div className="mt-6">
-                  <h2 className="text-xl font-semibold tracking-tight text-black dark:text-white">COMPONENTS</h2>
                   <p className="mt-4 max-w-md text-[15px] leading-relaxed text-black/60 dark:text-white/60">
                     Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by
                     light.
