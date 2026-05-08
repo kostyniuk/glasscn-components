@@ -208,7 +208,7 @@ export default function Page() {
               <GlassButton
                 glassVariant="liquid-refract"
                 size="lg"
-                className="h-12 gap-2 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white"
+                className="h-12 gap-2 w-64 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white p-0"
                 nativeButton={false}
                 render={<a href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />}
               >
