@@ -31,7 +31,7 @@ function GlassComboboxInput({ className, inputClassName, ...props }: React.Compo
       <LiquidGlass className={cn("rounded-lg", className)}>
         <ComboboxInput
           data-slot="glass-combobox-input"
-          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          className={cn("bg-transparent border-0 shadow-none", baseStyles, className)}
           inputClassName={cn("placeholder:text-foreground/75", inputClassName)}
           {...props}
         />

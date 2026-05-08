@@ -17,7 +17,7 @@ function GlassCard({ className, glassVariant = "clear", ...props }: GlassCardPro
         <Card
           data-slot="glass-card"
           data-glass-variant={glassVariant}
-          className="bg-transparent border-0 shadow-none"
+          className={cn("bg-transparent border-0 shadow-none", className)}
           {...props}
         />
       </LiquidGlass>

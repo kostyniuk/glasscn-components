@@ -18,7 +18,7 @@ function GlassCheckbox({ className, glassVariant = "clear", ...props }: GlassChe
         <Checkbox
           data-slot="glass-checkbox"
           data-glass-variant={glassVariant}
-          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          className={cn("bg-transparent border-0 shadow-none", baseStyles, className)}
           {...props}
         />
       </LiquidGlass>

@@ -17,7 +17,7 @@ function GlassCalendar({ className, glassVariant = "clear", ...props }: GlassCal
         <Calendar
           data-slot="glass-calendar"
           data-glass-variant={glassVariant}
-          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          className={cn("bg-transparent border-0 shadow-none", baseStyles, className)}
           {...props}
         />
       </LiquidGlass>

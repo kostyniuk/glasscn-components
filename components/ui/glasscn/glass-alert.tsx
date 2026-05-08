@@ -15,7 +15,7 @@ function GlassAlert({ className, glassVariant = "clear", ...props }: GlassAlertP
         <Alert
           data-slot="glass-alert"
           data-glass-variant={glassVariant}
-          className="bg-transparent border-0 shadow-none"
+          className={cn("bg-transparent border-0 shadow-none", className)}
           {...props}
         />
       </LiquidGlass>

@@ -31,7 +31,7 @@ function GlassSelectTrigger({ className, ...props }: React.ComponentProps<typeof
       <LiquidGlass className={cn("rounded-lg", className)}>
         <SelectTrigger
           data-slot="glass-select-trigger"
-          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          className={cn("bg-transparent border-0 shadow-none", baseStyles, className)}
           {...props}
         />
       </LiquidGlass>

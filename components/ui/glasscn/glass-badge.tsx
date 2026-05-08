@@ -15,7 +15,7 @@ function GlassBadge({ className, glassVariant = "clear", ...props }: GlassBadgeP
         <Badge
           data-slot="glass-badge"
           data-glass-variant={glassVariant}
-          className="text-foreground bg-transparent border-0 shadow-none"
+          className={cn("text-foreground bg-transparent border-0 shadow-none", className)}
           {...props}
         />
       </LiquidGlass>

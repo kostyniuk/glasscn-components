@@ -15,7 +15,7 @@ function GlassButton({ className, glassVariant = "clear", ...props }: GlassButto
         <Button
           data-slot="glass-button"
           data-glass-variant={glassVariant}
-          className="text-foreground cursor-pointer bg-transparent border-0 shadow-none w-full"
+          className={cn("text-foreground cursor-pointer bg-transparent border-0 shadow-none", className)}
           {...props}
         />
       </LiquidGlass>
