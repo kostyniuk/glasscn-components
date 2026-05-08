@@ -22,7 +22,7 @@ export default function Page() {
           {/* Top bar with reference codes */}
           <div className="mb-8 flex items-center justify-between font-mono text-[11px] tracking-[0.2em] text-black/40 uppercase dark:text-white/40">
             <span>LQ.GLS/01</span>
-            <span>2024</span>
+            <span>2026</span>
             <span className="hidden sm:block">MATERIAL FUTURES</span>
             <span className="hidden md:block">(REF) LG-2401-CC</span>
           </div>
