@@ -20,7 +20,7 @@ export default function Page() {
             glassVariant="liquid-refract"
             className="relative overflow-hidden rounded-[2.5rem] p-6 shadow-2xl md:p-12"
           >
-            <div className="absolute inset-0 bg-[url('/bg-light.png')] bg-cover bg-center opacity-20 mix-blend-overlay dark:bg-[url('/image_dark.png')]" />
+            <div className="absolute inset-0 bg-[#c5f83a]/70" />
 
             <div className="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
               <div className="max-w-2xl">
@@ -41,7 +41,7 @@ export default function Page() {
                 <div className="mb-6 flex items-center justify-between gap-4">
                   <div>
                     <p className="text-base font-medium">Registry install</p>
-                    <p className="text-muted-foreground mt-1 text-sm">Start with the button primitive.</p>
+                    <p className="text-foreground mt-1 text-sm">Start with the button primitive.</p>
                   </div>
                   <GlassCard
                     glassVariant="liquid-refract"
