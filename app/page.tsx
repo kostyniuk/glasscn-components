@@ -28,133 +28,132 @@ export default function Page() {
   return (
     <div className="relative min-h-svh font-sans text-black transition-colors duration-500 selection:bg-black/10 dark:text-white dark:selection:bg-white/30">
       {/* Hero Section - Editorial Style */}
-      <section className="relative z-10 min-h-screen px-6 pt-24 pb-16 lg:px-12">
-        <div className="mx-auto max-w-[1600px]">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16">
-            {/* Left column - Typography */}
-            <div className="flex flex-col justify-between">
-              <div>
-                <p className="font-[family-name:var(--font-display)] text-[164px] my-16 text-black font-mono">
-                  <MarkerText>glasscn</MarkerText>
+      <section className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16">
+          {/* Left column - Typography */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <p className="font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] mb-6 text-black">
+                <MarkerText>glasscn</MarkerText>
+              </p>
+              <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
+                LIQUID
+                GLASS
+              </h2>
+
+              <div className="mt-6">
+                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-black/60 dark:text-white/60">
+                  Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by
+                  light.
                 </p>
-                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
-                  LIQUID
-                  GLASS
-                </h2>
-
-                <div className="mt-6">
-                  <p className="mt-4 max-w-md text-[15px] leading-relaxed text-black/60 dark:text-white/60">
-                    Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by
-                    light.
-                  </p>
-                </div>
-
-                {/* Keywords */}
-                <div className="mt-12 space-y-1 font-mono text-[13px] tracking-[0.3em] text-black/80 uppercase dark:text-white/80">
-                  <div>CLARITY</div>
-                  <div>FLOW</div>
-                  <div>ADAPT</div>
-                </div>
               </div>
 
-              {/* Bottom left text block */}
-              <div className="mt-16 lg:mt-0">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="h-[2px] w-4 bg-blue-500" />
-                  <span className="h-[2px] w-4 bg-blue-500" />
-                  <span className="h-[2px] w-4 bg-blue-500" />
-                </div>
-                <div className="mb-4 font-mono text-[11px] font-semibold tracking-wider text-black uppercase dark:text-white">
-                  EVERY CURVE.
-                  <br />
-                  EVERY DETAIL.
-                  <br />
-                  MADE TO FLOW.
-                </div>
-                <p className="max-w-[280px] text-[13px] leading-relaxed text-black/50 dark:text-white/50">
-                  Our liquid glass components combine elegance with engineering, bringing transparency and movement to
-                  your most innovative creations.
-                </p>
+              {/* Keywords */}
+              <div className="mt-12 space-y-1 font-mono text-[13px] tracking-[0.3em] text-black/80 uppercase dark:text-white/80">
+                <div>CLARITY</div>
+                <div>FLOW</div>
+                <div>ADAPT</div>
               </div>
             </div>
 
-            {/* Right column - Product surface */}
-            <div className="relative flex items-center justify-center">
-              <div className="relative w-full max-w-[620px]">
-                <GlassCard
-                  glassVariant="liquid-refract"
-                  className="border-black/10 px-1 py-6 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10 sm:px-3 sm:py-8"
-                >
-                  <CardHeader className="gap-2 px-6 sm:px-8">
-                    <div className="flex items-center justify-between gap-4">
-                      <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
-                        The best Apple inspired shadcn/ui library
-                      </CardTitle>
-                      <GlassBadge
-                        glassVariant="subtle"
-                        className="h-8 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-[0.16em] uppercase"
-                      >
-                        2026
-                      </GlassBadge>
-                    </div>
-                    <CardDescription className="text-[15px] leading-relaxed text-black/55 dark:text-white/55">
-                      Liquid glass components with registry-first ownership, theme-aware variants, and a native-feeling
-                      shadcn workflow.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="px-6 sm:px-8">
-                    <form>
-                      <FieldGroup className="gap-5">
+            {/* Bottom left text block */}
+            <div className="mt-16 lg:mt-0">
+              <div className="mb-2 flex items-center gap-2">
+                <span className="h-[2px] w-4 bg-blue-500" />
+                <span className="h-[2px] w-4 bg-blue-500" />
+                <span className="h-[2px] w-4 bg-blue-500" />
+              </div>
+              <div className="mb-4 font-mono text-[11px] font-semibold tracking-wider text-black uppercase dark:text-white">
+                EVERY CURVE.
+                <br />
+                EVERY DETAIL.
+                <br />
+                MADE TO FLOW.
+              </div>
+              <p className="max-w-[280px] text-[13px] leading-relaxed text-black/50 dark:text-white/50">
+                Our liquid glass components combine elegance with engineering, bringing transparency and movement to
+                your most innovative creations.
+              </p>
+            </div>
+          </div>
+
+          {/* Right column - Product surface */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-full max-w-[520px]">
+              <GlassCard
+                glassVariant="liquid-refract"
+                className="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10 sm:px-3 sm:py-6"
+              >
+                <CardHeader className="gap-2 px-6 sm:px-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
+                      The best Apple inspired shadcn/ui library
+                    </CardTitle>
+                    <GlassBadge
+                      glassVariant="subtle"
+                      className="h-8 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-[0.16em] uppercase"
+                    >
+                      2026
+                    </GlassBadge>
+                  </div>
+                  <CardDescription className="text-[15px] leading-relaxed text-black/55 dark:text-white/55">
+                    Liquid glass components with registry-first ownership, theme-aware variants, and a native-feeling
+                    shadcn workflow.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="px-6 sm:px-8">
+                  <form>
+                    <FieldGroup className="gap-5">
+                      <Field>
+                        <FieldLabel htmlFor="library-name">Full Name</FieldLabel>
+                        <Input
+                          id="library-name"
+                          readOnly
+                          value="glasscn"
+                          className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                        />
+                      </Field>
+                      <Field>
+                        <FieldLabel>GitHub</FieldLabel>
+                        <Item
+                          render={
+                            <Link href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />
+                          }
+                          variant="outline"
+                          className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
+                        >
+                          <ItemMedia variant="icon">
+                            <GitHubLogo className="size-4" />
+                          </ItemMedia>
+                          <ItemContent>
+                            <ItemTitle>kostyniuk/glasscn</ItemTitle>
+                            <ItemDescription>Open source registry components for shadcn/ui.</ItemDescription>
+                          </ItemContent>
+                        </Item>
+                      </Field>
+                      <div className="grid gap-5 sm:grid-cols-2">
                         <Field>
-                          <FieldLabel htmlFor="library-name">Full Name</FieldLabel>
+                          <FieldLabel htmlFor="author">Author</FieldLabel>
                           <Input
-                            id="library-name"
+                            id="author"
                             readOnly
-                            value="glasscn"
+                            value="Alex Kostyniuk"
                             className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
                           />
                         </Field>
                         <Field>
-                          <FieldLabel>GitHub</FieldLabel>
-                          <Item
-                            render={
-                              <Link href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />
-                            }
-                            variant="outline"
-                            className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
-                          >
-                            <ItemMedia variant="icon">
-                              <GitHubLogo className="size-4" />
-                            </ItemMedia>
-                            <ItemContent>
-                              <ItemTitle>kostyniuk/glasscn</ItemTitle>
-                              <ItemDescription>Open source registry components for shadcn/ui.</ItemDescription>
-                            </ItemContent>
-                          </Item>
+                          <FieldLabel htmlFor="year">Year</FieldLabel>
+                          <Input
+                            id="year"
+                            readOnly
+                            value="2026"
+                            className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
+                          />
                         </Field>
-                        <div className="grid gap-5 sm:grid-cols-2">
-                          <Field>
-                            <FieldLabel htmlFor="author">Author</FieldLabel>
-                            <Input
-                              id="author"
-                              readOnly
-                              value="Alex Kostyniuk"
-                              className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
-                            />
-                          </Field>
-                          <Field>
-                            <FieldLabel htmlFor="year">Year</FieldLabel>
-                            <Input
-                              id="year"
-                              readOnly
-                              value="2026"
-                              className="h-11 rounded-xl border-black/10 bg-black/[0.03] text-black dark:border-white/10 dark:bg-white/[0.04] dark:text-white"
-                            />
-                          </Field>
-                        </div>
-                        <Field>
-                          <FieldLabel>Variants</FieldLabel>
-                          {/* <ButtonGroup className="w-full flex-wrap rounded-xl border border-black/10 bg-black/[0.03] p-1.5 dark:border-white/10 dark:bg-white/[0.04]">
+                      </div>
+                      <Field>
+                        <FieldLabel>Variants</FieldLabel>
+                        {/* <ButtonGroup className="w-full flex-wrap rounded-xl border border-black/10 bg-black/[0.03] p-1.5 dark:border-white/10 dark:bg-white/[0.04]">
                             {["clear", "frosted", "subtle", "liquid", "refract"].map((variant, index) => (
                               <Button
                                 key={variant}
@@ -165,101 +164,100 @@ export default function Page() {
                               </Button>
                             ))}
                           </ButtonGroup> */}
-                          <ButtonGroup>
-                            {["clear", "frosted", "subtle", "liquid", "refract"].map((variant) => (
-                              <Button variant="outline">{variant}</Button>
-                            ))}
-                          </ButtonGroup>
-                          <FieldDescription>
-                            Five glass treatments, from barely-there clarity to full liquid refraction.
-                          </FieldDescription>
-                        </Field>
-                      </FieldGroup>
-                    </form>
-                  </CardContent>
-                </GlassCard>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-8 right-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
-                <span>—</span>
-                <span>—</span>
-                <span>—</span>
-                <span>—</span>
-              </div>
-
-              <div className="absolute right-0 bottom-1/4 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px]">▼</span>
-                </div>
-                <div className="mt-2">_01</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 border-t border-black/10 pt-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16 dark:border-white/10">
-            <div className="flex flex-col gap-4 sm:flex-row lg:items-end">
-              <a
-                href="#components"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-black px-8 text-[15px] font-semibold text-white transition-colors hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
-              >
-                Browse components <ArrowRightIcon className="ml-2 size-4" />
-              </a>
-              <GlassButton
-                glassVariant="liquid-refract"
-                size="lg"
-                className="h-12 gap-2 w-64 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white p-0"
-                nativeButton={false}
-                render={<a href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />}
-              >
-                <GitHubLogo className="size-4" />
-                View on GitHub
-              </GlassButton>
-            </div>
-
-            <div className="relative flex justify-center">
-              <GlassCard
-                glassVariant="liquid-refract"
-                className="w-full max-w-[620px] rounded-2xl border-black/10 p-3 dark:border-white/10"
-              >
-                <div className="mb-2 px-2 pt-1">
-                  <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
-                    Quick install
-                  </div>
-                </div>
-                <PackageManagerProvider defaultPackageManager="pnpm">
-                  <CodeBlockCommand
-                    className="border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-black/30"
-                    npm="npx shadcn add @glasscn"
-                    pnpm="pnpm dlx shadcn add @glasscn"
-                    yarn="yarn dlx shadcn add @glasscn"
-                    bun="bunx shadcn add @glasscn"
-                  />
-                </PackageManagerProvider>
+                        <ButtonGroup>
+                          {["clear", "frosted", "subtle", "liquid", "refract"].map((variant) => (
+                            <Button variant="outline">{variant}</Button>
+                          ))}
+                        </ButtonGroup>
+                        <FieldDescription>
+                          Five glass treatments, from barely-there clarity to full liquid refraction.
+                        </FieldDescription>
+                      </Field>
+                    </FieldGroup>
+                  </form>
+                </CardContent>
               </GlassCard>
-              <div className="absolute -right-8 top-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
-                <span>—</span>
-                <span>—</span>
-                <span>—</span>
-              </div>
-              <div className="absolute -right-8 bottom-0 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
-                <div className="text-[10px]">▼</div>
-                <div className="mt-1">_02</div>
-              </div>
             </div>
+
+            {/* Decorative elements */}
+            <div className="absolute top-8 right-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
+              <span>—</span>
+              <span>—</span>
+              <span>—</span>
+              <span>—</span>
+            </div>
+
+            <div className="absolute right-0 bottom-1/4 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px]">▼</span>
+              </div>
+              <div className="mt-2">_01</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-6 border-t border-black/10 pt-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16 dark:border-white/10">
+          <div className="flex flex-col gap-4 sm:flex-row lg:items-end">
+            <a
+              href="#components"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-black px-8 text-[15px] font-semibold text-white transition-colors hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
+            >
+              Browse components <ArrowRightIcon className="ml-2 size-4" />
+            </a>
+            <GlassButton
+              glassVariant="liquid-refract"
+              size="lg"
+              className="h-12 gap-2 w-64 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white p-0"
+              nativeButton={false}
+              render={<a href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />}
+            >
+              <GitHubLogo className="size-4" />
+              View on GitHub
+            </GlassButton>
           </div>
 
-          {/* Bottom bar */}
-          <div className="mt-8 flex items-end justify-between font-mono text-[10px] text-black/40 dark:text-white/40">
-            <div className="flex items-center gap-4">
-              <div className="flex gap-[2px]">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <div key={i} className="h-6 w-[2px] bg-black/20 dark:bg-white/20" />
-                ))}
+          <div className="relative flex justify-center">
+            <GlassCard
+              glassVariant="liquid-refract"
+              className="w-full max-w-[520px] rounded-2xl border-black/10 p-3 dark:border-white/10"
+            >
+              <div className="mb-2 px-2 pt-1">
+                <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
+                  Quick install
+                </div>
               </div>
+              <PackageManagerProvider defaultPackageManager="pnpm">
+                <CodeBlockCommand
+                  className="border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-black/30"
+                  npm="npx shadcn add @glasscn"
+                  pnpm="pnpm dlx shadcn add @glasscn"
+                  yarn="yarn dlx shadcn add @glasscn"
+                  bun="bunx shadcn add @glasscn"
+                />
+              </PackageManagerProvider>
+            </GlassCard>
+            <div className="absolute -right-8 top-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
+              <span>—</span>
+              <span>—</span>
+              <span>—</span>
             </div>
-            <span className="tracking-[0.2em] uppercase">DESIGNED TO REFLECT YOUR VISION.</span>
+            <div className="absolute -right-8 bottom-0 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
+              <div className="text-[10px]">▼</div>
+              <div className="mt-1">_02</div>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-8 flex items-end justify-between font-mono text-[10px] text-black/40 dark:text-white/40">
+          <div className="flex items-center gap-4">
+            <div className="flex gap-[2px]">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div key={i} className="h-6 w-[2px] bg-black/20 dark:bg-white/20" />
+              ))}
+            </div>
+          </div>
+          <span className="tracking-[0.2em] uppercase">DESIGNED TO REFLECT YOUR VISION.</span>
         </div>
       </section>
 
