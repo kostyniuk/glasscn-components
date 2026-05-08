@@ -79,7 +79,6 @@ const glassSidebarVariableStyles: Record<FrostGlassVariant, string> = {
     "[--sidebar-accent-foreground:oklch(0.145_0_0)]",
     "[--sidebar-border:rgba(255,255,255,0.34)]",
     "[--sidebar-ring:rgba(255,255,255,0.38)]",
-    "dark:[--sidebar:rgba(7,14,31,0.22)]",
     "dark:[--sidebar-foreground:oklch(0.985_0_0)]",
     "dark:[--sidebar-accent:rgba(255,255,255,0.12)]",
     "dark:[--sidebar-accent-foreground:oklch(0.985_0_0)]",

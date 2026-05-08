@@ -32,7 +32,7 @@ export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function
       <div
         ref={ref}
         className={cn(
-          "relative overflow-hidden rounded-full border border-black/10 bg-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5),inset_0_-1px_0_0_rgba(0,0,0,0.05)] dark:border-white/20 dark:bg-[rgba(7,14,31,0.22)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.36),inset_0_0_0_1px_rgba(255,255,255,0.035),inset_-9px_-7px_18px_rgba(0,0,0,0.48)]",
+          "relative overflow-hidden rounded-full border border-black/10 bg-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_0_rgba(255,255,255,0.5),inset_0_-1px_0_0_rgba(0,0,0,0.05)] dark:border-white/20 dark:shadow-[0_18px_60px_rgba(0,0,0,0.36),inset_0_0_0_1px_rgba(255,255,255,0.035),inset_-9px_-7px_18px_rgba(0,0,0,0.48)]",
           className,
         )}
         style={
