@@ -1,4 +1,4 @@
-import { ArrowRightIcon, CopyIcon } from "lucide-react";
+import { ArrowRightIcon, CopyIcon, SquareArrowOutUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -320,7 +320,7 @@ export default function Page() {
                     nativeButton={false}
                     render={<Link href={`/components/${doc.slug}`} />}
                   >
-                    <CopyIcon className="size-3" /> add
+                    <SquareArrowOutUpRightIcon className="size-3" /> Go to
                   </GlassButton>
                 </div>
               </div>
