@@ -19,14 +19,6 @@ export default function Page() {
       {/* Hero Section - Editorial Style */}
       <section className="relative z-10 min-h-screen px-6 pt-24 pb-16 lg:px-12">
         <div className="mx-auto max-w-[1600px]">
-          {/* Top bar with reference codes */}
-          <div className="mb-8 flex items-center justify-between font-mono text-[11px] tracking-[0.2em] text-black/40 uppercase dark:text-white/40">
-            <span>LQ.GLS/01</span>
-            <span>2026</span>
-            <span className="hidden sm:block">MATERIAL FUTURES</span>
-            <span className="hidden md:block">(REF) LG-2401-CC</span>
-          </div>
-
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16">
             {/* Left column - Typography */}
             <div className="flex flex-col justify-between">
