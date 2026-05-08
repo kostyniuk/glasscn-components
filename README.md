@@ -2,7 +2,7 @@
 
 A glassmorphism component library built on top of shadcn/ui. All components are available via the shadcn registry and can be dropped into any Next.js / React project.
 
-<img width="793" height="1035" alt="Screenshot 2026-04-27 at 11 24 04 AM" src="https://github.com/user-attachments/assets/5a0a0065-baba-42d3-94ec-1e41067634eb" />
+<img width="1363" height="956" alt="Screenshot 2026-05-08 at 11 09 38 PM" src="https://github.com/user-attachments/assets/d0ae36e1-fe82-4120-9ee8-64259331505f" />
 
 ## Links
 
