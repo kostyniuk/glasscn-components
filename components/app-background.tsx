@@ -3,9 +3,10 @@ export function AppBackground() {
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 bg-[url('/liquid-glass-hero.png')] bg-cover bg-center bg-no-repeat dark:bg-[url('/image_dark.png')]" />
+      {/* <div className="absolute inset-0 bg-[url('/bg-light.png')] bg-cover bg-center bg-no-repeat dark:bg-[url('/bg-dark.png')]" /> */}
 
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-[#f0f0f0]/85 dark:bg-[#0a0a0a]/80" />
+      <div className="absolute inset-0 bg-[#f0f0f0]/30 dark:bg-[#0a0a0a]/30" />
 
       {/* Subtle grid pattern */}
       <div

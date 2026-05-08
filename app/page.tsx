@@ -197,8 +197,8 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-6 border-t border-black/10 pt-6 md:flex-row md:items-center md:justify-between dark:border-white/10">
-            <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="mt-10 grid gap-6 border-t border-black/10 pt-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16 dark:border-white/10">
+            <div className="flex flex-col gap-4 sm:flex-row lg:items-end">
               <a
                 href="#components"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-black px-8 text-[15px] font-semibold text-white transition-colors hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
@@ -217,25 +217,36 @@ export default function Page() {
               </GlassButton>
             </div>
 
-            <GlassCard
-              glassVariant="liquid-refract"
-              className="w-full max-w-md rounded-2xl border-black/10 p-3 dark:border-white/10"
-            >
-              <div className="mb-2 px-2 pt-1 w-2xl">
-                <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
-                  Quick install
+            <div className="relative flex justify-center">
+              <GlassCard
+                glassVariant="liquid-refract"
+                className="w-full max-w-[620px] rounded-2xl border-black/10 p-3 dark:border-white/10"
+              >
+                <div className="mb-2 px-2 pt-1">
+                  <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
+                    Quick install
+                  </div>
                 </div>
+                <PackageManagerProvider defaultPackageManager="pnpm">
+                  <CodeBlockCommand
+                    className="border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-black/30"
+                    npm="npx shadcn add @glasscn"
+                    pnpm="pnpm dlx shadcn add @glasscn"
+                    yarn="yarn dlx shadcn add @glasscn"
+                    bun="bunx shadcn add @glasscn"
+                  />
+                </PackageManagerProvider>
+              </GlassCard>
+              <div className="absolute -right-8 top-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
+                <span>—</span>
+                <span>—</span>
+                <span>—</span>
               </div>
-              <PackageManagerProvider defaultPackageManager="pnpm">
-                <CodeBlockCommand
-                  className="border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-black/30"
-                  npm="npx shadcn add @glasscn"
-                  pnpm="pnpm dlx shadcn add @glasscn"
-                  yarn="yarn dlx shadcn add @glasscn"
-                  bun="bunx shadcn add @glasscn"
-                />
-              </PackageManagerProvider>
-            </GlassCard>
+              <div className="absolute -right-8 bottom-0 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
+                <div className="text-[10px]">▼</div>
+                <div className="mt-1">_02</div>
+              </div>
+            </div>
           </div>
 
           {/* Bottom bar */}
@@ -290,14 +301,14 @@ export default function Page() {
             return (
               <div
                 key={doc.slug}
-                className={`group flex flex-col rounded-2xl border border-black/10 bg-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/10 dark:hover:border-white/20 ${getColSpan(doc.slug)}`}
+                className={`group flex flex-col rounded-2xl border border-black/100 bg-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/200 dark:hover:border-white/20 ${getColSpan(doc.slug)}`}
               >
                 <div className="relative flex min-h-[160px] items-center justify-center overflow-hidden rounded-xl p-4">
                   <Demo variant="liquid-refract" />
                 </div>
                 <div className="mt-5 flex flex-1 items-center justify-between">
                   <div>
-                    <h3 className="text-[15px] font-semibold tracking-tight text-black dark:text-white">{doc.title}</h3>
+                    <MarkerText><h3 className="text-[15px] font-semibold tracking-tight text-black">{doc.title}</h3></MarkerText>
                     <p className="mt-1 font-mono text-[10px] tracking-[0.1em] text-black/50 uppercase dark:text-white/50">
                       5 variants
                     </p>

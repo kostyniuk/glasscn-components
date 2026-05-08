@@ -16,7 +16,8 @@ export type LiquidGlassProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function LiquidGlass(
-  { blur = 1, refraction = 72, mapSize = 320, bezel = 0.34, className, style, children, ...props },
+  // { blur = 1, refraction = 72, mapSize = 320, bezel = 0.34, className, style, children, ...props },
+  { blur = 2, refraction = 15, mapSize = 320, bezel = 0.34, className, style, children, ...props },
   ref,
 ) {
   const rawId = useId();
