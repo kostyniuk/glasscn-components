@@ -9,25 +9,27 @@ import { LiquidGlass } from "./liquid-glass";
 type GlassButtonProps = React.ComponentProps<typeof Button> & FrostGlassVariantProp;
 
 function GlassButton({ className, glassVariant = "clear", ...props }: GlassButtonProps) {
-  const button = (
+  if (glassVariant === "liquid-refract") {
+    return (
+      <LiquidGlass className={typeof className === "string" ? className : undefined}>
+        <Button
+          data-slot="glass-button"
+          data-glass-variant={glassVariant}
+          className="text-foreground cursor-pointer bg-transparent border-0 shadow-none w-full"
+          {...props}
+        />
+      </LiquidGlass>
+    );
+  }
+
+  return (
     <Button
       data-slot="glass-button"
       data-glass-variant={glassVariant}
-      className={cn(
-        "text-foreground cursor-pointer",
-        glassVariant !== "liquid-refract" && glassVariantStyles[glassVariant],
-        glassVariant === "liquid-refract" && "bg-transparent border-0 shadow-none",
-        className,
-      )}
+      className={cn("text-foreground cursor-pointer", glassVariantStyles[glassVariant], className)}
       {...props}
     />
   );
-
-  if (glassVariant === "liquid-refract") {
-    return <LiquidGlass>{button}</LiquidGlass>;
-  }
-
-  return button;
 }
 
 export { GlassButton };

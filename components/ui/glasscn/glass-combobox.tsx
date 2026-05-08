@@ -23,25 +23,30 @@ function GlassCombobox<T extends readonly string[]>({ glassVariant = "clear", ..
 function GlassComboboxInput({ className, inputClassName, ...props }: React.ComponentProps<typeof ComboboxInput>) {
   const variant = React.useContext(GlassComboboxVariantContext);
 
-  const input = (
+  const baseStyles =
+    "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] dark:border-white/12 dark:bg-black/40";
+
+  if (variant === "liquid-refract") {
+    return (
+      <LiquidGlass className={cn("rounded-lg", className)}>
+        <ComboboxInput
+          data-slot="glass-combobox-input"
+          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          inputClassName={cn("placeholder:text-foreground/75", inputClassName)}
+          {...props}
+        />
+      </LiquidGlass>
+    );
+  }
+
+  return (
     <ComboboxInput
       data-slot="glass-combobox-input"
-      className={cn(
-        variant !== "liquid-refract" && glassVariantStyles[variant],
-        variant === "liquid-refract" && "bg-transparent border-0 shadow-none",
-        "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] dark:border-white/12 dark:bg-black/40",
-        className,
-      )}
+      className={cn(glassVariantStyles[variant], baseStyles, className)}
       inputClassName={cn("placeholder:text-foreground/75", inputClassName)}
       {...props}
     />
   );
-
-  if (variant === "liquid-refract") {
-    return <LiquidGlass className="rounded-lg">{input}</LiquidGlass>;
-  }
-
-  return input;
 }
 
 function GlassComboboxContent({ className, ...props }: React.ComponentProps<typeof ComboboxContent>) {

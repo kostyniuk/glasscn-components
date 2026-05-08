@@ -23,24 +23,28 @@ function GlassSelect({ glassVariant = "clear", ...props }: GlassSelectProps) {
 function GlassSelectTrigger({ className, ...props }: React.ComponentProps<typeof SelectTrigger>) {
   const variant = React.useContext(GlassSelectVariantContext);
 
-  const trigger = (
+  const baseStyles =
+    "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] data-placeholder:text-foreground/75 dark:data-placeholder:text-foreground/60 dark:border-white/12 dark:bg-black/40";
+
+  if (variant === "liquid-refract") {
+    return (
+      <LiquidGlass className={cn("rounded-lg", className)}>
+        <SelectTrigger
+          data-slot="glass-select-trigger"
+          className={cn("bg-transparent border-0 shadow-none", baseStyles)}
+          {...props}
+        />
+      </LiquidGlass>
+    );
+  }
+
+  return (
     <SelectTrigger
       data-slot="glass-select-trigger"
-      className={cn(
-        variant !== "liquid-refract" && glassVariantStyles[variant],
-        variant === "liquid-refract" && "bg-transparent border-0 shadow-none",
-        "border-white/40 bg-white/40 text-foreground shadow-[0_8px_30px_rgba(255,255,255,0.08)] data-placeholder:text-foreground/75 dark:data-placeholder:text-foreground/60 dark:border-white/12 dark:bg-black/40",
-        className,
-      )}
+      className={cn(glassVariantStyles[variant], baseStyles, className)}
       {...props}
     />
   );
-
-  if (variant === "liquid-refract") {
-    return <LiquidGlass className="rounded-lg">{trigger}</LiquidGlass>;
-  }
-
-  return trigger;
 }
 
 function GlassSelectContent({ className, ...props }: React.ComponentProps<typeof SelectContent>) {

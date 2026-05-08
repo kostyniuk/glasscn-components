@@ -227,7 +227,7 @@ function GlassSidebar({
   );
 
   if (glassVariant === "liquid-refract" && collapsible === "none") {
-    return <LiquidGlass className="rounded-[1.75rem]">{sidebar}</LiquidGlass>;
+    return <LiquidGlass className={cn("rounded-[1.75rem]", className)}>{sidebar}</LiquidGlass>;
   }
 
   return sidebar;

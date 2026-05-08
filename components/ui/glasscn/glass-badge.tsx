@@ -9,25 +9,27 @@ import { LiquidGlass } from "./liquid-glass";
 type GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;
 
 function GlassBadge({ className, glassVariant = "clear", ...props }: GlassBadgeProps) {
-  const badge = (
+  if (glassVariant === "liquid-refract") {
+    return (
+      <LiquidGlass className={cn("inline-flex rounded-full", className)}>
+        <Badge
+          data-slot="glass-badge"
+          data-glass-variant={glassVariant}
+          className="text-foreground bg-transparent border-0 shadow-none"
+          {...props}
+        />
+      </LiquidGlass>
+    );
+  }
+
+  return (
     <Badge
       data-slot="glass-badge"
       data-glass-variant={glassVariant}
-      className={cn(
-        "text-foreground",
-        glassVariant !== "liquid-refract" && glassVariantStyles[glassVariant],
-        glassVariant === "liquid-refract" && "bg-transparent border-0 shadow-none",
-        className,
-      )}
+      className={cn("text-foreground", glassVariantStyles[glassVariant], className)}
       {...props}
     />
   );
-
-  if (glassVariant === "liquid-refract") {
-    return <LiquidGlass className="inline-flex rounded-full">{badge}</LiquidGlass>;
-  }
-
-  return badge;
 }
 
 export { GlassBadge };
