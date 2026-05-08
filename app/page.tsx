@@ -60,6 +60,7 @@ export default function Page() {
                 <div className="mb-2 flex items-center gap-2">
                   <span className="h-[2px] w-4 bg-blue-500" />
                   <span className="h-[2px] w-4 bg-blue-500" />
+                  <span className="h-[2px] w-4 bg-blue-500" />
                 </div>
                 <div className="mb-4 font-mono text-[11px] font-semibold tracking-wider text-black uppercase dark:text-white">
                   EVERY CURVE.
@@ -191,34 +192,10 @@ export default function Page() {
                 </div>
                 <div className="mt-2">_01</div>
               </div>
-
-              {/* Bottom right keywords */}
-              <div className="absolute right-0 bottom-8 hidden text-right font-mono text-[13px] font-bold tracking-[0.15em] text-black uppercase lg:block dark:text-white">
-                <div>PRECISE.</div>
-                <div>DURABLE.</div>
-                <div>ELEVATED.</div>
-              </div>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="mt-16 flex items-end justify-between border-t border-black/10 pt-6 font-mono text-[10px] text-black/40 dark:border-white/10 dark:text-white/40">
-            <div className="flex items-center gap-4">
-              <div className="flex gap-[2px]">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <div key={i} className="h-6 w-[2px] bg-black/20 dark:bg-white/20" />
-                ))}
-              </div>
-            </div>
-            <span className="tracking-[0.2em] uppercase">DESIGNED TO REFLECT YOUR VISION.</span>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 px-6 py-16 lg:px-12">
-        <div className="mx-auto max-w-[1600px]">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="mt-10 flex flex-col gap-6 border-t border-black/10 pt-6 md:flex-row md:items-center md:justify-between dark:border-white/10">
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
                 href="#components"
@@ -242,7 +219,7 @@ export default function Page() {
               glassVariant="liquid-refract"
               className="w-full max-w-md rounded-2xl border-black/10 p-3 dark:border-white/10"
             >
-              <div className="mb-2 px-2 pt-1">
+              <div className="mb-2 px-2 pt-1 w-2xl">
                 <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
                   Quick install
                 </div>
@@ -257,6 +234,18 @@ export default function Page() {
                 />
               </PackageManagerProvider>
             </GlassCard>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="mt-8 flex items-end justify-between font-mono text-[10px] text-black/40 dark:text-white/40">
+            <div className="flex items-center gap-4">
+              <div className="flex gap-[2px]">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <div key={i} className="h-6 w-[2px] bg-black/20 dark:bg-white/20" />
+                ))}
+              </div>
+            </div>
+            <span className="tracking-[0.2em] uppercase">DESIGNED TO REFLECT YOUR VISION.</span>
           </div>
         </div>
       </section>
