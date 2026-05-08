@@ -1,4 +1,4 @@
-import { ArrowRightIcon, CopyIcon, SquareArrowOutUpRightIcon } from "lucide-react";
+import { ArrowRightIcon, CopyIcon, Maximize2Icon, MinusIcon, SquareArrowOutUpRightIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -84,6 +84,17 @@ export default function Page() {
                 glassVariant="liquid-refract"
                 className="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10 sm:px-3 sm:py-6"
               >
+                <div className="absolute left-4 top-4 flex items-center gap-1.5">
+                  <span className="group/close flex size-3 items-center justify-center rounded-full bg-[#FF5F56]">
+                    <XIcon className="size-2 text-[#4D0000] opacity-0 transition-opacity group-hover/close:opacity-100" strokeWidth={3} />
+                  </span>
+                  <span className="group/min flex size-3 items-center justify-center rounded-full bg-[#FFBD2E]">
+                    <MinusIcon className="size-2 text-[#995700] opacity-0 transition-opacity group-hover/min:opacity-100" strokeWidth={3} />
+                  </span>
+                  <span className="group/max flex size-3 items-center justify-center rounded-full bg-[#27C93F]">
+                    <Maximize2Icon className="size-2 text-[#006500] opacity-0 transition-opacity group-hover/max:opacity-100" strokeWidth={3} />
+                  </span>
+                </div>
                 <CardHeader className="gap-2 px-6 sm:px-8">
                   <div className="flex items-center justify-between gap-4">
                     <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
@@ -117,7 +128,7 @@ export default function Page() {
                         <FieldLabel>GitHub</FieldLabel>
                         <Item
                           render={
-                            <Link href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />
+                            <Link href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer" />
                           }
                           variant="outline"
                           className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
@@ -126,7 +137,7 @@ export default function Page() {
                             <GitHubLogo className="size-4" />
                           </ItemMedia>
                           <ItemContent>
-                            <ItemTitle>kostyniuk/glasscn</ItemTitle>
+                            <ItemTitle>kostyniuk/glasscn-components</ItemTitle>
                             <ItemDescription>Open source registry components for shadcn/ui.</ItemDescription>
                           </ItemContent>
                         </Item>
@@ -209,7 +220,7 @@ export default function Page() {
               size="lg"
               className="h-12 gap-2 w-64 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white p-0"
               nativeButton={false}
-              render={<a href="https://github.com/kostyniuk/glasscn" target="_blank" rel="noreferrer" />}
+              render={<a href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer" />}
             >
               <GitHubLogo className="size-4" />
               View on GitHub
@@ -460,7 +471,7 @@ export default function Page() {
                   {
                     t: "Resources",
                     l: [
-                      { label: "GitHub", href: "https://github.com/kostyniuk/glasscn" },
+                      { label: "GitHub", href: "https://github.com/kostyniuk/glasscn-components" },
                       { label: "shadcn registry", href: "https://ui.shadcn.com/docs/registry" },
                       { label: "Base UI", href: "https://base-ui.com" },
                     ],
