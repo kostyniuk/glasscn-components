@@ -431,9 +431,11 @@ export default function Page() {
           <div className="rounded-2xl border border-black/10 bg-transparent p-8 md:p-10 dark:border-white/5">
             <div className="flex flex-col justify-between gap-10 md:flex-row">
               <div className="max-w-sm">
-                <div className="font-[family-name:var(--font-display)] text-[2rem] tracking-[-0.01em] text-black dark:text-white">
-                  BUILD WITH LIGHT.
-                </div>
+                <MarkerText>
+                  <div className="font-[family-name:var(--font-display)] text-[2rem] tracking-[-0.01em] text-black">
+                    BUILD WITH LIGHT.
+                  </div>
+                </MarkerText>
                 <div className="mt-4 text-[13px] leading-relaxed text-black/50 dark:text-white/50">
                   Open source. MIT licensed. Made by{" "}
                   <a
