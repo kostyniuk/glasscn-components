@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description,
-    openGraph: { title: `${title} | glasscn`, description },
-    twitter: { title: `${title} | glasscn`, description },
+    openGraph: { title: `${title} - glasscn`, description },
+    twitter: { title: `${title} - glasscn`, description },
   };
 }
 

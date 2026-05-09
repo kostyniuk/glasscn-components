@@ -20,7 +20,7 @@ const siteDescription =
 
 export const metadata: Metadata = {
   applicationName: "glasscn",
-  title: { default: "glasscn - Liquid Glass Components for shadcn/ui", template: "%s | glasscn" },
+  title: { default: "glasscn - Liquid Glass Components for shadcn/ui", template: "%s - glasscn" },
   description: siteDescription,
   keywords: [
     "glasscn",

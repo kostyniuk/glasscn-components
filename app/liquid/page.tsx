@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
   openGraph: {
-    title: "Liquid Glass | glasscn",
+    title: "Liquid Glass - glasscn",
     description:
       "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
   },
   twitter: {
-    title: "Liquid Glass | glasscn",
+    title: "Liquid Glass - glasscn",
     description:
       "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
   },
