@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-popover",
+  "title": "Glass Popover",
+  "description": "Glass Popover with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/popover",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-popover.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

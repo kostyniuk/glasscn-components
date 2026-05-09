@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "Popover",
+  "description": "A floating content panel that appears when triggered",
+  "registryDependencies": ["@glasscn/utils"],
+  "dependencies": ["@base-ui/react"],
+  "files": [
+    {
+      "path": "components/ui/popover.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

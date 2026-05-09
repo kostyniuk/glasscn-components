@@ -6,6 +6,7 @@ import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
+import { PopoverDemo } from "@/components/demo/popover-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
@@ -193,6 +194,45 @@ export function ItemDemo() {
   )
 }`,
     api: [glassVariantFor("GlassItem"), inheritedProps("GlassItem", "React.ComponentProps<typeof Item>")],
+  },
+  {
+    slug: "glass-popover",
+    registryName: "glass-popover",
+    title: "Glass Popover",
+    description: "A floating content panel with glass surface treatments.",
+    installName: "@glasscn/glass-popover",
+    importPath: "@/components/ui/glasscn/glass-popover",
+    Demo: PopoverDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { Button } from "@/components/ui/button"
+import { GlassPopoverContent } from "@/components/ui/glasscn/glass-popover"
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="outline" />}>
+        Open Popover
+      </PopoverTrigger>
+      <GlassPopoverContent glassVariant="liquid">
+        <PopoverHeader>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description text here.</PopoverDescription>
+        </PopoverHeader>
+      </GlassPopoverContent>
+    </Popover>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassPopoverContent"),
+      inheritedProps("GlassPopoverContent", "React.ComponentProps<typeof PopoverContent>"),
+    ],
   },
   {
     slug: "glass-alert",
