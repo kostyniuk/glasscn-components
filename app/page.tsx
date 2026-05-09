@@ -3,13 +3,13 @@ import Link from "next/link";
 import React from "react";
 
 import { CopyButton } from "@/components/custom/copy-button";
+import { HeroGlassPill } from "@/components/home/hero-glass-pill";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { Input } from "@/components/ui/input";
@@ -27,8 +27,9 @@ export default function Page() {
       {/* Hero Section - Editorial Style */}
       <section className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-16">
-          {/* Left column - Typography */}
-          <div className="flex flex-col justify-between">
+          {/* Left column - Typography with draggable glass pill */}
+          <div className="relative flex flex-col justify-between">
+            <HeroGlassPill className="rounded-full" />
             <div>
               <p className="mb-6 font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] text-black">
                 <MarkerText>glasscn</MarkerText>
@@ -171,20 +172,11 @@ export default function Page() {
                       </div>
                       <Field>
                         <FieldLabel>Variants</FieldLabel>
-                        {/* <ButtonGroup className="w-full flex-wrap rounded-xl border border-black/10 bg-black/[0.03] p-1.5 dark:border-white/10 dark:bg-white/[0.04]">
-                            {["clear", "frosted", "subtle", "liquid", "refract"].map((variant, index) => (
-                              <Button
-                                key={variant}
-                                type="button"
-                                size="sm"
-                              >
-                                {variant}
-                              </Button>
-                            ))}
-                          </ButtonGroup> */}
                         <ButtonGroup>
                           {["clear", "frosted", "subtle", "liquid", "refract"].map((variant) => (
-                            <Button variant="outline">{variant}</Button>
+                            <Button key={variant} variant="outline">
+                              {variant}
+                            </Button>
                           ))}
                         </ButtonGroup>
                         <FieldDescription>
