@@ -11,6 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-radio-group.tsx",
+      "content": "\"use client\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { RadioGroupItem } from \"../radio-group\";\n\ntype GlassRadioGroupItemProps = React.ComponentProps<typeof RadioGroupItem> & FrostGlassVariantProp;\n\nfunction GlassRadioGroupItem({ className, glassVariant = \"liquid-refract\", ...props }: GlassRadioGroupItemProps) {\n  const effectiveVariant = glassVariant === \"liquid-refract\" ? \"subtle\" : glassVariant;\n\n  return (\n    <RadioGroupItem\n      data-slot=\"glass-radio-group-item\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[effectiveVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassRadioGroupItem };\n",
       "type": "registry:component"
     }
   ],

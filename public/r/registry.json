@@ -372,6 +372,45 @@
         }
       ]
     },
+        {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "registryDependencies": ["@glasscn/utils", "@glasscn/separator"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
     {
       "name": "tooltip",
       "type": "registry:ui",
@@ -555,6 +594,108 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-code-block-command.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+        {
+      "name": "glass-button-group",
+      "type": "registry:component",
+      "title": "Glass Button Group",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button-group",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Button Group with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-button-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-input",
+      "type": "registry:component",
+      "title": "Glass Input",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/input",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Input with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-item",
+      "type": "registry:component",
+      "title": "Glass Item",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/item",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Item with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-item.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-popover",
+      "type": "registry:component",
+      "title": "Glass Popover",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/popover",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Popover with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-radio-group",
+      "type": "registry:component",
+      "title": "Glass Radio Group",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/radio-group",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Radio Group with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-radio-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-skeleton",
+      "type": "registry:component",
+      "title": "Glass Skeleton",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/skeleton",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Skeleton with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-skeleton.tsx",
           "type": "registry:component"
         }
       ]

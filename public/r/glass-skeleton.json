@@ -11,6 +11,7 @@
   "files": [
     {
       "path": "components/ui/glasscn/glass-skeleton.tsx",
+      "content": "\"use client\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Skeleton } from \"../skeleton\";\nimport { LiquidGlass } from \"./liquid-glass\";\n\ntype GlassSkeletonProps = React.ComponentProps<typeof Skeleton> & FrostGlassVariantProp;\n\nfunction GlassSkeleton({ className, glassVariant = \"liquid-refract\", ...props }: GlassSkeletonProps) {\n  if (glassVariant === \"liquid-refract\") {\n    return (\n      <LiquidGlass className={cn(\"rounded-md\", className)}>\n        <Skeleton\n          data-slot=\"glass-skeleton\"\n          data-glass-variant={glassVariant}\n          className={cn(\"bg-transparent\", className)}\n          {...props}\n        />\n      </LiquidGlass>\n    );\n  }\n\n  return (\n    <Skeleton\n      data-slot=\"glass-skeleton\"\n      data-glass-variant={glassVariant}\n      className={cn(glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassSkeleton };\n",
       "type": "registry:component"
     }
   ],
