@@ -15,7 +15,7 @@ const separatorVariantStyles: Record<FrostGlassVariant, string> = {
 
 type GlassSeparatorProps = React.ComponentProps<typeof Separator> & FrostGlassVariantProp;
 
-function GlassSeparator({ className, glassVariant = "clear", ...props }: GlassSeparatorProps) {
+function GlassSeparator({ className, glassVariant = "liquid-refract", ...props }: GlassSeparatorProps) {
   return (
     <Separator
       data-slot="glass-separator"

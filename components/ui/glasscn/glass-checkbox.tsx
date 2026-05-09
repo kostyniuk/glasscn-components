@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassCheckboxProps = React.ComponentProps<typeof Checkbox> & FrostGlassVariantProp;
 
-function GlassCheckbox({ className, glassVariant = "clear", ...props }: GlassCheckboxProps) {
+function GlassCheckbox({ className, glassVariant = "liquid-refract", ...props }: GlassCheckboxProps) {
   const baseStyles =
     "border-white/40 bg-white/30 text-black shadow-sm dark:border-white/12 dark:bg-black/30 dark:text-white data-checked:border-white/30 data-checked:bg-white/70 data-checked:text-black dark:data-checked:border-white/20 dark:data-checked:bg-white/20";
 

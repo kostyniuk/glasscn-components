@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassAlertProps = React.ComponentProps<typeof Alert> & FrostGlassVariantProp;
 
-function GlassAlert({ className, glassVariant = "clear", ...props }: GlassAlertProps) {
+function GlassAlert({ className, glassVariant = "liquid-refract", ...props }: GlassAlertProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass className={cn("rounded-xl", className)}>

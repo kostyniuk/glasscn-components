@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassButtonProps = React.ComponentProps<typeof Button> & FrostGlassVariantProp;
 
-function GlassButton({ className, glassVariant = "clear", ...props }: GlassButtonProps) {
+function GlassButton({ className, glassVariant = "liquid-refract", ...props }: GlassButtonProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass>

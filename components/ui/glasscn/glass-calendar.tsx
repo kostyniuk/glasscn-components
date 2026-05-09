@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassCalendarProps = React.ComponentProps<typeof Calendar> & FrostGlassVariantProp;
 
-function GlassCalendar({ className, glassVariant = "clear", ...props }: GlassCalendarProps) {
+function GlassCalendar({ className, glassVariant = "liquid-refract", ...props }: GlassCalendarProps) {
   const baseStyles =
     "data-[slot=glass-calendar]:bg-background/55 dark:data-[slot=glass-calendar]:bg-background/35 shadow-xl";
 

@@ -10,7 +10,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassPopoverContentProps = React.ComponentProps<typeof PopoverContent> & FrostGlassVariantProp;
 
-function GlassPopoverContent({ className, glassVariant = "clear", ...props }: GlassPopoverContentProps) {
+function GlassPopoverContent({ className, glassVariant = "liquid-refract", ...props }: GlassPopoverContentProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <PopoverPrimitive.Portal>

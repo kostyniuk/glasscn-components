@@ -10,7 +10,7 @@ type GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;
 
 type GlassCardFooterProps = React.ComponentProps<typeof CardFooter> & FrostGlassVariantProp;
 
-function GlassCard({ className, glassVariant = "clear", ...props }: GlassCardProps) {
+function GlassCard({ className, glassVariant = "liquid-refract", ...props }: GlassCardProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass className={cn("rounded-2xl", className)}>
@@ -42,7 +42,7 @@ const footerVariantStyles: Record<FrostGlassVariant, string> = {
   "liquid-refract": "bg-white/10 dark:bg-white/[0.04]",
 };
 
-function GlassCardFooter({ className, glassVariant = "clear", ...props }: GlassCardFooterProps) {
+function GlassCardFooter({ className, glassVariant = "liquid-refract", ...props }: GlassCardFooterProps) {
   return (
     <CardFooter
       data-glass-variant={glassVariant}

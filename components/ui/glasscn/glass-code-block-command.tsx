@@ -39,7 +39,7 @@ const tabStyles =
 const activeTabStyles =
   "[&_[data-slot=code-block-command-tab][data-active=true]]:border-foreground [&_[data-slot=code-block-command-tab][data-active=true]]:text-foreground dark:[&_[data-slot=code-block-command-tab][data-active=true]]:border-white/80 dark:[&_[data-slot=code-block-command-tab][data-active=true]]:text-white";
 
-export function GlassCodeBlockCommand({ glassVariant = "clear", className, ...props }: GlassCodeBlockCommandProps) {
+export function GlassCodeBlockCommand({ glassVariant = "liquid-refract", className, ...props }: GlassCodeBlockCommandProps) {
   const badgeVariant = glassVariant === "liquid-refract" ? "clear" : glassVariant;
   const glassBadge = React.useCallback(
     (badgeProps: React.ComponentProps<typeof GlassBadge>) => <GlassBadge glassVariant={badgeVariant} {...badgeProps} />,

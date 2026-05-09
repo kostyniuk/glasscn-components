@@ -7,7 +7,7 @@ import { RadioGroupItem } from "../radio-group";
 
 type GlassRadioGroupItemProps = React.ComponentProps<typeof RadioGroupItem> & FrostGlassVariantProp;
 
-function GlassRadioGroupItem({ className, glassVariant = "clear", ...props }: GlassRadioGroupItemProps) {
+function GlassRadioGroupItem({ className, glassVariant = "liquid-refract", ...props }: GlassRadioGroupItemProps) {
   const effectiveVariant = glassVariant === "liquid-refract" ? "subtle" : glassVariant;
 
   return (

@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassSkeletonProps = React.ComponentProps<typeof Skeleton> & FrostGlassVariantProp;
 
-function GlassSkeleton({ className, glassVariant = "clear", ...props }: GlassSkeletonProps) {
+function GlassSkeleton({ className, glassVariant = "liquid-refract", ...props }: GlassSkeletonProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass className={cn("rounded-md", className)}>

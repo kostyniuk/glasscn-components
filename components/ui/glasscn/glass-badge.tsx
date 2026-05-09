@@ -8,7 +8,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassBadgeProps = React.ComponentProps<typeof Badge> & FrostGlassVariantProp;
 
-function GlassBadge({ className, glassVariant = "clear", ...props }: GlassBadgeProps) {
+function GlassBadge({ className, glassVariant = "liquid-refract", ...props }: GlassBadgeProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass className={cn("inline-flex rounded-full", className)}>

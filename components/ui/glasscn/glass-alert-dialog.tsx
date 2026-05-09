@@ -22,7 +22,7 @@ type GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogConte
 
 function GlassAlertDialogContent({
   className,
-  glassVariant = "clear",
+  glassVariant = "liquid-refract",
   children,
   ...props
 }: GlassAlertDialogContentProps) {

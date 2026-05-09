@@ -170,7 +170,7 @@ function getGlassSidebarStandaloneClasses(glassVariant: FrostGlassVariant) {
 function GlassSidebar({
   collapsible = "offcanvas",
   variant = "sidebar",
-  glassVariant = "clear",
+  glassVariant = "liquid-refract",
   className,
   dir,
   side = "left",

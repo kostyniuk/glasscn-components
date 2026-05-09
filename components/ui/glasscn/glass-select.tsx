@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 import { Select, SelectContent, SelectTrigger } from "../select";
 import { LiquidGlass } from "./liquid-glass";
 
-const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("clear");
+const GlassSelectVariantContext = React.createContext<FrostGlassVariant>("liquid-refract");
 
 type GlassSelectProps = React.ComponentProps<typeof Select> & FrostGlassVariantProp;
 
-function GlassSelect({ glassVariant = "clear", ...props }: GlassSelectProps) {
+function GlassSelect({ glassVariant = "liquid-refract", ...props }: GlassSelectProps) {
   return (
     <GlassSelectVariantContext.Provider value={glassVariant}>
       <Select data-slot="glass-select" {...props} />

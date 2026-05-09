@@ -10,7 +10,7 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassItemProps = React.ComponentProps<typeof Item> & FrostGlassVariantProp;
 
-function GlassItem({ className, glassVariant = "clear", ...props }: GlassItemProps) {
+function GlassItem({ className, glassVariant = "liquid-refract", ...props }: GlassItemProps) {
   if (glassVariant === "liquid-refract") {
     return (
       <LiquidGlass className="rounded-2xl">
