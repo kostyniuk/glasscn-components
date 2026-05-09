@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { CheckIcon, CopyIcon, WandSparklesIcon } from "lucide-react";
+import { WandSparklesIcon } from "lucide-react";
 
+import { CopyButton } from "@/components/custom/copy-button";
 import { type Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { PackageManagerIcon } from "@/components/ui/icons/package-manager-icons";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
 import type { PackageManager } from "@/lib/package-manager";
 
@@ -87,7 +86,6 @@ export function CodeBlockCommand({
   badgeComponent: BadgeComponent,
 }: CodeBlockCommandProps) {
   const { packageManager, setPackageManager } = usePackageManager();
-  const { state, copy } = useCopyToClipboard({ onCopySuccess, onCopyError });
 
   const commands: Record<PackageManager, string | undefined> = { npm, pnpm, yarn, bun };
 
@@ -173,16 +171,14 @@ export function CodeBlockCommand({
         </pre>
       </div>
 
-      <Button
+      <CopyButton
         data-slot="code-block-command-copy"
-        variant="ghost"
         size="icon-sm"
         className="absolute top-2 right-2"
-        onClick={() => void copy(activeContent)}
-        aria-label="Copy"
-      >
-        {state === "done" ? <CheckIcon /> : <CopyIcon />}
-      </Button>
+        text={activeContent}
+        onCopySuccess={onCopySuccess}
+        onCopyError={onCopyError}
+      />
     </div>
   );
 }

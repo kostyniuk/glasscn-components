@@ -1,8 +1,9 @@
 "use client";
 
-import { CheckIcon, ChevronUpIcon, CopyIcon } from "lucide-react";
+import { ChevronUpIcon } from "lucide-react";
 import * as React from "react";
 
+import { CopyButton } from "@/components/custom/copy-button";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassSeparator } from "@/components/ui/glasscn/glass-separator";
@@ -25,13 +26,6 @@ export function ComponentPreviewTabs({
   code: string;
 }) {
   const [codeVisible, setCodeVisible] = React.useState(false);
-  const [hasCopied, setHasCopied] = React.useState(false);
-
-  const onCopy = React.useCallback(() => {
-    navigator.clipboard.writeText(code);
-    setHasCopied(true);
-    setTimeout(() => setHasCopied(false), 2000);
-  }, [code]);
 
   return (
     <Card
@@ -68,17 +62,12 @@ export function ComponentPreviewTabs({
                   <span className="sr-only">Collapse code</span>
                 </GlassButton>
               )}
-              <GlassButton
-                type="button"
+              <CopyButton
+                text={code}
                 size="icon"
                 variant="outline"
-                glassVariant="liquid-refract"
-                className={cn("h-7 w-7 text-foreground/80 hover:text-foreground", !codeVisible && "bg-background/50")}
-                onClick={onCopy}
-              >
-                {hasCopied ? <CheckIcon className="h-3.5 w-3.5" /> : <CopyIcon className="h-3.5 w-3.5" />}
-                <span className="sr-only">Copy code</span>
-              </GlassButton>
+                className={cn("h-7 w-7 text-foreground/80 hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5", !codeVisible && "bg-background/50")}
+              />
             </div>
             {codeVisible ? (
               <pre className="max-h-96 overflow-auto p-4 pr-16 text-sm leading-6">

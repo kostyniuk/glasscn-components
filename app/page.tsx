@@ -1,7 +1,9 @@
-import { ArrowRightIcon, CopyIcon, Maximize2Icon, MinusIcon, SquareArrowOutUpRightIcon, XIcon } from "lucide-react";
+import { ArrowRightIcon, Maximize2Icon, MinusIcon, SquareArrowOutUpRightIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+import { CopyButton } from "@/components/custom/copy-button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -96,17 +98,9 @@ export default function Page() {
                   </span>
                 </div>
                 <CardHeader className="gap-2 px-6 sm:px-8">
-                  <div className="flex items-center justify-between gap-4">
-                    <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
-                      The best Apple inspired shadcn/ui library
-                    </CardTitle>
-                    <GlassBadge
-                      glassVariant="subtle"
-                      className="h-8 shrink-0 rounded-full px-3 font-mono text-[10px] tracking-[0.16em] uppercase"
-                    >
-                      2026
-                    </GlassBadge>
-                  </div>
+                  <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
+                    The best Apple inspired <Link href="/" className="inline-flex align-middle mx-1"><Avatar className="size-6"><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar></Link> library
+                  </CardTitle>
                   <CardDescription className="text-[15px] leading-relaxed text-black/55 dark:text-white/55">
                     Liquid glass components with registry-first ownership, theme-aware variants, and a native-feeling
                     shadcn workflow.
@@ -409,13 +403,12 @@ export default function Page() {
                 npx shadcn add <span className="text-black/60 dark:text-white/60">@glasscn/glass-button</span>
               </span>
             </div>
-            <GlassButton
-              glassVariant="liquid-refract"
+            <CopyButton
+              text="npx shadcn add @glasscn/glass-button"
               size="sm"
-              className="h-9 rounded-xl border-black/10 px-4 font-mono text-[13px] text-black dark:border-white/10 dark:text-white"
-            >
-              <CopyIcon className="mr-2 size-[14px]" /> copy
-            </GlassButton>
+              variant="outline"
+              className="h-9 rounded-xl border-black/10 bg-white/50 px-4 font-mono text-[13px] text-black dark:border-white/10 dark:bg-white/10 dark:text-white"
+            />
           </div>
         </GlassCard>
 
