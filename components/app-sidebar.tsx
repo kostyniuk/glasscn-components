@@ -30,6 +30,7 @@ const data = {
         { title: "Code Block Command", url: "/components/glass-code-block-command" },
         { title: "Combobox", url: "/components/glass-combobox" },
         { title: "Input", url: "/components/glass-input" },
+        { title: "Item", url: "/components/glass-item" },
         { title: "Select", url: "/components/glass-select" },
         { title: "Separator", url: "/components/glass-separator" },
         { title: "Sidebar", url: "/components/glass-sidebar" },

@@ -205,23 +205,6 @@
       ]
     },
     {
-      "name": "glass-input",
-      "type": "registry:component",
-      "title": "Glass Input",
-      "registryDependencies": [
-        "@glasscn/utils",
-        "@glasscn/input",
-        "@glasscn/glass-variants"
-      ],
-      "description": "Glass Input with five variants: clear, frosted, subtle, liquid, and liquid-refract",
-      "files": [
-        {
-          "path": "components/ui/glasscn/glass-input.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "glass-combobox",
       "type": "registry:component",
       "title": "Glass Combobox",

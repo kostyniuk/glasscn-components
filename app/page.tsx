@@ -10,10 +10,10 @@ import { ButtonGroup } from "@/components/ui/button-group";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Item, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemMedia } from "@/components/ui/item";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { Input } from "@/components/ui/input";
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs } from "@/lib/component-docs";
 
@@ -138,6 +138,7 @@ export default function Page() {
                               rel="noreferrer"
                             />
                           }
+                          glassVariant="liquid-refract"
                           variant="outline"
                           className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
                         >

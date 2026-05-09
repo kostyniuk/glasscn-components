@@ -5,6 +5,7 @@ import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
 import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { InputDemo } from "@/components/demo/input-demo";
+import { ItemDemo } from "@/components/demo/item-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
@@ -160,6 +161,38 @@ export function InputDemo() {
   return <GlassInput glassVariant="liquid" placeholder="Enter text..." />
 }`,
     api: [glassVariantFor("GlassInput"), inheritedProps("GlassInput", "React.ComponentProps<typeof Input>")],
+  },
+  {
+    slug: "glass-item",
+    registryName: "glass-item",
+    title: "Glass Item",
+    description: "A versatile list item with glass surface treatments.",
+    installName: "@glasscn/glass-item",
+    importPath: "@/components/ui/glasscn/glass-item",
+    Demo: ItemDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import { BadgeCheckIcon } from "lucide-react"
+
+import {
+  GlassItem,
+  ItemContent,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/glasscn/glass-item"
+
+export function ItemDemo() {
+  return (
+    <GlassItem glassVariant="liquid" size="sm">
+      <ItemMedia>
+        <BadgeCheckIcon className="size-5" />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Your profile has been verified.</ItemTitle>
+      </ItemContent>
+    </GlassItem>
+  )
+}`,
+    api: [glassVariantFor("GlassItem"), inheritedProps("GlassItem", "React.ComponentProps<typeof Item>")],
   },
   {
     slug: "glass-alert",
