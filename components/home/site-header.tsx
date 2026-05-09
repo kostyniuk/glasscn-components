@@ -67,11 +67,11 @@ export async function SiteHeader() {
                 Components
               </Button>
             </Link>
-            {/* <Link href="/liquid">
+            <Link href="/playground">
               <Button variant="ghost" className="px-2.5 sm:px-3">
-                Liquid
+                Playground
               </Button>
-            </Link> */}
+            </Link>
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5">
             <ThemeToggle />
