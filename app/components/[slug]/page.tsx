@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const title = `${doc.title} Docs`;
-  const description = `${doc.description} See install commands, API props, live previews, and glass variants.`;
+  const description = `${doc.description} See install commands, API props, live previews, and variants.`;
 
   return {
     title,
@@ -140,10 +140,11 @@ function ApiTable({ api }: { api: ApiProp[] }) {
 
 function VariantsPreview({ doc }: { doc: ComponentDoc }) {
   const Demo = doc.Demo;
+  const variants = doc.variants ?? glassVariants;
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      {glassVariants.map((variant) => (
+    <div className={cn("grid grid-cols-1 gap-4 md:grid-cols-2", doc.variantsGridClassName)}>
+      {variants.map((variant) => (
         <Card key={variant} variant="outline" className="bg-transparent p-4">
           <div>
             <GlassBadge glassVariant="clear" className="mb-3 px-2.5 py-1 font-mono text-xs">

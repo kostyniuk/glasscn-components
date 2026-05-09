@@ -1,4 +1,4 @@
-import { ArrowRightIcon, BoxesIcon, CommandIcon, Layers3Icon, SearchIcon } from "lucide-react";
+import { ArrowRightIcon, BoxesIcon, CommandIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import { HighlightText } from "@/components/ui/highlight-text";
-import { getComponentDocs, glassVariants } from "@/lib/component-docs";
+import { getCatalogComponentDocs, glassVariants } from "@/lib/component-docs";
 
 export const metadata: Metadata = {
   title: "Component Registry",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const docs = getComponentDocs();
+  const docs = getCatalogComponentDocs();
 
   return (
     <main className="relative min-h-svh px-4 pt-24 pb-24 md:px-8">
@@ -154,7 +154,7 @@ export default function Page() {
                   className="group flex min-h-64 flex-col bg-transparent p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
                 >
                   <div className="mb-6 flex min-h-32 flex-1 items-center justify-center overflow-hidden rounded-xl p-4">
-                    <Demo variant="liquid-refract" />
+                    <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
                   </div>
                   <div className="flex flex-col justify-between">
                     <div>

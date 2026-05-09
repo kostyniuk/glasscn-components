@@ -19,9 +19,11 @@ import { PackageManagerProvider } from "@/components/ui/code-block-command";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
+import { HighlightText } from "@/components/ui/highlight-text";
 import type { FrostGlassVariant } from "@/lib/glass-variants";
 
 export const glassVariants = ["clear", "frosted", "subtle", "liquid", "liquid-refract"] as const;
+export const highlightTextVariants = ["lime", "yellow", "pink", "cyan", "orange"] as const;
 
 export type ApiProp = { component?: string; name: string; type: string; defaultValue?: string; description: string };
 
@@ -32,9 +34,12 @@ export type ComponentDoc = {
   description: string;
   installName: string;
   importPath: string;
-  Demo: React.ComponentType<{ variant?: FrostGlassVariant }>;
+  Demo: React.ComponentType<{ variant?: any }>;
   usageCode: string;
   api: ApiProp[];
+  category?: "custom";
+  variants?: readonly string[];
+  defaultVariant?: string;
   previewClassName?: string;
   variantsGridClassName?: string;
 };
@@ -83,7 +88,49 @@ function CodeBlockCommandDemo({ variant = "clear" }: { variant?: FrostGlassVaria
   );
 }
 
+function HighlightTextDemo({ variant = "lime" }: { variant?: string }) {
+  return (
+    <p className="text-3xl font-semibold tracking-tight text-black">
+      <HighlightText variant={variant as (typeof highlightTextVariants)[number]}>Highlight text</HighlightText>
+    </p>
+  );
+}
+
 const componentDocs: ComponentDoc[] = [
+  {
+    slug: "highlight-text",
+    registryName: "highlight-text",
+    title: "Highlight Text",
+    description: "Inline text highlight with preset color variants and custom background class support.",
+    installName: "@glasscn/highlight-text",
+    importPath: "@/components/ui/highlight-text",
+    Demo: HighlightTextDemo,
+    category: "custom",
+    variants: highlightTextVariants,
+    defaultVariant: "lime",
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-2",
+    usageCode: String.raw`import { HighlightText } from "@/components/ui/highlight-text"
+
+export function HighlightTextDemo() {
+  return <HighlightText variant="lime">Highlight text</HighlightText>
+}`,
+    api: [
+      {
+        component: "HighlightText",
+        name: "variant",
+        type: '"lime" | "yellow" | "pink" | "cyan" | "orange"',
+        defaultValue: '"lime"',
+        description: "Controls the preset highlight color.",
+      },
+      {
+        component: "HighlightText",
+        name: "className",
+        type: "string",
+        description: "Applies custom classes to the highlight background layer, such as a custom bg-* utility.",
+      },
+      inheritedProps("HighlightText", "children: React.ReactNode"),
+    ],
+  },
   {
     slug: "glass-button",
     registryName: "glass-button",
@@ -606,6 +653,10 @@ export function SidebarDemo() {
 
 export function getComponentDocs() {
   return componentDocs;
+}
+
+export function getCatalogComponentDocs() {
+  return componentDocs.filter((doc) => doc.category !== "custom");
 }
 
 export function getComponentDoc(slug: string) {

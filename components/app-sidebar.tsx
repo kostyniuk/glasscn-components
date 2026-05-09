@@ -39,6 +39,10 @@ const data = {
         { title: "Skeleton", url: "/components/glass-skeleton" },
       ],
     },
+    {
+      title: "Custom",
+      items: [{ title: "Highlight Text", url: "/components/highlight-text" }],
+    },
   ],
 };
 

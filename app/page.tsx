@@ -17,7 +17,7 @@ import { GlassItem } from "@/components/ui/glasscn/glass-item";
 import { HighlightText } from "@/components/ui/highlight-text";
 import { Input } from "@/components/ui/input";
 import { ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
-import { getComponentDocs } from "@/lib/component-docs";
+import { getCatalogComponentDocs } from "@/lib/component-docs";
 
 import { GitHubLogo } from "./GitHubLogo";
 
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const docs = getComponentDocs();
+  const docs = getCatalogComponentDocs();
 
   return (
     <div className="relative min-h-svh font-sans text-black transition-colors duration-500 selection:bg-black/10 dark:text-white dark:selection:bg-white/30">
@@ -294,14 +294,14 @@ export default function Page() {
       <section id="components" className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
         <div className="mb-14 max-w-2xl">
           <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
-            // 15 COMPONENTS
+            // {docs.length} COMPONENTS
           </div>
           <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-[-0.01em] text-black dark:text-white">
             DROP-IN GLASS PRIMITIVES
           </h2>
           <p className="mt-6 text-[15px] leading-relaxed text-black/60 dark:text-white/60">
-            Every component ships with five glass variants — clear, frosted, subtle, liquid, and liquid-refract. Install
-            just what you need; dependencies resolve automatically.
+            Components ship with registry-ready variants — from glass surfaces to custom color treatments. Install just
+            what you need; dependencies resolve automatically.
           </p>
         </div>
 
@@ -326,7 +326,7 @@ export default function Page() {
                 className={`group flex flex-col rounded-2xl border border-black/100 bg-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/200 dark:hover:border-white/20 ${getColSpan(doc.slug)}`}
               >
                 <div className="relative flex min-h-[160px] items-center justify-center overflow-hidden rounded-xl p-4">
-                  <Demo variant="liquid-refract" />
+                  <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
                 </div>
                 <div className="mt-5 flex flex-1 items-center justify-between">
                   <div>
