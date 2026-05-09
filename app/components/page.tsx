@@ -29,7 +29,7 @@ export default function Page() {
                   <BoxesIcon className="size-4" />
                   Component Registry
                 </GlassBadge>
-                <h1 className="text-5xl leading-[1.1] font-semibold tracking-tighter text-balance md:text-6xl text-black">
+                <h1 className="text-5xl leading-[1.1] font-semibold tracking-tighter text-balance text-black md:text-6xl">
                   A glass system with <br /> working primitives.
                 </h1>
                 <p className="mt-6 text-lg leading-relaxed text-balance text-black/80">

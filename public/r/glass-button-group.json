@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-group",
+  "title": "Glass Button Group",
+  "description": "Glass Button Group with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/button-group",
+    "@glasscn/glass-separator",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-button-group.tsx",
+      "content": "\"use client\";\n\nimport { type FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from \"../button-group\";\nimport { GlassSeparator } from \"./glass-separator\";\nimport { LiquidGlass } from \"./liquid-glass\";\n\ntype GlassButtonGroupProps = React.ComponentProps<typeof ButtonGroup> & FrostGlassVariantProp;\n\nfunction GlassButtonGroup({ className, glassVariant = \"clear\", children, ...props }: GlassButtonGroupProps) {\n  if (glassVariant === \"liquid-refract\") {\n    return (\n      <LiquidGlass className={cn(\"\", className)}>\n        <ButtonGroup\n          data-slot=\"glass-button-group\"\n          data-glass-variant={glassVariant}\n          className={cn(\"bg-transparent\", className)}\n          {...props}\n        >\n          {children}\n        </ButtonGroup>\n      </LiquidGlass>\n    );\n  }\n\n  return (\n    <ButtonGroup\n      data-slot=\"glass-button-group\"\n      data-glass-variant={glassVariant}\n      className={cn(\"rounded-lg\", glassVariantStyles[glassVariant], className)}\n      {...props}\n    >\n      {children}\n    </ButtonGroup>\n  );\n}\n\ntype GlassButtonGroupTextProps = React.ComponentProps<typeof ButtonGroupText> & FrostGlassVariantProp;\n\nfunction GlassButtonGroupText({ className, glassVariant = \"clear\", ...props }: GlassButtonGroupTextProps) {\n  return (\n    <ButtonGroupText\n      data-slot=\"glass-button-group-text\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        \"border-0 bg-transparent\",\n        glassVariant !== \"liquid-refract\" && \"text-foreground\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\ntype GlassButtonGroupSeparatorProps = React.ComponentProps<typeof ButtonGroupSeparator> & FrostGlassVariantProp;\n\nfunction GlassButtonGroupSeparator({ className, glassVariant = \"clear\", ...props }: GlassButtonGroupSeparatorProps) {\n  return (\n    <GlassSeparator\n      data-slot=\"glass-button-group-separator\"\n      glassVariant={glassVariant}\n      className={cn(\n        \"relative self-stretch data-horizontal:mx-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassButtonGroup, GlassButtonGroupSeparator, GlassButtonGroupText };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

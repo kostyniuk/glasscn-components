@@ -32,10 +32,7 @@ export function HeroGlassPill({ className }: { className?: string }) {
     const maxX = containerRect.width - glassRect.width;
     const maxY = containerRect.height - glassRect.height;
 
-    targetRef.current = {
-      x: clamp(x, 0, maxX),
-      y: clamp(y, 0, maxY),
-    };
+    targetRef.current = { x: clamp(x, 0, maxX), y: clamp(y, 0, maxY) };
   }, []);
 
   const resetPill = useCallback(() => {
@@ -44,10 +41,7 @@ export function HeroGlassPill({ className }: { className?: string }) {
     if (!container || !glass) return;
 
     const containerRect = container.getBoundingClientRect();
-    const start = {
-      x: containerRect.width * 0.65,
-      y: containerRect.height * 0.11,
-    };
+    const start = { x: containerRect.width * 0.65, y: containerRect.height * 0.11 };
 
     currentRef.current = start;
     targetRef.current = start;
@@ -61,10 +55,7 @@ export function HeroGlassPill({ className }: { className?: string }) {
     const animate = () => {
       const current = currentRef.current;
       const target = targetRef.current;
-      const next = {
-        x: current.x + (target.x - current.x) * 0.2,
-        y: current.y + (target.y - current.y) * 0.2,
-      };
+      const next = { x: current.x + (target.x - current.x) * 0.2, y: current.y + (target.y - current.y) * 0.2 };
 
       currentRef.current = next;
       setPosition(next);
@@ -88,10 +79,7 @@ export function HeroGlassPill({ className }: { className?: string }) {
     const glassRect = glass.getBoundingClientRect();
 
     draggingRef.current = true;
-    pointerOffsetRef.current = {
-      x: event.clientX - glassRect.left,
-      y: event.clientY - glassRect.top,
-    };
+    pointerOffsetRef.current = { x: event.clientX - glassRect.left, y: event.clientY - glassRect.top };
 
     glass.setPointerCapture(event.pointerId);
     placePill(
@@ -132,14 +120,7 @@ export function HeroGlassPill({ className }: { className?: string }) {
           position === null && "opacity-0",
           className,
         )}
-        style={
-          position
-            ? {
-              left: `${position.x}px`,
-              top: `${position.y}px`,
-            }
-            : undefined
-        }
+        style={position ? { left: `${position.x}px`, top: `${position.y}px` } : undefined}
         onPointerDown={startDrag}
         onPointerMove={drag}
         onPointerUp={endDrag}

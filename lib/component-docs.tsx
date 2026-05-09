@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { AlertDemo } from "@/components/demo/alert-demo";
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
+import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
@@ -109,6 +110,39 @@ export function BadgeDemo() {
   return <GlassBadge glassVariant="liquid">Badge</GlassBadge>
 }`,
     api: [glassVariantFor("GlassBadge"), inheritedProps("GlassBadge", "React.ComponentProps<typeof Badge>")],
+  },
+  {
+    slug: "glass-button-group",
+    registryName: "glass-button-group",
+    title: "Glass Button Group",
+    description: "A grouped set of buttons with shared glass styling and separators.",
+    installName: "@glasscn/glass-button-group",
+    importPath: "@/components/ui/glasscn/glass-button-group",
+    Demo: ButtonGroupDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import { ArchiveIcon, FlagIcon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { GlassButtonGroup } from "@/components/ui/glasscn/glass-button-group"
+
+export function ButtonGroupDemo() {
+  return (
+    <GlassButtonGroup glassVariant="liquid">
+      <Button variant="ghost" className="bg-transparent border-0 shadow-none">
+        <ArchiveIcon />
+        Archive
+      </Button>
+      <Button variant="ghost" className="bg-transparent border-0 shadow-none">
+        <FlagIcon />
+        Report
+      </Button>
+    </GlassButtonGroup>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassButtonGroup"),
+      inheritedProps("GlassButtonGroup", "React.ComponentProps<typeof ButtonGroup>"),
+    ],
   },
   {
     slug: "glass-alert",

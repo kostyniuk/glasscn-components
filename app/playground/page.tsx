@@ -1,18 +1,10 @@
 "use client";
 
-import {
-  type CSSProperties,
-  type PointerEvent,
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 import { RotateCcw, Sparkles } from "lucide-react";
+import { type CSSProperties, type PointerEvent, type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 
-import { LiquidGlass } from "@/components/ui/glasscn/liquid-glass";
 import { Button } from "@/components/ui/button";
+import { LiquidGlass } from "@/components/ui/glasscn/liquid-glass";
 import { Slider } from "@/components/ui/slider";
 
 type LensVars = CSSProperties & {
@@ -26,10 +18,7 @@ type LensVars = CSSProperties & {
   "--bend-y"?: string;
 };
 
-type Point = {
-  x: number;
-  y: number;
-};
+type Point = { x: number; y: number };
 
 export default function PlaygroundPage() {
   const artRef = useRef<HTMLDivElement>(null);
@@ -79,10 +68,7 @@ export default function PlaygroundPage() {
     const maxX = artRect.width - glassRect.width;
     const maxY = artRect.height - glassRect.height;
 
-    targetRef.current = {
-      x: clamp(x, 0, maxX),
-      y: clamp(y, 0, maxY),
-    };
+    targetRef.current = { x: clamp(x, 0, maxX), y: clamp(y, 0, maxY) };
   }, []);
 
   const resetLens = useCallback(() => {
@@ -92,10 +78,7 @@ export default function PlaygroundPage() {
 
     const artRect = art.getBoundingClientRect();
     const glassRect = glass.getBoundingClientRect();
-    const start = {
-      x: artRect.width * 0.5 - glassRect.width * 0.5,
-      y: artRect.height * 0.47 - glassRect.height * 0.5,
-    };
+    const start = { x: artRect.width * 0.5 - glassRect.width * 0.5, y: artRect.height * 0.47 - glassRect.height * 0.5 };
 
     currentRef.current = start;
     targetRef.current = start;
@@ -110,10 +93,7 @@ export default function PlaygroundPage() {
     const animate = () => {
       const current = currentRef.current;
       const target = targetRef.current;
-      const next = {
-        x: current.x + (target.x - current.x) * 0.24,
-        y: current.y + (target.y - current.y) * 0.24,
-      };
+      const next = { x: current.x + (target.x - current.x) * 0.24, y: current.y + (target.y - current.y) * 0.24 };
 
       currentRef.current = next;
       setLensPosition(next);
@@ -138,10 +118,7 @@ export default function PlaygroundPage() {
     const glassRect = glass.getBoundingClientRect();
 
     draggingRef.current = true;
-    pointerOffsetRef.current = {
-      x: event.clientX - glassRect.left,
-      y: event.clientY - glassRect.top,
-    };
+    pointerOffsetRef.current = { x: event.clientX - glassRect.left, y: event.clientY - glassRect.top };
 
     glass.setPointerCapture(event.pointerId);
     placeLens(
@@ -185,11 +162,7 @@ export default function PlaygroundPage() {
           blur={blurLevel}
           refraction={refraction}
           className="absolute z-[8] h-[clamp(112px,15vw,174px)] w-[clamp(300px,44vw,530px)] cursor-grab touch-none active:cursor-grabbing max-md:h-[116px] max-md:w-[min(78vw,320px)]"
-          style={{
-            ...lensVars,
-            left: `${lensPosition.x}px`,
-            top: `${lensPosition.y}px`,
-          }}
+          style={{ ...lensVars, left: `${lensPosition.x}px`, top: `${lensPosition.y}px` }}
           onPointerDown={startDrag}
           onPointerMove={drag}
           onPointerUp={endDrag}
@@ -297,9 +270,7 @@ function SliderField({
           max={max}
           step={step}
           value={[value]}
-          onValueChange={(nextValue) =>
-            onChange(Array.isArray(nextValue) ? (nextValue[0] ?? value) : nextValue)
-          }
+          onValueChange={(nextValue) => onChange(Array.isArray(nextValue) ? (nextValue[0] ?? value) : nextValue)}
           aria-label={`${label} level`}
         />
         {action}
@@ -311,10 +282,10 @@ function SliderField({
 function SceneRibbons() {
   return (
     <>
-      <div className="pointer-events-none absolute left-[-30%] top-[21%] h-[38%] w-[94%] origin-center -rotate-[22deg] rounded-full bg-[radial-gradient(circle_at_17%_52%,rgba(255,255,255,0.12),transparent_24%),linear-gradient(100deg,#ff416f_0%,#ef2d82_35%,#4fb4ff_72%,#172b69_100%)] shadow-[inset_-16px_-24px_40px_rgba(8,3,16,0.48)] saturate-110" />
-      <div className="pointer-events-none absolute left-[39%] top-[14%] h-[30%] w-[71%] origin-center rotate-[13deg] rounded-full bg-[radial-gradient(circle_at_30%_80%,rgba(26,96,211,0.65),transparent_28%),linear-gradient(100deg,#020711_0%,#08182c_56%,#143763_100%)] shadow-[inset_0_9px_15px_rgba(82,150,255,0.2),inset_0_-18px_28px_rgba(0,0,0,0.45)] saturate-110" />
+      <div className="pointer-events-none absolute top-[21%] left-[-30%] h-[38%] w-[94%] origin-center -rotate-[22deg] rounded-full bg-[radial-gradient(circle_at_17%_52%,rgba(255,255,255,0.12),transparent_24%),linear-gradient(100deg,#ff416f_0%,#ef2d82_35%,#4fb4ff_72%,#172b69_100%)] shadow-[inset_-16px_-24px_40px_rgba(8,3,16,0.48)] saturate-110" />
+      <div className="pointer-events-none absolute top-[14%] left-[39%] h-[30%] w-[71%] origin-center rotate-[13deg] rounded-full bg-[radial-gradient(circle_at_30%_80%,rgba(26,96,211,0.65),transparent_28%),linear-gradient(100deg,#020711_0%,#08182c_56%,#143763_100%)] shadow-[inset_0_9px_15px_rgba(82,150,255,0.2),inset_0_-18px_28px_rgba(0,0,0,0.45)] saturate-110" />
       <div className="pointer-events-none absolute bottom-[-8%] left-[-18%] h-[38%] w-[92%] origin-center -rotate-[18deg] rounded-full bg-[radial-gradient(circle_at_34%_28%,rgba(255,77,130,0.82),transparent_24%),linear-gradient(95deg,#244faf_0%,#4fb4ff_26%,#d93579_57%,#161b3b_100%)] shadow-[inset_-15px_22px_36px_rgba(255,255,255,0.08)] saturate-110" />
-      <div className="pointer-events-none absolute bottom-[-20%] right-[-5%] h-[96%] w-[46%] origin-center rotate-[28deg] rounded-full bg-[radial-gradient(circle_at_50%_34%,rgba(37,113,255,0.82),transparent_28%),linear-gradient(115deg,#08234b_0%,#162c68_53%,#4f7ed8_100%)] shadow-[inset_11px_0_18px_rgba(107,164,255,0.25),inset_-24px_-12px_36px_rgba(0,0,0,0.52)] saturate-110" />
+      <div className="pointer-events-none absolute right-[-5%] bottom-[-20%] h-[96%] w-[46%] origin-center rotate-[28deg] rounded-full bg-[radial-gradient(circle_at_50%_34%,rgba(37,113,255,0.82),transparent_28%),linear-gradient(115deg,#08234b_0%,#162c68_53%,#4f7ed8_100%)] shadow-[inset_11px_0_18px_rgba(107,164,255,0.25),inset_-24px_-12px_36px_rgba(0,0,0,0.52)] saturate-110" />
     </>
   );
 }
