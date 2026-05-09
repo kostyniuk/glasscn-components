@@ -48,6 +48,7 @@ Dependencies (including other registry items) are resolved and installed automat
 | Glass Select             | `npx shadcn add @glasscn/glass-select`             |
 | Glass Separator          | `npx shadcn add @glasscn/glass-separator`          |
 | Glass Sidebar            | `npx shadcn add @glasscn/glass-sidebar`            |
+| Glass Skeleton           | `npx shadcn add @glasscn/glass-skeleton`           |
 
 ### Utilities
 

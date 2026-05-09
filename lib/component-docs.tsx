@@ -8,6 +8,7 @@ import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
 import { RadioGroupDemo } from "@/components/demo/radio-group-demo";
+import { SkeletonDemo } from "@/components/demo/skeleton-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
@@ -526,6 +527,30 @@ export function AlertDialogDemo() {
       inheritedProps("GlassAlertDialogContent", "React.ComponentProps<typeof AlertDialogContent>"),
       inheritedProps("AlertDialog primitives", "Re-exported alert dialog primitive props"),
     ],
+  },
+  {
+    slug: "glass-skeleton",
+    registryName: "glass-skeleton",
+    title: "Glass Skeleton",
+    description: "A loading placeholder with glass surface treatments.",
+    installName: "@glasscn/glass-skeleton",
+    importPath: "@/components/ui/glasscn/glass-skeleton",
+    Demo: SkeletonDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { GlassSkeleton } from "@/components/ui/glasscn/glass-skeleton"
+
+export function SkeletonDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <GlassSkeleton glassVariant="liquid" className="size-12 rounded-full" />
+      <div className="flex flex-col gap-2">
+        <GlassSkeleton glassVariant="liquid" className="h-4 w-[200px]" />
+        <GlassSkeleton glassVariant="liquid" className="h-4 w-[160px]" />
+      </div>
+    </div>
+  )
+}`,
+    api: [glassVariantFor("GlassSkeleton"), inheritedProps("GlassSkeleton", "React.ComponentProps<typeof Skeleton>")],
   },
   {
     slug: "glass-sidebar",

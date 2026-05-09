@@ -122,7 +122,7 @@ function VariantsPreview({ doc }: { doc: ComponentDoc }) {
   const Demo = doc.Demo;
 
   return (
-    <div className={cn("grid grid-cols-1 gap-4", doc.variantsGridClassName)}>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       {glassVariants.map((variant) => (
         <Card key={variant} variant="outline" className="bg-transparent p-4">
           <div>

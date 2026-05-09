@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-skeleton",
+  "title": "Glass Skeleton",
+  "description": "Glass Skeleton with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/skeleton",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-skeleton.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

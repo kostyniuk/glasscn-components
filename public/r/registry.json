@@ -431,6 +431,23 @@
       ]
     },
     {
+      "name": "glass-skeleton",
+      "type": "registry:component",
+      "title": "Glass Skeleton",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/skeleton",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Skeleton with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-skeleton.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glass-sidebar",
       "type": "registry:component",
       "title": "Glass Sidebar",

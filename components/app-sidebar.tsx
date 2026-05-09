@@ -36,6 +36,7 @@ const data = {
         { title: "Select", url: "/components/glass-select" },
         { title: "Separator", url: "/components/glass-separator" },
         { title: "Sidebar", url: "/components/glass-sidebar" },
+        { title: "Skeleton", url: "/components/glass-skeleton" },
       ],
     },
   ],
