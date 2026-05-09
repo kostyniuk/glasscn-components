@@ -1,6 +1,7 @@
 import { Geist_Mono, Inter, Righteous } from "next/font/google";
 
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { AppBackground } from "@/components/app-background";
 import { SiteHeader } from "@/components/home/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <div className="relative z-10">{children}</div>
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
