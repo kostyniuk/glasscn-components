@@ -9,7 +9,12 @@ import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import { HighlightText } from "@/components/ui/highlight-text";
-import { getCatalogComponentDocs, glassVariants } from "@/lib/component-docs";
+import {
+  getCatalogComponentDocs,
+  getCustomComponentDocs,
+  glassVariants,
+  type ComponentDoc,
+} from "@/lib/component-docs";
 
 export const metadata: Metadata = {
   title: "Component Registry",
@@ -29,6 +34,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   const docs = getCatalogComponentDocs();
+  const customDocs = getCustomComponentDocs();
 
   return (
     <main className="relative min-h-svh px-4 pt-24 pb-24 md:px-8">
@@ -132,7 +138,7 @@ export default function Page() {
                 <SearchIcon className="size-4" />
                 Catalog
               </div>
-              <h2 className="text-3xl font-semibold tracking-tight">All components</h2>
+              <h2 className="text-3xl font-semibold tracking-tight">shadcn/ui components</h2>
             </div>
             <div className="flex flex-wrap gap-2">
               {glassVariants.map((variant) => (
@@ -143,44 +149,62 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {docs.map((doc) => {
-              const Demo = doc.Demo;
+          <ComponentGrid docs={docs} />
+        </section>
 
-              return (
-                <Card
-                  key={doc.slug}
-                  variant="outline"
-                  className="group flex min-h-64 flex-col bg-transparent p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
-                >
-                  <div className="mb-6 flex min-h-32 flex-1 items-center justify-center overflow-hidden rounded-xl p-4">
-                    <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
-                  </div>
-                  <div className="flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-lg font-medium tracking-tight text-black">
-                        <HighlightText>{doc.title}</HighlightText>
-                      </h3>
-                      <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
-                        {doc.description}
-                      </p>
-                    </div>
-                    <GlassButton
-                      glassVariant="clear"
-                      size="sm"
-                      render={<Link href={`/components/${doc.slug}`} />}
-                      className="mt-6 w-fit gap-2"
-                    >
-                      Open docs
-                      <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
-                    </GlassButton>
-                  </div>
-                </Card>
-              );
-            })}
+        <section className="mt-16 animate-in fade-in slide-in-from-bottom-12 delay-500 duration-1000">
+          <div className="mb-8">
+            <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm font-medium tracking-wider uppercase">
+              <SearchIcon className="size-4" />
+              Custom
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight">Custom components</h2>
           </div>
+
+          <ComponentGrid docs={customDocs} />
         </section>
       </div>
     </main>
+  );
+}
+
+function ComponentGrid({ docs }: { docs: ComponentDoc[] }) {
+  return (
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {docs.map((doc) => {
+        const Demo = doc.Demo;
+
+        return (
+          <Card
+            key={doc.slug}
+            variant="outline"
+            className="group flex min-h-64 flex-col bg-transparent p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div className="mb-6 flex min-h-32 flex-1 items-center justify-center overflow-hidden rounded-xl p-4">
+              <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
+            </div>
+            <div className="flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-medium tracking-tight text-black">
+                  <HighlightText>{doc.title}</HighlightText>
+                </h3>
+                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
+                  {doc.description}
+                </p>
+              </div>
+              <GlassButton
+                glassVariant="clear"
+                size="sm"
+                render={<Link href={`/components/${doc.slug}`} />}
+                className="mt-6 w-fit gap-2"
+              >
+                Open docs
+                <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
+              </GlassButton>
+            </div>
+          </Card>
+        );
+      })}
+    </div>
   );
 }

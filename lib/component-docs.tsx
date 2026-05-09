@@ -659,6 +659,10 @@ export function getCatalogComponentDocs() {
   return componentDocs.filter((doc) => doc.category !== "custom");
 }
 
+export function getCustomComponentDocs() {
+  return componentDocs.filter((doc) => doc.category === "custom");
+}
+
 export function getComponentDoc(slug: string) {
   return componentDocs.find((doc) => doc.slug === slug);
 }
