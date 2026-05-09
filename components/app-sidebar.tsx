@@ -32,6 +32,7 @@ const data = {
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },
         { title: "Popover", url: "/components/glass-popover" },
+        { title: "Radio Group", url: "/components/glass-radio-group" },
         { title: "Select", url: "/components/glass-select" },
         { title: "Separator", url: "/components/glass-separator" },
         { title: "Sidebar", url: "/components/glass-sidebar" },

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-radio-group",
+  "title": "Glass Radio Group",
+  "description": "Glass Radio Group with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/radio-group",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-radio-group.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

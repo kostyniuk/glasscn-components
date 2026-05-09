@@ -7,6 +7,7 @@ import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
+import { RadioGroupDemo } from "@/components/demo/radio-group-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
@@ -232,6 +233,34 @@ export function PopoverDemo() {
     api: [
       glassVariantFor("GlassPopoverContent"),
       inheritedProps("GlassPopoverContent", "React.ComponentProps<typeof PopoverContent>"),
+    ],
+  },
+  {
+    slug: "glass-radio-group",
+    registryName: "glass-radio-group",
+    title: "Glass Radio Group",
+    description: "A radio group with glass-styled radio items.",
+    installName: "@glasscn/glass-radio-group",
+    importPath: "@/components/ui/glasscn/glass-radio-group",
+    Demo: RadioGroupDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { GlassRadioGroupItem } from "@/components/ui/glasscn/glass-radio-group"
+import { Label } from "@/components/ui/label"
+import { RadioGroup } from "@/components/ui/radio-group"
+
+export function RadioGroupDemo() {
+  return (
+    <RadioGroup defaultValue="comfortable">
+      <div className="flex items-center gap-3">
+        <GlassRadioGroupItem glassVariant="liquid" value="default" id="r1" />
+        <Label htmlFor="r1">Default</Label>
+      </div>
+    </RadioGroup>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassRadioGroupItem"),
+      inheritedProps("GlassRadioGroupItem", "React.ComponentProps<typeof RadioGroupItem>"),
     ],
   },
   {

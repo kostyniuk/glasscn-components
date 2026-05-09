@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "title": "Radio Group",
+  "description": "A set of radio buttons for selecting a single option",
+  "registryDependencies": ["@glasscn/utils"],
+  "dependencies": ["@base-ui/react"],
+  "files": [
+    {
+      "path": "components/ui/radio-group.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
