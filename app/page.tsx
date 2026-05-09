@@ -297,7 +297,6 @@ export default function Page() {
               if (
                 [
                   "glass-card",
-                  "glass-combobox",
                   "glass-code-block-command",
                   "glass-alert",
                   "liquid-text",

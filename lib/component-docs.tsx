@@ -197,43 +197,20 @@ export function ItemDemo() {
     api: [glassVariantFor("GlassItem"), inheritedProps("GlassItem", "React.ComponentProps<typeof Item>")],
   },
   {
-    slug: "glass-popover",
-    registryName: "glass-popover",
-    title: "Glass Popover",
-    description: "A floating content panel with glass surface treatments.",
-    installName: "@glasscn/glass-popover",
-    importPath: "@/components/ui/glasscn/glass-popover",
-    Demo: PopoverDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
-    usageCode: String.raw`import { Button } from "@/components/ui/button"
-import { GlassPopoverContent } from "@/components/ui/glasscn/glass-popover"
-import {
-  Popover,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+    slug: "glass-checkbox",
+    registryName: "glass-checkbox",
+    title: "Glass Checkbox",
+    description: "A boolean control with the shared glass variant system.",
+    installName: "@glasscn/glass-checkbox",
+    importPath: "@/components/ui/glasscn/glass-checkbox",
+    Demo: CheckboxDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import { GlassCheckbox } from "@/components/ui/glasscn/glass-checkbox"
 
-export function PopoverDemo() {
-  return (
-    <Popover>
-      <PopoverTrigger render={<Button variant="outline" />}>
-        Open Popover
-      </PopoverTrigger>
-      <GlassPopoverContent glassVariant="liquid">
-        <PopoverHeader>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description text here.</PopoverDescription>
-        </PopoverHeader>
-      </GlassPopoverContent>
-    </Popover>
-  )
+export function CheckboxDemo() {
+  return <GlassCheckbox glassVariant="liquid" />
 }`,
-    api: [
-      glassVariantFor("GlassPopoverContent"),
-      inheritedProps("GlassPopoverContent", "React.ComponentProps<typeof PopoverContent>"),
-    ],
+    api: [glassVariantFor("GlassCheckbox"), inheritedProps("GlassCheckbox", "React.ComponentProps<typeof Checkbox>")],
   },
   {
     slug: "glass-radio-group",
@@ -262,31 +239,6 @@ export function RadioGroupDemo() {
       glassVariantFor("GlassRadioGroupItem"),
       inheritedProps("GlassRadioGroupItem", "React.ComponentProps<typeof RadioGroupItem>"),
     ],
-  },
-  {
-    slug: "glass-alert",
-    registryName: "glass-alert",
-    title: "Glass Alert",
-    description: "A status message surface with the shared glass variant system.",
-    installName: "@glasscn/glass-alert",
-    importPath: "@/components/ui/glasscn/glass-alert",
-    Demo: AlertDemo,
-    variantsGridClassName: "grid-cols-1",
-    usageCode: String.raw`import { CheckCircle2Icon } from "lucide-react"
-
-import { AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { GlassAlert } from "@/components/ui/glasscn/glass-alert"
-
-export function AlertDemo() {
-  return (
-    <GlassAlert glassVariant="liquid">
-      <CheckCircle2Icon />
-      <AlertTitle>Payment successful</AlertTitle>
-      <AlertDescription>Your payment has been processed.</AlertDescription>
-    </GlassAlert>
-  )
-}`,
-    api: [glassVariantFor("GlassAlert"), inheritedProps("GlassAlert", "React.ComponentProps<typeof Alert>")],
   },
   {
     slug: "glass-separator",
@@ -360,22 +312,6 @@ export function CardDemo() {
     ],
   },
   {
-    slug: "glass-checkbox",
-    registryName: "glass-checkbox",
-    title: "Glass Checkbox",
-    description: "A boolean control with the shared glass variant system.",
-    installName: "@glasscn/glass-checkbox",
-    importPath: "@/components/ui/glasscn/glass-checkbox",
-    Demo: CheckboxDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
-    usageCode: String.raw`import { GlassCheckbox } from "@/components/ui/glasscn/glass-checkbox"
-
-export function CheckboxDemo() {
-  return <GlassCheckbox glassVariant="liquid" />
-}`,
-    api: [glassVariantFor("GlassCheckbox"), inheritedProps("GlassCheckbox", "React.ComponentProps<typeof Checkbox>")],
-  },
-  {
     slug: "glass-code-block-command",
     registryName: "glass-code-block-command",
     title: "Glass Code Block Command",
@@ -406,6 +342,70 @@ export function CodeBlockCommandDemo() {
     api: [
       glassVariantFor("GlassCodeBlockCommand"),
       inheritedProps("GlassCodeBlockCommand", "Omit<CodeBlockCommandProps, 'className'>"),
+    ],
+  },
+  {
+    slug: "glass-alert",
+    registryName: "glass-alert",
+    title: "Glass Alert",
+    description: "A status message surface with the shared glass variant system.",
+    installName: "@glasscn/glass-alert",
+    importPath: "@/components/ui/glasscn/glass-alert",
+    Demo: AlertDemo,
+    variantsGridClassName: "grid-cols-1",
+    usageCode: String.raw`import { CheckCircle2Icon } from "lucide-react"
+
+import { AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { GlassAlert } from "@/components/ui/glasscn/glass-alert"
+
+export function AlertDemo() {
+  return (
+    <GlassAlert glassVariant="liquid">
+      <CheckCircle2Icon />
+      <AlertTitle>Payment successful</AlertTitle>
+      <AlertDescription>Your payment has been processed.</AlertDescription>
+    </GlassAlert>
+  )
+}`,
+    api: [glassVariantFor("GlassAlert"), inheritedProps("GlassAlert", "React.ComponentProps<typeof Alert>")],
+  },
+  {
+    slug: "glass-popover",
+    registryName: "glass-popover",
+    title: "Glass Popover",
+    description: "A floating content panel with glass surface treatments.",
+    installName: "@glasscn/glass-popover",
+    importPath: "@/components/ui/glasscn/glass-popover",
+    Demo: PopoverDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { Button } from "@/components/ui/button"
+import { GlassPopoverContent } from "@/components/ui/glasscn/glass-popover"
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="outline" />}>
+        Open Popover
+      </PopoverTrigger>
+      <GlassPopoverContent glassVariant="liquid">
+        <PopoverHeader>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description text here.</PopoverDescription>
+        </PopoverHeader>
+      </GlassPopoverContent>
+    </Popover>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassPopoverContent"),
+      inheritedProps("GlassPopoverContent", "React.ComponentProps<typeof PopoverContent>"),
     ],
   },
   {
