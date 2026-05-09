@@ -35,11 +35,16 @@ Dependencies (including other registry items) are resolved and installed automat
 | Glass Alert Dialog       | `npx shadcn add @glasscn/glass-alert-dialog`       |
 | Glass Badge              | `npx shadcn add @glasscn/glass-badge`              |
 | Glass Button             | `npx shadcn add @glasscn/glass-button`             |
+| Glass Button Group       | `npx shadcn add @glasscn/glass-button-group`       |
 | Glass Calendar           | `npx shadcn add @glasscn/glass-calendar`           |
 | Glass Card               | `npx shadcn add @glasscn/glass-card`               |
 | Glass Checkbox           | `npx shadcn add @glasscn/glass-checkbox`           |
 | Glass Code Block Command | `npx shadcn add @glasscn/glass-code-block-command` |
 | Glass Combobox           | `npx shadcn add @glasscn/glass-combobox`           |
+| Glass Input              | `npx shadcn add @glasscn/glass-input`              |
+| Glass Item               | `npx shadcn add @glasscn/glass-item`               |
+| Glass Popover            | `npx shadcn add @glasscn/glass-popover`            |
+| Glass Radio Group        | `npx shadcn add @glasscn/glass-radio-group`        |
 | Glass Select             | `npx shadcn add @glasscn/glass-select`             |
 | Glass Separator          | `npx shadcn add @glasscn/glass-separator`          |
 | Glass Sidebar            | `npx shadcn add @glasscn/glass-sidebar`            |
