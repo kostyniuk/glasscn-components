@@ -7,6 +7,7 @@ import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
+import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs, glassVariants } from "@/lib/component-docs";
 
 export default function Page() {
@@ -28,10 +29,10 @@ export default function Page() {
                   <BoxesIcon className="size-4" />
                   Component Registry
                 </GlassBadge>
-                <h1 className="text-5xl leading-[1.1] font-semibold tracking-tighter text-balance md:text-6xl">
+                <h1 className="text-5xl leading-[1.1] font-semibold tracking-tighter text-balance md:text-6xl text-black">
                   A glass system with <br /> working primitives.
                 </h1>
-                <p className="text-foreground/80 mt-6 text-lg leading-relaxed text-balance">
+                <p className="mt-6 text-lg leading-relaxed text-balance text-black/80">
                   Browse the registry-ready glass components, inspect their variants, and jump into the docs for install
                   commands, API notes, and live previews.
                 </p>
@@ -40,8 +41,8 @@ export default function Page() {
               <Card variant="outline" className="bg-transparent p-6 sm:p-8">
                 <div className="mb-6 flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-base font-medium">Registry install</p>
-                    <p className="text-foreground mt-1 text-sm">Start with the button primitive.</p>
+                    <p className="text-base font-medium text-black">Registry install</p>
+                    <p className="mt-1 text-sm text-black">Start with the button primitive.</p>
                   </div>
                   <GlassCard
                     glassVariant="liquid-refract"
@@ -140,7 +141,9 @@ export default function Page() {
                   </div>
                   <div className="flex flex-col justify-between">
                     <div>
-                      <h3 className="text-lg font-medium tracking-tight">{doc.title}</h3>
+                      <h3 className="text-lg font-medium tracking-tight text-black">
+                        <MarkerText>{doc.title}</MarkerText>
+                      </h3>
                       <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
                         {doc.description}
                       </p>
