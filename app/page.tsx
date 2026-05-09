@@ -6,12 +6,7 @@ import { CopyButton } from "@/components/custom/copy-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import {
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
@@ -35,18 +30,16 @@ export default function Page() {
           {/* Left column - Typography */}
           <div className="flex flex-col justify-between">
             <div>
-              <p className="font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] mb-6 text-black">
+              <p className="mb-6 font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] text-black">
                 <MarkerText>glasscn</MarkerText>
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
-                LIQUID
-                GLASS
+                LIQUID GLASS
               </h2>
 
               <div className="mt-6">
                 <p className="mt-4 max-w-md text-[15px] leading-relaxed text-black/60 dark:text-white/60">
-                  Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by
-                  light.
+                  Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by light.
                 </p>
               </div>
 
@@ -84,22 +77,38 @@ export default function Page() {
             <div className="relative w-full max-w-[520px]">
               <GlassCard
                 glassVariant="liquid-refract"
-                className="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10 sm:px-3 sm:py-6"
+                className="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] sm:px-3 sm:py-6 dark:border-white/10"
               >
-                <div className="absolute left-4 top-4 flex items-center gap-1.5">
+                <div className="absolute top-4 left-4 flex items-center gap-1.5">
                   <span className="group/close flex size-3 items-center justify-center rounded-full bg-[#FF5F56]">
-                    <XIcon className="size-2 text-[#4D0000] opacity-0 transition-opacity group-hover/close:opacity-100" strokeWidth={3} />
+                    <XIcon
+                      className="size-2 text-[#4D0000] opacity-0 transition-opacity group-hover/close:opacity-100"
+                      strokeWidth={3}
+                    />
                   </span>
                   <span className="group/min flex size-3 items-center justify-center rounded-full bg-[#FFBD2E]">
-                    <MinusIcon className="size-2 text-[#995700] opacity-0 transition-opacity group-hover/min:opacity-100" strokeWidth={3} />
+                    <MinusIcon
+                      className="size-2 text-[#995700] opacity-0 transition-opacity group-hover/min:opacity-100"
+                      strokeWidth={3}
+                    />
                   </span>
                   <span className="group/max flex size-3 items-center justify-center rounded-full bg-[#27C93F]">
-                    <Maximize2Icon className="size-2 text-[#006500] opacity-0 transition-opacity group-hover/max:opacity-100" strokeWidth={3} />
+                    <Maximize2Icon
+                      className="size-2 text-[#006500] opacity-0 transition-opacity group-hover/max:opacity-100"
+                      strokeWidth={3}
+                    />
                   </span>
                 </div>
                 <CardHeader className="gap-2 px-6 sm:px-8">
                   <CardTitle className="text-2xl font-semibold tracking-tight text-black dark:text-white">
-                    The best Apple inspired <Link href="/" className="inline-flex align-middle mx-1"><Avatar className="size-6"><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar></Link> library
+                    The best Apple inspired{" "}
+                    <Link href="/" className="mx-1 inline-flex align-middle">
+                      <Avatar className="size-6">
+                        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                    </Link>{" "}
+                    library
                   </CardTitle>
                   <CardDescription className="text-[15px] leading-relaxed text-black/55 dark:text-white/55">
                     Liquid glass components with registry-first ownership, theme-aware variants, and a native-feeling
@@ -122,7 +131,11 @@ export default function Page() {
                         <FieldLabel>GitHub</FieldLabel>
                         <Item
                           render={
-                            <Link href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer" />
+                            <Link
+                              href="https://github.com/kostyniuk/glasscn-components"
+                              target="_blank"
+                              rel="noreferrer"
+                            />
                           }
                           variant="outline"
                           className="rounded-xl border-black/10 bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.04]"
@@ -212,7 +225,7 @@ export default function Page() {
             <GlassButton
               glassVariant="liquid-refract"
               size="lg"
-              className="h-12 gap-2 w-64 rounded-full border-black/20 px-8 text-[15px] text-black dark:border-white/20 dark:text-white p-0"
+              className="h-12 w-64 gap-2 rounded-full border-black/20 p-0 px-8 text-[15px] text-black dark:border-white/20 dark:text-white"
               nativeButton={false}
               render={<a href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer" />}
             >
@@ -241,7 +254,7 @@ export default function Page() {
                 />
               </PackageManagerProvider>
             </GlassCard>
-            <div className="absolute -right-8 top-0 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
+            <div className="absolute top-0 -right-8 hidden flex-col items-end gap-1 font-mono text-[10px] text-black/30 lg:flex dark:text-white/30">
               <span>—</span>
               <span>—</span>
               <span>—</span>
@@ -311,7 +324,9 @@ export default function Page() {
                 </div>
                 <div className="mt-5 flex flex-1 items-center justify-between">
                   <div>
-                    <MarkerText><h3 className="text-[15px] font-semibold tracking-tight text-black">{doc.title}</h3></MarkerText>
+                    <MarkerText>
+                      <h3 className="text-[15px] font-semibold tracking-tight text-black">{doc.title}</h3>
+                    </MarkerText>
                     <p className="mt-1 font-mono text-[10px] tracking-[0.1em] text-black/50 uppercase dark:text-white/50">
                       5 variants
                     </p>

@@ -27,7 +27,7 @@ export async function SiteHeader() {
       const repo = await res.json();
       stars = repo.stargazers_count;
     }
-  } catch { }
+  } catch {}
 
   return (
     <div className="fixed z-50 flex w-full justify-center">

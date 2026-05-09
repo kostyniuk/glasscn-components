@@ -66,7 +66,10 @@ export function ComponentPreviewTabs({
                 text={code}
                 size="icon"
                 variant="outline"
-                className={cn("h-7 w-7 text-foreground/80 hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5", !codeVisible && "bg-background/50")}
+                className={cn(
+                  "h-7 w-7 text-foreground/80 hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5",
+                  !codeVisible && "bg-background/50",
+                )}
               />
             </div>
             {codeVisible ? (
