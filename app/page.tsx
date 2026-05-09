@@ -10,10 +10,11 @@ import { ButtonGroup } from "@/components/ui/button-group";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlockCommand, PackageManagerProvider } from "@/components/ui/code-block-command";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Item, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemMedia } from "@/components/ui/item";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
+import { GlassItem } from "@/components/ui/glasscn/glass-item";
 import { Input } from "@/components/ui/input";
+import { ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs } from "@/lib/component-docs";
 
@@ -130,7 +131,7 @@ export default function Page() {
                       </Field>
                       <Field>
                         <FieldLabel>GitHub</FieldLabel>
-                        <Item
+                        <GlassItem
                           render={
                             <Link
                               href="https://github.com/kostyniuk/glasscn-components"
@@ -149,7 +150,7 @@ export default function Page() {
                             <ItemTitle>kostyniuk/glasscn-components</ItemTitle>
                             <ItemDescription>Open source registry components for shadcn/ui.</ItemDescription>
                           </ItemContent>
-                        </Item>
+                        </GlassItem>
                       </Field>
                       <div className="grid gap-5 sm:grid-cols-2">
                         <Field>
