@@ -16,6 +16,30 @@
       ]
     },
     {
+      "name": "highlight-text",
+      "type": "registry:component",
+      "title": "Highlight Text",
+      "description": "Inline text highlight with preset color variants and custom background class support.",
+      "registryDependencies": ["@glasscn/utils"],
+      "files": [
+        {
+          "path": "components/ui/highlight-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "--color-accent-green": "var(--accent-green)"
+        },
+        "light": {
+          "--accent-green": "#c5f83a"
+        },
+        "dark": {
+          "--accent-green": "#c5f83a"
+        }
+      }
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",

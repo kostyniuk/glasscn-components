@@ -8,7 +8,7 @@ import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
-import { MarkerText } from "@/components/ui/marker-text";
+import { HighlightText } from "@/components/ui/highlight-text";
 import { getComponentDocs, glassVariants } from "@/lib/component-docs";
 
 export const metadata: Metadata = {
@@ -159,7 +159,7 @@ export default function Page() {
                   <div className="flex flex-col justify-between">
                     <div>
                       <h3 className="text-lg font-medium tracking-tight text-black">
-                        <MarkerText>{doc.title}</MarkerText>
+                        <HighlightText>{doc.title}</HighlightText>
                       </h3>
                       <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
                         {doc.description}

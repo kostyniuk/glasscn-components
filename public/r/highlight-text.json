@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-text",
+  "title": "Highlight Text",
+  "description": "Inline text highlight with preset color variants and custom background class support.",
+  "registryDependencies": [
+    "@glasscn/utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/highlight-text.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface HighlightTextProps {\n  children: React.ReactNode;\n  className?: string;\n  variant?: \"lime\" | \"yellow\" | \"pink\" | \"cyan\" | \"orange\";\n}\n\nconst highlightVariants: Record<NonNullable<HighlightTextProps[\"variant\"]>, string> = {\n  lime: \"bg-accent-green\",\n  yellow: \"bg-yellow-300\",\n  pink: \"bg-pink-300\",\n  cyan: \"bg-cyan-300\",\n  orange: \"bg-orange-300\",\n};\n\nexport function HighlightText({\n  children,\n  className,\n  variant = \"lime\",\n}: HighlightTextProps) {\n  return (\n    <span className=\"relative inline-block\">\n      <span\n        className={cn(\n          \"absolute inset-0 scale-x-110 scale-y-90 -skew-y-1\",\n          highlightVariants[variant],\n          className\n        )}\n        aria-hidden=\"true\"\n      />\n      <span className=\"relative\">{children}</span>\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "--color-accent-green": "var(--accent-green)"
+    },
+    "light": {
+      "--accent-green": "#c5f83a"
+    },
+    "dark": {
+      "--accent-green": "#c5f83a"
+    }
+  },
+  "type": "registry:component"
+}

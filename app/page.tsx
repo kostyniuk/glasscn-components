@@ -14,9 +14,9 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassItem } from "@/components/ui/glasscn/glass-item";
+import { HighlightText } from "@/components/ui/highlight-text";
 import { Input } from "@/components/ui/input";
 import { ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
-import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs } from "@/lib/component-docs";
 
 import { GitHubLogo } from "./GitHubLogo";
@@ -50,7 +50,7 @@ export default function Page() {
             <HeroGlassPill className="rounded-full" />
             <div>
               <p className="mb-6 font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] text-black">
-                <MarkerText>glasscn</MarkerText>
+                <HighlightText>glasscn</HighlightText>
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
                 LIQUID GLASS
@@ -330,9 +330,9 @@ export default function Page() {
                 </div>
                 <div className="mt-5 flex flex-1 items-center justify-between">
                   <div>
-                    <MarkerText>
+                    <HighlightText>
                       <h3 className="text-[15px] font-semibold tracking-tight text-black">{doc.title}</h3>
-                    </MarkerText>
+                    </HighlightText>
                     <p className="mt-1 font-mono text-[10px] tracking-[0.1em] text-black/50 uppercase dark:text-white/50">
                       5 variants
                     </p>
@@ -454,11 +454,11 @@ export default function Page() {
           <div className="rounded-2xl border border-black/10 bg-transparent p-8 md:p-10 dark:border-white/5">
             <div className="flex flex-col justify-between gap-10 md:flex-row">
               <div className="max-w-sm">
-                <MarkerText>
+                <HighlightText>
                   <div className="font-[family-name:var(--font-display)] text-[2rem] tracking-[-0.01em] text-black">
                     BUILD WITH LIGHT.
                   </div>
-                </MarkerText>
+                </HighlightText>
                 <div className="mt-4 text-[13px] leading-relaxed text-black/50 dark:text-white/50">
                   Open source. MIT licensed. Made by{" "}
                   <a
