@@ -4,6 +4,7 @@ import { AlertDemo } from "@/components/demo/alert-demo";
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
 import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
+import { InputDemo } from "@/components/demo/input-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
@@ -143,6 +144,22 @@ export function ButtonGroupDemo() {
       glassVariantFor("GlassButtonGroup"),
       inheritedProps("GlassButtonGroup", "React.ComponentProps<typeof ButtonGroup>"),
     ],
+  },
+  {
+    slug: "glass-input",
+    registryName: "glass-input",
+    title: "Glass Input",
+    description: "A text input field with glass surface treatments.",
+    installName: "@glasscn/glass-input",
+    importPath: "@/components/ui/glasscn/glass-input",
+    Demo: InputDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    usageCode: String.raw`import { GlassInput } from "@/components/ui/glasscn/glass-input"
+
+export function InputDemo() {
+  return <GlassInput glassVariant="liquid" placeholder="Enter text..." />
+}`,
+    api: [glassVariantFor("GlassInput"), inheritedProps("GlassInput", "React.ComponentProps<typeof Input>")],
   },
   {
     slug: "glass-alert",

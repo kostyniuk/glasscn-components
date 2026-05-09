@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-input",
+  "title": "Glass Input",
+  "description": "Glass Input with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/input",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-input.tsx",
+      "content": "\"use client\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Input } from \"../input\";\nimport { LiquidGlass } from \"./liquid-glass\";\n\ntype GlassInputProps = React.ComponentProps<typeof Input> & FrostGlassVariantProp;\n\nfunction GlassInput({ className, glassVariant = \"clear\", ...props }: GlassInputProps) {\n  if (glassVariant === \"liquid-refract\") {\n    return (\n      <LiquidGlass className=\"rounded-lg\">\n        <Input\n          data-slot=\"glass-input\"\n          data-glass-variant={glassVariant}\n          className={cn(\"text-foreground bg-transparent border-0 shadow-none\", className)}\n          {...props}\n        />\n      </LiquidGlass>\n    );\n  }\n\n  return (\n    <Input\n      data-slot=\"glass-input\"\n      data-glass-variant={glassVariant}\n      className={cn(\"text-foreground\", glassVariantStyles[glassVariant], className)}\n      {...props}\n    />\n  );\n}\n\nexport { GlassInput };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
