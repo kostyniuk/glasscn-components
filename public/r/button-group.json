@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
   "title": "Button Group",
-  "description": "A group of buttons with shared styling and separators",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority"
+  ],
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/separator"
   ],
-  "dependencies": ["@base-ui/react", "class-variance-authority"],
   "files": [
     {
       "path": "components/ui/button-group.tsx",
