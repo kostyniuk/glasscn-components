@@ -1,4 +1,5 @@
 import { ArrowRightIcon, BoxesIcon, CommandIcon, Layers3Icon, SearchIcon } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
@@ -9,6 +10,22 @@ import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs, glassVariants } from "@/lib/component-docs";
+
+export const metadata: Metadata = {
+  title: "Component Registry",
+  description:
+    "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
+  openGraph: {
+    title: "glasscn Component Registry",
+    description:
+      "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
+  },
+  twitter: {
+    title: "glasscn Component Registry",
+    description:
+      "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
+  },
+};
 
 export default function Page() {
   const docs = getComponentDocs();

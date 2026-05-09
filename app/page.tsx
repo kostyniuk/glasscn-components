@@ -1,4 +1,5 @@
 import { ArrowRightIcon, Maximize2Icon, MinusIcon, SquareArrowOutUpRightIcon, XIcon } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -19,6 +20,22 @@ import { MarkerText } from "@/components/ui/marker-text";
 import { getComponentDocs } from "@/lib/component-docs";
 
 import { GitHubLogo } from "./GitHubLogo";
+
+export const metadata: Metadata = {
+  title: "Liquid Glass Components for shadcn/ui",
+  description:
+    "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
+  openGraph: {
+    title: "glasscn - Liquid Glass Components for shadcn/ui",
+    description:
+      "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
+  },
+  twitter: {
+    title: "glasscn - Liquid Glass Components for shadcn/ui",
+    description:
+      "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
+  },
+};
 
 export default function Page() {
   const docs = getComponentDocs();
@@ -295,13 +312,9 @@ export default function Page() {
             const getColSpan = (slug: string) => {
               if (["glass-sidebar"].includes(slug)) return "sm:col-span-2 lg:col-span-3 xl:col-span-4";
               if (
-                [
-                  "glass-card",
-                  "glass-code-block-command",
-                  "glass-alert",
-                  "liquid-text",
-                  "glass-checkbox",
-                ].includes(slug)
+                ["glass-card", "glass-code-block-command", "glass-alert", "liquid-text", "glass-checkbox"].includes(
+                  slug,
+                )
               )
                 return "sm:col-span-2";
               return "col-span-1";

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import * as React from "react";
 
@@ -21,6 +22,25 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getComponentDocs().map((doc) => ({ slug: doc.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = getComponentDoc(slug);
+
+  if (!doc) {
+    return { title: "Component Not Found" };
+  }
+
+  const title = `${doc.title} Docs`;
+  const description = `${doc.description} See install commands, API props, live previews, and glass variants.`;
+
+  return {
+    title,
+    description,
+    openGraph: { title: `${title} | glasscn`, description },
+    twitter: { title: `${title} | glasscn`, description },
+  };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
