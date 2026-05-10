@@ -1,5 +1,4 @@
 import { ArrowRightIcon, BoxesIcon, CommandIcon, SearchIcon } from "lucide-react";
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
@@ -15,22 +14,15 @@ import {
   glassVariants,
   type ComponentDoc,
 } from "@/lib/component-docs";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Component Registry",
   description:
     "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
-  openGraph: {
-    title: "glasscn Component Registry",
-    description:
-      "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
-  },
-  twitter: {
-    title: "glasscn Component Registry",
-    description:
-      "Browse registry-ready glasscn components with live previews, install commands, variant examples, and API notes.",
-  },
-};
+  socialTitle: "glasscn Component Registry",
+  imageAlt: "glasscn component registry",
+});
 
 export default function Page() {
   const docs = getCatalogComponentDocs();
@@ -152,7 +144,7 @@ export default function Page() {
           <ComponentGrid docs={docs} />
         </section>
 
-        <section className="mt-16 animate-in fade-in slide-in-from-bottom-12 delay-500 duration-1000">
+        <section className="animate-in fade-in slide-in-from-bottom-12 mt-16 delay-500 duration-1000">
           <div className="mb-8">
             <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm font-medium tracking-wider uppercase">
               <SearchIcon className="size-4" />
@@ -188,9 +180,7 @@ function ComponentGrid({ docs }: { docs: ComponentDoc[] }) {
                 <h3 className="text-lg font-medium tracking-tight text-black">
                   <HighlightText>{doc.title}</HighlightText>
                 </h3>
-                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
-                  {doc.description}
-                </p>
+                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">{doc.description}</p>
               </div>
               <GlassButton
                 glassVariant="clear"

@@ -16,6 +16,7 @@ import {
   type ApiProp,
   type ComponentDoc,
 } from "@/lib/component-docs";
+import { createPageMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 export const dynamicParams = false;
@@ -35,12 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `${doc.title} Docs`;
   const description = `${doc.description} See install commands, API props, live previews, and variants.`;
 
-  return {
-    title,
-    description,
-    openGraph: { title: `${title} - glasscn`, description },
-    twitter: { title: `${title} - glasscn`, description },
-  };
+  return createPageMetadata({ title, description, imageAlt: `${doc.title} documentation` });
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

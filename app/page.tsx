@@ -1,5 +1,4 @@
 import { ArrowRightIcon, Maximize2Icon, MinusIcon, SquareArrowOutUpRightIcon, XIcon } from "lucide-react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -18,24 +17,17 @@ import { HighlightText } from "@/components/ui/highlight-text";
 import { Input } from "@/components/ui/input";
 import { ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import { getCatalogComponentDocs } from "@/lib/component-docs";
+import { createPageMetadata } from "@/lib/metadata";
 
 import { GitHubLogo } from "./GitHubLogo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Liquid Glass Components for shadcn/ui",
   description:
     "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
-  openGraph: {
-    title: "glasscn - Liquid Glass Components for shadcn/ui",
-    description:
-      "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
-  },
-  twitter: {
-    title: "glasscn - Liquid Glass Components for shadcn/ui",
-    description:
-      "Explore glasscn, a registry-ready collection of Apple-inspired liquid glass components for shadcn/ui and React.",
-  },
-};
+  socialTitle: "glasscn - Liquid Glass Components for shadcn/ui",
+  imageAlt: "glasscn liquid glass components",
+});
 
 export default function Page() {
   const docs = getCatalogComponentDocs();

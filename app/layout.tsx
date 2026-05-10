@@ -1,12 +1,14 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Righteous } from "next/font/google";
 
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+import { Geist_Mono, Inter, Righteous } from "next/font/google";
+
 import { AppBackground } from "@/components/app-background";
 import { SiteHeader } from "@/components/home/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SITE_DESCRIPTION, SITE_URL, SOCIAL_CARD_IMAGE, TWITTER_SUMMARY_IMAGE } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -15,13 +17,11 @@ const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 const righteous = Righteous({ weight: "400", subsets: ["latin"], variable: "--font-display" });
 
-const siteDescription =
-  "Apple-inspired liquid glass components for shadcn/ui, with registry-ready primitives, live previews, and install commands.";
-
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   applicationName: "glasscn",
   title: { default: "glasscn - Liquid Glass Components for shadcn/ui", template: "%s - glasscn" },
-  description: siteDescription,
+  description: SITE_DESCRIPTION,
   keywords: [
     "glasscn",
     "shadcn",
@@ -46,9 +46,15 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "glasscn",
     title: "glasscn - Liquid Glass Components for shadcn/ui",
-    description: siteDescription,
+    description: SITE_DESCRIPTION,
+    images: [SOCIAL_CARD_IMAGE],
   },
-  twitter: { card: "summary", title: "glasscn - Liquid Glass Components for shadcn/ui", description: siteDescription },
+  twitter: {
+    card: "summary",
+    title: "glasscn - Liquid Glass Components for shadcn/ui",
+    description: SITE_DESCRIPTION,
+    images: [TWITTER_SUMMARY_IMAGE],
+  },
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,25 +1,15 @@
-import type { Metadata } from "next";
-
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Card } from "@/components/ui/card";
 import { LiquidText } from "@/components/ui/glasscn/liquid-text";
 import { LiquidWatch } from "@/components/ui/glasscn/liquid-watch";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Liquid Glass",
   description:
     "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
-  openGraph: {
-    title: "Liquid Glass - glasscn",
-    description:
-      "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
-  },
-  twitter: {
-    title: "Liquid Glass - glasscn",
-    description:
-      "Preview glasscn liquid glass experiments, including animated typography and reusable watch-face treatments.",
-  },
-};
+  imageAlt: "glasscn liquid glass experiments",
+});
 
 function MyComponents() {
   return (
