@@ -18,7 +18,7 @@ function GlassProgress({ className, children, value, glassVariant = "liquid-refr
       value={value}
       data-slot="glass-progress"
       data-glass-variant={glassVariant}
-      className={cn("flex w-full flex-wrap gap-3", className)}
+      className={cn("flex h-2 w-full flex-wrap gap-3", className)}
       {...props}
     >
       {children}
@@ -32,7 +32,7 @@ function GlassProgressTrack({ glassVariant }: Required<FrostGlassVariantProp>) {
     <ProgressPrimitive.Track
       data-slot="glass-progress-track"
       className={cn(
-        "relative flex h-2 w-full items-center overflow-hidden rounded-full",
+        "relative flex h-full w-full items-center overflow-hidden rounded-full",
         glassVariant === "liquid-refract" ? "bg-transparent" : glassVariantStyles[glassVariant],
       )}
     >
@@ -42,7 +42,7 @@ function GlassProgressTrack({ glassVariant }: Required<FrostGlassVariantProp>) {
 
   if (glassVariant === "liquid-refract") {
     return (
-      <LiquidGlass className="h-2 w-full rounded-full" blur={2} refraction={0}>
+      <LiquidGlass className="h-full w-full rounded-full" blur={2} refraction={0}>
         {track}
       </LiquidGlass>
     );
