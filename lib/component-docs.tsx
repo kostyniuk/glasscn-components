@@ -466,6 +466,7 @@ export function PopoverDemo() {
     importPath: "@/components/ui/glasscn/glass-progress",
     Demo: ProgressDemo,
     variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    defaultVariant: "liquid",
     usageCode: String.raw`import { Field, FieldLabel } from "@/components/ui/field"
 import { GlassProgress } from "@/components/ui/glasscn/glass-progress"
 

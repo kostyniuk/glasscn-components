@@ -21,7 +21,7 @@ function ProgressDemo({ variant = "clear" }: ProgressDemoProps) {
         <span>Upload progress</span>
         <span className="ml-auto">{progress}%</span>
       </FieldLabel>
-      <GlassProgress value={progress} id="progress-upload" glassVariant={variant} className={'h-6'} />
+      <GlassProgress value={progress} id="progress-upload" glassVariant={variant} className={'h-8'} />
     </Field>
   );
 }
