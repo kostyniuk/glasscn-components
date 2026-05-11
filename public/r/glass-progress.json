@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-progress",
+  "title": "Glass Progress",
+  "description": "Glass Progress with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/progress",
+    "@glasscn/glass-variants"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-progress.tsx",
+      "content": "\"use client\";\n\nimport { Progress as ProgressPrimitive } from \"@base-ui/react/progress\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { LiquidGlass } from \"./liquid-glass\";\n\ntype GlassProgressProps = ProgressPrimitive.Root.Props & FrostGlassVariantProp;\n\nconst progressIndicatorStyles =\n  \"relative z-10 h-full rounded-none bg-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition-all\";\n\nfunction GlassProgress({ className, children, value, glassVariant = \"liquid-refract\", ...props }: GlassProgressProps) {\n  return (\n    <ProgressPrimitive.Root\n      value={value}\n      data-slot=\"glass-progress\"\n      data-glass-variant={glassVariant}\n      className={cn(\"flex w-full flex-wrap gap-3\", className)}\n      {...props}\n    >\n      {children}\n      <GlassProgressTrack glassVariant={glassVariant} />\n    </ProgressPrimitive.Root>\n  );\n}\n\nfunction GlassProgressTrack({ glassVariant }: Required<FrostGlassVariantProp>) {\n  const track = (\n    <ProgressPrimitive.Track\n      data-slot=\"glass-progress-track\"\n      className={cn(\n        \"relative flex h-2 w-full items-center overflow-hidden rounded-full\",\n        glassVariant === \"liquid-refract\" ? \"bg-transparent\" : glassVariantStyles[glassVariant],\n      )}\n    >\n      <ProgressPrimitive.Indicator data-slot=\"glass-progress-indicator\" className={progressIndicatorStyles} />\n    </ProgressPrimitive.Track>\n  );\n\n  if (glassVariant === \"liquid-refract\") {\n    return (\n      <LiquidGlass className=\"h-2 w-full rounded-full\" blur={2} refraction={0}>\n        {track}\n      </LiquidGlass>\n    );\n  }\n\n  return track;\n}\n\nexport { GlassProgress };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

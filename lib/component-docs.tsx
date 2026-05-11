@@ -7,6 +7,7 @@ import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
+import { ProgressDemo } from "@/components/demo/progress-demo";
 import { RadioGroupDemo } from "@/components/demo/radio-group-demo";
 import { SkeletonDemo } from "@/components/demo/skeleton-demo";
 import { CardDemo } from "@/components/demo/card-demo";
@@ -455,6 +456,31 @@ export function PopoverDemo() {
       glassVariantFor("GlassPopoverContent"),
       inheritedProps("GlassPopoverContent", "React.ComponentProps<typeof PopoverContent>"),
     ],
+  },
+  {
+    slug: "glass-progress",
+    registryName: "glass-progress",
+    title: "Glass Progress",
+    description: "A progress indicator with glass track treatments.",
+    installName: "@glasscn/glass-progress",
+    importPath: "@/components/ui/glasscn/glass-progress",
+    Demo: ProgressDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import { Field, FieldLabel } from "@/components/ui/field"
+import { GlassProgress } from "@/components/ui/glasscn/glass-progress"
+
+export function ProgressWithLabel() {
+  return (
+    <Field className="w-full max-w-sm">
+      <FieldLabel htmlFor="progress-upload">
+        <span>Upload progress</span>
+        <span className="ml-auto">66%</span>
+      </FieldLabel>
+      <GlassProgress value={66} id="progress-upload" glassVariant="liquid" />
+    </Field>
+  )
+}`,
+    api: [glassVariantFor("GlassProgress"), inheritedProps("GlassProgress", "ProgressPrimitive.Root.Props")],
   },
   {
     slug: "glass-combobox",

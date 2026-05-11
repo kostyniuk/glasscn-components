@@ -32,6 +32,7 @@ const data = {
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },
         { title: "Popover", url: "/components/glass-popover" },
+        { title: "Progress", url: "/components/glass-progress" },
         { title: "Radio Group", url: "/components/glass-radio-group" },
         { title: "Select", url: "/components/glass-select" },
         { title: "Separator", url: "/components/glass-separator" },
@@ -69,7 +70,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSideba
                     <GlassSidebarMenuButton
                       isActive={pathname === item.url}
                       render={<Link href={item.url} />}
-                      className="h-9 rounded-xl text-black/70 hover:text-black data-[active=true]:text-black dark:text-white/70 dark:hover:text-white dark:data-[active=true]:text-white"
+                      className="h-9 rounded-xl text-black/70 hover:text-black data-[active=true]:text-black dark:text-white/70 dark:hover:text-white dark:data-[active=true]:text-white hover:font-bold"
                     >
                       {item.title}
                     </GlassSidebarMenuButton>

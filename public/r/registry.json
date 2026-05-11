@@ -178,6 +178,19 @@
       ]
     },
     {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "registryDependencies": ["@glasscn/utils"],
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glass-button",
       "type": "registry:component",
       "title": "Glass Button",
@@ -686,6 +699,23 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-progress",
+      "type": "registry:component",
+      "title": "Glass Progress",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/progress",
+        "@glasscn/glass-variants"
+      ],
+      "description": "Glass Progress with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-progress.tsx",
           "type": "registry:component"
         }
       ]
