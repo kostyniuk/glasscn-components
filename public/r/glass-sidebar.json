@@ -9,7 +9,8 @@
     "@glasscn/sheet",
     "@glasscn/sidebar",
     "@glasscn/glass-variants",
-    "@glasscn/glass-separator"
+    "@glasscn/glass-separator",
+    "@glasscn/liquid-glass"
   ],
   "files": [
     {

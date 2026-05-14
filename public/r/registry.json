@@ -197,7 +197,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/button",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Button with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -214,7 +215,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/badge",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Badge with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -231,7 +233,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/checkbox",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Checkbox with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -248,7 +251,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/combobox",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Combobox with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -265,7 +269,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/select",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Select with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -324,7 +329,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/calendar",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Calendar with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -375,8 +381,8 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
+      "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
           "path": "components/ui/sheet.tsx",
@@ -470,6 +476,7 @@
         "@glasscn/button",
         "@glasscn/input",
         "@glasscn/separator",
+        "@glasscn/sheet",
         "@glasscn/skeleton",
         "@glasscn/tooltip"
       ],
@@ -516,7 +523,8 @@
         "@glasscn/sheet",
         "@glasscn/sidebar",
         "@glasscn/glass-variants",
-        "@glasscn/glass-separator"
+        "@glasscn/glass-separator",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Sidebar with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -559,7 +567,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/alert",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Alert with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -578,7 +587,8 @@
         "@glasscn/button",
         "@glasscn/glass-button",
         "@glasscn/alert-dialog",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Alert Dialog with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -625,7 +635,8 @@
         "@glasscn/utils",
         "@glasscn/code-block-command",
         "@glasscn/glass-badge",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Code Block Command with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -642,7 +653,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/button-group",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Button Group with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -659,7 +671,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/input",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Input with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -693,8 +706,10 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/popover",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
+      "dependencies": ["@base-ui/react"],
       "description": "Glass Popover with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
@@ -710,8 +725,10 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/progress",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
+      "dependencies": ["@base-ui/react"],
       "description": "Glass Progress with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
@@ -744,7 +761,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/skeleton",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Skeleton with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -763,6 +781,19 @@
       "files": [
         {
           "path": "components/ui/glasscn/liquid-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "liquid-glass",
+      "type": "registry:component",
+      "title": "Liquid Glass",
+      "description": "Low-level refractive glass wrapper used by liquid-refract components.",
+      "registryDependencies": ["@glasscn/utils"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-glass.tsx",
           "type": "registry:component"
         }
       ]

@@ -3,10 +3,14 @@
   "name": "glass-progress",
   "title": "Glass Progress",
   "description": "Glass Progress with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/progress",
-    "@glasscn/glass-variants"
+    "@glasscn/glass-variants",
+    "@glasscn/liquid-glass"
   ],
   "files": [
     {

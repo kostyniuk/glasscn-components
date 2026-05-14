@@ -3,10 +3,12 @@
   "name": "sheet",
   "title": "Sheet",
   "dependencies": [
-    "@base-ui/react"
+    "@base-ui/react",
+    "lucide-react"
   ],
   "registryDependencies": [
-    "@glasscn/utils"
+    "@glasscn/utils",
+    "@glasscn/button"
   ],
   "files": [
     {

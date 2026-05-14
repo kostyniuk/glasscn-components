@@ -12,6 +12,7 @@
     "@glasscn/button",
     "@glasscn/input",
     "@glasscn/separator",
+    "@glasscn/sheet",
     "@glasscn/skeleton",
     "@glasscn/tooltip"
   ],

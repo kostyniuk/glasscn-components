@@ -6,7 +6,8 @@
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/button",
-    "@glasscn/glass-variants"
+    "@glasscn/glass-variants",
+    "@glasscn/liquid-glass"
   ],
   "files": [
     {

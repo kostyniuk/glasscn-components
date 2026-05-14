@@ -3,10 +3,14 @@
   "name": "glass-popover",
   "title": "Glass Popover",
   "description": "Glass Popover with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "registryDependencies": [
     "@glasscn/utils",
     "@glasscn/popover",
-    "@glasscn/glass-variants"
+    "@glasscn/glass-variants",
+    "@glasscn/liquid-glass"
   ],
   "files": [
     {
