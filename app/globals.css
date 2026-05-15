@@ -136,6 +136,31 @@
   }
 }
 
+@layer base {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light);
+  }
+
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+
+  .shiki {
+    background-color: transparent !important;
+  }
+
+  .shiki code {
+    display: grid;
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+  }
+
+  .shiki [data-line] {
+    min-height: 1.5rem;
+  }
+}
+
 @keyframes liquid-drift {
   0% {
     background-position:

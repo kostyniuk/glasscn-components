@@ -1,9 +1,10 @@
 import * as React from "react";
 
-import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
+import { GlassComponentPreviewTabs } from "@/components/glass-component-preview-tabs";
 import { getComponentDoc } from "@/lib/component-docs";
+import { highlightCode } from "@/lib/highlight-code";
 
-export function ComponentPreview({
+export async function ComponentPreview({
   name,
   className,
   previewClassName,
@@ -28,14 +29,34 @@ export function ComponentPreview({
 
   const Demo = doc.Demo;
 
+  // This component runs on the server, so it can prepare the code-preview payload
+  // before any client hydration happens. That is the important architectural
+  // difference from a client-only highlighter, which would render plain text first
+  // and only colorize after React mounts in the browser.
+  const previewCode = doc.usageCode.split("\n").slice(0, 4).join("\n");
+
+  // Shiki supports server-side highlighting because it is just a Node-side
+  // transformation from source text to themed HTML. We generate both the full
+  // snippet and the collapsed preview snippet here, then pass that ready-made HTML
+  // into the client tabs component for display/toggling.
+  const [highlightedCode, previewHighlightedCode] = await Promise.all([
+    highlightCode(doc.usageCode),
+    highlightCode(previewCode),
+  ]);
+
   return (
-    <ComponentPreviewTabs
+    // The tabs component stays client-side only for interaction state such as
+    // expand/collapse. The highlighted markup itself is already computed here on
+    // the server, so the first paint can include syntax colors immediately.
+    <GlassComponentPreviewTabs
       className={className}
       previewClassName={previewClassName ?? doc.previewClassName}
       align={align}
       hideCode={hideCode}
       component={<Demo variant={doc.defaultVariant ?? "liquid-refract"} />}
       code={doc.usageCode}
+      highlightedCode={highlightedCode}
+      previewHighlightedCode={previewHighlightedCode}
       {...props}
     />
   );

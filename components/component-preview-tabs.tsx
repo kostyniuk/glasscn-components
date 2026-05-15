@@ -18,12 +18,16 @@ export function ComponentPreviewTabs({
   hideCode = false,
   component,
   code,
+  highlightedCode,
+  previewHighlightedCode,
 }: React.ComponentProps<"div"> & {
   previewClassName?: string;
   align?: "center" | "start" | "end";
   hideCode?: boolean;
   component: React.ReactNode;
   code: string;
+  highlightedCode: string;
+  previewHighlightedCode: string;
 }) {
   const [codeVisible, setCodeVisible] = React.useState(false);
 
@@ -73,14 +77,16 @@ export function ComponentPreviewTabs({
               />
             </div>
             {codeVisible ? (
-              <pre className="max-h-96 overflow-auto p-4 pr-16 text-sm leading-6">
-                <code className="text-foreground/85 font-mono">{code}</code>
-              </pre>
+              <div
+                className="[&_pre]:max-h-96"
+                dangerouslySetInnerHTML={{ __html: highlightedCode }}
+              />
             ) : (
               <div className="relative">
-                <pre className="max-h-28 overflow-hidden p-4 text-sm leading-6">
-                  <code className="text-foreground/65 font-mono">{code.split("\n").slice(0, 4).join("\n")}</code>
-                </pre>
+                <div
+                  className="max-h-28 overflow-hidden [&_pre]:overflow-hidden"
+                  dangerouslySetInnerHTML={{ __html: previewHighlightedCode }}
+                />
                 <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-white/65 via-white/40 to-transparent pb-4 dark:from-black/85 dark:via-black/60">
                   <GlassButton
                     type="button"
