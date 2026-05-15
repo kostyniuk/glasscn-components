@@ -7,7 +7,10 @@
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "lib/utils.ts",
@@ -20,7 +23,9 @@
       "type": "registry:component",
       "title": "Highlight Text",
       "description": "Inline text highlight with preset color variants and custom background class support.",
-      "registryDependencies": ["@glasscn/utils"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
       "files": [
         {
           "path": "components/ui/highlight-text.tsx",
@@ -43,8 +48,13 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/button.tsx",
@@ -56,8 +66,13 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/badge.tsx",
@@ -69,8 +84,13 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/checkbox.tsx",
@@ -82,8 +102,12 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/input.tsx",
@@ -95,7 +119,9 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "registryDependencies": ["@glasscn/utils"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
       "files": [
         {
           "path": "components/ui/textarea.tsx",
@@ -113,7 +139,9 @@
         "@glasscn/input",
         "@glasscn/textarea"
       ],
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/input-group.tsx",
@@ -125,8 +153,14 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/separator"],
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/separator"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/item.tsx",
@@ -143,7 +177,10 @@
         "@glasscn/button",
         "@glasscn/input-group"
       ],
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/combobox.tsx",
@@ -155,8 +192,13 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/select.tsx",
@@ -168,8 +210,12 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/switch.tsx",
@@ -181,8 +227,12 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/progress.tsx",
@@ -284,7 +334,9 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "registryDependencies": ["@glasscn/utils"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
       "files": [
         {
           "path": "components/ui/card.tsx",
@@ -297,7 +349,9 @@
       "type": "registry:component",
       "title": "Liquid Glass",
       "description": "Low-level refractive glass wrapper used by liquid-refract components.",
-      "registryDependencies": ["@glasscn/utils"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/liquid-glass.tsx",
@@ -327,8 +381,15 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
-      "dependencies": ["date-fns", "lucide-react", "react-day-picker"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button"
+      ],
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "react-day-picker"
+      ],
       "files": [
         {
           "path": "components/ui/calendar.tsx",
@@ -395,8 +456,14 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/button"],
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/sheet.tsx",
@@ -408,8 +475,12 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/separator.tsx",
@@ -421,7 +492,9 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "registryDependencies": ["@glasscn/utils"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
       "files": [
         {
           "path": "components/ui/skeleton.tsx",
@@ -433,8 +506,14 @@
       "name": "button-group",
       "type": "registry:ui",
       "title": "Button Group",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/separator"],
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/separator"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/button-group.tsx",
@@ -446,8 +525,12 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/popover.tsx",
@@ -459,8 +542,12 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/radio-group.tsx",
@@ -472,8 +559,12 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/tooltip.tsx",
@@ -552,8 +643,12 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "registryDependencies": ["@glasscn/utils"],
-      "dependencies": ["class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/alert.tsx",
@@ -565,8 +660,13 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "registryDependencies": ["@glasscn/button", "@glasscn/utils"],
-      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "@glasscn/button",
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "components/ui/alert-dialog.tsx",
@@ -621,7 +721,9 @@
         "@glasscn/button",
         "@glasscn/badge"
       ],
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/code-block-command.tsx",
@@ -673,7 +775,11 @@
         "@glasscn/glass-card",
         "@glasscn/glass-variants"
       ],
-      "dependencies": ["lucide-react", "motion", "shiki"],
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "shiki"
+      ],
       "description": "A preview shell for component demos with switchable default and glass variants.",
       "files": [
         {
@@ -766,7 +872,9 @@
         "@glasscn/glass-variants",
         "@glasscn/liquid-glass"
       ],
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "description": "Glass Popover with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
@@ -785,7 +893,9 @@
         "@glasscn/glass-variants",
         "@glasscn/liquid-glass"
       ],
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "description": "Glass Progress with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
         {
@@ -834,7 +944,9 @@
       "type": "registry:component",
       "title": "Liquid Text",
       "description": "Animated text filled with a liquid shader mask.",
-      "dependencies": ["@paper-design/shaders-react"],
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/liquid-text.tsx",
@@ -847,7 +959,10 @@
       "type": "registry:component",
       "title": "Liquid Watch",
       "description": "Compact watch-style stacked time display built from liquid text inspired by Apple Watch.",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/liquid-text"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/liquid-text"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/liquid-watch.tsx",
@@ -860,8 +975,14 @@
       "type": "registry:component",
       "title": "Liquid Switch",
       "description": "A liquid-glass switch wrapper built on top of the default switch component.",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/switch"],
-      "dependencies": ["@paper-design/shaders-react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/switch"
+      ],
+      "dependencies": [
+        "@paper-design/shaders-react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/liquid-switch.tsx",
@@ -874,8 +995,14 @@
       "type": "registry:component",
       "title": "Liquid Badge",
       "description": "A liquid-glass badge wrapper that keeps the base badge fill and applies the effect to the border.",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/badge"],
-      "dependencies": ["@paper-design/shaders-react", "class-variance-authority"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/badge"
+      ],
+      "dependencies": [
+        "@paper-design/shaders-react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/liquid-badge.tsx",
@@ -888,7 +1015,12 @@
       "type": "registry:component",
       "title": "Preference",
       "description": "A weighted preference bar with icon badges, hover tinting, and tooltip descriptions.",
-      "registryDependencies": ["@glasscn/utils", "@glasscn/badge", "@glasscn/item", "@glasscn/tooltip"],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/badge",
+        "@glasscn/item",
+        "@glasscn/tooltip"
+      ],
       "files": [
         {
           "path": "components/ui/glasscn/preference.tsx",

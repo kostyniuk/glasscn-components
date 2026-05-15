@@ -6,7 +6,7 @@ import * as React from "react";
 import { CopyButton } from "@/components/custom/copy-button";
 import { Card } from "@/components/ui/card";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
-import { LiquidGlass } from "@/components/ui/glasscn/liquid-glass";
+import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import type { FrostGlassVariant } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +35,56 @@ export function GlassComponentPreviewTabs({
   codeGlassVariant = "frosted",
 }: GlassComponentPreviewTabsProps) {
   const [codeVisible, setCodeVisible] = React.useState(false);
+  const codePanel = (
+    <>
+      <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+        {codeVisible && (
+          <GlassButton
+            type="button"
+            size="icon"
+            variant="outline"
+            glassVariant="liquid-refract"
+            className="text-foreground/80 hover:text-foreground h-7 w-7"
+            onClick={() => setCodeVisible(false)}
+          >
+            <ChevronUpIcon className="h-3.5 w-3.5" />
+            <span className="sr-only">Collapse code</span>
+          </GlassButton>
+        )}
+        <CopyButton
+          text={code}
+          size="icon"
+          variant="outline"
+          className={cn(
+            "h-7 w-7 text-foreground/80 hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5",
+            !codeVisible && "bg-background/40",
+          )}
+        />
+      </div>
+
+      {codeVisible ? (
+        <div className="[&_pre]:max-h-96" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      ) : (
+        <div className="relative">
+          <div
+            className="max-h-28 overflow-hidden [&_pre]:overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: previewHighlightedCode }}
+          />
+          <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-white/55 via-white/25 to-transparent pb-4 dark:from-black/70 dark:via-black/35">
+            <GlassButton
+              type="button"
+              size="sm"
+              variant="outline"
+              glassVariant="liquid-refract"
+              onClick={() => setCodeVisible(true)}
+            >
+              View Code
+            </GlassButton>
+          </div>
+        </div>
+      )}
+    </>
+  );
 
   return (
     <div className={cn("mt-4 mb-12 flex flex-col gap-0", className)}>
@@ -57,60 +107,13 @@ export function GlassComponentPreviewTabs({
       </Card>
 
       {!hideCode && (
-        <LiquidGlass
+        <GlassCard
           data-slot="glass-component-code"
-          blur={5}
-          className="group/code relative -mt-px rounded-t-none rounded-b-[28px]"
+          glassVariant={codeGlassVariant}
+          className="group/code relative -mt-px gap-0 overflow-hidden rounded-t-none rounded-b-[28px] py-0"
         >
-          <Card className="gap-0 overflow-hidden rounded-t-none rounded-b-[28px] border-0 bg-transparent py-0 shadow-none ring-0">
-            <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-              {codeVisible && (
-                <GlassButton
-                  type="button"
-                  size="icon"
-                  variant="outline"
-                  glassVariant="liquid-refract"
-                  className="text-foreground/80 hover:text-foreground h-7 w-7"
-                  onClick={() => setCodeVisible(false)}
-                >
-                  <ChevronUpIcon className="h-3.5 w-3.5" />
-                  <span className="sr-only">Collapse code</span>
-                </GlassButton>
-              )}
-              <CopyButton
-                text={code}
-                size="icon"
-                variant="outline"
-                className={cn(
-                  "h-7 w-7 text-foreground/80 hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5",
-                  !codeVisible && "bg-background/40",
-                )}
-              />
-            </div>
-
-            {codeVisible ? (
-              <div className="[&_pre]:max-h-96" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-            ) : (
-              <div className="relative">
-                <div
-                  className="max-h-28 overflow-hidden [&_pre]:overflow-hidden"
-                  dangerouslySetInnerHTML={{ __html: previewHighlightedCode }}
-                />
-                <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-white/55 via-white/25 to-transparent pb-4 dark:from-black/70 dark:via-black/35">
-                  <GlassButton
-                    type="button"
-                    size="sm"
-                    variant="outline"
-                    glassVariant="liquid-refract"
-                    onClick={() => setCodeVisible(true)}
-                  >
-                    View Code
-                  </GlassButton>
-                </div>
-              </div>
-            )}
-          </Card>
-        </LiquidGlass>
+          {codePanel}
+        </GlassCard>
       )}
     </div>
   );
