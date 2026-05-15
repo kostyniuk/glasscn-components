@@ -1,60 +1,67 @@
 import * as React from "react";
 
+import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
 import { GlassComponentPreviewTabs } from "@/components/glass-component-preview-tabs";
-import { getComponentDoc } from "@/lib/component-docs";
+import type { FrostGlassVariant } from "@/lib/glass-variants";
 import { highlightCode } from "@/lib/highlight-code";
 
+export type ComponentPreviewProps = React.ComponentProps<"div"> & {
+  previewClassName?: string;
+  align?: "center" | "start" | "end";
+  hideCode?: boolean;
+  component: React.ReactNode;
+  code: string;
+  language?: string;
+  variant?: "default" | "glass";
+  previewGlassVariant?: FrostGlassVariant;
+  codeGlassVariant?: FrostGlassVariant;
+};
+
 export async function ComponentPreview({
-  name,
   className,
   previewClassName,
   align = "center",
   hideCode = false,
+  component,
+  code,
+  language = "tsx",
+  variant = "default",
+  previewGlassVariant = "clear",
+  codeGlassVariant = "frosted",
   ...props
-}: React.ComponentProps<"div"> & {
-  name: string;
-  align?: "center" | "start" | "end";
-  hideCode?: boolean;
-  previewClassName?: string;
-}) {
-  const doc = getComponentDoc(name);
+}: ComponentPreviewProps) {
+  const previewCode = code.split("\n").slice(0, 4).join("\n");
+  const [highlightedCode, previewHighlightedCode] = await Promise.all([
+    highlightCode(code, language),
+    highlightCode(previewCode, language),
+  ]);
 
-  if (!doc) {
+  if (variant === "glass") {
     return (
-      <p className="text-muted-foreground mt-6 text-sm">
-        Component <code className="bg-muted rounded px-1.5 py-1 font-mono text-sm">{name}</code> not found.
-      </p>
+      <GlassComponentPreviewTabs
+        className={className}
+        previewClassName={previewClassName}
+        align={align}
+        hideCode={hideCode}
+        component={component}
+        code={code}
+        highlightedCode={highlightedCode}
+        previewHighlightedCode={previewHighlightedCode}
+        previewGlassVariant={previewGlassVariant}
+        codeGlassVariant={codeGlassVariant}
+        {...props}
+      />
     );
   }
 
-  const Demo = doc.Demo;
-
-  // This component runs on the server, so it can prepare the code-preview payload
-  // before any client hydration happens. That is the important architectural
-  // difference from a client-only highlighter, which would render plain text first
-  // and only colorize after React mounts in the browser.
-  const previewCode = doc.usageCode.split("\n").slice(0, 4).join("\n");
-
-  // Shiki supports server-side highlighting because it is just a Node-side
-  // transformation from source text to themed HTML. We generate both the full
-  // snippet and the collapsed preview snippet here, then pass that ready-made HTML
-  // into the client tabs component for display/toggling.
-  const [highlightedCode, previewHighlightedCode] = await Promise.all([
-    highlightCode(doc.usageCode),
-    highlightCode(previewCode),
-  ]);
-
   return (
-    // The tabs component stays client-side only for interaction state such as
-    // expand/collapse. The highlighted markup itself is already computed here on
-    // the server, so the first paint can include syntax colors immediately.
-    <GlassComponentPreviewTabs
+    <ComponentPreviewTabs
       className={className}
-      previewClassName={previewClassName ?? doc.previewClassName}
+      previewClassName={previewClassName}
       align={align}
       hideCode={hideCode}
-      component={<Demo variant={doc.defaultVariant ?? "liquid-refract"} />}
-      code={doc.usageCode}
+      component={component}
+      code={code}
       highlightedCode={highlightedCode}
       previewHighlightedCode={previewHighlightedCode}
       {...props}

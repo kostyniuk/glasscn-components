@@ -51,6 +51,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 }
 
 function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
+  const Demo = doc.Demo;
+
   return (
     <div className="flex min-h-svh justify-center px-6 pb-16">
       <article className="w-full max-w-5xl min-w-0 py-20">
@@ -64,7 +66,14 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
           </CardHeader>
         </GlassCard>
 
-        <ComponentPreview name={doc.slug} previewClassName={doc.previewClassName} />
+        <ComponentPreview
+          variant="glass"
+          previewGlassVariant="clear"
+          codeGlassVariant="frosted"
+          previewClassName={doc.previewClassName}
+          component={<Demo variant={doc.defaultVariant ?? "liquid-refract"} />}
+          code={doc.usageCode}
+        />
 
         <Section title="Installation">
           <PackageManagerProvider>

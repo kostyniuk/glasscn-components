@@ -12,7 +12,10 @@ const GlassComboboxVariantContext = React.createContext<FrostGlassVariant>("liqu
 
 type GlassComboboxProps<T extends readonly string[]> = React.ComponentProps<typeof Combobox<T>> & FrostGlassVariantProp;
 
-function GlassCombobox<T extends readonly string[]>({ glassVariant = "liquid-refract", ...props }: GlassComboboxProps<T>) {
+function GlassCombobox<T extends readonly string[]>({
+  glassVariant = "liquid-refract",
+  ...props
+}: GlassComboboxProps<T>) {
   return (
     <GlassComboboxVariantContext.Provider value={glassVariant}>
       <Combobox data-slot="glass-combobox" {...props} />

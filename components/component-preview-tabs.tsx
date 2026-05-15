@@ -4,12 +4,21 @@ import { ChevronUpIcon } from "lucide-react";
 import * as React from "react";
 
 import { CopyButton } from "@/components/custom/copy-button";
-import { GlassButton } from "@/components/ui/glasscn/glass-button";
-import { GlassCard } from "@/components/ui/glasscn/glass-card";
-import { GlassSeparator } from "@/components/ui/glasscn/glass-separator";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 import { Card } from "./ui/card";
+
+export type ComponentPreviewTabsProps = React.ComponentProps<"div"> & {
+  previewClassName?: string;
+  align?: "center" | "start" | "end";
+  hideCode?: boolean;
+  component: React.ReactNode;
+  code: string;
+  highlightedCode: string;
+  previewHighlightedCode: string;
+};
 
 export function ComponentPreviewTabs({
   className,
@@ -20,23 +29,11 @@ export function ComponentPreviewTabs({
   code,
   highlightedCode,
   previewHighlightedCode,
-}: React.ComponentProps<"div"> & {
-  previewClassName?: string;
-  align?: "center" | "start" | "end";
-  hideCode?: boolean;
-  component: React.ReactNode;
-  code: string;
-  highlightedCode: string;
-  previewHighlightedCode: string;
-}) {
+}: ComponentPreviewTabsProps) {
   const [codeVisible, setCodeVisible] = React.useState(false);
 
   return (
-    <Card
-      data-slot="component-preview"
-      variant="outline"
-      className={cn("mt-4 mb-12 gap-0 overflow-hidden bg-transparent py-0", className)}
-    >
+    <Card data-slot="component-preview" className={cn("mt-4 mb-12 gap-0 overflow-hidden py-0", className)}>
       <div data-slot="preview" dir="ltr">
         <div
           data-align={align}
@@ -50,21 +47,20 @@ export function ComponentPreviewTabs({
       </div>
       {!hideCode && (
         <>
-          <GlassSeparator glassVariant="subtle" />
-          <div data-slot="code" data-code-visible={codeVisible} className="group/code relative bg-transparent">
+          <Separator />
+          <div data-slot="code" data-code-visible={codeVisible} className="group/code bg-background relative">
             <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
               {codeVisible && (
-                <GlassButton
+                <Button
                   type="button"
                   size="icon"
                   variant="outline"
-                  glassVariant="liquid-refract"
                   className="text-foreground/80 hover:text-foreground h-7 w-7"
                   onClick={() => setCodeVisible(false)}
                 >
                   <ChevronUpIcon className="h-3.5 w-3.5" />
                   <span className="sr-only">Collapse code</span>
-                </GlassButton>
+                </Button>
               )}
               <CopyButton
                 text={code}
@@ -77,26 +73,17 @@ export function ComponentPreviewTabs({
               />
             </div>
             {codeVisible ? (
-              <div
-                className="[&_pre]:max-h-96"
-                dangerouslySetInnerHTML={{ __html: highlightedCode }}
-              />
+              <div className="[&_pre]:max-h-96" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
             ) : (
               <div className="relative">
                 <div
                   className="max-h-28 overflow-hidden [&_pre]:overflow-hidden"
                   dangerouslySetInnerHTML={{ __html: previewHighlightedCode }}
                 />
-                <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-white/65 via-white/40 to-transparent pb-4 dark:from-black/85 dark:via-black/60">
-                  <GlassButton
-                    type="button"
-                    size="sm"
-                    variant="outline"
-                    glassVariant="liquid-refract"
-                    onClick={() => setCodeVisible(true)}
-                  >
+                <div className="from-background via-background/70 dark:via-background/80 absolute inset-0 flex items-end justify-center bg-linear-to-t to-transparent pb-4">
+                  <Button type="button" size="sm" variant="outline" onClick={() => setCodeVisible(true)}>
                     View Code
-                  </GlassButton>
+                  </Button>
                 </div>
               </div>
             )}

@@ -10,16 +10,14 @@ type PopoverDemoProps = { variant?: FrostGlassVariant };
 function PopoverDemo({ variant = "clear" }: PopoverDemoProps) {
   return (
     <Popover>
-      <PopoverTrigger render={<Button />}>
-        Open Popover
-      </PopoverTrigger>
+      <PopoverTrigger render={<Button />}>Open Popover</PopoverTrigger>
       <GlassPopoverContent glassVariant={variant}>
         <PopoverHeader>
           <PopoverTitle>Title</PopoverTitle>
           <PopoverDescription>Description text here.</PopoverDescription>
         </PopoverHeader>
       </GlassPopoverContent>
-    </Popover >
+    </Popover>
   );
 }
 

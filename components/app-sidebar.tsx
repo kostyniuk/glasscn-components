@@ -27,7 +27,6 @@ const data = {
         { title: "Calendar", url: "/components/glass-calendar" },
         { title: "Card", url: "/components/glass-card" },
         { title: "Checkbox", url: "/components/glass-checkbox" },
-        { title: "Code Block Command", url: "/components/glass-code-block-command" },
         { title: "Combobox", url: "/components/glass-combobox" },
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },
@@ -42,7 +41,11 @@ const data = {
     },
     {
       title: "Custom",
-      items: [{ title: "Highlight Text", url: "/components/highlight-text" }],
+      items: [
+        { title: "Code Block Command", url: "/components/glass-code-block-command" },
+        { title: "Component Preview", url: "/components/component-preview" },
+        { title: "Highlight Text", url: "/components/highlight-text" },
+      ],
     },
   ],
 };
@@ -70,7 +73,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof GlassSideba
                     <GlassSidebarMenuButton
                       isActive={pathname === item.url}
                       render={<Link href={item.url} />}
-                      className="h-9 rounded-xl text-black/70 hover:text-black data-[active=true]:text-black dark:text-white/70 dark:hover:text-white dark:data-[active=true]:text-white hover:font-bold"
+                      className="h-9 rounded-xl text-black/70 hover:font-bold hover:text-black data-[active=true]:text-black dark:text-white/70 dark:hover:text-white dark:data-[active=true]:text-white"
                     >
                       {item.title}
                     </GlassSidebarMenuButton>

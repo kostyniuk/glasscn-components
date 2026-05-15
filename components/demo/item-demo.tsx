@@ -3,11 +3,9 @@
 import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  GlassItem,
-} from "@/components/ui/glasscn/glass-item";
-import { type FrostGlassVariant } from "@/lib/glass-variants";
+import { GlassItem } from "@/components/ui/glasscn/glass-item";
 import { ItemContent, ItemTitle, ItemDescription, ItemActions, ItemMedia } from "@/components/ui/item";
+import { type FrostGlassVariant } from "@/lib/glass-variants";
 
 type ItemDemoProps = { variant?: FrostGlassVariant };
 

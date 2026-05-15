@@ -11,9 +11,7 @@ export async function highlightCode(code: string, language: string = "tsx") {
   // Use the content itself as the cache input so repeated component docs pages
   // can reuse the exact same highlighted payload without caring which route asked
   // for it.
-  const cacheKey = createHash("sha256")
-    .update(`${language}:${code}`)
-    .digest("hex");
+  const cacheKey = createHash("sha256").update(`${language}:${code}`).digest("hex");
 
   const cached = highlightCache.get(cacheKey);
 
@@ -27,10 +25,7 @@ export async function highlightCode(code: string, language: string = "tsx") {
   // client-side effect to colorize plain text after hydration.
   const html = await codeToHtml(code, {
     lang: language,
-    themes: {
-      dark: "github-dark",
-      light: "github-light",
-    },
+    themes: { dark: "github-dark", light: "github-light" },
     transformers: [
       {
         pre(node) {

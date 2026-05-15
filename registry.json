@@ -661,6 +661,48 @@
       ]
     },
     {
+      "name": "component-preview",
+      "type": "registry:component",
+      "title": "Component Preview",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/card",
+        "@glasscn/separator",
+        "@glasscn/glass-button",
+        "@glasscn/glass-card",
+        "@glasscn/glass-variants"
+      ],
+      "dependencies": ["lucide-react", "motion", "shiki"],
+      "description": "A preview shell for component demos with switchable default and glass variants.",
+      "files": [
+        {
+          "path": "components/component-preview.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/component-preview-tabs.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/glass-component-preview-tabs.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/custom/copy-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "lib/highlight-code.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "glass-button-group",
       "type": "registry:component",
       "title": "Glass Button Group",

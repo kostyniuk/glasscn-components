@@ -3,9 +3,7 @@
 import { FrostGlassVariantProp, glassVariantStyles } from "@/lib/glass-variants";
 import { cn } from "@/lib/utils";
 
-import {
-  Item
-} from "../item";
+import { Item } from "../item";
 import { LiquidGlass } from "./liquid-glass";
 
 type GlassItemProps = React.ComponentProps<typeof Item> & FrostGlassVariantProp;
@@ -34,6 +32,4 @@ function GlassItem({ className, glassVariant = "liquid-refract", ...props }: Gla
   );
 }
 
-export {
-  GlassItem
-};
+export { GlassItem };

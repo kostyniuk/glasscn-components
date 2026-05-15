@@ -293,13 +293,27 @@
       ]
     },
     {
+      "name": "liquid-glass",
+      "type": "registry:component",
+      "title": "Liquid Glass",
+      "description": "Low-level refractive glass wrapper used by liquid-refract components.",
+      "registryDependencies": ["@glasscn/utils"],
+      "files": [
+        {
+          "path": "components/ui/glasscn/liquid-glass.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glass-card",
       "type": "registry:component",
       "title": "Glass Card",
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/card",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Card with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -647,6 +661,48 @@
       ]
     },
     {
+      "name": "component-preview",
+      "type": "registry:component",
+      "title": "Component Preview",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button",
+        "@glasscn/card",
+        "@glasscn/separator",
+        "@glasscn/glass-button",
+        "@glasscn/glass-card",
+        "@glasscn/glass-variants"
+      ],
+      "dependencies": ["lucide-react", "motion", "shiki"],
+      "description": "A preview shell for component demos with switchable default and glass variants.",
+      "files": [
+        {
+          "path": "components/component-preview.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/component-preview-tabs.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/glass-component-preview-tabs.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/custom/copy-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "lib/highlight-code.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "glass-button-group",
       "type": "registry:component",
       "title": "Glass Button Group",
@@ -689,7 +745,8 @@
       "registryDependencies": [
         "@glasscn/utils",
         "@glasscn/item",
-        "@glasscn/glass-variants"
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
       ],
       "description": "Glass Item with five variants: clear, frosted, subtle, liquid, and liquid-refract",
       "files": [
@@ -781,19 +838,6 @@
       "files": [
         {
           "path": "components/ui/glasscn/liquid-text.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "liquid-glass",
-      "type": "registry:component",
-      "title": "Liquid Glass",
-      "description": "Low-level refractive glass wrapper used by liquid-refract components.",
-      "registryDependencies": ["@glasscn/utils"],
-      "files": [
-        {
-          "path": "components/ui/glasscn/liquid-glass.tsx",
           "type": "registry:component"
         }
       ]

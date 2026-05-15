@@ -1,26 +1,29 @@
 import * as React from "react";
 
+import { ComponentPreview } from "@/components/component-preview";
 import { AlertDemo } from "@/components/demo/alert-demo";
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
 import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
+import { CardDemo } from "@/components/demo/card-demo";
+import { CheckboxDemo } from "@/components/demo/checkbox-demo";
+import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
 import { ProgressDemo } from "@/components/demo/progress-demo";
 import { RadioGroupDemo } from "@/components/demo/radio-group-demo";
-import { SkeletonDemo } from "@/components/demo/skeleton-demo";
-import { CardDemo } from "@/components/demo/card-demo";
-import { CheckboxDemo } from "@/components/demo/checkbox-demo";
-import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { SelectDemo } from "@/components/demo/select-demo";
 import { SeparatorDemo } from "@/components/demo/separator-demo";
 import { SidebarDemo } from "@/components/demo/sidebar-demo";
+import { SkeletonDemo } from "@/components/demo/skeleton-demo";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PackageManagerProvider } from "@/components/ui/code-block-command";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import { HighlightText } from "@/components/ui/highlight-text";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { FrostGlassVariant } from "@/lib/glass-variants";
 
 export const glassVariants = ["clear", "frosted", "subtle", "liquid", "liquid-refract"] as const;
@@ -89,6 +92,168 @@ function CodeBlockCommandDemo({ variant = "clear" }: { variant?: FrostGlassVaria
   );
 }
 
+const previewTabsCode = String.raw`import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+
+export function TabsDemo() {
+  return (
+    <Tabs defaultValue="overview" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="reports">Reports</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">
+        <Card>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+            <CardDescription>
+              View your key metrics and recent project activity. Track progress
+              across all your active projects.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm text-muted-foreground">
+            You have 12 active projects and 3 pending tasks.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="analytics">
+        <Card>
+          <CardHeader>
+            <CardTitle>Analytics</CardTitle>
+            <CardDescription>
+              Track performance and user engagement metrics. Monitor trends and
+              identify growth opportunities.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm text-muted-foreground">
+            Page views are up 25% compared to last month.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="reports">
+        <Card>
+          <CardHeader>
+            <CardTitle>Reports</CardTitle>
+            <CardDescription>
+              Generate and download your detailed reports. Export data in
+              multiple formats for analysis.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm text-muted-foreground">
+            You have 5 reports ready and available to export.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="settings">
+        <Card>
+          <CardHeader>
+            <CardTitle>Settings</CardTitle>
+            <CardDescription>
+              Manage your account preferences and options. Customize your
+              experience to fit your needs.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm text-muted-foreground">
+            Configure notifications, security, and themes.
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  )
+}`;
+
+function TabsPreviewContent() {
+  return (
+    <Tabs defaultValue="overview" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="reports">Reports</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">
+        <Card>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+            <CardDescription>
+              View your key metrics and recent project activity. Track progress across all your active projects.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            You have 12 active projects and 3 pending tasks.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="analytics">
+        <Card>
+          <CardHeader>
+            <CardTitle>Analytics</CardTitle>
+            <CardDescription>
+              Track performance and user engagement metrics. Monitor trends and identify growth opportunities.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            Page views are up 25% compared to last month.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="reports">
+        <Card>
+          <CardHeader>
+            <CardTitle>Reports</CardTitle>
+            <CardDescription>
+              Generate and download your detailed reports. Export data in multiple formats for analysis.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            You have 5 reports ready and available to export.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="settings">
+        <Card>
+          <CardHeader>
+            <CardTitle>Settings</CardTitle>
+            <CardDescription>
+              Manage your account preferences and options. Customize your experience to fit your needs.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            Configure notifications, security, and themes.
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  );
+}
+
+function ComponentPreviewDemo({ variant = "glass" }: { variant?: string }) {
+  return (
+    <ComponentPreview
+      variant={variant === "default" ? "default" : "glass"}
+      previewGlassVariant="clear"
+      codeGlassVariant="frosted"
+      className="w-full max-w-2xl"
+      previewClassName="min-h-44"
+      component={<TabsPreviewContent />}
+      code={previewTabsCode}
+    />
+  );
+}
+
 function HighlightTextDemo({ variant = "lime" }: { variant?: string }) {
   return (
     <p className="text-3xl font-semibold tracking-tight text-black">
@@ -130,6 +295,109 @@ export function HighlightTextDemo() {
         description: "Applies custom classes to the highlight background layer, such as a custom bg-* utility.",
       },
       inheritedProps("HighlightText", "children: React.ReactNode"),
+    ],
+  },
+  {
+    slug: "component-preview",
+    registryName: "component-preview",
+    title: "Component Preview",
+    description: "A preview shell for component demos with switchable default and glass variants.",
+    installName: "@glasscn/component-preview",
+    importPath: "@/components/component-preview",
+    Demo: ComponentPreviewDemo,
+    category: "custom",
+    variants: ["default", "glass"] as const,
+    defaultVariant: "glass",
+    previewClassName: "p-6",
+    variantsGridClassName: "grid-cols-1!",
+    usageCode: String.raw`import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { ComponentPreview } from "@/components/component-preview"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+
+export function Demo() {
+  return (
+    <ComponentPreview
+      variant="glass"
+      component={
+        <Tabs defaultValue="overview" className="w-[400px]">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview">
+            <Card>
+              <CardHeader>
+                <CardTitle>Overview</CardTitle>
+                <CardDescription>View your key metrics and recent project activity.</CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-muted-foreground">
+                You have 12 active projects and 3 pending tasks.
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      }
+      code={String.raw\`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"\`}
+      previewGlassVariant="clear"
+      codeGlassVariant="frosted"
+    />
+  )
+}`,
+    api: [
+      {
+        component: "ComponentPreview",
+        name: "variant",
+        type: '"default" | "glass"',
+        defaultValue: '"default"',
+        description: "Switches between the plain preview shell and the glass preview shell.",
+      },
+      {
+        component: "ComponentPreview",
+        name: "component",
+        type: "React.ReactNode",
+        description: "The rendered preview content shown in the top panel.",
+      },
+      {
+        component: "ComponentPreview",
+        name: "code",
+        type: "string",
+        description: "The raw source string used by the copy button.",
+      },
+      {
+        component: "ComponentPreview",
+        name: "language",
+        type: "string",
+        defaultValue: '"tsx"',
+        description: "Language passed to the internal Shiki highlighter for code rendering.",
+      },
+      {
+        component: "ComponentPreview",
+        name: "previewGlassVariant",
+        type: '"clear" | "frosted" | "subtle" | "liquid" | "liquid-refract"',
+        defaultValue: '"clear"',
+        description: "Controls the preview panel glass treatment when `variant` is `glass`.",
+      },
+      {
+        component: "ComponentPreview",
+        name: "codeGlassVariant",
+        type: '"clear" | "frosted" | "subtle" | "liquid" | "liquid-refract"',
+        defaultValue: '"frosted"',
+        description: "Controls the code panel glass treatment when `variant` is `glass`.",
+      },
+      inheritedProps("ComponentPreview", `React.ComponentProps<"div">`),
     ],
   },
   {

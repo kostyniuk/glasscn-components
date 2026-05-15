@@ -32,7 +32,7 @@ export type CopyStateIconProps = {
 
 export function CopyStateIcon({ state, idleIcon, doneIcon, errorIcon }: CopyStateIconProps) {
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       {state === "idle" ? (
         <motion.span key="idle" {...motionIconProps}>
           {idleIcon ?? <CopyIcon />}
