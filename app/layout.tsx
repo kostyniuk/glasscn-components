@@ -6,6 +6,7 @@ import { Geist_Mono, Inter, Righteous } from "next/font/google";
 
 import { AppBackground } from "@/components/app-background";
 import { SiteHeader } from "@/components/home/site-header";
+import { ThemeSwitcherCard } from "@/components/home/theme-switcher-card";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SITE_DESCRIPTION, SITE_URL, SOCIAL_CARD_IMAGE, TWITTER_SUMMARY_IMAGE } from "@/lib/metadata";
@@ -67,7 +68,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body className="min-h-screen overflow-x-hidden">
         <ThemeProvider>
           <AppBackground />
-          <SiteHeader />
+          <div className="fixed top-2 z-50 flex w-full justify-center gap-8">
+            <SiteHeader />
+            <ThemeSwitcherCard />
+          </div>
           <TooltipProvider>
             <div className="relative z-10">{children}</div>
           </TooltipProvider>
