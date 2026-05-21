@@ -45,6 +45,7 @@ const data = {
         { title: "Code Block Command", url: "/components/glass-code-block-command" },
         { title: "Component Preview", url: "/components/component-preview" },
         { title: "Highlight Text", url: "/components/highlight-text" },
+        { title: "Toggle Group", url: "/components/glass-toggle-group" },
       ],
     },
   ],
