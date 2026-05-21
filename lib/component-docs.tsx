@@ -4,6 +4,7 @@ import { ComponentPreview } from "@/components/component-preview";
 import { AlertDemo } from "@/components/demo/alert-demo";
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
 import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
+import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
@@ -398,6 +399,132 @@ export function Demo() {
         description: "Controls the code panel glass treatment when `variant` is `glass`.",
       },
       inheritedProps("ComponentPreview", `React.ComponentProps<"div">`),
+    ],
+  },
+  {
+    slug: "glass-toggle-group",
+    registryName: "glass-toggle-group",
+    title: "Glass Toggle Group",
+    description: "A segmented control with a sliding glass puck indicator. Supports icons, text, or any React content.",
+    installName: "@glasscn/glass-toggle-group",
+    importPath: "@/components/ui/glasscn/glass-toggle-group",
+    Demo: GlassToggleGroupDemo,
+    category: "custom",
+    variants: ["default"] as const,
+    defaultVariant: "default",
+    variantsGridClassName: "grid-cols-1",
+    usageCode: String.raw`import { useState } from "react"
+import {
+  AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  MessageCircleIcon,
+  PhoneIcon,
+  SettingsIcon,
+  UserIcon,
+} from "lucide-react"
+
+import {
+  GlassToggleGroup,
+  GlassToggleGroupItem,
+} from "@/components/ui/glasscn/glass-toggle-group"
+import { cn } from "@/lib/utils"
+
+export function ToggleGroupDemo() {
+  const [alignment, setAlignment] = useState("center")
+  const [section, setSection] = useState("chats")
+
+  return (
+    <div className="flex flex-col items-center gap-6">
+      {/* Icon-only toggle */}
+      <GlassToggleGroup
+        value={alignment}
+        onValueChange={setAlignment}
+        aria-label="Text alignment"
+      >
+        <GlassToggleGroupItem value="left" aria-label="Align left">
+          <AlignLeftIcon className="size-4" />
+        </GlassToggleGroupItem>
+        <GlassToggleGroupItem value="center" aria-label="Align center">
+          <AlignCenterIcon className="size-4" />
+        </GlassToggleGroupItem>
+        <GlassToggleGroupItem value="right" aria-label="Align right">
+          <AlignRightIcon className="size-4" />
+        </GlassToggleGroupItem>
+      </GlassToggleGroup>
+
+      {/* Text-only toggle */}
+      <GlassToggleGroup defaultValue="monthly" aria-label="Billing period">
+        <GlassToggleGroupItem value="monthly">Monthly</GlassToggleGroupItem>
+        <GlassToggleGroupItem value="quarterly">Quarterly</GlassToggleGroupItem>
+        <GlassToggleGroupItem value="yearly">Yearly</GlassToggleGroupItem>
+      </GlassToggleGroup>
+
+      {/* Icon + text with active color */}
+      <GlassToggleGroup
+        value={section}
+        onValueChange={setSection}
+        aria-label="Navigation"
+      >
+        <GlassToggleGroupItem value="contacts" aria-label="Contacts">
+          <div className="flex flex-col items-center gap-1">
+            <UserIcon className={cn("size-5", section === "contacts" && "text-blue-500 fill-blue-500")} />
+            <span className="text-xs">Contacts</span>
+          </div>
+        </GlassToggleGroupItem>
+        <GlassToggleGroupItem value="calls" aria-label="Calls">
+          <div className="flex flex-col items-center gap-1">
+            <PhoneIcon className={cn("size-5", section === "calls" && "text-blue-500 fill-blue-500")} />
+            <span className="text-xs">Calls</span>
+          </div>
+        </GlassToggleGroupItem>
+        <GlassToggleGroupItem value="chats" aria-label="Chats">
+          <div className="flex flex-col items-center gap-1">
+            <MessageCircleIcon className={cn("size-5", section === "chats" && "text-blue-500 fill-blue-500")} />
+            <span className="text-xs">Chats</span>
+          </div>
+        </GlassToggleGroupItem>
+        <GlassToggleGroupItem value="profile" aria-label="Profile">
+          <div className="flex flex-col items-center gap-1">
+            <SettingsIcon className={cn("size-5", section === "profile" && "text-blue-500 fill-blue-500")} />
+            <span className="text-xs">Profile</span>
+          </div>
+        </GlassToggleGroupItem>
+      </GlassToggleGroup>
+    </div>
+  )
+}`,
+    api: [
+      {
+        component: "GlassToggleGroup",
+        name: "value",
+        type: "string",
+        description: "The controlled value of the selected item.",
+      },
+      {
+        component: "GlassToggleGroup",
+        name: "defaultValue",
+        type: "string",
+        description: "The default value for uncontrolled usage.",
+      },
+      {
+        component: "GlassToggleGroup",
+        name: "onValueChange",
+        type: "(value: string) => void",
+        description: "Callback fired when the selected value changes.",
+      },
+      {
+        component: "GlassToggleGroupItem",
+        name: "value",
+        type: "string",
+        description: "The unique value for this item.",
+      },
+      {
+        component: "GlassToggleGroupItem",
+        name: "children",
+        type: "React.ReactNode",
+        description: "The content to display (icon, text, or any React element).",
+      },
     ],
   },
   {

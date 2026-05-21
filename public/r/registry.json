@@ -827,6 +827,26 @@
       ]
     },
     {
+      "name": "glass-toggle-group",
+      "type": "registry:component",
+      "title": "Glass Toggle Group",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/radio-group",
+        "@glasscn/liquid-glass"
+      ],
+      "description": "A segmented control with a sliding glass puck indicator supporting icons, text, or any React content.",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-toggle-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glass-input",
       "type": "registry:component",
       "title": "Glass Input",
