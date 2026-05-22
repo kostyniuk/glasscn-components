@@ -86,12 +86,12 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
           </PackageManagerProvider>
         </Section>
 
-        <Section title="API">
-          <ApiTable api={doc.api} />
-        </Section>
-
         <Section title="Variants">
           <VariantsPreview doc={doc} />
+        </Section>
+
+        <Section title="API">
+          <ApiTable api={doc.api} />
         </Section>
       </article>
     </div>
@@ -100,7 +100,7 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="mb-12 scroll-m-16">
+    <section className="mb-8 scroll-m-12">
       <h2 className="mb-4 text-xl font-medium tracking-tight">{title}</h2>
       {children}
     </section>
