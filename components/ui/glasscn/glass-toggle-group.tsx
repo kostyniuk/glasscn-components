@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useAnimationControls } from "motion/react";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 
 import { LiquidGlass, type LiquidGlassProps } from "@/components/ui/glasscn/liquid-glass";
@@ -40,6 +40,8 @@ function GlassToggleGroup({
   const [puckStyle, setPuckStyle] = useState<PuckStyle | null>(null);
   const itemRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
   const containerRef = useRef<HTMLDivElement>(null);
+  const puckControls = useAnimationControls();
+  const isFirstRender = useRef(true);
 
   const actualValue = value ?? currentValue;
 
@@ -66,17 +68,28 @@ function GlassToggleGroup({
       if (selectedElement && container) {
         const containerRect = container.getBoundingClientRect();
         const itemRect = selectedElement.getBoundingClientRect();
-        setPuckStyle({
-          left: itemRect.left - containerRect.left,
-          width: itemRect.width,
-        });
+        const newLeft = itemRect.left - containerRect.left;
+        const newWidth = itemRect.width;
+
+        setPuckStyle({ left: newLeft, width: newWidth });
+
+        if (isFirstRender.current) {
+          isFirstRender.current = false;
+          puckControls.set({ left: newLeft, width: newWidth, scaleY: 1 });
+        } else {
+          puckControls.start({
+            left: newLeft,
+            width: newWidth,
+            scaleY: [1, 1.25, 1],
+          });
+        }
       }
     };
 
     updatePuck();
     window.addEventListener("resize", updatePuck);
     return () => window.removeEventListener("resize", updatePuck);
-  }, [actualValue]);
+  }, [actualValue, puckControls]);
 
   return (
     <GlassToggleGroupContext.Provider value={{ registerItem }}>
@@ -85,7 +98,7 @@ function GlassToggleGroup({
         refraction={refraction}
         mapSize={mapSize}
         bezel={bezel}
-        className={cn("inline-block rounded-full", className)}
+        className={cn("inline-block overflow-visible rounded-full", className)}
         {...props}
       >
         <RadioGroup
@@ -105,12 +118,13 @@ function GlassToggleGroup({
                 "shadow-[0_-1px_2px_rgba(255,255,255,0.8),0_1px_1px_rgba(0,0,0,0.08),0_2px_4px_rgba(0,0,0,0.1),0_4px_8px_rgba(0,0,0,0.1),0_8px_16px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(0,0,0,0.05)]",
                 "dark:shadow-[0_-1px_2px_rgba(255,255,255,0.1),0_1px_1px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.25),0_8px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_1px_rgba(0,0,0,0.3)]",
               )}
-              initial={false}
-              animate={{
-                left: puckStyle.left,
-                width: puckStyle.width,
+              initial={{ left: puckStyle.left, width: puckStyle.width, scaleY: 1 }}
+              animate={puckControls}
+              transition={{
+                left: { type: "spring", stiffness: 400, damping: 30 },
+                width: { type: "spring", stiffness: 400, damping: 30 },
+                scaleY: { duration: 0.3, ease: "easeInOut" },
               }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
           ) : null}
           {children}
