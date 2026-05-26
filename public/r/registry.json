@@ -189,6 +189,26 @@
       ]
     },
     {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/dialog",
+        "@glasscn/input-group"
+      ],
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
@@ -290,6 +310,24 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-checkbox.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-command",
+      "type": "registry:component",
+      "title": "Glass Command",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/command",
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
+      ],
+      "description": "Glass Command with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-command.tsx",
           "type": "registry:component"
         }
       ]
@@ -670,6 +708,25 @@
       "files": [
         {
           "path": "components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/button"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "components/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]

@@ -4,11 +4,12 @@ import { ComponentPreview } from "@/components/component-preview";
 import { AlertDemo } from "@/components/demo/alert-demo";
 import { AlertDialogDemo } from "@/components/demo/alert-dialog-demo";
 import { ButtonGroupDemo } from "@/components/demo/button-group-demo";
-import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { CalendarDemo } from "@/components/demo/calendar-demo";
 import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
+import { CommandDemo } from "@/components/demo/command-demo";
+import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
@@ -877,6 +878,46 @@ export function ProgressWithLabel() {
   )
 }`,
     api: [glassVariantFor("GlassProgress"), inheritedProps("GlassProgress", "ProgressPrimitive.Root.Props")],
+  },
+  {
+    slug: "glass-command",
+    registryName: "glass-command",
+    title: "Glass Command",
+    description: "A command menu with glass-styled palette, input, and item states.",
+    installName: "@glasscn/glass-command",
+    importPath: "@/components/ui/glasscn/glass-command",
+    Demo: CommandDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import {
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import {
+  GlassCommand,
+  GlassCommandInput,
+} from "@/components/ui/glasscn/glass-command"
+
+export function CommandDemo() {
+  return (
+    <GlassCommand glassVariant="liquid">
+      <GlassCommandInput placeholder="Search commands..." />
+      <CommandList>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search docs</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </GlassCommand>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassCommand"),
+      inheritedProps("GlassCommand", "React.ComponentProps<typeof Command>"),
+      glassVariantFor("GlassCommandDialog"),
+      inheritedProps("GlassCommandDialog", "React.ComponentProps<typeof CommandDialog>"),
+      inheritedProps("GlassCommandInput", "React.ComponentProps<typeof CommandInput>"),
+    ],
   },
   {
     slug: "glass-combobox",
