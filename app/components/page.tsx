@@ -9,7 +9,7 @@ import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
 import { HighlightText } from "@/components/ui/highlight-text";
 import {
-  getCatalogComponentDocs,
+  getCatalogPreviewComponentDocs,
   getCustomComponentDocs,
   glassVariants,
   type ComponentDoc,
@@ -25,7 +25,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function Page() {
-  const docs = getCatalogComponentDocs();
+  const docs = getCatalogPreviewComponentDocs();
   const customDocs = getCustomComponentDocs();
 
   return (

@@ -16,7 +16,7 @@ import { GlassItem } from "@/components/ui/glasscn/glass-item";
 import { HighlightText } from "@/components/ui/highlight-text";
 import { Input } from "@/components/ui/input";
 import { ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
-import { getCatalogComponentDocs } from "@/lib/component-docs";
+import { getCatalogPreviewComponentDocs } from "@/lib/component-docs";
 import { createPageMetadata } from "@/lib/metadata";
 
 import { GitHubLogo } from "./GitHubLogo";
@@ -30,7 +30,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function Page() {
-  const docs = getCatalogComponentDocs();
+  const docs = getCatalogPreviewComponentDocs();
 
   return (
     <div className="relative min-h-svh font-sans text-black transition-colors duration-500 selection:bg-black/10 dark:text-white dark:selection:bg-white/30">

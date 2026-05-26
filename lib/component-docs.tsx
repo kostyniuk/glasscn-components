@@ -1122,6 +1122,10 @@ export function getCatalogComponentDocs() {
   return componentDocs.filter((doc) => doc.category !== "custom");
 }
 
+export function getCatalogPreviewComponentDocs() {
+  return getCatalogComponentDocs().filter((doc) => doc.slug !== "glass-command");
+}
+
 export function getCustomComponentDocs() {
   return componentDocs.filter((doc) => doc.category === "custom");
 }
