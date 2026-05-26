@@ -40,6 +40,7 @@ Dependencies (including other registry items) are resolved and installed automat
 | Glass Card               | `npx shadcn add @glasscn/glass-card`               |
 | Glass Checkbox           | `npx shadcn add @glasscn/glass-checkbox`           |
 | Glass Code Block Command | `npx shadcn add @glasscn/glass-code-block-command` |
+| Glass Command            | `npx shadcn add @glasscn/glass-command`            |
 | Glass Combobox           | `npx shadcn add @glasscn/glass-combobox`           |
 | Glass Input              | `npx shadcn add @glasscn/glass-input`              |
 | Glass Item               | `npx shadcn add @glasscn/glass-item`               |

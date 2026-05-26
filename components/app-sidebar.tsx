@@ -27,6 +27,7 @@ const data = {
         { title: "Calendar", url: "/components/glass-calendar" },
         { title: "Card", url: "/components/glass-card" },
         { title: "Checkbox", url: "/components/glass-checkbox" },
+        { title: "Command", url: "/components/glass-command" },
         { title: "Combobox", url: "/components/glass-combobox" },
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },
