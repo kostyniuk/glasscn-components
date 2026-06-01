@@ -1,19 +1,12 @@
-import { ArrowRightIcon, BoxesIcon, CommandIcon, SearchIcon } from "lucide-react";
+import { BoxesIcon, CommandIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
 import { PackageManagerProvider } from "@/components/ui/code-block-command";
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge";
-import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassCodeBlockCommand } from "@/components/ui/glasscn/glass-code-block-command";
-import { HighlightText } from "@/components/ui/highlight-text";
-import {
-  getCatalogPreviewComponentDocs,
-  getCustomComponentDocs,
-  glassVariants,
-  type ComponentDoc,
-} from "@/lib/component-docs";
+import { getCatalogPreviewComponentDocs, getCustomComponentDocs, type ComponentDoc } from "@/lib/component-docs";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
@@ -25,8 +18,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function Page() {
-  const docs = getCatalogPreviewComponentDocs();
-  const customDocs = getCustomComponentDocs();
+  const docs = [...getCatalogPreviewComponentDocs(), ...getCustomComponentDocs()];
 
   return (
     <main className="relative min-h-svh px-4 pt-24 pb-24 md:px-8">
@@ -79,122 +71,34 @@ export default function Page() {
             </div>
           </GlassCard>
         </section>
-        {/*
-        <section className="mb-20 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-150">
-          <div className="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm font-medium uppercase tracking-wider">
-                <Layers3Icon className="size-4" />
-                Featured
-              </div>
-              <h2 className="text-3xl font-semibold tracking-tight">Liquid glass highlights</h2>
-            </div>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-4">
-            {featuredDocs.map((doc, index) => {
-              const Demo = doc.Demo;
-              const variant = glassVariants[(index + 2) % glassVariants.length];
 
-              return (
-                <GlassCard
-                  key={doc.slug}
-                  glassVariant={variant}
-                  className="group flex flex-col p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
-                >
-                  <div className="flex min-h-40 items-center justify-center rounded-xl bg-white/5 p-4 dark:bg-black/5">
-                    <Demo variant="liquid" />
-                  </div>
-                  <div className="mt-6 flex flex-1 flex-col">
-                    <h3 className="text-lg font-medium">{doc.title}</h3>
-                    <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">{doc.description}</p>
-                    <GlassButton
-                      glassVariant="clear"
-                      size="sm"
-                      render={<Link href={`/components/${doc.slug}`} />}
-                      className="mt-auto w-fit gap-2"
-                    >
-                      Open docs
-                      <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
-                    </GlassButton>
-                  </div>
-                </GlassCard>
-              );
-            })}
-          </div>
-        </section> */}
+        <GlassCard
+          glassVariant="liquid-refract"
+          className="animate-in fade-in slide-in-from-bottom-8 rounded-[2rem] p-6 duration-700 md:p-8"
+        >
+          <section>
+            <h2 className="text-2xl leading-tight font-semibold tracking-tight">Components</h2>
+          </section>
 
-        <section className="animate-in fade-in slide-in-from-bottom-12 delay-300 duration-1000">
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm font-medium tracking-wider uppercase">
-                <SearchIcon className="size-4" />
-                Catalog
-              </div>
-              <h2 className="text-3xl font-semibold tracking-tight">shadcn/ui components</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {glassVariants.map((variant) => (
-                <GlassBadge key={variant} glassVariant={variant} className="px-3 py-1 text-xs">
-                  {variant}
-                </GlassBadge>
-              ))}
-            </div>
-          </div>
-
-          <ComponentGrid docs={docs} />
-        </section>
-
-        <section className="animate-in fade-in slide-in-from-bottom-12 mt-16 delay-500 duration-1000">
-          <div className="mb-8">
-            <div className="text-muted-foreground mb-3 flex items-center gap-2 text-sm font-medium tracking-wider uppercase">
-              <SearchIcon className="size-4" />
-              Custom
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight">Custom components</h2>
-          </div>
-
-          <ComponentGrid docs={customDocs} />
-        </section>
+          <ComponentLinkGrid docs={docs} />
+        </GlassCard>
       </div>
     </main>
   );
 }
 
-function ComponentGrid({ docs }: { docs: ComponentDoc[] }) {
+function ComponentLinkGrid({ docs }: { docs: ComponentDoc[] }) {
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {docs.map((doc) => {
-        const Demo = doc.Demo;
-
-        return (
-          <Card
-            key={doc.slug}
-            variant="outline"
-            className="group flex min-h-64 flex-col bg-transparent p-5 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
-          >
-            <div className="mb-6 flex min-h-32 flex-1 items-center justify-center overflow-hidden rounded-xl p-4">
-              <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
-            </div>
-            <div className="flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-medium tracking-tight text-black">
-                  <HighlightText>{doc.title}</HighlightText>
-                </h3>
-                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">{doc.description}</p>
-              </div>
-              <GlassButton
-                glassVariant="clear"
-                size="sm"
-                render={<Link href={`/components/${doc.slug}`} />}
-                className="mt-6 w-fit gap-2"
-              >
-                Open docs
-                <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
-              </GlassButton>
-            </div>
-          </Card>
-        );
-      })}
-    </div>
+    <nav aria-label="Components" className="mt-4 grid gap-x-8 gap-y-2 md:grid-cols-2 lg:grid-cols-3">
+      {docs.map((doc) => (
+        <Link
+          key={doc.slug}
+          href={`/components/${doc.slug}`}
+          className="focus-visible:ring-ring focus-visible:ring-offset-background rounded-md px-2 py-1.5 text-sm font-normal transition-colors hover:font-semibold focus-visible:font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:font-semibold"
+        >
+          {doc.title}
+        </Link>
+      ))}
+    </nav>
   );
 }
