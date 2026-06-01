@@ -4,20 +4,27 @@ import { FrostGlassVariant, FrostGlassVariantProp, glassVariantStyles } from "@/
 import { cn } from "@/lib/utils";
 
 import { Card, CardFooter } from "../card";
-import { LiquidGlass } from "./liquid-glass";
+import { LiquidGlass, type LiquidGlassProps } from "./liquid-glass";
 
-type GlassCardProps = React.ComponentProps<typeof Card> & FrostGlassVariantProp;
+type GlassCardProps = React.ComponentProps<typeof Card> &
+  FrostGlassVariantProp & { liquidProps?: Omit<LiquidGlassProps, "children">; surfaceClassName?: string };
 
 type GlassCardFooterProps = React.ComponentProps<typeof CardFooter> & FrostGlassVariantProp;
 
-function GlassCard({ className, glassVariant = "liquid-refract", ...props }: GlassCardProps) {
+function GlassCard({
+  className,
+  glassVariant = "liquid-refract",
+  liquidProps,
+  surfaceClassName,
+  ...props
+}: GlassCardProps) {
   if (glassVariant === "liquid-refract") {
     return (
-      <LiquidGlass className={cn("rounded-2xl", className)}>
+      <LiquidGlass {...liquidProps} className={cn("rounded-2xl", surfaceClassName, liquidProps?.className)}>
         <Card
           data-slot="glass-card"
           data-glass-variant={glassVariant}
-          className={cn("bg-transparent border-0 shadow-none ring-0")}
+          className={cn("bg-transparent border-0 shadow-none ring-0", className)}
           {...props}
         />
       </LiquidGlass>

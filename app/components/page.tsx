@@ -22,11 +22,13 @@ export default function Page() {
 
   return (
     <main className="relative min-h-svh px-4 pt-24 pb-24 md:px-8">
-      <div className="max-w-8xl relative z-10 mx-auto w-full">
-        <section className="animate-in fade-in slide-in-from-bottom-8 mb-16 duration-1000">
+      <div className="max-w-8xl animate-in fade-in slide-in-from-bottom-8 relative z-10 mx-auto w-full duration-1000">
+        <section className="">
           <GlassCard
             glassVariant="liquid-refract"
-            className="relative overflow-hidden rounded-[2.5rem] p-6 shadow-2xl md:p-12"
+            className="relative overflow-hidden rounded-b-none p-6 md:p-12"
+            surfaceClassName="rounded-b-none shadow-2xl"
+            liquidProps={{ blur: 3, refraction: 10 }}
           >
             <div className="absolute inset-0 bg-[#c5f83a]/70" />
 
@@ -54,6 +56,7 @@ export default function Page() {
                   <GlassCard
                     glassVariant="liquid-refract"
                     className="flex size-10 items-center justify-center rounded-full p-0"
+                    surfaceClassName="size-10 rounded-full"
                   >
                     <CommandIcon className="size-5" />
                   </GlassCard>
@@ -74,7 +77,9 @@ export default function Page() {
 
         <GlassCard
           glassVariant="liquid-refract"
-          className="animate-in fade-in slide-in-from-bottom-8 rounded-[2rem] p-6 duration-700 md:p-8"
+          className="rounded-none md:p-8"
+          surfaceClassName="rounded-t-none"
+          liquidProps={{ blur: 3, refraction: 10 }}
         >
           <section>
             <h2 className="text-2xl leading-tight font-semibold tracking-tight">Components</h2>

@@ -88,7 +88,8 @@ export default function Page() {
             <div className="relative w-full max-w-[520px]">
               <GlassCard
                 glassVariant="liquid-refract"
-                className="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] sm:px-3 sm:py-6 dark:border-white/10"
+                className="px-1 py-4 sm:px-3 sm:py-6"
+                surfaceClassName="border-black/10 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10"
               >
                 <div className="absolute top-4 left-4 flex items-center gap-1.5">
                   <span className="group/close flex size-3 items-center justify-center rounded-full bg-[#FF5F56]">
@@ -240,7 +241,8 @@ export default function Page() {
           <div className="relative flex justify-center">
             <GlassCard
               glassVariant="liquid-refract"
-              className="w-full max-w-[520px] rounded-2xl border-black/10 p-3 dark:border-white/10"
+              className="w-full max-w-[520px] rounded-2xl p-3"
+              surfaceClassName="w-full max-w-[520px] rounded-2xl border-black/10 dark:border-white/10"
             >
               <div className="mb-2 px-2 pt-1">
                 <div className="font-mono text-[10px] tracking-[0.2em] text-black/50 uppercase dark:text-white/50">
@@ -374,6 +376,7 @@ export default function Page() {
               <GlassCard
                 glassVariant={v.name as any}
                 className="flex h-36 items-center justify-center rounded-2xl border-black/10 dark:border-white/10"
+                surfaceClassName="flex h-36 items-center justify-center rounded-2xl border-black/10 dark:border-white/10"
               >
                 <span className="font-mono text-[13px] font-semibold tracking-tight text-black dark:text-white">
                   {v.name}
@@ -407,7 +410,8 @@ export default function Page() {
 
         <GlassCard
           glassVariant="liquid-refract"
-          className="w-full rounded-2xl border-black/10 p-2 dark:border-white/10"
+          className="w-full rounded-2xl p-2"
+          surfaceClassName="w-full rounded-2xl border-black/10 dark:border-white/10"
         >
           <div className="flex items-center justify-between rounded-xl bg-black/5 p-6 font-mono text-[15px] dark:bg-black/40">
             <div className="flex items-center gap-3">

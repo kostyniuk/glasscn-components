@@ -14,7 +14,11 @@ function CheckboxDemo({ variant = "clear" }: CheckboxDemoProps) {
   const checkboxId = React.useId();
 
   return (
-    <GlassCard glassVariant={variant} className="mx-auto w-full max-w-sm p-4">
+    <GlassCard
+      glassVariant={variant}
+      className="mx-auto w-full max-w-sm p-4"
+      surfaceClassName="mx-auto w-full max-w-sm"
+    >
       <FieldGroup>
         <Field orientation="horizontal">
           <GlassCheckbox

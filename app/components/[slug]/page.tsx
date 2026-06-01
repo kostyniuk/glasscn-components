@@ -56,7 +56,7 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
   return (
     <div className="flex min-h-svh justify-center px-6 pb-16">
       <article className="w-full max-w-5xl min-w-0 py-20">
-        <GlassCard glassVariant="liquid-refract" className="mb-8 border-white/20 dark:border-white/10">
+        <GlassCard glassVariant="liquid-refract" surfaceClassName="mb-8 border-white/20 dark:border-white/10">
           <CardHeader className="space-y-3">
             {/* <GlassBadge glassVariant="liquid-refract" className="w-fit px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em]">
               Component Docs
@@ -109,7 +109,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function ApiTable({ api }: { api: ApiProp[] }) {
   return (
-    <GlassCard glassVariant="liquid-refract" className="overflow-x-auto border-white/15 dark:border-white/10">
+    <GlassCard glassVariant="liquid-refract" surfaceClassName="overflow-x-auto border-white/15 dark:border-white/10">
       <CardContent className="px-0">
         <div className="bg-muted/40 grid min-w-3xl grid-cols-[minmax(8rem,1fr)_minmax(10rem,1.2fr)_minmax(6rem,0.6fr)_minmax(14rem,1.8fr)] px-4 py-3 text-sm font-medium">
           <div>Prop</div>
