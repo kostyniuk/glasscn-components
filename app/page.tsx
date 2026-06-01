@@ -88,8 +88,8 @@ export default function Page() {
             <div className="relative w-full max-w-[520px]">
               <GlassCard
                 glassVariant="liquid-refract"
-                className="px-1 py-4 sm:px-3 sm:py-6"
-                surfaceClassName="border-black/10 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] dark:border-white/10"
+                className="overflow-hidden"
+                surfaceClassName="border-black/10 px-1 py-4 shadow-[0_24px_90px_-48px_rgba(0,0,0,0.55)] sm:px-3 sm:py-6 dark:border-white/10"
               >
                 <div className="absolute top-4 left-4 flex items-center gap-1.5">
                   <span className="group/close flex size-3 items-center justify-center rounded-full bg-[#FF5F56]">
