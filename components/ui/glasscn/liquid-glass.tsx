@@ -4,6 +4,8 @@ import { type CSSProperties, type HTMLAttributes, forwardRef, useEffect, useId, 
 
 import { cn } from "@/lib/utils";
 
+const displacementMapCache = new Map<string, string>();
+
 export type LiquidGlassProps = HTMLAttributes<HTMLDivElement> & {
   /** Extra blur mixed into the backdrop-filter after the SVG refraction. */
   blur?: number;
@@ -77,6 +79,13 @@ export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function
 });
 
 function createDisplacementMap(size: number, bezel: number) {
+  const cacheKey = `${size}:${bezel}`;
+  const cachedMap = displacementMapCache.get(cacheKey);
+
+  if (cachedMap !== undefined) {
+    return cachedMap;
+  }
+
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
@@ -119,7 +128,11 @@ function createDisplacementMap(size: number, bezel: number) {
   }
 
   ctx.putImageData(image, 0, 0);
-  return canvas.toDataURL("image/png");
+
+  const mapUrl = canvas.toDataURL("image/png");
+  displacementMapCache.set(cacheKey, mapUrl);
+
+  return mapUrl;
 }
 
 function convexSquircle(x: number) {
