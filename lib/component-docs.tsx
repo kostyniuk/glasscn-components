@@ -9,6 +9,7 @@ import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { CommandDemo } from "@/components/demo/command-demo";
+import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
@@ -917,6 +918,79 @@ export function CommandDemo() {
       glassVariantFor("GlassCommandDialog"),
       inheritedProps("GlassCommandDialog", "React.ComponentProps<typeof CommandDialog>"),
       inheritedProps("GlassCommandInput", "React.ComponentProps<typeof CommandInput>"),
+    ],
+  },
+  {
+    slug: "glass-dropdown-menu",
+    registryName: "glass-dropdown-menu",
+    title: "Glass Dropdown Menu",
+    description: "A dropdown menu with a glass-styled floating content surface.",
+    installName: "@glasscn/glass-dropdown-menu",
+    importPath: "@/components/ui/glasscn/glass-dropdown-menu",
+    Demo: DropdownMenuDemo,
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-3",
+    usageCode: String.raw`import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { GlassDropdownMenuContent } from "@/components/ui/glasscn/glass-dropdown-menu"
+import { Button } from "@/components/ui/button"
+
+export function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger render={<Button variant="outline">Open</Button>} />
+      <GlassDropdownMenuContent glassVariant="liquid" className="w-40" align="start">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuItem>
+            Profile
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            Billing
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            Settings
+            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Team</DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>Email</DropdownMenuItem>
+                <DropdownMenuItem>Message</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>More...</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            New Team
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </GlassDropdownMenuContent>
+    </DropdownMenu>
+  )
+}`,
+    api: [
+      glassVariantFor("GlassDropdownMenuContent"),
+      inheritedProps("GlassDropdownMenuContent", "React.ComponentProps<typeof DropdownMenuContent>"),
     ],
   },
   {

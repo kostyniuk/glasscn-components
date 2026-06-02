@@ -209,6 +209,24 @@
       ]
     },
     {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
@@ -328,6 +346,27 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-command.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-dropdown-menu",
+      "type": "registry:component",
+      "title": "Glass Dropdown Menu",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/dropdown-menu",
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "description": "Glass Dropdown Menu with five variants: clear, frosted, subtle, liquid, and liquid-refract",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-dropdown-menu.tsx",
           "type": "registry:component"
         }
       ]
