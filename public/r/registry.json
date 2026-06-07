@@ -818,7 +818,8 @@
         "@glasscn/badge"
       ],
       "dependencies": [
-        "lucide-react"
+        "lucide-react",
+        "motion"
       ],
       "files": [
         {
@@ -828,6 +829,10 @@
         {
           "path": "components/ui/icons/package-manager-icons.tsx",
           "type": "registry:ui"
+        },
+        {
+          "path": "components/custom/copy-button.tsx",
+          "type": "registry:component"
         },
         {
           "path": "hooks/use-copy-to-clipboard.ts",
