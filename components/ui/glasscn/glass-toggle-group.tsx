@@ -9,9 +9,7 @@ import { cn } from "@/lib/utils";
 
 type PuckStyle = { left: number; width: number };
 
-type GlassToggleGroupContextValue = {
-  registerItem: (value: string, element: HTMLButtonElement | null) => void;
-};
+type GlassToggleGroupContextValue = { registerItem: (value: string, element: HTMLButtonElement | null) => void };
 
 const GlassToggleGroupContext = createContext<GlassToggleGroupContextValue | null>(null);
 
@@ -77,11 +75,7 @@ function GlassToggleGroup({
           isFirstRender.current = false;
           puckControls.set({ left: newLeft, width: newWidth, scaleY: 1 });
         } else {
-          puckControls.start({
-            left: newLeft,
-            width: newWidth,
-            scaleY: [1, 1.25, 1],
-          });
+          puckControls.start({ left: newLeft, width: newWidth, scaleY: [1, 1.25, 1] });
         }
       }
     };

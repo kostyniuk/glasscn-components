@@ -10,9 +10,7 @@ import { DropdownMenuContent } from "../dropdown-menu";
 import { LiquidGlass } from "./liquid-glass";
 
 type GlassDropdownMenuContentProps = React.ComponentProps<typeof DropdownMenuContent> &
-  FrostGlassVariantProp & {
-    glassClassName?: string;
-  };
+  FrostGlassVariantProp & { glassClassName?: string };
 
 const menuStateStyles = [
   "[&_[data-slot=dropdown-menu-item]:focus]:bg-white/70",

@@ -35,66 +35,59 @@ export async function SiteHeader() {
       contentClassName="flex items-center justify-between px-3 sm:px-5"
     >
       <div className="flex items-center gap-1 sm:gap-1.5">
-          <Link
-            href="/"
-            className="flex items-center gap-2 rounded-full px-2 py-1 transition-opacity hover:opacity-85"
-          >
-            <Image
-              src="/glasscn-mark-light.svg"
-              alt="glasscn"
-              width={28}
-              height={28}
-              className="size-7 shrink-0 dark:hidden"
-            />
-            <Image
-              src="/glasscn-mark-dark.svg"
-              alt="glasscn"
-              width={28}
-              height={28}
-              className="hidden size-7 shrink-0 dark:block"
-            />
-            <span className="hidden text-sm font-semibold tracking-tight sm:inline">glasscn</span>
-          </Link>
-          <Link href="/">
-            <Button variant="ghost" className="px-2.5 sm:px-3">
-              Home
-            </Button>
-          </Link>
-          <Link href="/components">
-            <Button variant="ghost" className="px-2.5 sm:px-3">
-              Components
-            </Button>
-          </Link>
-          <Link href="/playground">
-            <Button variant="ghost" className="px-2.5 sm:px-3">
-              Playground
-            </Button>
-          </Link>
-        </div>
-        <div className="flex items-center gap-1 sm:gap-1.5">
-          <Link href="https://x.com/kostyniuk00" target="_blank" rel="noreferrer">
-            <Button
-              variant="ghost"
-              className="flex cursor-pointer flex-row items-center gap-0 sm:gap-2"
-              aria-label="X"
-            >
-              <XIcon className="size-4 sm:size-5" />
-            </Button>
-          </Link>
-          <Link href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer">
-            <Button variant="ghost" className="flex cursor-pointer flex-row items-center gap-0 sm:gap-2">
-              <GithubMark className="size-5" />
-              {stars ? (
-                <span className="hidden text-sm font-medium sm:inline">{stars}</span>
-              ) : (
-                <span className="hidden items-center gap-1.5 text-sm font-medium sm:flex">
-                  Be first one to
-                  <StarIcon className="size-4 fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-400" />
-                </span>
-              )}
-            </Button>
-          </Link>
-        </div>
+        <Link href="/" className="flex items-center gap-2 rounded-full px-2 py-1 transition-opacity hover:opacity-85">
+          <Image
+            src="/glasscn-mark-light.svg"
+            alt="glasscn"
+            width={28}
+            height={28}
+            className="size-7 shrink-0 dark:hidden"
+          />
+          <Image
+            src="/glasscn-mark-dark.svg"
+            alt="glasscn"
+            width={28}
+            height={28}
+            className="hidden size-7 shrink-0 dark:block"
+          />
+          <span className="hidden text-sm font-semibold tracking-tight sm:inline">glasscn</span>
+        </Link>
+        <Link href="/">
+          <Button variant="ghost" className="px-2.5 sm:px-3">
+            Home
+          </Button>
+        </Link>
+        <Link href="/components">
+          <Button variant="ghost" className="px-2.5 sm:px-3">
+            Components
+          </Button>
+        </Link>
+        <Link href="/playground">
+          <Button variant="ghost" className="px-2.5 sm:px-3">
+            Playground
+          </Button>
+        </Link>
+      </div>
+      <div className="flex items-center gap-1 sm:gap-1.5">
+        <Link href="https://x.com/kostyniuk00" target="_blank" rel="noreferrer">
+          <Button variant="ghost" className="flex cursor-pointer flex-row items-center gap-0 sm:gap-2" aria-label="X">
+            <XIcon className="size-4 sm:size-5" />
+          </Button>
+        </Link>
+        <Link href="https://github.com/kostyniuk/glasscn-components" target="_blank" rel="noreferrer">
+          <Button variant="ghost" className="flex cursor-pointer flex-row items-center gap-0 sm:gap-2">
+            <GithubMark className="size-5" />
+            {stars ? (
+              <span className="hidden text-sm font-medium sm:inline">{stars}</span>
+            ) : (
+              <span className="hidden items-center gap-1.5 text-sm font-medium sm:flex">
+                Be first one to
+                <StarIcon className="size-4 fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-400" />
+              </span>
+            )}
+          </Button>
+        </Link>
+      </div>
     </HeaderPill>
   );
 }

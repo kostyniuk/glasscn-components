@@ -4,9 +4,7 @@ import { Card } from "@/components/ui/card";
 import { LiquidGlass, type LiquidGlassProps } from "@/components/ui/glasscn/liquid-glass";
 import { cn } from "@/lib/utils";
 
-type HeaderPillProps = LiquidGlassProps & {
-  contentClassName?: string;
-};
+type HeaderPillProps = LiquidGlassProps & { contentClassName?: string };
 
 function HeaderPill({ className, contentClassName, children, ...props }: HeaderPillProps) {
   return (

@@ -14,6 +14,7 @@ import { useState } from "react";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 import { GlassToggleGroup, GlassToggleGroupItem } from "@/components/ui/glasscn/glass-toggle-group";
 import { cn } from "@/lib/utils";
+
 import { Card } from "../ui/card";
 
 function GlassToggleGroupDemo() {
@@ -21,7 +22,7 @@ function GlassToggleGroupDemo() {
   const [section, setSection] = useState("chats");
 
   return (
-    <Card className="flex flex-col items-center gap-6 p-4 bg-background/70" variant="outline">
+    <Card className="bg-background/70 flex flex-col items-center gap-6 p-4" variant="outline">
       <GlassToggleGroup value={alignment} onValueChange={setAlignment} aria-label="Text alignment">
         <GlassToggleGroupItem value="left" aria-label="Align left">
           <AlignLeftIcon className="size-4" />

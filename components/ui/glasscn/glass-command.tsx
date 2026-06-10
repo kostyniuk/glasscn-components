@@ -38,9 +38,7 @@ function GlassCommand({ className, glassVariant = "liquid-refract", ...props }: 
   if (glassVariant === "liquid-refract") {
     return (
       <GlassCommandVariantContext.Provider value={glassVariant}>
-        <LiquidGlass
-          className={cn("rounded-xl", commandRefractSurfaceStyles, commandStateStyles, className)}
-        >
+        <LiquidGlass className={cn("rounded-xl", commandRefractSurfaceStyles, commandStateStyles, className)}>
           <Command
             data-slot="glass-command"
             data-glass-variant={glassVariant}
@@ -78,9 +76,7 @@ function GlassCommandDialog({
           className={cn("border-0 bg-transparent p-0 shadow-none ring-0", className)}
           {...props}
         >
-          <LiquidGlass
-            className={cn("rounded-xl", commandRefractSurfaceStyles, commandStateStyles)}
-          >
+          <LiquidGlass className={cn("rounded-xl", commandRefractSurfaceStyles, commandStateStyles)}>
             <div className="overflow-hidden rounded-xl">{children}</div>
           </LiquidGlass>
         </CommandDialog>
