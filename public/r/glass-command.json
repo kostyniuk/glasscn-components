@@ -16,7 +16,6 @@
       "type": "registry:component"
     }
   ],
-  "type": "registry:component",
   "cssVars": {
     "theme": {
       "--color-help-foreground": "var(--help-foreground)"
@@ -27,5 +26,6 @@
     "dark": {
       "--help-foreground": "oklch(0.82 0 0)"
     }
-  }
+  },
+  "type": "registry:component"
 }
