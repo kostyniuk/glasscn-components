@@ -16,6 +16,7 @@ import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
 import { ProgressDemo } from "@/components/demo/progress-demo";
 import { RadioGroupDemo } from "@/components/demo/radio-group-demo";
+import { ScrimCardDemo } from "@/components/demo/scrim-card-demo";
 import { SelectDemo } from "@/components/demo/select-demo";
 import { SeparatorDemo } from "@/components/demo/separator-demo";
 import { SidebarDemo } from "@/components/demo/sidebar-demo";
@@ -761,6 +762,72 @@ export function CardDemo() {
       inheritedProps("GlassCard", "React.ComponentProps<typeof Card>"),
       glassVariantFor("GlassCardFooter"),
       inheritedProps("GlassCardFooter", "React.ComponentProps<typeof CardFooter>"),
+    ],
+  },
+  {
+    slug: "glass-scrim-card",
+    registryName: "glass-scrim-card",
+    title: "Glass Scrim Card",
+    description:
+      "A Siri-style liquid-refract card with a black scrim that anchors to one edge and eases out into clear glass.",
+    installName: "@glasscn/glass-scrim-card",
+    importPath: "@/components/ui/glasscn/glass-scrim-card",
+    Demo: ScrimCardDemo,
+    variants: ["top", "bottom", "both"],
+    defaultVariant: "top",
+    variantsGridClassName: "grid-cols-2",
+    usageCode: String.raw`import { CardContent } from "@/components/ui/card"
+import { GlassScrimCard } from "@/components/ui/glasscn/glass-scrim-card"
+
+export function ScrimCardDemo() {
+  return (
+    <GlassScrimCard scrim="top" className="w-full max-w-sm" surfaceClassName="w-full max-w-sm">
+      <CardContent className="flex flex-col gap-6 p-6 pb-0">
+        <p className="text-base leading-relaxed font-normal">
+          The current CEO of Apple is <strong>Tim Cook</strong>. Apple has
+          announced that Cook will step down on September 1, 2026, and will
+          be succeeded by John Ternus.
+        </p>
+        <p className="text-sm text-white/75">Exodus Honey</p>
+      </CardContent>
+    </GlassScrimCard>
+  )
+}`,
+    api: [
+      {
+        name: "scrim",
+        type: '"top" | "bottom" | "both"',
+        defaultValue: '"top"',
+        description: "Which edge the black scrim anchors to before fading into clear glass.",
+      },
+      {
+        name: "scrimOpacity",
+        type: "number",
+        defaultValue: "0.9",
+        description: "Peak scrim opacity at the anchored edge (0–1).",
+      },
+      {
+        name: "scrimCoverage",
+        type: "number",
+        defaultValue: "1",
+        description: "Fraction of the card height the scrim covers before it fully fades out.",
+      },
+      {
+        name: "scrimClassName",
+        type: "string",
+        description: "Extra classes for the scrim overlay layer.",
+      },
+      {
+        name: "liquidProps",
+        type: 'Omit<LiquidGlassProps, "children">',
+        description: "Props forwarded to the underlying LiquidGlass surface (blur, refraction, bezel, saturation).",
+      },
+      {
+        name: "surfaceClassName",
+        type: "string",
+        description: "Classes applied to the outer LiquidGlass surface.",
+      },
+      inheritedProps("GlassScrimCard", "React.ComponentProps<typeof Card>"),
     ],
   },
   {

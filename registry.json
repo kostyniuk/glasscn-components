@@ -466,6 +466,23 @@
       ]
     },
     {
+      "name": "glass-scrim-card",
+      "type": "registry:component",
+      "title": "Glass Scrim Card",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/card",
+        "@glasscn/liquid-glass"
+      ],
+      "description": "Siri-style liquid-refract card with a black scrim that eases from one edge into clear glass",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-scrim-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",

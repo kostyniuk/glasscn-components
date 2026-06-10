@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-scrim-card",
+  "title": "Glass Scrim Card",
+  "description": "Siri-style liquid-refract card with a black scrim that eases from one edge into clear glass",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/card",
+    "@glasscn/liquid-glass"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-scrim-card.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Card } from \"../card\";\nimport { LiquidGlass, type LiquidGlassProps } from \"./liquid-glass\";\n\ntype GlassScrimSide = \"top\" | \"bottom\" | \"both\";\n\ntype GlassScrimCardProps = React.ComponentProps<typeof Card> & {\n  liquidProps?: Omit<LiquidGlassProps, \"children\">;\n  surfaceClassName?: string;\n  /** Which edge the black scrim anchors to before fading into clear glass. */\n  scrim?: GlassScrimSide;\n  /** Peak scrim opacity at the anchored edge (0–1). */\n  scrimOpacity?: number;\n  /** Fraction of the card height the scrim covers before it fully fades out. */\n  scrimCoverage?: number;\n  scrimClassName?: string;\n};\n\n// Solid hold followed by one long quintic-smootherstep fade. The quintic has\n// zero first AND second derivatives at both ends, so the fade joins the solid\n// region and the clear glass without any visible crease (a cubic smoothstep\n// leaves a Mach band at the junctions).\nconst SCRIM_SAMPLES = 16;\n\n// Fraction of the coverage that stays fully solid before the fade begins.\nconst SCRIM_HOLD_RATIO = 0.3;\n\nfunction scrimGradient(to: \"bottom\" | \"top\", opacity: number, coverage: number) {\n  const hold = coverage * SCRIM_HOLD_RATIO;\n  const stops = [`rgba(0,0,0,${opacity}) 0%`];\n  for (let i = 0; i <= SCRIM_SAMPLES; i += 1) {\n    const t = i / SCRIM_SAMPLES;\n    const eased = t * t * t * (t * (t * 6 - 15) + 10);\n    const position = hold + t * (coverage - hold);\n    stops.push(`rgba(0,0,0,${(opacity * (1 - eased)).toFixed(3)}) ${(position * 100).toFixed(1)}%`);\n  }\n  return `linear-gradient(to ${to}, ${stops.join(\", \")})`;\n}\n\nfunction GlassScrimCard({\n  className,\n  liquidProps,\n  surfaceClassName,\n  scrim = \"top\",\n  scrimOpacity = 0.9,\n  scrimCoverage = 1,\n  scrimClassName,\n  ...props\n}: GlassScrimCardProps) {\n  const layers: string[] = [];\n  if (scrim === \"top\" || scrim === \"both\") layers.push(scrimGradient(\"bottom\", scrimOpacity, scrimCoverage));\n  if (scrim === \"bottom\" || scrim === \"both\") layers.push(scrimGradient(\"top\", scrimOpacity, scrimCoverage));\n\n  return (\n    <LiquidGlass {...liquidProps} className={cn(\"rounded-[3rem]\", surfaceClassName, liquidProps?.className)}>\n      <span\n        aria-hidden\n        className={cn(\"pointer-events-none absolute inset-0 rounded-[inherit]\", scrimClassName)}\n        style={{ backgroundImage: layers.join(\", \") }}\n      />\n      <Card\n        data-slot=\"glass-scrim-card\"\n        data-scrim={scrim}\n        className={cn(\"relative border-0 bg-transparent text-white shadow-none ring-0\", className)}\n        {...props}\n      />\n    </LiquidGlass>\n  );\n}\n\nexport { GlassScrimCard, type GlassScrimSide };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
