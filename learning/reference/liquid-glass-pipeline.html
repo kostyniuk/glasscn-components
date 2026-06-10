@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reference · The LiquidGlass Pipeline</title>
+<style>
+  :root { --ink:#1c1e21; --muted:#5b616a; --accent:#0b6bcb; --line:#e6e2da; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#fbfaf8; color:var(--ink); font:15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-size:1.7rem; letter-spacing:-0.02em; margin:0 0 2px; }
+  h2 { font-size:1.05rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin:2.2em 0 0.6em; }
+  .kicker { color:var(--muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; }
+  code, pre { font:0.85em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  code { background:#f0ede7; padding:1px 5px; border-radius:4px; }
+  pre { background:#14171c; color:#d6dde6; padding:14px 16px; border-radius:10px; overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:0.92em; }
+  th, td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:0.78em; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); }
+  .flow { background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 18px; font:0.9em/1.9 ui-monospace, Menlo, monospace; }
+  a { color:var(--accent); }
+  @media print { body { background:#fff; font-size:12px; } a { color:inherit; text-decoration:none; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Reference</p>
+  <h1>The LiquidGlass Pipeline</h1>
+  <p>Compressed essence of <code>components/ui/glasscn/liquid-glass.tsx</code>. For the why, see <a href="../lessons/0001-svg-filters-from-zero.html">Lesson 0001</a> → <a href="../lessons/0002-how-a-png-bends-light.html">Lesson 0002</a>, the <a href="glossary.html">glossary</a>, and <code>plans/001-liquid-glass-apple-parity.md</code>.</p>
+
+  <h2>Pipeline</h2>
+  <div class="flow">
+    mount → ResizeObserver measures (w, h) + computed borderTopLeftRadius<br/>
+    &nbsp;&nbsp;→ createDisplacementMap(w, h, r, bezel) — rounded-rect SDF → canvas → PNG data-URL (cached)<br/>
+    &nbsp;&nbsp;→ &lt;feImage href=map&gt; → &lt;feDisplacementMap scale={refraction} R→X G→Y&gt; → &lt;feGaussianBlur 0.15&gt;<br/>
+    &nbsp;&nbsp;→ backdrop-filter: url(#id) blur(blur) saturate(saturation) <em>(Chromium only)</em><br/>
+    &nbsp;&nbsp;→ fallback: blur(blur + 2) saturate(saturation) <em>(Safari / Firefox / SSR / first client render)</em><br/>
+    &nbsp;&nbsp;+ specular rim: absolutely-positioned span, 135° white gradient, 1.5px ring via mask-composite exclude
+  </div>
+
+  <h2>Displacement encoding</h2>
+  <table>
+    <tr><th>Fact</th><th>Value</th></tr>
+    <tr><td>Sample position</td><td><code>(x + scale·(R/255 − 0.5), y + scale·(G/255 − 0.5))</code></td></tr>
+    <tr><td>Neutral ("don't move")</td><td>R = G = 128</td></tr>
+    <tr><td>Max pixel shift</td><td><code>scale / 2</code> (so <code>refraction=15</code> → 7.5px at the rim)</td></tr>
+    <tr><td>Vector direction in map</td><td>outward edge normal; samples are taken from <em>outside</em> → content appears pulled in (lens magnification)</td></tr>
+    <tr><td>Map is rebuilt when</td><td>(width, height, radius, bezel) changes — never on move/drag</td></tr>
+    <tr><td>Texture cap</td><td>480px max dimension; rendered at element aspect (no circular-map stretching)</td></tr>
+  </table>
+
+  <h2>Rounded-rect SDF (per texel)</h2>
+  <pre><code>qx = |px| − (w/2 − r);  qy = |py| − (h/2 − r)
+corner (qx&gt;0 ∧ qy&gt;0):  d = hypot(qx,qy) − r;  dir = sign(p)·q/len   // radial
+edge   (else):          d = max(qx,qy) − r;    dir = axis of the max // straight
+inside = −d   (&gt; 0 inside the contour)
+t = min(1, inside / bezelPx);  bezelPx = bezel · min(w,h)/2
+magnitude = (1 − convexSquircle(t)) · min(1, inside / 1.25)   // edge taper
+R = 128 + dirX·magnitude·127;  G = 128 + dirY·magnitude·127
+convexSquircle(x) = (1 − (1−x)⁴)^¼   // steep at rim → flat interior</code></pre>
+
+  <h2>Browser support matrix</h2>
+  <table>
+    <tr><th>Engine</th><th><code>backdrop-filter: url()</code></th><th>What users get</th></tr>
+    <tr><td>Chromium (Chrome, Edge, Arc, Brave…)</td><td>renders</td><td>full refraction</td></tr>
+    <tr><td>Safari / WebKit</td><td>parses, doesn't render (<a href="https://bugs.webkit.org/show_bug.cgi?id=245510">bug 245510</a>)</td><td>frosted fallback</td></tr>
+    <tr><td>Firefox / Gecko</td><td>parses, doesn't render</td><td>frosted fallback</td></tr>
+    <tr><td colspan="3">⚠ <code>CSS.supports("backdrop-filter","url(#f)")</code> returns <code>true</code> everywhere — hence UA sniffing (<code>supportsSvgBackdropFilter()</code>). iOS Chrome is "CriOS" → correctly falls back (it's WebKit).</td></tr>
+  </table>
+
+  <h2>Tuning knobs</h2>
+  <table>
+    <tr><th>Knob</th><th>Default</th><th>Effect</th><th>Cost to change live</th></tr>
+    <tr><td><code>refraction</code></td><td>15</td><td>bend strength (= feDisplacementMap scale)</td><td>free — attribute only</td></tr>
+    <tr><td><code>bezel</code></td><td>0.34</td><td>rim band width as fraction of half-min-dimension</td><td>map rebuild</td></tr>
+    <tr><td><code>blur</code></td><td>2</td><td>frost mixed after refraction; fallback uses blur+2</td><td>free</td></tr>
+    <tr><td><code>saturation</code></td><td>1.28</td><td>backdrop color pop</td><td>free</td></tr>
+    <tr><td><code>EDGE_TAPER_PX</code></td><td>1.25</td><td>kills sampling garbage on outermost pixels</td><td>constant; map rebuild</td></tr>
+    <tr><td>rim gradient alphas</td><td>0.6 / 0.28</td><td>specular intensity top-left / bottom-right</td><td>free (CSS)</td></tr>
+  </table>
+
+  <h2>Decision log (rejected approaches)</h2>
+  <table>
+    <tr><th>Approach</th><th>Why rejected</th></tr>
+    <tr><td>Chromatic aberration (3-pass R/G/B split)</td><td>Apple's real material shows no RGB fringing — verified against macOS 26 Control Center screenshots. Common in web recreations; artistic license, not parity.</td></tr>
+    <tr><td>Snell's-law-exact ray-traced profile</td><td>Visually indistinguishable from convexSquircle at UI element sizes; much harder to maintain.</td></tr>
+    <tr><td>WebGL/shader reimplementation</td><td>Shaders can't sample the live page behind an element; only backdrop-filter can.</td></tr>
+    <tr><td><code>CSS.supports()</code> capability check</td><td>False-positives in Safari and Firefox (they parse but don't render).</td></tr>
+  </table>
+
+  <h2>Known limitations</h2>
+  <ul>
+    <li>Per-corner and percentage radii unsupported (reads <code>borderTopLeftRadius</code> in px only).</li>
+    <li>Radius-only changes without a size change don't re-measure (ResizeObserver doesn't fire).</li>
+    <li>Map cache is unbounded — continuous size animation thrashes it; animate <code>transform: scale</code> instead.</li>
+    <li>No supersampling in SVG displacement → rim pixelates at very high <code>scale</code>.</li>
+  </ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 0002 · How a PNG Bends Light</title>
+<style>
+  :root {
+    --ink: #1c1e21; --muted: #5b616a; --accent: #0b6bcb; --bg: #fbfaf8;
+    --card: #ffffff; --line: #e6e2da; --good: #1a7f37; --bad: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.4em 0 0.5em; }
+  .kicker { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  p { margin: 0.8em 0; }
+  a { color: var(--accent); }
+  code, pre { font: 0.86em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  code { background: #f0ede7; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #14171c; color: #d6dde6; padding: 16px 18px; border-radius: 10px; overflow-x: auto; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .note { border-left: 3px solid var(--accent); background: #eef4fb; padding: 10px 16px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
+  .recap { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 0.93em; }
+  .recap dt { font-weight: 600; }
+  .recap dd { margin: 0 0 8px; color: var(--muted); }
+  .formula { text-align: center; font-size: 1.05em; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  nav.lesson-nav { display: flex; gap: 16px; font-size: 0.9rem; margin-top: 12px; color: var(--muted); flex-wrap: wrap; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+  /* demo */
+  #stage {
+    position: relative; height: 360px; border-radius: 14px; overflow: hidden; user-select: none;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 26px),
+      radial-gradient(circle at 70% 80%, #2985ff66 0%, transparent 30%),
+      radial-gradient(circle at 25% 30%, #ff2e81aa 0%, transparent 38%),
+      linear-gradient(130deg, #1a0b24 0%, #0b1930 45%, #06111e 100%);
+  }
+  #stage .words {
+    position: absolute; inset: 0; padding: 18px; color: rgba(255,255,255,0.55);
+    font: 600 22px/1.9 Georgia, serif; overflow: hidden;
+  }
+  #pill {
+    position: absolute; left: 60px; top: 110px; width: 340px; height: 120px; border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.25); cursor: grab; touch-action: none;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  }
+  #pill:active { cursor: grabbing; }
+  .controls { display: grid; gap: 10px; margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .controls label { display: grid; grid-template-columns: 130px 1fr 56px; align-items: center; gap: 12px; font-size: 0.92rem; }
+  .controls output { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  #mapView { display: none; margin-top: 10px; }
+  #mapView img { border: 1px solid var(--line); border-radius: 10px; width: 255px; image-rendering: pixelated; }
+  #compatWarning { display: none; border-left: 3px solid var(--bad); background: #fdf1f0; padding: 10px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+
+  /* quiz */
+  .quiz { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .quiz p.q { font-weight: 600; margin-top: 0; }
+  .quiz label { display: block; padding: 4px 0; cursor: pointer; }
+  .quiz .verdict { display: none; margin-top: 8px; padding: 8px 12px; border-radius: 8px; font-size: 0.93em; }
+  .quiz .verdict.ok { display: block; background: #e8f4ec; color: var(--good); }
+  .quiz .verdict.no { display: block; background: #fdf1f0; color: var(--bad); }
+
+  @media print { #stage, .controls { display: none; } body { background: #fff; } a { color: inherit; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Lesson 0002</p>
+  <h1>How a PNG Bends Light</h1>
+  <nav class="lesson-nav">
+    <a href="0001-svg-filters-from-zero.html">← 0001 · SVG Filters from Zero</a>
+    <a href="../reference/glossary.html">Glossary</a>
+    <a href="../reference/liquid-glass-pipeline.html">Reference: pipeline cheat sheet</a>
+  </nav>
+
+  <div class="recap">
+    <strong>You need from lesson 0001:</strong>
+    <dl style="margin:8px 0 0">
+      <dt>Assembly line</dt><dd>a <code>&lt;filter&gt;</code> is machines chained by <code>result</code> → <code>in</code>; the element shows only the last machine's output.</dd>
+      <dt>SourceGraphic</dt><dd>the free input: the pixels being filtered.</dd>
+      <dt>backdrop-filter twist</dt><dd>same machines, but SourceGraphic becomes <em>the live page behind the element</em>. (Quiz 4 of lesson 0001; unpacked fully in <a href="#window">the window model</a> below.)</dd>
+    </dl>
+    Shaky on any of these? Re-do <a href="0001-svg-filters-from-zero.html">lesson 0001</a> first — this one builds directly on them.
+  </div>
+
+  <h2 id="problem">The problem it solves</h2>
+  <p>
+    Frosted glass is easy: <code>backdrop-filter: blur() saturate()</code>. But Apple's Liquid Glass is a
+    <em>lens</em> — near the rim of every pill, the background visibly bends, like light crossing curved glass.
+    Look at your own macOS Control Center screenshot: wallpaper streaks kink as they pass under a pill's edge.
+  </p>
+  <p>
+    No CSS function can do that, because blur and friends only ever answer "what color should this pixel be,
+    averaged from its neighborhood?" Bending needs a different power:
+    <strong>"paint this pixel using the backdrop from <em>somewhere else</em>."</strong> Exactly one machine in
+    the SVG toolbox has it.
+  </p>
+
+  <h2 id="idea">The idea: a picture used as instructions</h2>
+  <p>
+    That machine is <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDisplacementMap"><code>feDisplacementMap</code></a>.
+    It takes <em>two</em> inputs: <code>in</code> (the pixels to bend — for us, the backdrop) and
+    <code>in2</code> (a second image called the <strong>displacement map</strong>). The map is never shown.
+    It's read as <strong>instructions</strong>: for each pixel, the map's <strong>Red value says how far to reach
+    sideways</strong> for the sample, and <strong>Green says how far up/down</strong>:
+  </p>
+  <p class="formula">
+    sample&nbsp;position = (x + scale·(R/255 − 0.5),&nbsp;&nbsp;y + scale·(G/255 − 0.5))
+  </p>
+  <p>Unpack that slowly — it's the only formula in this series:</p>
+  <ul>
+    <li>R and G are 0–255, so <code>R/255 − 0.5</code> runs from −0.5 to +0.5. <strong>128 lands on ≈0: "don't move".</strong> That's why displacement maps look gray — gray is "do nothing".</li>
+    <li><code>scale</code> (an attribute on the machine) converts that −0.5…+0.5 into pixels. <strong>Max reach = scale/2.</strong> Your component's <code>refraction</code> prop is literally this attribute.</li>
+    <li>So a map is <em>a grid of little arrows wearing a PNG costume</em>: gray = no arrow, redder = arrow pointing right, greener = arrow pointing down.</li>
+  </ul>
+  <p>
+    Your component's job, then, is just to <em>paint the right arrows</em>: a JS loop fills a
+    <code>&lt;canvas&gt;</code> with gray in the middle and outward-pointing arrows in a band along the edge
+    (strong at the rim, fading inward), encodes it as a PNG data-URL, and loads it into the filter with
+    <code>feImage</code> — a machine whose only job is "load this image and put it on the line as a
+    <code>result</code>". Because the whole thing runs in <code>backdrop-filter</code>, the bent pixels come from
+    the live page behind the glass — drag it anywhere and the lens stays honest, for free.
+  </p>
+
+  <h2 id="window">The window model: where the effect actually lives</h2>
+  <p>
+    A natural misreading (worth killing early): <em>"we apply the glass effect to the component."</em> We don't —
+    and we couldn't. The component's own pixels are almost nothing: an 8% white tint, a hairline border, the rim
+    ring, your children. The glass you see is <strong>the page behind, repainted through the assembly line,
+    clipped to the element's outline</strong>. The element is a <em>window</em>; the filter applies to what you
+    see <em>through</em> it — like a pane of shower glass, which is itself nearly invisible and "looks like"
+    mostly the distorted room behind it.
+  </p>
+  <p>The browser's paint order when it reaches the pill:</p>
+  <ol>
+    <li>The page behind is already painted.</li>
+    <li>Snapshot the rectangle <em>under</em> the pill.</li>
+    <li>Run the snapshot through the line: displacement bends, <code>blur()</code> frosts, <code>saturate()</code> pops.</li>
+    <li>Paint the <strong>result</strong> back, clipped to the pill's rounded shape.</li>
+    <li>Paint the element's own stuff on top: tint, border, <strong>children (unfiltered — that's why labels stay crisp)</strong>, rim ring.</li>
+  </ol>
+  <p>
+    This is also why it must be <code>backdrop-filter</code> and not plain <code>filter</code>: with
+    <code>filter: url(#lens)</code> the line would receive the element's <em>own</em> pixels — your button label
+    would warp while the page behind stayed straight. The exact opposite of glass.
+  </p>
+  <details>
+    <summary><strong>Check:</strong> when you drag the pill, which of the five steps changes?</summary>
+    <p>Only what steps 1–2 see — the snapshot content. The map, the filter, and the element's own pixels are all
+    untouched. That's why dragging is free, and it's the same fact as practice experiment 1 below.</p>
+  </details>
+
+  <h2 id="practice">Practice: drag the lens, then look at the instructions</h2>
+  <div id="compatWarning">
+    Heads-up: this browser doesn't render SVG filters inside <code>backdrop-filter</code> (Safari/Firefox — see
+    <a href="https://bugs.webkit.org/show_bug.cgi?id=245510">WebKit bug 245510</a>). You're seeing the frosted
+    fallback — exactly what your component ships to these browsers. Open this lesson in Chrome/Arc/Edge for the full demo.
+  </div>
+  <div id="stage">
+    <div class="words" aria-hidden="true">
+      the quick brown fox jumps over the lazy dog · sphinx of black quartz judge my vow ·
+      pack my box with five dozen liquor jugs · the quick brown fox jumps over the lazy dog ·
+      sphinx of black quartz judge my vow · pack my box with five dozen liquor jugs ·
+      the quick brown fox jumps over the lazy dog · sphinx of black quartz judge my vow
+    </div>
+    <div id="pill" aria-label="Draggable glass lens"></div>
+  </div>
+  <div class="controls">
+    <label>refraction (scale) <input id="scaleCtl" type="range" min="0" max="120" value="28" /> <output id="scaleOut">28</output></label>
+    <label>bezel (rim width) <input id="bezelCtl" type="range" min="0.06" max="1" step="0.02" value="0.34" /> <output id="bezelOut">0.34</output></label>
+    <label style="grid-template-columns: 130px 1fr"><span>show the map</span> <span><input id="mapToggle" type="checkbox" /> render the instruction image itself</span></label>
+    <div id="mapView"><img id="mapImg" alt="The displacement map: gray interior, colored rim" /><br/>
+      <small>Gray = "don't move". The colored rim is the arrows: red-ish reaches right, green-ish reaches down — always pointing out of the shape.</small>
+    </div>
+  </div>
+  <p>Three experiments, in order:</p>
+  <ol>
+    <li><strong>Drag the pill</strong> over the text. The bending follows it with zero recomputation — the map encodes the pill's <em>shape</em>, not what's behind it.</li>
+    <li><strong>Slide refraction to 0, then 120.</strong> Only the <code>scale</code> attribute changes — same PNG, longer arrows. At 120 you'll also see the rim pixelate: a real limitation, noted below.</li>
+    <li><strong>Tick "show the map", then move the bezel slider.</strong> The gray interior and colored band ARE the instructions. Notice bezel changes <em>do</em> rebuild the PNG — geometry changes are the expensive ones.</li>
+  </ol>
+
+  <h2 id="quiz">Check yourself</h2>
+  <div class="quiz" data-answer="a">
+    <p class="q">1 · A map pixel has R=255, G=128, and the machine has <code>scale=30</code>. Where does that output pixel get its color?</p>
+    <label><input type="radio" name="q1" value="a" /> From the backdrop 15px to its right</label>
+    <label><input type="radio" name="q1" value="b" /> From the backdrop 30px to its right</label>
+    <label><input type="radio" name="q1" value="c" /> From the backdrop 15px to its left</label>
+    <div class="verdict" data-ok="Right: 30 · (255/255 − 0.5) = +15px in X; G=128 → 0 in Y. Max reach is always scale/2." data-no="Use the formula: scale · (R/255 − 0.5) = 30 · (1.0 − 0.5) = +15px sideways. G=128 means no vertical reach."></div>
+  </div>
+  <div class="quiz" data-answer="c">
+    <p class="q">2 · Why is the whole middle of the map flat gray instead of fading gradually?</p>
+    <label><input type="radio" name="q2" value="a" /> PNG compresses flat regions better</label>
+    <label><input type="radio" name="q2" value="b" /> feDisplacementMap can't represent small reaches accurately</label>
+    <label><input type="radio" name="q2" value="c" /> Real convex glass is optically flat in the middle — all the bending belongs in the rim band</label>
+    <div class="verdict" data-ok="Yes — that's the look in your Control Center screenshot: hard bending at the rim, readable content in the middle. Gray = no arrows = flat glass." data-no="Look at a real pill on macOS 26: text in the middle is undistorted. The map's gray interior IS that flatness — 128 means 'don't move'."></div>
+  </div>
+  <div class="quiz" data-answer="b">
+    <p class="q">3 · You drag the glass pill across the page. What must be recomputed?</p>
+    <label><input type="radio" name="q3" value="a" /> The map (the backdrop behind it changed)</label>
+    <label><input type="radio" name="q3" value="b" /> Nothing — the backdrop is sampled live; the map only depends on width/height/radius/bezel</label>
+    <label><input type="radio" name="q3" value="c" /> The filter must re-mount with a new id</label>
+    <div class="verdict" data-ok="Exactly. That's why liquid-glass.tsx watches SIZE with a ResizeObserver, not position — drags are free." data-no="The map is instructions about the SHAPE, not the content. backdrop-filter re-samples the live page every frame; moving costs nothing."></div>
+  </div>
+  <div class="quiz" data-answer="b">
+    <p class="q">4 · A registry user animates a card's <em>width</em> on hover and reports jank. Which diagnosis is right?</p>
+    <label><input type="radio" name="q4" value="a" /> feDisplacementMap is slow; lower <code>refraction</code></label>
+    <label><input type="radio" name="q4" value="b" /> Every new (width, height, radius, bezel) repaints the canvas and re-encodes a PNG — animating size thrashes that; animate <code>transform: scale</code> instead</label>
+    <label><input type="radio" name="q4" value="c" /> The UA sniff runs per frame; memoize it</label>
+    <div class="verdict" data-ok="Right — painting the instructions is the only expensive step, and it's keyed on geometry. transform: scale never changes measured geometry." data-no="The scale attribute and UA check are free. The cost is createDisplacementMap: a pixel loop + PNG encode per unique geometry — once per frame if width animates."></div>
+  </div>
+
+  <h2 id="boundaries">Boundaries</h2>
+  <ul>
+    <li><strong>Chromium-only when combined with backdrop-filter.</strong> Safari and Firefox parse <code>backdrop-filter: url()</code> but don't render it — and <code>CSS.supports()</code> wrongly says they do (<a href="https://github.com/mdn/browser-compat-data/issues/24110">mdn/browser-compat-data #24110</a>). That's why <code>liquid-glass.tsx</code> sniffs the user agent and falls back to frost. The gate + fallback design deserves its own lesson.</li>
+    <li><strong>No supersampling.</strong> The machine reads one instruction-pixel per output pixel; at high <code>scale</code> the rim pixelates (you saw it at 120). No fix exists inside this primitive — buttery high-distortion effects are WebGL territory (your <code>liquid-switch</code>'s technique).</li>
+    <li><strong>The arrows have to come from somewhere.</strong> How the canvas loop knows the distance and direction to the nearest edge of a <em>rounded rectangle</em> — the SDF math — is the next lesson.</li>
+  </ul>
+
+  <h2 id="mission">Tie-in to your mission</h2>
+  <p>
+    This is the heart of <code>components/ui/glasscn/liquid-glass.tsx</code>: <code>createDisplacementMap()</code>
+    paints the arrows (<code>128 + dir · magnitude · 127</code> is the encode step), <code>feImage</code> loads
+    them, <code>scale={refraction}</code> is the prop you expose, and the cache key
+    <code>width:height:radius:bezel</code> is why quiz 4's support ticket happens. When you can answer that ticket
+    from the formula rather than from memory of our session, this lesson is done.
+  </p>
+
+  <footer>
+    <p>Sources: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDisplacementMap">MDN: feDisplacementMap</a> ·
+    <a href="https://kube.io/blog/liquid-glass-css-svg/">kube.io: Liquid Glass in the Browser</a> ·
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter">MDN: backdrop-filter</a> ·
+    <a href="https://bugs.webkit.org/show_bug.cgi?id=245510">WebKit bug 245510</a> · <code>plans/001-liquid-glass-apple-parity.md</code></p>
+    <p>Stuck? Ask your agent — "why do outward arrows make the content look pulled inward?" is the best question this lesson can leave you with.</p>
+  </footer>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feImage id="lensMap" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map" />
+    <feDisplacementMap id="lensDisp" in="SourceGraphic" in2="map" scale="28" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+    <feGaussianBlur in="displaced" stdDeviation="0.15" />
+  </filter>
+</svg>
+
+<script>
+(function () {
+  var W = 340, H = 120, R = 60;
+
+  function convexSquircle(x) { return Math.pow(1 - Math.pow(1 - x, 4), 0.25); }
+
+  // Same rounded-rect generator as components/ui/glasscn/liquid-glass.tsx,
+  // with fixed element geometry so only `bezel` varies. The SDF math inside
+  // gets its own lesson — for now read it as "distance + direction to edge".
+  function createMap(bezel) {
+    var canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext("2d");
+    var img = ctx.createImageData(W, H), data = img.data;
+    var hw = W / 2, hh = H / 2;
+    var bezelPx = Math.max(1, bezel * Math.min(hw, hh));
+    for (var y = 0; y < H; y++) {
+      for (var x = 0; x < W; x++) {
+        var px = (x + 0.5) - hw, py = (y + 0.5) - hh;
+        var qx = Math.abs(px) - (hw - R), qy = Math.abs(py) - (hh - R);
+        var d, dx = 0, dy = 0;
+        if (qx > 0 && qy > 0) {
+          var len = Math.hypot(qx, qy);
+          d = len - R; dx = Math.sign(px) * qx / len; dy = Math.sign(py) * qy / len;
+        } else if (qx > qy) { d = qx - R; dx = Math.sign(px); }
+        else { d = qy - R; dy = Math.sign(py); }
+        var i = (y * W + x) * 4, inside = -d;
+        var mag = 0;
+        if (inside > 0) {
+          var t = Math.min(1, inside / bezelPx);
+          mag = (1 - convexSquircle(t)) * Math.min(1, inside / 1.25);
+        }
+        data[i] = Math.round(128 + dx * mag * 127);
+        data[i + 1] = Math.round(128 + dy * mag * 127);
+        data[i + 2] = 128; data[i + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    return canvas.toDataURL("image/png");
+  }
+
+  var pill = document.getElementById("pill");
+  var lensMap = document.getElementById("lensMap");
+  var lensDisp = document.getElementById("lensDisp");
+  var scaleCtl = document.getElementById("scaleCtl"), scaleOut = document.getElementById("scaleOut");
+  var bezelCtl = document.getElementById("bezelCtl"), bezelOut = document.getElementById("bezelOut");
+  var mapToggle = document.getElementById("mapToggle"), mapView = document.getElementById("mapView");
+  var mapImg = document.getElementById("mapImg");
+
+  var chromium = /Chrom(e|ium)/.test(navigator.userAgent) && !/Firefox/.test(navigator.userAgent);
+  if (!chromium) document.getElementById("compatWarning").style.display = "block";
+
+  function applyBackdrop() {
+    var v = chromium ? "url(#lens) blur(1px) saturate(1.25)" : "blur(4px) saturate(1.25)";
+    pill.style.backdropFilter = v;
+    pill.style.webkitBackdropFilter = v;
+  }
+  function rebuild() {
+    var url = createMap(parseFloat(bezelCtl.value));
+    lensMap.setAttribute("href", url);
+    mapImg.src = url;
+  }
+  rebuild(); applyBackdrop();
+
+  scaleCtl.addEventListener("input", function () {
+    lensDisp.setAttribute("scale", scaleCtl.value);
+    scaleOut.textContent = scaleCtl.value;
+  });
+  bezelCtl.addEventListener("input", function () {
+    bezelOut.textContent = bezelCtl.value;
+    rebuild();
+  });
+  mapToggle.addEventListener("change", function () {
+    mapView.style.display = mapToggle.checked ? "block" : "none";
+  });
+
+  var drag = null;
+  pill.addEventListener("pointerdown", function (e) {
+    drag = { dx: e.clientX - pill.offsetLeft, dy: e.clientY - pill.offsetTop };
+    pill.setPointerCapture(e.pointerId);
+  });
+  pill.addEventListener("pointermove", function (e) {
+    if (!drag) return;
+    var stage = document.getElementById("stage");
+    var x = Math.max(0, Math.min(stage.clientWidth - W, e.clientX - drag.dx));
+    var y = Math.max(0, Math.min(stage.clientHeight - H, e.clientY - drag.dy));
+    pill.style.left = x + "px"; pill.style.top = y + "px";
+  });
+  pill.addEventListener("pointerup", function () { drag = null; });
+  pill.addEventListener("pointercancel", function () { drag = null; });
+
+  document.querySelectorAll(".quiz").forEach(function (quiz) {
+    var verdict = quiz.querySelector(".verdict");
+    quiz.querySelectorAll("input[type=radio]").forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        var ok = radio.value === quiz.dataset.answer;
+        verdict.className = "verdict " + (ok ? "ok" : "no");
+        verdict.textContent = (ok ? "✓ " : "✗ ") + (ok ? verdict.dataset.ok : verdict.dataset.no);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 0001 · SVG Filters from Zero</title>
+<style>
+  :root {
+    --ink: #1c1e21; --muted: #5b616a; --accent: #0b6bcb; --bg: #fbfaf8;
+    --card: #ffffff; --line: #e6e2da; --good: #1a7f37; --bad: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.4em 0 0.5em; }
+  .kicker { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  p { margin: 0.8em 0; }
+  a { color: var(--accent); }
+  code, pre { font: 0.86em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  code { background: #f0ede7; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #14171c; color: #d6dde6; padding: 16px 18px; border-radius: 10px; overflow-x: auto; }
+  pre code { background: none; padding: 0; color: inherit; }
+  pre .hl { color: #7ec3ff; }
+  .note { border-left: 3px solid var(--accent); background: #eef4fb; padding: 10px 16px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
+  nav.lesson-nav { display: flex; gap: 16px; font-size: 0.9rem; margin-top: 12px; color: var(--muted); flex-wrap: wrap; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+  /* demo */
+  #stage { display: flex; align-items: center; justify-content: center; height: 300px; border-radius: 14px;
+           background: linear-gradient(180deg, #eef1f6, #dfe4ec); border: 1px solid var(--line); }
+  #subject {
+    width: 280px; height: 150px; border-radius: 24px; display: grid; place-items: center;
+    background: linear-gradient(135deg, #6d5dfc, #2985ff 55%, #19c3e8);
+    color: #fff; font: 700 34px/1 -apple-system, sans-serif; letter-spacing: -0.02em;
+  }
+  .controls { display: grid; gap: 12px; margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .stages { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stages button {
+    font: 600 0.85rem/1 inherit; padding: 9px 12px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--line); background: #f6f4f0; color: var(--ink);
+  }
+  .stages button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .controls label { display: grid; grid-template-columns: 150px 1fr 48px; align-items: center; gap: 12px; font-size: 0.92rem; }
+  .controls output { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  #stageExplain { font-size: 0.93em; color: var(--muted); margin: 2px 0 0; min-height: 2.6em; }
+
+  /* quiz */
+  .quiz { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .quiz p.q { font-weight: 600; margin-top: 0; }
+  .quiz label { display: block; padding: 4px 0; cursor: pointer; }
+  .quiz .verdict { display: none; margin-top: 8px; padding: 8px 12px; border-radius: 8px; font-size: 0.93em; }
+  .quiz .verdict.ok { display: block; background: #e8f4ec; color: var(--good); }
+  .quiz .verdict.no { display: block; background: #fdf1f0; color: var(--bad); }
+
+  @media print { #stage, .controls { display: none; } body { background: #fff; } a { color: inherit; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Lesson 0001</p>
+  <h1>SVG Filters from Zero</h1>
+  <nav class="lesson-nav">
+    <span>◦ Start of the series</span>
+    <a href="0002-how-a-png-bends-light.html">Next: 0002 · How a PNG Bends Light</a>
+    <a href="../reference/glossary.html">Glossary</a>
+  </nav>
+
+  <p class="note">
+    No SVG knowledge assumed. This lesson teaches one thing: <strong>an SVG filter is an assembly line
+    for pixels, and you can read one</strong>. Everything in your LiquidGlass component sits on this.
+    The demo here works in <em>every</em> browser — no Chromium caveats yet.
+  </p>
+
+  <h2 id="problem">The problem it solves</h2>
+  <p>
+    CSS effects are mostly single dials: <code>blur(4px)</code>, <code>brightness(1.2)</code>,
+    <code>drop-shadow(…)</code>. One input, one canned effect, no way to combine them in interesting orders or
+    feed one effect's output into another. Before SVG filters, anything fancier — embossing, glows built from a
+    shape's own silhouette, textured distortion — meant baking images in Photoshop and shipping PNGs that
+    couldn't adapt to content.
+  </p>
+  <p>
+    SVG filters are the escape hatch the web has had since 2001: instead of one canned effect, you get a box of
+    <strong>small pixel machines</strong> (officially "filter primitives") and permission to wire them together
+    however you like.
+  </p>
+
+  <h2 id="idea">The idea: an assembly line for pixels</h2>
+  <p>Three rules cover 90% of every filter you'll ever read:</p>
+  <p>
+    <strong>1. A filter is a named list of machines.</strong> It lives in an <code>&lt;svg&gt;</code> that can be
+    zero-sized and invisible — it's a <em>definition</em>, not a picture. Each machine is a tag starting with
+    <code>fe</code> ("filter effect"): <code>feGaussianBlur</code> blurs, <code>feOffset</code> shifts,
+    <code>feColorMatrix</code> recolors, <code>feMerge</code> stacks layers.
+  </p>
+  <p>
+    <strong>2. Machines pass pixels via <code>in</code> and <code>result</code>.</strong> A machine names its
+    output with <code>result="something"</code>; the next machine picks it up with <code>in="something"</code>.
+    Two inputs exist for free: <code>SourceGraphic</code> (the element being filtered, in full color) and
+    <code>SourceAlpha</code> (just its silhouette — black, with the element's transparency).
+  </p>
+  <p>
+    <strong>3. CSS points an element at the line with <code>filter: url(#id)</code>.</strong> The element's own
+    pixels go in at the start; whatever comes off the end of the line is what gets painted.
+  </p>
+<pre><code>&lt;svg width="0" height="0"&gt;                          <span class="hl">&lt;!-- invisible toolbox --&gt;</span>
+  &lt;filter id="fancy"&gt;
+    &lt;feGaussianBlur in="<span class="hl">SourceAlpha</span>" stdDeviation="6" result="<span class="hl">soft</span>" /&gt;
+    &lt;feOffset       in="<span class="hl">soft</span>" dx="10" dy="10"      result="<span class="hl">moved</span>" /&gt;
+    ...
+  &lt;/filter&gt;
+&lt;/svg&gt;
+
+.card { filter: url(#fancy); }                      <span class="hl">/* CSS connects the element */</span></code></pre>
+  <p>
+    Read it like a recipe, top to bottom: <em>take the silhouette, soften it, move it down-right…</em> That's the
+    whole literacy skill. (Full primitive vocabulary: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter">MDN: &lt;filter&gt;</a>.)
+  </p>
+
+  <h2 id="practice">Practice: build a drop shadow, one machine at a time</h2>
+  <p>
+    Below is a card and a five-stage assembly line that ends in a classic soft shadow. Click through the stages —
+    each button shows you <em>the output of the line cut off at that machine</em>, plus the markup so far. Then
+    move the sliders and watch stage 2's knobs ripple through everything after it.
+  </p>
+
+  <div id="stage"><div id="subject">glasscn</div></div>
+  <div class="controls">
+    <div class="stages" id="stageBtns">
+      <button data-stage="0" class="active">0 · no filter</button>
+      <button data-stage="1">1 · blur the silhouette</button>
+      <button data-stage="2">2 · + offset</button>
+      <button data-stage="3">3 · + tint</button>
+      <button data-stage="4">4 · + merge card back on top</button>
+    </div>
+    <p id="stageExplain">The raw element. <code>filter</code> is not applied at all.</p>
+    <label>blur stdDeviation <input id="blurCtl" type="range" min="0" max="20" step="0.5" value="6" /> <output id="blurOut">6</output></label>
+    <label>offset dx / dy <input id="offCtl" type="range" min="-30" max="30" value="12" /> <output id="offOut">12</output></label>
+    <pre id="codeView"><code></code></pre>
+  </div>
+
+  <h2 id="quiz">Check yourself</h2>
+  <div class="quiz" data-answer="b">
+    <p class="q">1 · In stage 1 the whole card turned into a dark blur. Why dark?</p>
+    <label><input type="radio" name="q1" value="a" /> feGaussianBlur always darkens what it blurs</label>
+    <label><input type="radio" name="q1" value="b" /> The machine's <code>in</code> is <code>SourceAlpha</code> — the silhouette, which is black</label>
+    <label><input type="radio" name="q1" value="c" /> The filter has a bug until feMerge runs</label>
+    <div class="verdict" data-ok="Right. SourceAlpha = the element's shape with no color. Shadows are built from silhouettes, not from the colored pixels." data-no="Look at the first machine's in= attribute: SourceAlpha. That free input is the element's silhouette — black with the element's transparency. Blur can only blur what it's given."></div>
+  </div>
+  <div class="quiz" data-answer="c">
+    <p class="q">2 · How does the browser know which machine feeds which?</p>
+    <label><input type="radio" name="q2" value="a" /> Machines are connected by matching id attributes</label>
+    <label><input type="radio" name="q2" value="b" /> The filter element declares an explicit graph up front</label>
+    <label><input type="radio" name="q2" value="c" /> Each machine's <code>result</code> name is referenced by a later machine's <code>in</code></label>
+    <div class="verdict" data-ok="Exactly — result names the output, in consumes it. (If in is omitted, a machine takes the previous machine's output.)" data-no="It's the result=… / in=… pair: a machine labels its output, any later machine can pull that label in. That's the entire wiring system."></div>
+  </div>
+  <div class="quiz" data-answer="a">
+    <p class="q">3 · Stage 3 ends with a tinted blob — the card itself is gone. Where did it go?</p>
+    <label><input type="radio" name="q3" value="a" /> Nowhere — an element shows only the LAST machine's output; <code>SourceGraphic</code> must be explicitly merged back (stage 4)</label>
+    <label><input type="radio" name="q3" value="b" /> The tint machine erased it</label>
+    <label><input type="radio" name="q3" value="c" /> It's behind the blob, hidden by z-index</label>
+    <div class="verdict" data-ok="Yes. A filter REPLACES the element's pixels with the end of the line. feMerge stacking SourceGraphic on top is what brings the original back." data-no="Key rule: filter: url() replaces the element's rendering with the final machine's output. Until feMerge re-stacks SourceGraphic over the shadow, the card is simply not part of the output."></div>
+  </div>
+  <div class="quiz" data-answer="b">
+    <p class="q">4 · Your LiquidGlass uses <code>backdrop-filter: url(#…)</code> instead of <code>filter: url(#…)</code>. What changes?</p>
+    <label><input type="radio" name="q4" value="a" /> Nothing — they're aliases</label>
+    <label><input type="radio" name="q4" value="b" /> The assembly line's input: not the element's own pixels, but the live page <em>behind</em> the element</label>
+    <label><input type="radio" name="q4" value="c" /> backdrop-filter runs the machines in reverse order</label>
+    <div class="verdict" data-ok="Right — same machines, different raw material. That swap is what makes glass possible, and it's where browser support gets complicated. That's lesson 0002." data-no="Same machines, one difference: SourceGraphic becomes the page content behind the element instead of the element itself. That's the bridge to lesson 0002 — and where Safari/Firefox support breaks."></div>
+  </div>
+
+  <h2 id="boundaries">Boundaries</h2>
+  <ul>
+    <li><strong><code>filter: url()</code> works everywhere</strong> — Chrome, Safari, Firefox. The compatibility minefield only starts when the same filters are used in <code>backdrop-filter</code> (<a href="0002-how-a-png-bends-light.html">lesson 0002</a>).</li>
+    <li><strong>For simple cases, don't use this.</strong> A plain shadow should be CSS <code>filter: drop-shadow(…)</code> or <code>box-shadow</code> — one line, faster. Reach for an SVG filter line only when machines must be <em>composed</em> in custom ways.</li>
+    <li><strong>One machine we deliberately skipped:</strong> <code>feDisplacementMap</code>, the machine that moves pixels around using a second image as instructions. It's the heart of your component, and it gets the whole next lesson.</li>
+  </ul>
+
+  <h2 id="mission">Tie-in to your mission</h2>
+  <p>
+    Open <code>components/ui/glasscn/liquid-glass.tsx</code> and find the <code>&lt;filter&gt;</code> block near
+    the bottom. You can now read every line of it as an assembly line: a machine that loads an image
+    (<code>feImage</code>, <code>result="map"</code>), a machine that consumes <code>in2="map"</code>, and a final
+    soft-blur machine. The only thing you can't yet explain is <em>what</em> the displacement machine does with
+    that map — which is exactly lesson 0002.
+  </p>
+
+  <footer>
+    <p>Sources: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter">MDN: &lt;filter&gt;</a> ·
+    <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/result">MDN: result attribute</a> ·
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: CSS filter</a> ·
+    <a href="../reference/glossary.html">series glossary</a></p>
+    <p>Anything fuzzy? Ask your agent — "what other free inputs exist besides SourceGraphic/SourceAlpha?" is a good follow-up.</p>
+  </footer>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="s1">
+    <feGaussianBlur class="blurK" in="SourceAlpha" stdDeviation="6" result="soft" />
+  </filter>
+  <filter id="s2">
+    <feGaussianBlur class="blurK" in="SourceAlpha" stdDeviation="6" result="soft" />
+    <feOffset class="offK" in="soft" dx="12" dy="12" result="moved" />
+  </filter>
+  <filter id="s3">
+    <feGaussianBlur class="blurK" in="SourceAlpha" stdDeviation="6" result="soft" />
+    <feOffset class="offK" in="soft" dx="12" dy="12" result="moved" />
+    <feColorMatrix in="moved" type="matrix"
+      values="0 0 0 0.04 0  0 0 0 0.09 0  0 0 0 0.25 0  0 0 0 0.6 0" result="tinted" />
+  </filter>
+  <filter id="s4">
+    <feGaussianBlur class="blurK" in="SourceAlpha" stdDeviation="6" result="soft" />
+    <feOffset class="offK" in="soft" dx="12" dy="12" result="moved" />
+    <feColorMatrix in="moved" type="matrix"
+      values="0 0 0 0.04 0  0 0 0 0.09 0  0 0 0 0.25 0  0 0 0 0.6 0" result="tinted" />
+    <feMerge>
+      <feMergeNode in="tinted" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+</svg>
+
+<script>
+(function () {
+  var subject = document.getElementById("subject");
+  var explain = document.getElementById("stageExplain");
+  var codeView = document.querySelector("#codeView code");
+  var blurCtl = document.getElementById("blurCtl"), blurOut = document.getElementById("blurOut");
+  var offCtl = document.getElementById("offCtl"), offOut = document.getElementById("offOut");
+  var current = 0;
+
+  function line(stage) {
+    var b = blurCtl.value, o = offCtl.value;
+    var L = [
+      '<feGaussianBlur in="SourceAlpha" stdDeviation="' + b + '" result="soft" />',
+      '<feOffset in="soft" dx="' + o + '" dy="' + o + '" result="moved" />',
+      '<feColorMatrix in="moved" type="matrix" values="…navy, 60% alpha…" result="tinted" />',
+      '<feMerge>\n    <feMergeNode in="tinted" />\n    <feMergeNode in="SourceGraphic" />\n  </feMerge>'
+    ];
+    if (stage === 0) return '/* no filter applied */\n.card { }';
+    return '<filter id="fancy">\n  ' + L.slice(0, stage).join('\n  ') + '\n</filter>\n\n.card { filter: url(#fancy); }';
+  }
+
+  var blurbs = [
+    'The raw element. <code>filter</code> is not applied at all.',
+    'Output of machine 1 only: the SILHOUETTE (SourceAlpha), blurred. Note the card itself is gone — a filter replaces the element’s pixels.',
+    'Machine 2 consumes <code>in="soft"</code> and shifts it. Still no card — just a moved soft blob.',
+    'Machine 3 recolors the blob via a color matrix: navy at 60% alpha. This is what a shadow is made of.',
+    'Machine 4 (feMerge) stacks <code>SourceGraphic</code> — the original card — on top of the tinted blob. The line now ends in card + shadow.'
+  ];
+
+  function apply() {
+    subject.style.filter = current === 0 ? "none" : "url(#s" + current + ")";
+    explain.innerHTML = blurbs[current];
+    codeView.textContent = line(current);
+  }
+
+  document.querySelectorAll("#stageBtns button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      current = parseInt(btn.dataset.stage, 10);
+      document.querySelectorAll("#stageBtns button").forEach(function (b) { b.classList.toggle("active", b === btn); });
+      apply();
+    });
+  });
+
+  blurCtl.addEventListener("input", function () {
+    blurOut.textContent = blurCtl.value;
+    document.querySelectorAll(".blurK").forEach(function (n) { n.setAttribute("stdDeviation", blurCtl.value); });
+    apply();
+  });
+  offCtl.addEventListener("input", function () {
+    offOut.textContent = offCtl.value;
+    document.querySelectorAll(".offK").forEach(function (n) { n.setAttribute("dx", offCtl.value); n.setAttribute("dy", offCtl.value); });
+    apply();
+  });
+
+  // quiz
+  document.querySelectorAll(".quiz").forEach(function (quiz) {
+    var verdict = quiz.querySelector(".verdict");
+    quiz.querySelectorAll("input[type=radio]").forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        var ok = radio.value === quiz.dataset.answer;
+        verdict.className = "verdict " + (ok ? "ok" : "no");
+        verdict.textContent = (ok ? "✓ " : "✗ ") + (ok ? verdict.dataset.ok : verdict.dataset.no);
+      });
+    });
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>

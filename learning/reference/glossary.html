@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reference · Glossary — Liquid Glass internals</title>
+<style>
+  :root { --ink:#1c1e21; --muted:#5b616a; --accent:#0b6bcb; --line:#e6e2da; }
+  body { margin:0; background:#fbfaf8; color:var(--ink); font:15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-size:1.7rem; letter-spacing:-0.02em; margin:0 0 2px; }
+  .kicker { color:var(--muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; }
+  dl { margin-top: 24px; }
+  dt { font-weight:700; margin-top:16px; }
+  dt code { background:#f0ede7; padding:1px 5px; border-radius:4px; font-size:0.9em; }
+  dd { margin:2px 0 0; color:#33373d; }
+  dd .lesson { color:var(--muted); font-size:0.85em; }
+  a { color:var(--accent); }
+  @media print { body { background:#fff; font-size:12px; } a { color:inherit; text-decoration:none; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Reference</p>
+  <h1>Glossary</h1>
+  <p>Every lesson uses these terms with exactly these meanings. Lessons link here; look terms up, don't re-derive them.</p>
+
+  <dl>
+    <dt>Filter primitive (<code>fe*</code> element)</dt>
+    <dd>One pixel machine inside a <code>&lt;filter&gt;</code>: <code>feGaussianBlur</code>, <code>feOffset</code>, <code>feColorMatrix</code>, <code>feMerge</code>, <code>feImage</code>, <code>feDisplacementMap</code>… <span class="lesson">[Lesson 0001]</span></dd>
+
+    <dt>Assembly line</dt>
+    <dd>Our name for a <code>&lt;filter&gt;</code>: machines chained top-to-bottom; the filtered element displays only the LAST machine's output. <span class="lesson">[Lesson 0001]</span></dd>
+
+    <dt><code>in</code> / <code>result</code></dt>
+    <dd>The wiring. A machine labels its output <code>result="name"</code>; later machines consume it with <code>in="name"</code> (or <code>in2</code> for a machine's second input). A machine with no <code>in</code> takes the previous machine's output. <span class="lesson">[Lesson 0001]</span></dd>
+
+    <dt><code>SourceGraphic</code> / <code>SourceAlpha</code></dt>
+    <dd>Free inputs available to any machine: the filtered pixels in full color / just their silhouette (black, same transparency). <span class="lesson">[Lesson 0001]</span></dd>
+
+    <dt><code>filter: url(#id)</code> vs <code>backdrop-filter: url(#id)</code></dt>
+    <dd>Same assembly line; different raw material. <code>filter</code> feeds in the element's own pixels (works in all browsers). <code>backdrop-filter</code> feeds in the live page BEHIND the element (SVG filters here render in Chromium only). <span class="lesson">[Lessons 0001–0002]</span></dd>
+
+    <dt><code>feImage</code></dt>
+    <dd>A machine that loads an external image (for us, a data-URL PNG) and places it on the line as a <code>result</code>. <span class="lesson">[Lesson 0002]</span></dd>
+
+    <dt>Displacement map</dt>
+    <dd>An image used as instructions, never shown: per pixel, Red = horizontal reach, Green = vertical reach, 128 = "don't move". A grid of arrows wearing a PNG costume. <span class="lesson">[Lesson 0002]</span></dd>
+
+    <dt><code>feDisplacementMap</code> / <code>scale</code></dt>
+    <dd>The machine that bends: samples <code>in</code> at <code>(x + scale·(R/255 − 0.5), y + scale·(G/255 − 0.5))</code>. Max reach = <code>scale/2</code> px. The component's <code>refraction</code> prop sets <code>scale</code>. <span class="lesson">[Lesson 0002]</span></dd>
+
+    <dt>Texel</dt>
+    <dd>One pixel OF the map (as opposed to a screen pixel). The map can be lower-resolution than the element; it gets stretched to fit. <span class="lesson">[Lesson 0002]</span></dd>
+
+    <dt>Bezel</dt>
+    <dd>The band along the shape's edge where all refraction lives. In the component: a fraction (default 0.34) of half the smaller dimension. <span class="lesson">[Lesson 0002]</span></dd>
+
+    <dt>Convex squircle</dt>
+    <dd>The falloff curve <code>(1 − (1−x)⁴)^¼</code> shaping how arrow strength fades from rim (strong) to interior (zero) — Apple's characteristic profile. <span class="lesson">[Lesson 0002, deeper in the SDF lesson]</span></dd>
+
+    <dt>SDF (signed distance function)</dt>
+    <dd>Math that answers, for any point: how far to the shape's edge, and in which direction? Used to paint the arrows for a rounded rectangle. Negative inside / positive outside by our convention's sign flip (<code>inside = −d</code>). <span class="lesson">[future lesson]</span></dd>
+
+    <dt>Capability gate / frosted fallback</dt>
+    <dd>The UA check (<code>supportsSvgBackdropFilter()</code>) deciding between real refraction (Chromium) and <code>blur(blur+2) saturate()</code> frost (Safari/Firefox/SSR). Needed because <code>CSS.supports()</code> false-positives. <span class="lesson">[future lesson]</span></dd>
+
+    <dt>Specular rim</dt>
+    <dd>The thin bright ring (1.5px gradient + mask-composite trick) suggesting a light source — separate overlay, not part of the filter. <span class="lesson">[future lesson]</span></dd>
+  </dl>
+
+  <p><a href="liquid-glass-pipeline.html">→ Pipeline cheat sheet</a> · <a href="../lessons/0001-svg-filters-from-zero.html">→ Lesson 0001</a> · <a href="../lessons/0002-how-a-png-bends-light.html">→ Lesson 0002</a></p>
+</main>
+</body>
+</html>
