@@ -29,11 +29,11 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
         <GlassAlertDialogContent glassVariant={variant}>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription className={"text-foreground/80"}>
+            <AlertDialogDescription className="text-help-foreground">
               This action cannot be undone. This will permanently delete your account from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="bg-muted/5 border-white/15 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
+          <AlertDialogFooter className="border-white/15 bg-muted/5 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
             <AlertDialogCancel render={<GlassButton glassVariant={variant} className="text-black dark:text-white" />}>
               Cancel
             </AlertDialogCancel>

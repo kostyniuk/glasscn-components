@@ -6,7 +6,13 @@ import { type FrostGlassVariant } from "@/lib/glass-variants";
 type InputDemoProps = { variant?: FrostGlassVariant };
 
 function InputDemo({ variant = "clear" }: InputDemoProps) {
-  return <GlassInput glassVariant={variant} placeholder="Enter text..." className="max-w-xs" />;
+  return (
+    <GlassInput
+      glassVariant={variant}
+      placeholder="Enter text..."
+      className="max-w-xs placeholder:text-help-foreground"
+    />
+  );
 }
 
 export { InputDemo };

@@ -18,7 +18,7 @@ function SeparatorDemo({ variant = "clear" }: SeparatorDemoProps) {
         <div key={item.label}>
           <div className="py-2.5">
             <p className="text-foreground text-sm font-medium">{item.label}</p>
-            <p className="text-foreground/60 text-xs">{item.description}</p>
+            <p className="text-help-foreground text-xs">{item.description}</p>
           </div>
           {index < items.length - 1 && <GlassSeparator glassVariant={variant} />}
         </div>

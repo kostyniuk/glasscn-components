@@ -11,7 +11,7 @@ export function AlertDemo({ variant = "clear" }: AlertDemoProps) {
     <GlassAlert glassVariant={variant} className="w-full max-w-md">
       <CheckCircle2Icon />
       <AlertTitle>Payment successful</AlertTitle>
-      <AlertDescription className={"text-foreground/80"}>
+      <AlertDescription className="text-help-foreground">
         Your payment of $29.99 has been processed. A receipt has been sent to your email address.
       </AlertDescription>
     </GlassAlert>

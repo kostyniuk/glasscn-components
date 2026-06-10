@@ -15,17 +15,17 @@ type GlassCommandProps = React.ComponentProps<typeof Command> & FrostGlassVarian
 type GlassCommandDialogProps = React.ComponentProps<typeof CommandDialog> & FrostGlassVariantProp;
 
 const commandSurfaceStyles =
-  "border border-white/30 bg-white/60 text-foreground shadow-2xl ring-1 ring-white/20 dark:border-white/10 dark:bg-black/55 dark:ring-white/10";
+  "border border-white/35 bg-white/75 text-foreground shadow-2xl ring-1 ring-white/25 dark:border-white/12 dark:bg-black/70 dark:ring-white/10";
 
 const commandRefractSurfaceStyles =
-  "border-white/35 bg-white/[0.16] shadow-[0_18px_50px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.65),inset_0_-18px_28px_-20px_rgba(255,255,255,0.85)] dark:border-white/15 dark:bg-white/[0.07] dark:shadow-[0_24px_60px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.22),inset_0_-18px_28px_-20px_rgba(180,210,255,0.35)]";
+  "border-white/40 bg-white/[0.34] shadow-[0_18px_50px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.65),inset_0_-18px_28px_-20px_rgba(255,255,255,0.85)] dark:border-white/15 dark:bg-black/55 dark:shadow-[0_24px_60px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.22),inset_0_-18px_28px_-20px_rgba(180,210,255,0.35)]";
 
 const commandStateStyles = [
   "[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:border-white/30",
-  "[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:bg-white/35",
+  "[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:bg-white/50",
   "dark:[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:border-white/10",
-  "dark:[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:bg-white/[0.06]",
-  "[&_[data-slot=command-input]]:placeholder:text-foreground/70",
+  "dark:[&_[data-slot=command-input-wrapper]_[data-slot=input-group]]:bg-black/35",
+  "[&_[data-slot=command-input]]:placeholder:text-help-foreground",
   "[&_[data-slot=command-item][data-selected=true]]:bg-white/70",
   "[&_[data-slot=command-item][data-selected=true]]:text-black",
   "dark:[&_[data-slot=command-item][data-selected=true]]:bg-white/12",
@@ -104,7 +104,7 @@ function GlassCommandInput({ className, ...props }: React.ComponentProps<typeof 
 
   return (
     <CommandInput
-      className={cn(variant === "liquid-refract" && "placeholder:text-foreground/75", className)}
+      className={cn(variant === "liquid-refract" && "placeholder:text-help-foreground", className)}
       {...props}
     />
   );

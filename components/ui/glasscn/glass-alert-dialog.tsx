@@ -20,6 +20,9 @@ import { LiquidGlass } from "./liquid-glass";
 
 type GlassAlertDialogContentProps = React.ComponentProps<typeof AlertDialogContent> & FrostGlassVariantProp;
 
+const dialogFooterStyles =
+  "[--glass-dialog-radius:var(--radius-2xl)] [&_[data-slot=alert-dialog-footer]]:-mx-6 [&_[data-slot=alert-dialog-footer]]:-mb-6 [&_[data-slot=alert-dialog-footer]]:mt-4 [&_[data-slot=alert-dialog-footer]]:rounded-b-[var(--glass-dialog-radius)] [&_[data-slot=alert-dialog-footer]]:px-6";
+
 function GlassAlertDialogContent({
   className,
   glassVariant = "liquid-refract",
@@ -31,10 +34,12 @@ function GlassAlertDialogContent({
       <AlertDialogContent
         data-slot="glass-alert-dialog-content"
         data-glass-variant={glassVariant}
-        className={cn("bg-transparent border-0 shadow-none p-0", className)}
+        className={cn("rounded-2xl border-0 bg-transparent p-0 shadow-none ring-0", className)}
         {...props}
       >
-        <LiquidGlass className="rounded-2xl p-6">{children}</LiquidGlass>
+        <LiquidGlass className={cn("rounded-[var(--glass-dialog-radius)] p-6", dialogFooterStyles)}>
+          {children}
+        </LiquidGlass>
       </AlertDialogContent>
     );
   }
@@ -45,7 +50,7 @@ function GlassAlertDialogContent({
       data-glass-variant={glassVariant}
       className={cn(
         glassVariantStyles[glassVariant],
-        "border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10",
+        "gap-5 border-white/30 bg-white/60 shadow-2xl ring-white/20 dark:border-white/10 dark:bg-black/60 dark:ring-white/10 [&_[data-slot=alert-dialog-footer]]:mt-2 [&_[data-slot=alert-dialog-footer]]:rounded-b-[inherit]",
         className,
       )}
       {...props}

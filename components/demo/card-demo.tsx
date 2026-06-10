@@ -18,7 +18,7 @@ export function CardDemo({ variant = "clear" }: CardDemoProps) {
     >
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>
-        <CardDescription className={"text-foreground/80"}>
+        <CardDescription className="text-help-foreground">
           Enter your email below to login to your account
         </CardDescription>
         <CardAction>
@@ -30,7 +30,13 @@ export function CardDemo({ variant = "clear" }: CardDemoProps) {
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor={`email-${variant}`}>Email</Label>
-              <Input id={`email-${variant}`} type="email" placeholder="m@example.com" required />
+              <Input
+                id={`email-${variant}`}
+                type="email"
+                placeholder="m@example.com"
+                className="placeholder:text-help-foreground"
+                required
+              />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">

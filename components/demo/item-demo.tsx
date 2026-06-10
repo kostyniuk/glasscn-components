@@ -15,7 +15,9 @@ function ItemDemo({ variant = "clear" }: ItemDemoProps) {
       <GlassItem glassVariant={variant}>
         <ItemContent>
           <ItemTitle>Basic Item</ItemTitle>
-          <ItemDescription>A simple item with title and description.</ItemDescription>
+          <ItemDescription className="text-help-foreground">
+            A simple item with title and description.
+          </ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button variant="ghost" size="sm" className="border-0 bg-transparent shadow-none">

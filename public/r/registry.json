@@ -348,7 +348,18 @@
           "path": "components/ui/glasscn/glass-command.tsx",
           "type": "registry:component"
         }
-      ]
+      ],
+      "cssVars": {
+        "theme": {
+          "--color-help-foreground": "var(--help-foreground)"
+        },
+        "light": {
+          "--help-foreground": "oklch(0.38 0 0)"
+        },
+        "dark": {
+          "--help-foreground": "oklch(0.82 0 0)"
+        }
+      }
     },
     {
       "name": "glass-dropdown-menu",

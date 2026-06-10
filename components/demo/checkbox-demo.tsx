@@ -30,7 +30,7 @@ function CheckboxDemo({ variant = "clear" }: CheckboxDemoProps) {
           />
           <FieldContent>
             <FieldLabel htmlFor={checkboxId}>Enable layered glass surfaces</FieldLabel>
-            <FieldDescription className={"text-foreground/80"}>
+            <FieldDescription className="text-help-foreground">
               Adds the frosted treatment to nested panels and interactive controls for a denser glassmorphism look.
             </FieldDescription>
           </FieldContent>

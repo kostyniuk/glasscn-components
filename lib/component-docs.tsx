@@ -127,7 +127,7 @@ export function TabsDemo() {
               across all your active projects.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
+          <CardContent className="text-sm text-help-foreground">
             You have 12 active projects and 3 pending tasks.
           </CardContent>
         </Card>
@@ -141,7 +141,7 @@ export function TabsDemo() {
               identify growth opportunities.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
+          <CardContent className="text-sm text-help-foreground">
             Page views are up 25% compared to last month.
           </CardContent>
         </Card>
@@ -155,7 +155,7 @@ export function TabsDemo() {
               multiple formats for analysis.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
+          <CardContent className="text-sm text-help-foreground">
             You have 5 reports ready and available to export.
           </CardContent>
         </Card>
@@ -169,7 +169,7 @@ export function TabsDemo() {
               experience to fit your needs.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
+          <CardContent className="text-sm text-help-foreground">
             Configure notifications, security, and themes.
           </CardContent>
         </Card>
@@ -195,7 +195,7 @@ function TabsPreviewContent() {
               View your key metrics and recent project activity. Track progress across all your active projects.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-help-foreground text-sm">
             You have 12 active projects and 3 pending tasks.
           </CardContent>
         </Card>
@@ -208,7 +208,7 @@ function TabsPreviewContent() {
               Track performance and user engagement metrics. Monitor trends and identify growth opportunities.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-help-foreground text-sm">
             Page views are up 25% compared to last month.
           </CardContent>
         </Card>
@@ -221,7 +221,7 @@ function TabsPreviewContent() {
               Generate and download your detailed reports. Export data in multiple formats for analysis.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-help-foreground text-sm">
             You have 5 reports ready and available to export.
           </CardContent>
         </Card>
@@ -234,7 +234,7 @@ function TabsPreviewContent() {
               Manage your account preferences and options. Customize your experience to fit your needs.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-help-foreground text-sm">
             Configure notifications, security, and themes.
           </CardContent>
         </Card>
@@ -346,7 +346,7 @@ export function Demo() {
                 <CardTitle>Overview</CardTitle>
                 <CardDescription>View your key metrics and recent project activity.</CardDescription>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
+              <CardContent className="text-sm text-help-foreground">
                 You have 12 active projects and 3 pending tasks.
               </CardContent>
             </Card>
@@ -606,7 +606,13 @@ export function ButtonGroupDemo() {
     usageCode: String.raw`import { GlassInput } from "@/components/ui/glasscn/glass-input"
 
 export function InputDemo() {
-  return <GlassInput glassVariant="liquid" placeholder="Enter text..." />
+  return (
+    <GlassInput
+      glassVariant="liquid"
+      placeholder="Enter text..."
+      className="placeholder:text-help-foreground"
+    />
+  )
 }`,
     api: [glassVariantFor("GlassInput"), inheritedProps("GlassInput", "React.ComponentProps<typeof Input>")],
   },
@@ -694,7 +700,7 @@ export function RadioGroupDemo() {
     installName: "@glasscn/glass-separator",
     importPath: "@/components/ui/glasscn/glass-separator",
     Demo: SeparatorDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-2",
     usageCode: String.raw`import { GlassSeparator } from "@/components/ui/glasscn/glass-separator"
 
 export function SeparatorDemo() {
@@ -1120,7 +1126,7 @@ export function AlertDialogDemo() {
     installName: "@glasscn/glass-skeleton",
     importPath: "@/components/ui/glasscn/glass-skeleton",
     Demo: SkeletonDemo,
-    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-5",
+    variantsGridClassName: "md:grid-cols-2 xl:grid-cols-2",
     usageCode: String.raw`import { GlassSkeleton } from "@/components/ui/glasscn/glass-skeleton"
 
 export function SkeletonDemo() {
