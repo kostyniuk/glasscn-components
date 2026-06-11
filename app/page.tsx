@@ -310,9 +310,15 @@ export default function Page() {
             const getColSpan = (slug: string) => {
               if (["glass-sidebar"].includes(slug)) return "sm:col-span-2 lg:col-span-3 xl:col-span-4";
               if (
-                ["glass-card", "glass-code-block-command", "glass-alert", "liquid-text", "glass-checkbox"].includes(
-                  slug,
-                )
+                [
+                  "glass-card",
+                  "glass-scrim-card",
+                  "glass-code-block-command",
+                  "glass-alert",
+                  "liquid-text",
+                  "glass-checkbox",
+                  "glass-skeleton",
+                ].includes(slug)
               )
                 return "sm:col-span-2";
               return "col-span-1";

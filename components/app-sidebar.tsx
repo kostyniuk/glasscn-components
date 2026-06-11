@@ -35,6 +35,7 @@ const data = {
         { title: "Popover", url: "/components/glass-popover" },
         { title: "Progress", url: "/components/glass-progress" },
         { title: "Radio Group", url: "/components/glass-radio-group" },
+        { title: "Scrim Card", url: "/components/glass-scrim-card" },
         { title: "Select", url: "/components/glass-select" },
         { title: "Separator", url: "/components/glass-separator" },
         { title: "Sidebar", url: "/components/glass-sidebar" },
