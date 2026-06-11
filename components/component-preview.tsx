@@ -11,7 +11,6 @@ import {
 } from "@/components/component-preview-backgrounds";
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
 import { CopyButton } from "@/components/custom/copy-button";
-import { HeaderPill } from "@/components/home/header-pill";
 import { Card } from "@/components/ui/card";
 import { GlassButton } from "@/components/ui/glasscn/glass-button";
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
@@ -211,22 +210,20 @@ function GlassComponentPreviewWithPicker({
                 />
               ))}
             <div className="no-scrollbar absolute top-4 left-1/2 z-20 max-w-[calc(100%-2rem)] -translate-x-1/2 overflow-x-auto rounded-full">
-              <HeaderPill className="h-11 w-max min-w-fit" contentClassName="px-1">
-                <GlassToggleGroup
-                  value={previewBackground}
-                  onValueChange={setPreviewBackground}
-                  aria-label="Preview background"
-                  className="h-9"
-                >
-                  {lightPreviewBackgrounds.map((background) => (
-                    <BackgroundToggleItem key={background.value} background={background} />
-                  ))}
-                  <span aria-hidden className="bg-foreground/20 mx-1 h-5 w-px shrink-0 dark:bg-white/20" />
-                  {darkPreviewBackgrounds.map((background) => (
-                    <BackgroundToggleItem key={background.value} background={background} />
-                  ))}
-                </GlassToggleGroup>
-              </HeaderPill>
+              <GlassToggleGroup
+                value={previewBackground}
+                onValueChange={setPreviewBackground}
+                aria-label="Preview background"
+                className="h-9 w-max min-w-fit"
+              >
+                {lightPreviewBackgrounds.map((background) => (
+                  <BackgroundToggleItem key={background.value} background={background} />
+                ))}
+                <span aria-hidden className="bg-foreground/20 mx-1 h-5 w-px shrink-0 dark:bg-white/20" />
+                {darkPreviewBackgrounds.map((background) => (
+                  <BackgroundToggleItem key={background.value} background={background} />
+                ))}
+              </GlassToggleGroup>
             </div>
             <div className={cn("relative z-10", previewThemeClassName)}>{component}</div>
           </div>

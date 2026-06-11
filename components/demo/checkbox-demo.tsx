@@ -16,8 +16,8 @@ function CheckboxDemo({ variant = "clear" }: CheckboxDemoProps) {
   return (
     <GlassCard
       glassVariant={variant}
-      className="mx-auto w-full max-w-sm p-4"
-      surfaceClassName="mx-auto w-full max-w-sm"
+      className="mx-auto w-full min-w-2xs max-w-sm p-4"
+      surfaceClassName="mx-auto w-full min-w-2xs max-w-sm"
     >
       <FieldGroup>
         <Field orientation="horizontal">
