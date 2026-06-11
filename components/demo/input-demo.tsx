@@ -10,7 +10,7 @@ function InputDemo({ variant = "clear" }: InputDemoProps) {
     <GlassInput
       glassVariant={variant}
       placeholder="Enter text..."
-      className="max-w-xs placeholder:text-help-foreground"
+      className="placeholder:text-help-foreground max-w-xs"
     />
   );
 }

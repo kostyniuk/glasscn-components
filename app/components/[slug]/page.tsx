@@ -100,7 +100,7 @@ function ComponentDocsPage({ doc }: { doc: ComponentDoc }) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="mb-8 scroll-m-12">
+    <section className="scroll-m-margin-scroll mb-8">
       <h2 className="mb-4 text-xl font-medium tracking-tight">{title}</h2>
       {children}
     </section>

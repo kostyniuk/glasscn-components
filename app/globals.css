@@ -3,7 +3,7 @@
 @plugin "tailwind-scrollbar";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *):not(.preview-force-light *));
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -49,9 +49,11 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --spacing-margin-scroll: var(--margin-scroll);
 }
 
-:root {
+:root,
+.preview-theme-light {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -87,9 +89,11 @@
   --sidebar-ring: oklch(0.708 0 0);
   --app-background: oklch(99.6% 0.02 106.75);
   --accent-green: #c5f83a;
+  --margin-scroll: 5rem;
 }
 
-.dark {
+.dark,
+.preview-theme-dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

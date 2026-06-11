@@ -31,10 +31,10 @@ export function GlassComponentPreviewTabs({
   code,
   highlightedCode,
   previewHighlightedCode,
-  previewGlassVariant = "clear",
   codeGlassVariant = "frosted",
 }: GlassComponentPreviewTabsProps) {
   const [codeVisible, setCodeVisible] = React.useState(false);
+
   const codePanel = (
     <>
       <div className="absolute top-4 right-4 z-10 flex items-center gap-2">

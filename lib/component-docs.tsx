@@ -812,21 +812,13 @@ export function ScrimCardDemo() {
         defaultValue: "1",
         description: "Fraction of the card height the scrim covers before it fully fades out.",
       },
-      {
-        name: "scrimClassName",
-        type: "string",
-        description: "Extra classes for the scrim overlay layer.",
-      },
+      { name: "scrimClassName", type: "string", description: "Extra classes for the scrim overlay layer." },
       {
         name: "liquidProps",
         type: 'Omit<LiquidGlassProps, "children">',
         description: "Props forwarded to the underlying LiquidGlass surface (blur, refraction, bezel, saturation).",
       },
-      {
-        name: "surfaceClassName",
-        type: "string",
-        description: "Classes applied to the outer LiquidGlass surface.",
-      },
+      { name: "surfaceClassName", type: "string", description: "Classes applied to the outer LiquidGlass surface." },
       inheritedProps("GlassScrimCard", "React.ComponentProps<typeof Card>"),
     ],
   },

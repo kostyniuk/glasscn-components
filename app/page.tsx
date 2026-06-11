@@ -285,7 +285,10 @@ export default function Page() {
       </section>
 
       {/* Components Grid */}
-      <section id="components" className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
+      <section
+        id="components"
+        className="scroll-mt-margin-scroll relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12"
+      >
         <div className="mb-14 max-w-2xl">
           <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
             // {docs.length} COMPONENTS
@@ -302,6 +305,7 @@ export default function Page() {
         <div className="grid [grid-auto-flow:dense] gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {docs.map((doc) => {
             const Demo = doc.Demo;
+            const showLivePreview = doc.slug !== "glass-command";
 
             const getColSpan = (slug: string) => {
               if (["glass-sidebar"].includes(slug)) return "sm:col-span-2 lg:col-span-3 xl:col-span-4";
@@ -320,7 +324,13 @@ export default function Page() {
                 className={`group flex flex-col rounded-2xl border border-black/100 bg-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-black/20 dark:border-white/200 dark:hover:border-white/20 ${getColSpan(doc.slug)}`}
               >
                 <div className="relative flex min-h-[160px] items-center justify-center overflow-hidden rounded-xl p-4">
-                  <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
+                  {showLivePreview ? (
+                    <Demo variant={doc.defaultVariant ?? "liquid-refract"} />
+                  ) : (
+                    <span className="font-mono text-xs tracking-[0.2em] text-black/40 uppercase dark:text-white/40">
+                      Command palette
+                    </span>
+                  )}
                 </div>
                 <div className="mt-5 flex flex-1 items-center justify-between">
                   <div>
@@ -348,7 +358,10 @@ export default function Page() {
       </section>
 
       {/* Variants Section */}
-      <section id="variants" className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
+      <section
+        id="variants"
+        className="scroll-mt-margin-scroll relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12"
+      >
         <div className="mb-14 max-w-2xl">
           <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
             // 5 SURFACES
@@ -394,7 +407,10 @@ export default function Page() {
       </section>
 
       {/* Install Section */}
-      <section id="install" className="relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12">
+      <section
+        id="install"
+        className="scroll-mt-margin-scroll relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12"
+      >
         <div className="mb-10 max-w-2xl">
           <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
             // INSTALLATION

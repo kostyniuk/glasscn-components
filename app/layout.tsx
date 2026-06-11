@@ -63,7 +63,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable, righteous.variable)}
+      className={cn(
+        "scroll-pt-margin-scroll antialiased",
+        fontMono.variable,
+        "font-sans",
+        inter.variable,
+        righteous.variable,
+      )}
     >
       <body className="min-h-screen overflow-x-hidden">
         <ThemeProvider>

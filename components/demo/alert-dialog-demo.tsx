@@ -33,7 +33,7 @@ export function AlertDialogDemo({ variant = "clear" }: AlertDialogDemoProps) {
               This action cannot be undone. This will permanently delete your account from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="border-white/15 bg-muted/5 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
+          <AlertDialogFooter className="bg-muted/5 border-white/15 supports-backdrop-filter:backdrop-blur-md dark:border-white/10">
             <AlertDialogCancel render={<GlassButton glassVariant={variant} className="text-black dark:text-white" />}>
               Cancel
             </AlertDialogCancel>

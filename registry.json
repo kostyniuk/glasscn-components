@@ -912,10 +912,6 @@
       "description": "A preview shell for component demos with switchable default and glass variants.",
       "files": [
         {
-          "path": "components/component-preview.tsx",
-          "type": "registry:component"
-        },
-        {
           "path": "components/component-preview-tabs.tsx",
           "type": "registry:component"
         },
