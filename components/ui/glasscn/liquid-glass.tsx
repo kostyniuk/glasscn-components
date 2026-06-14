@@ -237,7 +237,7 @@ export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function
           style={{
             padding: 0.5,
             background:
-              // iOS 26 liquid-glass rim. Each gradient runs ALONG its edges and
+              // iOS 27 liquid-glass rim. Each gradient runs ALONG its edges and
               // fades to nothing at the corners, uniform in between:
               //   - to right  → white streak on the top + bottom runs
               //   - to bottom → dark streak on the left + right runs
