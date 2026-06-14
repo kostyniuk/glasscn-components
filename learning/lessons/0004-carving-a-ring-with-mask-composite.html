@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 0004 · Carving a Ring with mask-composite</title>
+<style>
+  :root {
+    --ink: #1c1e21; --muted: #5b616a; --accent: #0b6bcb; --bg: #fbfaf8;
+    --card: #ffffff; --line: #e6e2da; --good: #1a7f37; --bad: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.4em 0 0.5em; }
+  .kicker { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  p { margin: 0.8em 0; }
+  a { color: var(--accent); }
+  code, pre { font: 0.86em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  code { background: #f0ede7; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #14171c; color: #d6dde6; padding: 16px 18px; border-radius: 10px; overflow-x: auto; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .note { border-left: 3px solid var(--accent); background: #eef4fb; padding: 10px 16px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
+  .recap { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 0.93em; }
+  .recap dt { font-weight: 600; }
+  .recap dd { margin: 0 0 8px; color: var(--muted); }
+  nav.lesson-nav { display: flex; gap: 16px; font-size: 0.9rem; margin-top: 12px; color: var(--muted); flex-wrap: wrap; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+  /* layer diagram */
+  .layers { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin: 18px 0; }
+  .layers figure { margin: 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  .swatch { width: 120px; height: 84px; border-radius: 16px; margin-bottom: 6px; }
+  .s-outer { background: #0b6bcb; }
+  .s-inner { background: #0b6bcb; }
+  .s-inner-wrap { padding: 12px; background: repeating-conic-gradient(#e6e2da 0% 25%, #f7f4ee 0% 50%) 0/14px 14px; border-radius: 16px; }
+  .op { align-self: center; font-size: 1.6rem; color: var(--muted); }
+  .s-ring { background: #0b6bcb; border-radius: 16px; padding: 12px;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+
+  /* demo */
+  #stage { position: relative; height: 300px; border-radius: 14px; overflow: hidden; display: grid; place-items: center;
+    background: linear-gradient(130deg, #1a0b24, #06111e); }
+  #box { position: relative; width: 300px; height: 120px; border-radius: 56px;
+    /* the gradient rim paint from lesson 0003 */
+    background:
+      linear-gradient(to right, rgba(0,0,0,.55), rgba(0,0,0,0) 16%, rgba(0,0,0,0) 84%, rgba(0,0,0,.55)),
+      linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,.7)); }
+  #box.masked {
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+  .controls { display: grid; gap: 12px; margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .controls label { display: grid; grid-template-columns: 160px 1fr 56px; align-items: center; gap: 12px; font-size: 0.92rem; }
+  .controls output { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .controls .check { grid-template-columns: 160px 1fr; }
+  .controls .check input { justify-self: start; }
+
+  /* quiz */
+  .quiz { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .quiz p.q { font-weight: 600; margin-top: 0; }
+  .quiz label { display: block; padding: 4px 0; cursor: pointer; }
+  .quiz .verdict { display: none; margin-top: 8px; padding: 8px 12px; border-radius: 8px; font-size: 0.93em; }
+  .quiz .verdict.ok { display: block; background: #e8f4ec; color: var(--good); }
+  .quiz .verdict.no { display: block; background: #fdf1f0; color: var(--bad); }
+
+  @media print { #stage, .controls { display: none; } body { background: #fff; } a { color: inherit; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Lesson 0004</p>
+  <h1>Carving a Ring with <code>mask-composite</code></h1>
+  <nav class="lesson-nav">
+    <a href="0003-aiming-light-with-gradients.html">← 0003 · Aiming Light with Gradients</a>
+    <a href="../reference/glossary.html">Glossary</a>
+    <a href="../reference/liquid-glass-pipeline.html">Reference: pipeline cheat sheet</a>
+  </nav>
+
+  <div class="recap">
+    <strong>Where this sits.</strong> <a href="0003-aiming-light-with-gradients.html">Lesson 0003</a> taught
+    <em>what colour</em> to paint the rim. It deliberately black-boxed the part that turns a filled box into a
+    thin frame — "it confines whatever I paint to a thin ring." This lesson opens that box. It's the other half
+    of the <code>&lt;span aria-hidden&gt;</code> overlay in <code>liquid-glass.tsx</code>.
+    <dl style="margin:8px 0 0">
+      <dt>Carried over from 0003</dt>
+      <dd>The two layered gradients are the overlay's <code>background</code>. Here they fill the whole box; the
+      mask is what keeps only the edge.</dd>
+    </dl>
+  </div>
+
+  <h2 id="problem">The problem it solves</h2>
+  <p>
+    You have a pill with a perfect rounded corner from <code>border-radius</code>, and a gorgeous layered-gradient
+    rim from lesson 0003 — but it's filling the <em>entire</em> pill, not just the edge. You need it to show only
+    as a 1.5&nbsp;px frame that hugs the rounded corners exactly.
+  </p>
+  <p>The obvious tools all fail here:</p>
+  <ul>
+    <li><code>border: 1.5px solid …</code> — a border takes a <em>colour</em>, not a multi-stop gradient. Dead end.</li>
+    <li><code>border-image</code> — does take a gradient, but it <strong>ignores <code>border-radius</code></strong>;
+      the gradient border renders square-cornered over your rounded pill. Useless for a glass pill.</li>
+    <li>A second, smaller element stacked on top to "cover the middle" — fragile, needs pixel-matched radius and
+      a background to cover with, and breaks the moment the glass is translucent (you'd see the cover).</li>
+  </ul>
+  <p>
+    What you actually want: keep the gradient paint, but <strong>erase the interior</strong>, leaving the border
+    band — and have the erase follow <code>border-radius</code> for free. That's a job for a mask.
+  </p>
+
+  <h2 id="idea">The idea: a mask is a stencil, and two of them can be subtracted</h2>
+  <p>
+    A <strong>mask</strong> is an alpha stencil laid over an element: where the mask is <em>opaque</em>, the
+    element's paint shows; where the mask is <em>transparent</em>, the paint is erased. (CSS luminance/alpha
+    detail aside — think "opaque keeps, clear erases.")
+  </p>
+  <p>
+    The trick uses <strong>two</strong> mask layers, both just a solid opaque fill —
+    <code>linear-gradient(#000 0 0)</code> is the idiom for "constant black, fully opaque, everywhere." On its
+    own it's a verbose way to write "opaque". The power comes from giving them different <em>boxes</em> and then
+    a <strong>composite operator</strong> that combines them:
+  </p>
+  <pre><code>padding: 1.5px;
+mask:
+  linear-gradient(#000 0 0) content-box,   /* opaque only INSIDE the padding */
+  linear-gradient(#000 0 0);               /* opaque over the WHOLE element  */
+mask-composite: exclude;                   /* keep where exactly one is opaque */</code></pre>
+  <ul>
+    <li><strong>Layer A</strong> is clipped to <code>content-box</code> — the region <em>inside</em> the 1.5&nbsp;px
+      padding. Opaque there, transparent in the padding band.</li>
+    <li><strong>Layer B</strong> has the default <code>border-box</code> — opaque over everything, padding included.</li>
+    <li><code>mask-composite: exclude</code> is set subtraction (a logical XOR): keep pixels opaque in
+      <em>exactly one</em> layer. Inside the padding both are opaque → cancels → erased. In the padding band only
+      B is opaque → kept. Result: <strong>just the padding band survives = a frame.</strong></li>
+  </ul>
+  <p>
+    <code>padding</code> is now the <strong>ring thickness</strong>, and because masks respect
+    <code>border-radius</code>, the frame follows the rounded corners automatically. Two knobs, one frame:
+  </p>
+
+  <div class="layers">
+    <figure><div class="swatch s-outer"></div>B · whole box</figure>
+    <figure class="op">−</figure>
+    <figure><div class="s-inner-wrap"><div class="swatch s-inner" style="width:96px;height:60px"></div></div>A · content-box</figure>
+    <figure class="op">=</figure>
+    <figure><div class="swatch s-ring"></div>frame</figure>
+  </div>
+
+  <div class="note">
+    <strong>Why two spellings in the real code.</strong> You'll see both <code>mask-composite: exclude</code> and
+    <code>-webkit-mask-composite: xor</code> in <code>liquid-glass.tsx</code>. Same operation, two vocabularies:
+    the modern standard uses the keyword <code>exclude</code>; older WebKit/Blink shipped a different property
+    whose equivalent keyword is <code>xor</code>. Both are kept so the ring renders across browser versions.
+  </div>
+
+  <h2 id="practice">Practice</h2>
+  <p>
+    The box below holds the gradient paint from lesson 0003. Toggle <strong>Apply mask</strong> to watch the
+    filled box collapse into a frame. Then drag <em>ring thickness</em> (the padding) and <em>corner radius</em>
+    and confirm the frame tracks both.
+  </p>
+
+  <div id="stage"><div id="box" class="masked"></div></div>
+
+  <div class="controls">
+    <label class="check">Apply mask
+      <input type="checkbox" id="maskOn" checked />
+    </label>
+    <label>Ring thickness (padding)
+      <input type="range" id="pad" min="0" max="14" step="0.5" value="1.5" />
+      <output id="padOut">1.5px</output>
+    </label>
+    <label>Corner radius
+      <input type="range" id="rad" min="0" max="60" step="1" value="56" />
+      <output id="radOut">56px</output>
+    </label>
+  </div>
+
+  <div class="quiz" id="q1">
+    <p class="q">1. In the mask layers, what is <code>linear-gradient(#000 0 0)</code> doing?</p>
+    <label><input type="radio" name="q1" /> Drawing a black border.</label>
+    <label><input type="radio" name="q1" data-ok /> Acting as a constant fully-opaque fill — "opaque everywhere".</label>
+    <label><input type="radio" name="q1" /> Fading the rim from black to transparent.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <div class="quiz" id="q2">
+    <p class="q">2. What makes the result a frame rather than a filled box?</p>
+    <label><input type="radio" name="q2" /> The padding pushes the gradient outward.</label>
+    <label><input type="radio" name="q2" data-ok /> <code>exclude</code> keeps pixels opaque in only one layer; the two overlap inside the padding and cancel.</label>
+    <label><input type="radio" name="q2" /> <code>content-box</code> hides the middle by itself.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <div class="quiz" id="q3">
+    <p class="q">3. A consumer wants a thicker rim. Which property do they change?</p>
+    <label><input type="radio" name="q3" data-ok /> <code>padding</code> on the overlay.</label>
+    <label><input type="radio" name="q3" /> <code>border-width</code>.</label>
+    <label><input type="radio" name="q3" /> The gradient's colour stops.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <h2 id="boundaries">Boundaries</h2>
+  <ul>
+    <li><strong>Solid-colour border, square or simple-radius corners?</strong> Just use <code>border</code> or
+      <code>outline</code>. The mask trick is overkill unless you need a gradient ring on a rounded shape.</li>
+    <li><strong>The ring's <em>colour</em> and where the light sits</strong> — that's
+      <a href="0003-aiming-light-with-gradients.html">lesson 0003</a>. This lesson only carves the shape; that
+      one paints it.</li>
+    <li><strong>Distorting the background through the glass</strong> — unrelated; that's the SVG displacement
+      layer from <a href="0002-how-a-png-bends-light.html">lesson 0002</a>.</li>
+  </ul>
+
+  <h2 id="mission">Why this matters for your mission</h2>
+  <p>
+    With 0003 and 0004 together you now own the entire <strong>rim</strong> layer of <code>LiquidGlass</code> —
+    one of the four triage layers in your <a href="../MISSION.md">mission</a>. A bug report like "the border looks
+    chunky / square-cornered / disappears in Safari" routes straight here: thickness is the <code>padding</code>,
+    rounded tracking is the mask respecting <code>border-radius</code>, and a missing ring across browsers points
+    at the <code>exclude</code> vs <code>xor</code> spelling. You can now read that <code>&lt;span&gt;</code>
+    overlay top to bottom and defend every line of it.
+  </p>
+
+  <div class="note">
+    <strong>Ask me.</strong> Fair game: "show the same ring with <code>border-image</code> and why it breaks on
+    the corners," "what's the difference between luminance and alpha masks," or "could we drop one mask layer and
+    use <code>radial-gradient</code> instead?"
+  </div>
+
+  <footer>
+    glasscn liquid-glass series · Lesson 0004 · paired with
+    <a href="../reference/glossary.html">glossary</a> (see <em>Mask ring</em>) and the
+    <a href="../reference/liquid-glass-pipeline.html">pipeline cheat sheet</a>.
+  </footer>
+</main>
+
+<script>
+  const box = document.getElementById('box');
+  const maskOn = document.getElementById('maskOn');
+  const pad = document.getElementById('pad'), rad = document.getElementById('rad');
+  const padOut = document.getElementById('padOut'), radOut = document.getElementById('radOut');
+
+  function render() {
+    box.classList.toggle('masked', maskOn.checked);
+    box.style.padding = pad.value + 'px';
+    box.style.borderRadius = rad.value + 'px';
+    padOut.textContent = pad.value + 'px';
+    radOut.textContent = rad.value + 'px';
+  }
+  [maskOn, pad, rad].forEach(el => el.addEventListener('input', render));
+  maskOn.addEventListener('change', render);
+
+  document.querySelectorAll('.quiz').forEach(q => {
+    q.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', () => {
+      const v = q.querySelector('.verdict');
+      const ok = r.hasAttribute('data-ok');
+      v.className = 'verdict ' + (ok ? 'ok' : 'no');
+      v.textContent = ok ? '✓ Right.' : '✗ Not quite — re-read "a mask is a stencil, and two can be subtracted".';
+    }));
+  });
+
+  render();
+</script>
+</body>
+</html>

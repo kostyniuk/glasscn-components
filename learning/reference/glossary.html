@@ -66,7 +66,13 @@
     <dd>The UA check (<code>supportsSvgBackdropFilter()</code>) deciding between real refraction (Chromium) and <code>blur(blur+2) saturate()</code> frost (Safari/Firefox/SSR). Needed because <code>CSS.supports()</code> false-positives. <span class="lesson">[future lesson]</span></dd>
 
     <dt>Specular rim</dt>
-    <dd>The thin bright ring (1.5px gradient + mask-composite trick) suggesting a light source — separate overlay, not part of the filter. <span class="lesson">[future lesson]</span></dd>
+    <dd>The thin bright ring suggesting a light source — a separate <code>&lt;span&gt;</code> overlay, not part of the SVG filter. Built from two parts: the gradient <em>paint</em> and the mask <em>ring</em> (below). <span class="lesson"><a href="../lessons/0003-aiming-light-with-gradients.html">Lesson 0003</a></span></dd>
+
+    <dt>Layered linear-gradient (rim paint)</dt>
+    <dd>A <code>linear-gradient</code> colours by position on ONE axis and ignores the other. Stacking a <code>to bottom</code> (lights top/bottom) over a <code>to right</code> (darkens sides) aims the rim's light per edge; <code>background</code> layers paint front-to-back, first wins. <span class="lesson"><a href="../lessons/0003-aiming-light-with-gradients.html">Lesson 0003</a></span></dd>
+
+    <dt>Mask ring (<code>mask-composite</code>)</dt>
+    <dd>Carves the rim overlay into a thin frame: two opaque <code>linear-gradient(#000 0 0)</code> mask layers — one clipped to <code>content-box</code>, one to the whole box — combined with <code>mask-composite: exclude</code> (legacy <code>-webkit-…: xor</code>). The overlap inside the padding cancels, leaving only the padding band. <code>padding</code> = ring thickness; follows <code>border-radius</code> for free. <span class="lesson"><a href="../lessons/0004-carving-a-ring-with-mask-composite.html">Lesson 0004</a></span></dd>
   </dl>
 
   <p><a href="liquid-glass-pipeline.html">→ Pipeline cheat sheet</a> · <a href="../lessons/0001-svg-filters-from-zero.html">→ Lesson 0001</a> · <a href="../lessons/0002-how-a-png-bends-light.html">→ Lesson 0002</a></p>

@@ -235,9 +235,14 @@ export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-[inherit]"
           style={{
-            padding: 1.5,
+            padding: 0.5,
             background:
-              "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.12) 30%, rgba(255,255,255,0) 46%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.28) 82%, rgba(255,255,255,0.5))",
+              // iOS 26 liquid-glass rim. Each gradient runs ALONG its edges and
+              // fades to nothing at the corners, uniform in between:
+              //   - to right  → white streak on the top + bottom runs
+              //   - to bottom → dark streak on the left + right runs
+              "linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.35) 18%, rgba(255,255,255,0.35) 82%, rgba(255,255,255,0)), " +
+              "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2) 18%, rgba(0,0,0,0.2) 82%, rgba(0,0,0,0))",
             WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             WebkitMaskComposite: "xor",
             mask: "linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0)",

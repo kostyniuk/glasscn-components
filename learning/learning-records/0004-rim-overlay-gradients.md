@@ -1,0 +1,5 @@
+# Rim overlay taught as its own layer; gradient = single-axis function
+
+Session triggered by Alex hand-editing the rim overlay in `liquid-glass.tsx` (swapped the single 135° diagonal gradient for layered `to right` dark-sides + `to bottom` light-top/bottom to match iOS 26). He said he's "not really great with insets and gradients." Lesson 0003 teaches the rim as a distinct, simpler layer from the refraction pipeline (0001–0002), built on one model: a `linear-gradient` colours by position on ONE axis and ignores the other, so stacking two axes lights two pairs of edges; layer order = paint order (first wins).
+
+**Implications:** Alex immediately asked for the mask trick too, so it's now Lesson 0004 (`mask-composite: exclude`/`xor` as set-subtraction to carve a frame; padding = thickness; follows border-radius). Together 0003+0004 cover the whole rim layer. `conic-gradient` (light sweeping around a curve) and luminance-vs-alpha masks named as boundaries but not taught — candidate future lessons. Verification pending: he hasn't yet done the demos/quizzes for either — confirm the one-axis-gradient model and the two-masks-subtracted model both landed next session.

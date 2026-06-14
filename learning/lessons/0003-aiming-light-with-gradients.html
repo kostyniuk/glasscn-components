@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 0003 · Aiming Light with Gradients</title>
+<style>
+  :root {
+    --ink: #1c1e21; --muted: #5b616a; --accent: #0b6bcb; --bg: #fbfaf8;
+    --card: #ffffff; --line: #e6e2da; --good: #1a7f37; --bad: #b42318;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.4em 0 0.5em; }
+  .kicker { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  p { margin: 0.8em 0; }
+  a { color: var(--accent); }
+  code, pre { font: 0.86em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  code { background: #f0ede7; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #14171c; color: #d6dde6; padding: 16px 18px; border-radius: 10px; overflow-x: auto; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .note { border-left: 3px solid var(--accent); background: #eef4fb; padding: 10px 16px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
+  .recap { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 0.93em; }
+  .recap dt { font-weight: 600; }
+  .recap dd { margin: 0 0 8px; color: var(--muted); }
+  nav.lesson-nav { display: flex; gap: 16px; font-size: 0.9rem; margin-top: 12px; color: var(--muted); flex-wrap: wrap; }
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+  /* demo */
+  #stage {
+    position: relative; height: 320px; border-radius: 14px; overflow: hidden; user-select: none;
+    display: grid; place-items: center;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 26px),
+      radial-gradient(circle at 70% 80%, #2985ff66 0%, transparent 30%),
+      radial-gradient(circle at 25% 30%, #ff2e81aa 0%, transparent 38%),
+      linear-gradient(130deg, #1a0b24 0%, #0b1930 45%, #06111e 100%);
+  }
+  #stage.plain { background: #6b7280; }
+  /* The pill body — a stand-in for LiquidGlass. */
+  #pill {
+    position: relative; width: 320px; height: 116px; border-radius: 58px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(4px) saturate(1.3); -webkit-backdrop-filter: blur(4px) saturate(1.3);
+  }
+  /* The rim ring — the exact mask trick from liquid-glass.tsx. Treated as
+     given in this lesson; only its `background` changes. */
+  #rim {
+    position: absolute; inset: 0; border-radius: inherit; padding: 1.5px;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+  .controls { display: grid; gap: 12px; margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .seg { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seg button {
+    font: inherit; font-size: 0.9rem; padding: 7px 14px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  }
+  .seg button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .controls label { display: grid; grid-template-columns: 150px 1fr 56px; align-items: center; gap: 12px; font-size: 0.92rem; }
+  .controls output { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  #sliders { display: none; gap: 12px; }
+  #sliders.on { display: grid; }
+  #cssOut { margin-top: 10px; }
+  #cssOut pre { white-space: pre-wrap; word-break: break-word; }
+
+  /* quiz */
+  .quiz { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .quiz p.q { font-weight: 600; margin-top: 0; }
+  .quiz label { display: block; padding: 4px 0; cursor: pointer; }
+  .quiz .verdict { display: none; margin-top: 8px; padding: 8px 12px; border-radius: 8px; font-size: 0.93em; }
+  .quiz .verdict.ok { display: block; background: #e8f4ec; color: var(--good); }
+  .quiz .verdict.no { display: block; background: #fdf1f0; color: var(--bad); }
+
+  @media print { #stage, .controls { display: none; } body { background: #fff; } a { color: inherit; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">glasscn · Liquid Glass internals · Lesson 0003</p>
+  <h1>Aiming Light with Gradients</h1>
+  <nav class="lesson-nav">
+    <a href="0002-how-a-png-bends-light.html">← 0002 · How a PNG Bends Light</a>
+    <a href="../reference/glossary.html">Glossary</a>
+    <a href="../reference/liquid-glass-pipeline.html">Reference: pipeline cheat sheet</a>
+  </nav>
+
+  <div class="recap">
+    <strong>Where this sits.</strong> Lessons 0001–0002 covered the <em>refraction</em> layer (the SVG
+    displacement map). This lesson is a different, simpler layer that sits on top: the
+    <strong>rim</strong> — the thin bright line tracing the edge of the pill. In
+    <code>liquid-glass.tsx</code> it's the <code>&lt;span aria-hidden&gt;</code> overlay. We just changed its
+    look; this lesson is exactly that change.
+    <dl style="margin:8px 0 0">
+      <dt>Given for today (not taught here)</dt>
+      <dd>The <code>mask</code> + <code>mask-composite</code> trick that carves the overlay down to a 1.5&nbsp;px
+      frame. Treat it as a black box: "it confines whatever I paint to a thin ring." It earns its own lesson —
+      ask me when you want it.</dd>
+    </dl>
+  </div>
+
+  <h2 id="problem">The problem it solves</h2>
+  <p>
+    A flat ring of one color doesn't read as glass. Real glass has a <strong>bevelled edge</strong>: the parts of
+    the rim that face a light source catch a bright specular streak; the parts that face away fall into shadow.
+    Your eye reads that light/dark split as <em>thickness and curvature</em> — without it the pill looks like a
+    sticker, not a lens.
+  </p>
+  <p>
+    So the rim can't be a solid border. Its colour has to <strong>change depending on which way that stretch of
+    edge is pointing</strong>. The old code did this with one diagonal gradient — "light coming from the upper
+    left" — which lit the top-left and bottom-right corners. The iOS&nbsp;26 material in your screenshot does
+    something different: bright along the <strong>top and bottom</strong>, dark down the <strong>sides</strong>.
+    The task is to redirect the light.
+  </p>
+
+  <h2 id="idea">The idea: a gradient is a function of one axis</h2>
+  <p>
+    The one thing to internalise: <strong>a <code>linear-gradient</code> assigns colour by position along a single
+    axis, and ignores the other completely.</strong>
+  </p>
+  <p>
+    <code>linear-gradient(to bottom, …)</code> is a function of <em>y only</em>. Every pixel at the same height
+    gets the same colour, no matter its x. Lay that over the ring and the <strong>top edge and bottom edge</strong>
+    (the horizontal runs of the frame) pick up the colours at the ends of the gradient; the left/right runs just
+    fade through it vertically. So a white-at-both-ends vertical gradient = <em>lit top and bottom</em>.
+  </p>
+  <p>
+    That alone leaves the sides limp, not dark. Fix it by <strong>stacking a second gradient</strong> on a
+    different axis. <code>background</code> takes a comma-separated list, painted front-to-back — first one wins.
+    Add <code>linear-gradient(to right, …)</code> (a function of <em>x only</em>) that's <em>dark at both ends</em>,
+    list it first, and it paints shadow onto the left and right edges, over the white. Two one-axis gradients,
+    two pairs of edges:
+  </p>
+  <pre><code>background:
+  linear-gradient(to right,  rgba(0,0,0,.55), rgba(0,0,0,0) 16%, rgba(0,0,0,0) 84%, rgba(0,0,0,.55)),
+  linear-gradient(to bottom, rgba(255,255,255,.7), rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,.6));</code></pre>
+  <p>
+    The percentage <strong>stops</strong> are where the work happens: colour at <code>0%</code> and
+    <code>100%</code>, fully transparent from <code>16%</code>–<code>84%</code> (or <code>30%</code>–<code>70%</code>).
+    That pins each colour to the extreme edge and leaves the middle clear — so light hugs the very top/bottom and
+    shadow hugs the very left/right, instead of washing across the whole pill. Widen those transparent bands and
+    the highlight tightens; narrow them and it spreads.
+  </p>
+
+  <h2 id="practice">Practice</h2>
+  <p>
+    Toggle between the old and new rim and watch where the light sits. Then switch to <strong>Custom</strong> and
+    drag the stops — the live CSS underneath is exactly what you'd paste into the overlay's <code>style</code>.
+    Flip <em>Plain backdrop</em> to judge the rim without the busy background fighting it.
+  </p>
+
+  <div id="stage">
+    <div id="pill"><div id="rim"></div></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" id="modeSeg">
+      <button data-mode="old">Old · 135° diagonal</button>
+      <button data-mode="new" class="active">New · top/bottom + dark sides</button>
+      <button data-mode="custom">Custom</button>
+    </div>
+    <div id="sliders">
+      <label>Light (top/bottom)
+        <input type="range" id="light" min="0" max="1" step="0.05" value="0.7" />
+        <output id="lightOut">0.70</output>
+      </label>
+      <label>Shadow (sides)
+        <input type="range" id="dark" min="0" max="1" step="0.05" value="0.55" />
+        <output id="darkOut">0.55</output>
+      </label>
+      <label>Highlight tightness
+        <input type="range" id="tight" min="10" max="45" step="1" value="30" />
+        <output id="tightOut">30%</output>
+      </label>
+    </div>
+    <label style="grid-template-columns:150px 1fr;">Plain backdrop
+      <input type="checkbox" id="plainBg" style="justify-self:start;" />
+    </label>
+    <div id="cssOut"><pre><code id="cssText"></code></pre></div>
+  </div>
+
+  <div class="quiz" id="q1">
+    <p class="q">1. You apply only <code>linear-gradient(to bottom, white, transparent 50%, white)</code> to the
+      rim. Which edges light up?</p>
+    <label><input type="radio" name="q1" /> All four, evenly.</label>
+    <label><input type="radio" name="q1" data-ok /> Top and bottom; the sides stay mostly clear.</label>
+    <label><input type="radio" name="q1" /> Left and right.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <div class="quiz" id="q2">
+    <p class="q">2. With both gradients in place, what actually makes the <em>sides</em> dark — given the white
+      gradient is already lighting top and bottom?</p>
+    <label><input type="radio" name="q2" /> The white gradient fades to black on the sides.</label>
+    <label><input type="radio" name="q2" data-ok /> A second <code>to right</code> gradient, dark at both ends, layered on top.</label>
+    <label><input type="radio" name="q2" /> The mask removes the side pixels.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <div class="quiz" id="q3">
+    <p class="q">3. At the corners both gradients overlap. To make the <strong>shadow</strong> win there, where
+      must the <code>to right</code> (dark) gradient go in the <code>background</code> list?</p>
+    <label><input type="radio" name="q3" data-ok /> Listed <em>first</em> — earlier layers paint on top.</label>
+    <label><input type="radio" name="q3" /> Listed <em>last</em> — later layers paint on top.</label>
+    <label><input type="radio" name="q3" /> Order doesn't matter; they add up.</label>
+    <div class="verdict"></div>
+  </div>
+
+  <h2 id="boundaries">Boundaries</h2>
+  <p>
+    Layered linear gradients are the right tool when the highlight follows <strong>straight axes</strong> —
+    top/bottom, left/right. They stop being right when:
+  </p>
+  <ul>
+    <li><strong>The light should sweep <em>around</em> the curve</strong> (a single source glinting continuously
+      round a circle). That's a <code>conic-gradient</code>, not stacked linear ones.</li>
+    <li><strong>You need the ring itself</strong> — its thickness, why <code>mask-composite</code> carves a frame
+      out of a filled box. That's the masking lesson (ask me).</li>
+    <li><strong>The bend of the <em>background</em> through the glass</strong> — that's refraction, the SVG
+      displacement map from <a href="0002-how-a-png-bends-light.html">lesson 0002</a>, a different layer entirely.
+      The rim is paint <em>on</em> the glass; refraction is distortion <em>through</em> it.</li>
+  </ul>
+
+  <h2 id="mission">Why this matters for your mission</h2>
+  <p>
+    Your <a href="../MISSION.md">mission</a> is to own every layer of <code>LiquidGlass</code> well enough to tune
+    and defend it. The rim overlay is one of the four triage layers you listed — and the one most exposed to
+    taste. When a registry consumer says "the highlight looks wrong on my dark theme," this is the layer, and now
+    you can reason about it directly: the highlight position is set by which <em>axis</em> each gradient runs on,
+    its intensity by the colour stops, its tightness by the transparent band. You changed
+    <code>liquid-glass.tsx</code> by hand this session; this lesson is the model that makes that change a decision
+    rather than a guess.
+  </p>
+
+  <div class="note">
+    <strong>Ask me.</strong> I'm your teacher for this — fair game: "show me the <code>conic-gradient</code>
+    version," "why <code>0.7</code> light but <code>0.55</code> shadow?", "walk me through the mask trick now,"
+    or "how would this behave on a square card instead of a pill?"
+  </div>
+
+  <footer>
+    glasscn liquid-glass series · Lesson 0003 · paired with
+    <a href="../reference/glossary.html">glossary</a> (see <em>Specular rim</em>) and the
+    <a href="../reference/liquid-glass-pipeline.html">pipeline cheat sheet</a>.
+  </footer>
+</main>
+
+<script>
+  const stage = document.getElementById('stage');
+  const rim = document.getElementById('rim');
+  const cssText = document.getElementById('cssText');
+  const sliders = document.getElementById('sliders');
+  const light = document.getElementById('light'), dark = document.getElementById('dark'), tight = document.getElementById('tight');
+  const lightOut = document.getElementById('lightOut'), darkOut = document.getElementById('darkOut'), tightOut = document.getElementById('tightOut');
+
+  const OLD = "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.12) 30%, rgba(255,255,255,0) 46%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.28) 82%, rgba(255,255,255,0.5))";
+
+  function buildNew(l, d, t) {
+    const lo = t, hi = 100 - t;
+    return `linear-gradient(to right, rgba(0,0,0,${d}), rgba(0,0,0,0) ${lo}%, rgba(0,0,0,0) ${hi}%, rgba(0,0,0,${d})), ` +
+           `linear-gradient(to bottom, rgba(255,255,255,${l}), rgba(255,255,255,0) ${lo}%, rgba(255,255,255,0) ${hi}%, rgba(255,255,255,${(l*0.85).toFixed(2)}))`;
+  }
+
+  let mode = 'new';
+  function render() {
+    let bg;
+    if (mode === 'old') bg = OLD;
+    else {
+      const l = parseFloat(light.value), d = parseFloat(dark.value), t = parseInt(tight.value);
+      bg = (mode === 'new') ? buildNew(0.7, 0.55, 30) : buildNew(l, d, t);
+    }
+    rim.style.background = bg;
+    cssText.textContent = "background:\n  " + bg.replace(/, (?=linear)/g, ",\n  ") + ";";
+    sliders.classList.toggle('on', mode === 'custom');
+  }
+
+  document.querySelectorAll('#modeSeg button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#modeSeg button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      mode = b.dataset.mode;
+      render();
+    });
+  });
+  [light, dark, tight].forEach(s => s.addEventListener('input', () => {
+    lightOut.textContent = parseFloat(light.value).toFixed(2);
+    darkOut.textContent = parseFloat(dark.value).toFixed(2);
+    tightOut.textContent = tight.value + '%';
+    if (mode === 'custom') render();
+  }));
+  document.getElementById('plainBg').addEventListener('change', e => stage.classList.toggle('plain', e.target.checked));
+
+  document.querySelectorAll('.quiz').forEach(q => {
+    q.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', () => {
+      const v = q.querySelector('.verdict');
+      const ok = r.hasAttribute('data-ok');
+      v.className = 'verdict ' + (ok ? 'ok' : 'no');
+      v.textContent = ok
+        ? '✓ Right.'
+        : '✗ Not quite — re-read “a gradient is a function of one axis” and try again.';
+    }));
+  });
+
+  render();
+</script>
+</body>
+</html>
