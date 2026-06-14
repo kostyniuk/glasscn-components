@@ -241,7 +241,7 @@ export const LiquidGlass = forwardRef<HTMLDivElement, LiquidGlassProps>(function
               // fades to nothing at the corners, uniform in between:
               //   - to right  → white streak on the top + bottom runs
               //   - to bottom → dark streak on the left + right runs
-              "linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.35) 18%, rgba(255,255,255,0.35) 82%, rgba(255,255,255,0)), " +
+              "linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.25) 18%, rgba(255,255,255,0.25) 82%, rgba(255,255,255,0)), " +
               "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2) 18%, rgba(0,0,0,0.2) 82%, rgba(0,0,0,0))",
             WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             WebkitMaskComposite: "xor",
