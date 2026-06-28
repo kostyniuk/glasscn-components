@@ -20,7 +20,7 @@ type GlassContactPillProps = Omit<React.ComponentProps<"div">, "title"> & {
   alt?: string;
   /**
    * Avatar fallback content. Defaults to up-to-two initials derived from `name`
-   * (e.g. "Yeva Plieshka" → "YP").
+   * (e.g. "Alex Kostyniuk" → "AK").
    */
   fallback?: React.ReactNode;
   /** Where the avatar sits relative to the pill. */

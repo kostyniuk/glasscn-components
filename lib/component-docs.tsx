@@ -832,17 +832,17 @@ export function ScrimCardDemo() {
     installName: "@glasscn/glass-contact-pill",
     importPath: "@/components/ui/glasscn/glass-contact-pill",
     Demo: ContactPillDemo,
-    variants: ["top", "leading"],
+    variants: ["top", "top + caption", "top + initials", "leading", "leading + caption", "leading + initials"],
     defaultVariant: "top",
-    variantsGridClassName: "grid-cols-2",
+    variantsGridClassName: "grid-cols-2 xl:grid-cols-3",
     usageCode: String.raw`import { GlassContactPill } from "@/components/ui/glasscn/glass-contact-pill"
 
 export function ContactPillDemo() {
   return (
     <GlassContactPill
-      name="Ava Bennett"
-      src="https://example.com/ava.jpg"
-      fallback="AB"
+      name="Alex Kostyniuk"
+      caption="online"
+      src="/avatar_me.jpg"
     />
   )
 }`,

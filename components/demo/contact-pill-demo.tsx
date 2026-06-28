@@ -1,16 +1,20 @@
-import { GlassContactPill, type GlassContactAvatarPlacement } from "@/components/ui/glasscn/glass-contact-pill";
+import { GlassContactPill } from "@/components/ui/glasscn/glass-contact-pill";
 
-type ContactPillDemoProps = { variant?: GlassContactAvatarPlacement };
+const AVATAR_SRC = "/avatar_me.jpg";
+const NAME = "Alex Kostyniuk";
 
-const AVATAR_SRC =
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&fit=crop&crop=faces";
+const variantConfig = {
+  top: { avatarPlacement: "top", src: AVATAR_SRC },
+  "top + caption": { avatarPlacement: "top", src: AVATAR_SRC, caption: "online" },
+  "top + initials": { avatarPlacement: "top", caption: "online" },
+  leading: { avatarPlacement: "leading", src: AVATAR_SRC },
+  "leading + caption": { avatarPlacement: "leading", src: AVATAR_SRC, caption: "online" },
+  "leading + initials": { avatarPlacement: "leading", caption: "online" },
+} as const;
+
+type ContactPillDemoProps = { variant?: keyof typeof variantConfig };
 
 export function ContactPillDemo({ variant = "top" }: ContactPillDemoProps) {
-  if (variant === "leading") {
-    return (
-      <GlassContactPill avatarPlacement="leading" caption="online" name="Ava Bennett" src={AVATAR_SRC} fallback="AB" />
-    );
-  }
-
-  return <GlassContactPill name="Ava Bennett" src={AVATAR_SRC} fallback="AB" />;
+  const config = variantConfig[variant] ?? variantConfig.top;
+  return <GlassContactPill name={NAME} {...config} />;
 }
