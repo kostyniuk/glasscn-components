@@ -81,6 +81,23 @@
       ]
     },
     {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "registryDependencies": [
+        "@glasscn/utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
@@ -478,6 +495,26 @@
       "files": [
         {
           "path": "components/ui/glasscn/glass-scrim-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-contact-pill",
+      "type": "registry:component",
+      "title": "Glass Contact Pill",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/avatar",
+        "@glasscn/liquid-glass"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "description": "Liquid-glass contact chip with an avatar (image or initials fallback) and name, for messaging apps",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-contact-pill.tsx",
           "type": "registry:component"
         }
       ]

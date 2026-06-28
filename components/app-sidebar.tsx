@@ -29,6 +29,7 @@ const data = {
         { title: "Checkbox", url: "/components/glass-checkbox" },
         { title: "Command", url: "/components/glass-command" },
         { title: "Combobox", url: "/components/glass-combobox" },
+        { title: "Contact Pill", url: "/components/glass-contact-pill" },
         { title: "Dropdown Menu", url: "/components/glass-dropdown-menu" },
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },

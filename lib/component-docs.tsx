@@ -9,6 +9,7 @@ import { CardDemo } from "@/components/demo/card-demo";
 import { CheckboxDemo } from "@/components/demo/checkbox-demo";
 import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { CommandDemo } from "@/components/demo/command-demo";
+import { ContactPillDemo } from "@/components/demo/contact-pill-demo";
 import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { InputDemo } from "@/components/demo/input-demo";
@@ -820,6 +821,82 @@ export function ScrimCardDemo() {
       },
       { name: "surfaceClassName", type: "string", description: "Classes applied to the outer LiquidGlass surface." },
       inheritedProps("GlassScrimCard", "React.ComponentProps<typeof Card>"),
+    ],
+  },
+  {
+    slug: "glass-contact-pill",
+    registryName: "glass-contact-pill",
+    title: "Glass Contact Pill",
+    description:
+      "A liquid-glass contact chip with an avatar and name for messaging apps. The avatar peeks above the pill, or sits inline, and falls back to initials when no image is set.",
+    installName: "@glasscn/glass-contact-pill",
+    importPath: "@/components/ui/glasscn/glass-contact-pill",
+    Demo: ContactPillDemo,
+    variants: ["top", "leading"],
+    defaultVariant: "top",
+    variantsGridClassName: "grid-cols-2",
+    usageCode: String.raw`import { GlassContactPill } from "@/components/ui/glasscn/glass-contact-pill"
+
+export function ContactPillDemo() {
+  return (
+    <GlassContactPill
+      name="Ava Bennett"
+      src="https://example.com/ava.jpg"
+      fallback="AB"
+    />
+  )
+}`,
+    api: [
+      {
+        component: "GlassContactPill",
+        name: "name",
+        type: "React.ReactNode",
+        description: "Primary label, e.g. the contact's name. Used to derive the fallback initials.",
+      },
+      {
+        component: "GlassContactPill",
+        name: "caption",
+        type: "React.ReactNode",
+        description: 'Secondary line shown above the name, e.g. "Maybe:" or "online".',
+      },
+      {
+        component: "GlassContactPill",
+        name: "src",
+        type: "string",
+        description: "Avatar image source. When absent or it fails to load, the fallback is shown.",
+      },
+      {
+        component: "GlassContactPill",
+        name: "fallback",
+        type: "React.ReactNode",
+        description: 'Avatar fallback content. Defaults to up-to-two initials from `name` (e.g. "YP").',
+      },
+      {
+        component: "GlassContactPill",
+        name: "avatarPlacement",
+        type: '"top" | "leading"',
+        defaultValue: '"top"',
+        description: "Places the avatar peeking above the pill or inline at its leading edge.",
+      },
+      {
+        component: "GlassContactPill",
+        name: "trailing",
+        type: "React.ReactNode",
+        description: "Optional trailing content after the label, e.g. a chevron or status dot.",
+      },
+      {
+        component: "GlassContactPill",
+        name: "liquidProps",
+        type: 'Omit<LiquidGlassProps, "children">',
+        description: "Props forwarded to the underlying LiquidGlass surface (blur, refraction, bezel, saturation).",
+      },
+      {
+        component: "GlassContactPill",
+        name: "surfaceClassName",
+        type: "string",
+        description: "Classes applied to the outer LiquidGlass surface.",
+      },
+      inheritedProps("GlassContactPill", `Omit<React.ComponentProps<"div">, "title">`),
     ],
   },
   {
