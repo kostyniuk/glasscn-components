@@ -11,6 +11,7 @@ import { ComboboxDemo } from "@/components/demo/combobox-demo";
 import { CommandDemo } from "@/components/demo/command-demo";
 import { ContactPillDemo } from "@/components/demo/contact-pill-demo";
 import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
+import { GlanceCardDemo } from "@/components/demo/glance-card-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
@@ -821,6 +822,72 @@ export function ScrimCardDemo() {
       },
       { name: "surfaceClassName", type: "string", description: "Classes applied to the outer LiquidGlass surface." },
       inheritedProps("GlassScrimCard", "React.ComponentProps<typeof Card>"),
+    ],
+  },
+  {
+    slug: "glance",
+    registryName: "glance",
+    title: "Glance",
+    description:
+      "A CSS-only hover shine, the X.ai card effect. Add the glance class to any element and a diagonal highlight sweeps across it once per hover — no component, no JavaScript. Installing it adds the utilities to your global CSS.",
+    installName: "@glasscn/glance",
+    importPath: "app/globals.css",
+    Demo: GlanceCardDemo,
+    variants: ["glance", "glance-color-fuchsia-400 glance-opacity-30", "glance-angle-60", "glance-duration-2000"],
+    defaultVariant: "glance",
+    variantsGridClassName: "grid-cols-1 md:grid-cols-2",
+    usageCode: String.raw`import { GlassCard } from "@/components/ui/glasscn/glass-card";
+
+export function GlanceCardDemo() {
+  return (
+    <a href="/voice" className="group block w-full max-w-sm">
+      <GlassCard
+        glassVariant="liquid-refract"
+        surfaceClassName="glance h-[220px] w-full rounded-2xl border border-black/10 transition-shadow duration-500 group-hover:shadow-lg dark:border-white/10"
+        className="h-full"
+      >
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+          {/* media, e.g. an orb */}
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between px-4 pb-4">
+          <span className="text-sm font-medium">Voice</span>
+          <span className="text-sm font-medium">Explore →</span>
+        </div>
+      </GlassCard>
+    </a>
+  )
+}`,
+    api: [
+      {
+        name: "glance",
+        type: "class",
+        description:
+          "Enables the hover shine. Sets position: relative and overflow: hidden on the element and paints the sweep in an ::after layer, so it composes with any card. Disabled automatically under prefers-reduced-motion.",
+      },
+      {
+        name: "glance-color-<color>",
+        type: "class",
+        defaultValue: "white",
+        description: "Highlight color; accepts theme colors or arbitrary values, e.g. glance-color-sky-300 or glance-color-[#378ADD].",
+      },
+      {
+        name: "glance-opacity-<number>",
+        type: "class",
+        defaultValue: "10",
+        description: "Peak opacity of the highlight band as a percentage, e.g. glance-opacity-20.",
+      },
+      {
+        name: "glance-duration-<number>",
+        type: "class",
+        defaultValue: "700",
+        description: "Sweep duration in milliseconds, e.g. glance-duration-1000.",
+      },
+      {
+        name: "glance-angle-<number>",
+        type: "class",
+        defaultValue: "120",
+        description: "Tilt of the highlight band in degrees, e.g. glance-angle-90.",
+      },
     ],
   },
   {

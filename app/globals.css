@@ -198,3 +198,58 @@
       0% 0%;
   }
 }
+
+/*
+ * Glance — a CSS-only hover shine, the X.ai card effect.
+ * Add `glance` to any element; a diagonal highlight sweeps across it once
+ * per hover. The transition only exists on :hover, so on mouse-out the band
+ * snaps back instantly and the next hover always sweeps forward.
+ */
+@utility glance {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -50%;
+    z-index: 10;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      var(--glance-angle, 120deg),
+      transparent 40%,
+      color-mix(in oklab, var(--glance-color, white) calc(var(--glance-opacity, 10%) * 0.6), transparent) 48%,
+      color-mix(in oklab, var(--glance-color, white) var(--glance-opacity, 10%), transparent) 50%,
+      color-mix(in oklab, var(--glance-color, white) calc(var(--glance-opacity, 10%) * 0.6), transparent) 52%,
+      transparent 60%
+    );
+  }
+
+  &:hover::after {
+    transform: translateX(100%);
+    transition: transform var(--glance-duration, 700ms) ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@utility glance-color-* {
+  --glance-color: --value(--color-*, [color]);
+}
+
+@utility glance-opacity-* {
+  --glance-opacity: calc(--value(number) * 1%);
+}
+
+@utility glance-duration-* {
+  --glance-duration: calc(--value(number) * 1ms);
+}
+
+@utility glance-angle-* {
+  --glance-angle: calc(--value(number) * 1deg);
+}

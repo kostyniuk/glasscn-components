@@ -31,6 +31,7 @@ const data = {
         { title: "Combobox", url: "/components/glass-combobox" },
         { title: "Contact Pill", url: "/components/glass-contact-pill" },
         { title: "Dropdown Menu", url: "/components/glass-dropdown-menu" },
+        { title: "Glance", url: "/components/glance" },
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },
         { title: "Popover", url: "/components/glass-popover" },
