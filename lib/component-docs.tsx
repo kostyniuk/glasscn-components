@@ -829,7 +829,7 @@ export function ScrimCardDemo() {
     registryName: "glance",
     title: "Glance",
     description:
-      "A CSS-only hover shine, the X.ai card effect. Add the glance class to any element and a diagonal highlight sweeps across it once per hover — no component, no JavaScript. Installing it adds the utilities to your global CSS.",
+      "A CSS-only hover shine. Add the glance class to any element and a diagonal highlight sweeps across it once per hover. No component, no JavaScript. Installing it adds the utilities to your global CSS.",
     installName: "@glasscn/glance",
     importPath: "app/globals.css",
     Demo: GlanceCardDemo,

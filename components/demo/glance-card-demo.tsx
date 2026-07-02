@@ -1,7 +1,6 @@
 import { GlassCard } from "@/components/ui/glasscn/glass-card";
 
-// A static stand-in for X.ai's animated shader orb: soft color pools under a
-// glassy inner rim.
+// A static orb with soft color pools under a glassy inner rim.
 function DemoOrb() {
   return (
     <div aria-hidden className="relative size-32 shrink-0 sm:size-36">

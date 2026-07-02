@@ -503,7 +503,7 @@
       "name": "glance",
       "type": "registry:item",
       "title": "Glance",
-      "description": "CSS-only hover shine, the X.ai card effect: add the glance class to any element and a diagonal highlight sweeps across it once per hover",
+      "description": "CSS-only hover shine. Add the glance class to any element and a diagonal highlight sweeps across it once per hover",
       "css": {
         "@utility glance": {
           "position": "relative",

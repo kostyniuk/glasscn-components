@@ -200,7 +200,7 @@
 }
 
 /*
- * Glance — a CSS-only hover shine, the X.ai card effect.
+ * Glance: a CSS-only hover shine.
  * Add `glance` to any element; a diagonal highlight sweeps across it once
  * per hover. The transition only exists on :hover, so on mouse-out the band
  * snaps back instantly and the next hover always sweeps forward.
