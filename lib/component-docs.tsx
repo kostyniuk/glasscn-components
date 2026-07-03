@@ -12,6 +12,7 @@ import { CommandDemo } from "@/components/demo/command-demo";
 import { ContactPillDemo } from "@/components/demo/contact-pill-demo";
 import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
 import { GlanceCardDemo } from "@/components/demo/glance-card-demo";
+import { GlassIconDemo } from "@/components/demo/glass-icon-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
@@ -964,6 +965,51 @@ export function ContactPillDemo() {
         description: "Classes applied to the outer LiquidGlass surface.",
       },
       inheritedProps("GlassContactPill", `Omit<React.ComponentProps<"div">, "title">`),
+    ],
+  },
+  {
+    slug: "glass-icon",
+    registryName: "glass-icon",
+    title: "Glass Icon",
+    description:
+      "A circular glass chip that wraps any icon, iOS-control-center style. Preset sizes scale the circle and icon together so grids of icons stay uniform.",
+    installName: "@glasscn/glass-icon",
+    importPath: "@/components/ui/glasscn/glass-icon",
+    Demo: GlassIconDemo,
+    defaultVariant: "liquid-refract",
+    usageCode: String.raw`import { GlassIcon } from "@/components/ui/glasscn/glass-icon"
+
+// Any icon works — lucide, custom SVGs, etc. The size preset
+// scales the icon for you, so don't set size classes on it.
+export function GlassIconDemo() {
+  return (
+    <GlassIcon size="lg" aria-label="AirPlay">
+      <AirplayIcon />
+    </GlassIcon>
+  )
+}`,
+    api: [
+      { ...glassVariantFor("GlassIcon"), defaultValue: '"liquid-refract"' },
+      {
+        component: "GlassIcon",
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        defaultValue: '"md"',
+        description: "Preset that drives both the circle and the icon size together.",
+      },
+      {
+        component: "GlassIcon",
+        name: "liquidProps",
+        type: 'Omit<LiquidGlassProps, "children">',
+        description: "Props forwarded to the underlying LiquidGlass surface (blur, refraction, bezel, saturation).",
+      },
+      {
+        component: "GlassIcon",
+        name: "surfaceClassName",
+        type: "string",
+        description: "Classes applied to the outer LiquidGlass surface.",
+      },
+      inheritedProps("GlassIcon", 'React.ComponentProps<"button">'),
     ],
   },
   {

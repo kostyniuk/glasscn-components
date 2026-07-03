@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-icon",
+  "title": "Glass Icon",
+  "description": "A circular glass chip that wraps any icon, iOS-control-center style. Preset sizes scale the circle and icon together so grids of icons stay uniform.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/glass-variants",
+    "@glasscn/liquid-glass"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/glass-icon.tsx",
+      "content": "\"use client\";\n\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { FrostGlassVariantProp, glassVariantStyles } from \"@/lib/glass-variants\";\nimport { cn } from \"@/lib/utils\";\n\nimport { LiquidGlass, type LiquidGlassProps } from \"./liquid-glass\";\n\nconst glassIconVariants = cva(\n  \"inline-flex shrink-0 items-center justify-center rounded-full text-foreground cursor-pointer select-none outline-none focus-visible:ring-2 focus-visible:ring-ring/60 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  {\n    variants: {\n      size: {\n        sm: \"size-9 [&_svg:not([class*='size-'])]:size-4\",\n        md: \"size-11 [&_svg:not([class*='size-'])]:size-5\",\n        lg: \"size-14 [&_svg:not([class*='size-'])]:size-6\",\n        xl: \"size-[4.5rem] [&_svg:not([class*='size-'])]:size-8\",\n      },\n    },\n    defaultVariants: {\n      size: \"md\",\n    },\n  },\n);\n\ntype GlassIconProps = React.ComponentProps<\"button\"> &\n  FrostGlassVariantProp &\n  VariantProps<typeof glassIconVariants> & {\n    /** Props forwarded to the underlying LiquidGlass surface. */\n    liquidProps?: Omit<LiquidGlassProps, \"children\">;\n    /** Classes applied to the outer LiquidGlass surface. */\n    surfaceClassName?: string;\n  };\n\n/**\n * A circular glass chip that wraps any icon, iOS-control-center style.\n * The `size` prop drives both the circle and the icon together, so the\n * icon should never set its own size classes.\n *\n * Consumers should pass `aria-label` when the icon is the only content,\n * since GlassIcon renders a plain icon-only button.\n */\nfunction GlassIcon({\n  className,\n  glassVariant = \"liquid-refract\",\n  size = \"md\",\n  liquidProps,\n  surfaceClassName,\n  ...props\n}: GlassIconProps) {\n  if (glassVariant === \"liquid-refract\") {\n    return (\n      <LiquidGlass\n        {...liquidProps}\n        className={cn(\n          \"w-fit rounded-full transition-transform duration-150 active:scale-95 motion-reduce:transition-none\",\n          \"[--liquid-glass-rim-light:rgba(255,255,255,0.55)] [--liquid-glass-rim-width:1.5px] [--liquid-glass-rim-fade:8%]\",\n          surfaceClassName,\n          liquidProps?.className,\n        )}\n      >\n        <button\n          type=\"button\"\n          data-slot=\"glass-icon\"\n          data-glass-variant={glassVariant}\n          className={cn(glassIconVariants({ size }), \"border-0 bg-transparent shadow-none\", className)}\n          {...props}\n        />\n      </LiquidGlass>\n    );\n  }\n\n  return (\n    <button\n      type=\"button\"\n      data-slot=\"glass-icon\"\n      data-glass-variant={glassVariant}\n      className={cn(\n        glassIconVariants({ size }),\n        glassVariantStyles[glassVariant],\n        \"transition-transform duration-150 active:scale-95 motion-reduce:transition-none\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { GlassIcon, glassIconVariants, type GlassIconProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

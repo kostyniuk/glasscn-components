@@ -562,6 +562,26 @@
       ]
     },
     {
+      "name": "glass-icon",
+      "type": "registry:component",
+      "title": "Glass Icon",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/glass-variants",
+        "@glasscn/liquid-glass"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "description": "A circular glass chip that wraps any icon, iOS-control-center style. Preset sizes scale the circle and icon together so grids of icons stay uniform.",
+      "files": [
+        {
+          "path": "components/ui/glasscn/glass-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
