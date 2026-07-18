@@ -14,6 +14,7 @@ import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
 import { GlanceCardDemo } from "@/components/demo/glance-card-demo";
 import { GlassIconDemo } from "@/components/demo/glass-icon-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
+import { GlassTourDemo } from "@/components/demo/glass-tour-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
@@ -534,6 +535,161 @@ export function ToggleGroupDemo() {
     ],
   },
   {
+    slug: "glass-tour",
+    registryName: "glass-tour",
+    title: "Glass Tour",
+    description:
+      "A spotlight onboarding tour: a liquid-glass scrim with a refractive lens cutout that glides between highlighted elements — glass that works on top of any UI.",
+    installName: "@glasscn/glass-tour",
+    importPath: "@/components/ui/glasscn/glass-tour",
+    Demo: GlassTourDemo,
+    category: "custom",
+    variants: ["default"] as const,
+    defaultVariant: "default",
+    variantsGridClassName: "grid-cols-1",
+    previewClassName: "min-h-[460px]",
+    usageCode: String.raw`import { useState } from "react"
+
+import { GlassTour, type GlassTourStep } from "@/components/ui/glasscn/glass-tour"
+
+const steps: GlassTourStep[] = [
+  {
+    target: '[data-tour="stats"]',
+    title: "Your metrics at a glance",
+    content: "Revenue, active users, and churn update in real time.",
+    placement: "bottom",
+  },
+  {
+    target: '[data-tour="invite"]',
+    title: "Bring your team",
+    content: "Invite teammates to collaborate on this dashboard.",
+    placement: "bottom",
+  },
+  {
+    target: '[data-tour="settings"]',
+    title: "Make it yours",
+    content: "Tune notifications, billing, and permissions here.",
+    placement: "left",
+  },
+]
+
+export function Dashboard() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div>
+      <button onClick={() => setOpen(true)}>Start tour</button>
+
+      <div data-tour="stats">{/* stat cards */}</div>
+      <button data-tour="invite">Invite member</button>
+      <button data-tour="settings">Settings</button>
+
+      <GlassTour steps={steps} open={open} onOpenChange={setOpen} />
+    </div>
+  )
+}`,
+    api: [
+      {
+        component: "GlassTour",
+        name: "steps",
+        type: "GlassTourStep[]",
+        description: "The ordered list of steps the tour walks through.",
+      },
+      { component: "GlassTour", name: "open", type: "boolean", description: "Whether the tour is currently visible." },
+      {
+        component: "GlassTour",
+        name: "onOpenChange",
+        type: "(open: boolean) => void",
+        description: "Called when the tour should open or close (Skip, Finish, Escape, etc.).",
+      },
+      {
+        component: "GlassTour",
+        name: "step",
+        type: "number",
+        description: "Optional controlled step index. Omit for uncontrolled internal state.",
+      },
+      {
+        component: "GlassTour",
+        name: "onStepChange",
+        type: "(index: number) => void",
+        description: "Called whenever the active step index changes.",
+      },
+      {
+        component: "GlassTour",
+        name: "onFinish",
+        type: "() => void",
+        description: "Called after the tour closes from clicking Next/Finish on the last step.",
+      },
+      {
+        component: "GlassTour",
+        name: "blur",
+        type: "number",
+        defaultValue: "6",
+        description: "Backdrop blur, in px, applied to the full-viewport scrim.",
+      },
+      {
+        component: "GlassTour",
+        name: "refraction",
+        type: "number",
+        defaultValue: "0",
+        description:
+          "Refraction strength of the lens ring around the cutout. 0 keeps the cutout perfectly undistorted; when set, the refractive band is confined to the step's padding ring so the highlighted element itself never bends.",
+      },
+      {
+        component: "GlassTour",
+        name: "advanceOnTargetClick",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Advance to the next step when the user clicks inside the cutout.",
+      },
+      {
+        component: "GlassTour",
+        name: "labels",
+        type: "{ back?: string; next?: string; skip?: string; finish?: string }",
+        description: "Overrides for the Back/Next/Skip/Finish button copy.",
+      },
+      {
+        component: "GlassTourStep",
+        name: "target",
+        type: "string | (() => HTMLElement | null)",
+        description: "A CSS selector (document.querySelector) or a getter returning the element to highlight.",
+      },
+      {
+        component: "GlassTourStep",
+        name: "title",
+        type: "React.ReactNode",
+        description: "Heading shown on the step card.",
+      },
+      {
+        component: "GlassTourStep",
+        name: "content",
+        type: "React.ReactNode",
+        description: "Body copy shown on the step card.",
+      },
+      {
+        component: "GlassTourStep",
+        name: "placement",
+        type: '"top" | "bottom" | "left" | "right" | "auto"',
+        defaultValue: '"auto"',
+        description: 'Preferred side for the step card relative to the cutout. "auto" picks the side with most room.',
+      },
+      {
+        component: "GlassTourStep",
+        name: "padding",
+        type: "number",
+        defaultValue: "10",
+        description: "Extra px of breathing room added around the target's bounding box for the cutout.",
+      },
+      {
+        component: "GlassTourStep",
+        name: "radius",
+        type: 'number | "auto"',
+        defaultValue: '"auto"',
+        description: 'Cutout corner radius in px. "auto" reads the target\'s border radius (minimum 12px).',
+      },
+    ],
+  },
+  {
     slug: "glass-button",
     registryName: "glass-button",
     title: "Glass Button",
@@ -869,7 +1025,8 @@ export function GlanceCardDemo() {
         name: "glance-color-<color>",
         type: "class",
         defaultValue: "white",
-        description: "Highlight color; accepts theme colors or arbitrary values, e.g. glance-color-sky-300 or glance-color-[#378ADD].",
+        description:
+          "Highlight color; accepts theme colors or arbitrary values, e.g. glance-color-sky-300 or glance-color-[#378ADD].",
       },
       {
         name: "glance-opacity-<number>",
