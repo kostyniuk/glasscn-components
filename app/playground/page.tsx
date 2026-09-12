@@ -149,7 +149,10 @@ export default function PlaygroundPage() {
   }
 
   return (
-    <main className="min-h-svh overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.05),transparent_28%),linear-gradient(135deg,#070a12_0%,#111725_48%,#05070c_100%)] p-4 text-white md:p-18">
+    <main
+      data-backdrop-tone="dark"
+      className="min-h-svh overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(255,255,255,0.05),transparent_28%),linear-gradient(135deg,#070a12_0%,#111725_48%,#05070c_100%)] p-4 text-white md:p-18"
+    >
       <section
         ref={artRef}
         className="relative isolate mx-auto h-[min(88vh,802px)] w-[min(96vw,1360px)] overflow-hidden rounded-[20px] bg-[radial-gradient(circle_at_60%_75%,rgba(41,133,255,0.65),transparent_22%),radial-gradient(circle_at_24%_35%,rgba(255,46,129,0.7),transparent_33%),linear-gradient(130deg,#1a0b24_0%,#0b1930_45%,#06111e_100%)] shadow-[0_34px_100px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)] max-md:h-[78vh] max-md:rounded-2xl"

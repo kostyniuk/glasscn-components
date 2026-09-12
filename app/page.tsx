@@ -42,44 +42,24 @@ export default function Page() {
             <HeroGlassPill className="rounded-full" />
             <div>
               <p className="mb-6 font-[family-name:var(--font-display)] text-[clamp(4rem,12vw,10rem)] text-black">
-                <HighlightText>glasscn</HighlightText>
+                {/* Opaque lime, wide enough to pass under the header — see useBackdropTone. */}
+                <span data-backdrop-tone="light" className="inline-block">
+                  <HighlightText>glasscn</HighlightText>
+                </span>
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,12vw,4rem)] leading-[0.85] tracking-[-0.02em] text-black dark:text-white">
                 LIQUID GLASS
               </h2>
 
               <div className="mt-6">
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-black/60 dark:text-white/60">
-                  Liquid glass components crafted for clarity, precision and movement. Shaped by flow. Defined by light.
+                <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-black/60 dark:text-white/60">
+                  Liquid glass components crafted for clarity, precision and movement.
+                </p>
+                <p className="mt-4 max-w-md text-[13px] leading-relaxed text-black/50 dark:text-white/50">
+                  Our liquid glass components combine elegance with engineering, bringing transparency and movement to
+                  your most innovative creations.
                 </p>
               </div>
-
-              {/* Keywords */}
-              <div className="mt-12 space-y-1 font-mono text-[13px] tracking-[0.3em] text-black/80 uppercase dark:text-white/80">
-                <div>CLARITY</div>
-                <div>FLOW</div>
-                <div>ADAPT</div>
-              </div>
-            </div>
-
-            {/* Bottom left text block */}
-            <div className="mt-16 lg:mt-0">
-              <div className="mb-2 flex items-center gap-2">
-                <span className="h-[2px] w-4 bg-blue-500" />
-                <span className="h-[2px] w-4 bg-blue-500" />
-                <span className="h-[2px] w-4 bg-blue-500" />
-              </div>
-              <div className="mb-4 font-mono text-[11px] font-semibold tracking-wider text-black uppercase dark:text-white">
-                EVERY CURVE.
-                <br />
-                EVERY DETAIL.
-                <br />
-                MADE TO FLOW.
-              </div>
-              <p className="max-w-[280px] text-[13px] leading-relaxed text-black/50 dark:text-white/50">
-                Our liquid glass components combine elegance with engineering, bringing transparency and movement to
-                your most innovative creations.
-              </p>
             </div>
           </div>
 
@@ -208,13 +188,6 @@ export default function Page() {
               <span>—</span>
               <span>—</span>
             </div>
-
-            <div className="absolute right-0 bottom-1/4 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px]">▼</span>
-              </div>
-              <div className="mt-2">_01</div>
-            </div>
           </div>
         </div>
 
@@ -264,23 +237,7 @@ export default function Page() {
               <span>—</span>
               <span>—</span>
             </div>
-            <div className="absolute -right-8 bottom-0 hidden font-mono text-[13px] text-black/60 lg:block dark:text-white/60">
-              <div className="text-[10px]">▼</div>
-              <div className="mt-1">_02</div>
-            </div>
           </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-8 flex items-end justify-between font-mono text-[10px] text-black/40 dark:text-white/40">
-          <div className="flex items-center gap-4">
-            <div className="flex gap-[2px]">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <div key={i} className="h-6 w-[2px] bg-black/20 dark:bg-white/20" />
-              ))}
-            </div>
-          </div>
-          <span className="tracking-[0.2em] uppercase">DESIGNED TO REFLECT YOUR VISION.</span>
         </div>
       </section>
 
@@ -290,9 +247,6 @@ export default function Page() {
         className="scroll-mt-margin-scroll relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12"
       >
         <div className="mb-14 max-w-2xl">
-          <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
-            // {docs.length} COMPONENTS
-          </div>
           <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-[-0.01em] text-black dark:text-white">
             DROP-IN GLASS PRIMITIVES
           </h2>
@@ -368,10 +322,7 @@ export default function Page() {
         id="variants"
         className="scroll-mt-margin-scroll relative z-10 mx-auto max-w-[1600px] px-6 py-24 lg:px-12"
       >
-        <div className="mb-14 max-w-2xl">
-          <div className="mb-4 font-mono text-[11px] font-medium tracking-[0.3em] text-black/40 uppercase dark:text-white/40">
-            // 5 SURFACES
-          </div>
+        <div className="mb-8 max-w-2xl">
           <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-[-0.01em] text-black dark:text-white">
             ONE SYSTEM, FIVE REFRACTIONS
           </h2>
@@ -472,11 +423,13 @@ export default function Page() {
           <div className="rounded-2xl border border-black/10 bg-transparent p-8 md:p-10 dark:border-white/5">
             <div className="flex flex-col justify-between gap-10 md:flex-row">
               <div className="max-w-sm">
-                <HighlightText>
-                  <div className="font-[family-name:var(--font-display)] text-[2rem] tracking-[-0.01em] text-black">
-                    BUILD WITH LIGHT.
-                  </div>
-                </HighlightText>
+                <span data-backdrop-tone="light" className="inline-block">
+                  <HighlightText>
+                    <div className="font-[family-name:var(--font-display)] text-[2rem] tracking-[-0.01em] text-black">
+                      BUILD WITH GLASS.
+                    </div>
+                  </HighlightText>
+                </span>
                 <div className="mt-4 text-[13px] leading-relaxed text-black/50 dark:text-white/50">
                   Open source. MIT licensed. Made by{" "}
                   <a
@@ -548,7 +501,7 @@ export default function Page() {
             </div>
             <div className="mt-12 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 font-mono text-[10px] tracking-[0.15em] text-black/40 uppercase sm:flex-row dark:border-white/5 dark:text-white/40">
               <span>2026 glasscn-components</span>
-              <span>v0.4.0 — built on shadcn/ui + Base UI</span>
+              <span>built on shadcn/ui + Base UI</span>
             </div>
           </div>
         </div>

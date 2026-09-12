@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "@/components/ui/icons/social-icons";
 
-import { HeaderPill } from "./header-pill";
+import { HeaderPill, HeaderPillGroup } from "./header-pill";
 
 function GithubMark(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -34,7 +34,7 @@ export async function SiteHeader() {
       className="h-12 w-[calc(100%-2rem)] overflow-hidden sm:w-[calc(50%-10px)]"
       contentClassName="flex items-center justify-between px-3 sm:px-5"
     >
-      <div className="flex items-center gap-1 sm:gap-1.5">
+      <HeaderPillGroup className="flex items-center gap-1 sm:gap-1.5">
         <Link href="/" className="flex items-center gap-2 rounded-full px-2 py-1 transition-opacity hover:opacity-85">
           <Image
             src="/glasscn-mark-light.svg"
@@ -67,8 +67,8 @@ export async function SiteHeader() {
             Playground
           </Button>
         </Link>
-      </div>
-      <div className="flex items-center gap-1 sm:gap-1.5">
+      </HeaderPillGroup>
+      <HeaderPillGroup className="flex items-center gap-1 sm:gap-1.5">
         <Link href="https://x.com/kostyniuk00" target="_blank" rel="noreferrer">
           <Button variant="ghost" className="flex cursor-pointer flex-row items-center gap-0 sm:gap-2" aria-label="X">
             <XIcon className="size-4 sm:size-5" />
@@ -87,7 +87,7 @@ export async function SiteHeader() {
             )}
           </Button>
         </Link>
-      </div>
+      </HeaderPillGroup>
     </HeaderPill>
   );
 }
