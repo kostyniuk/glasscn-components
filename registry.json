@@ -1271,6 +1271,23 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "highlight-phrase",
+      "type": "registry:component",
+      "title": "Highlight Phrase",
+      "description": "A smooth glass hover popover for text, video, and rich content, with click and keyboard access.",
+      "registryDependencies": [
+        "@glasscn/utils",
+        "@glasscn/popover",
+        "@glasscn/glass-popover"
+      ],
+      "files": [
+        {
+          "path": "components/ui/glasscn/highlight-phrase.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

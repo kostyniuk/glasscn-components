@@ -14,6 +14,7 @@ import { DropdownMenuDemo } from "@/components/demo/dropdown-menu-demo";
 import { GlanceCardDemo } from "@/components/demo/glance-card-demo";
 import { GlassIconDemo } from "@/components/demo/glass-icon-demo";
 import { GlassToggleGroupDemo } from "@/components/demo/glass-toggle-group-demo";
+import { HighlightPhraseDemo } from "@/components/demo/highlight-phrase-demo";
 import { InputDemo } from "@/components/demo/input-demo";
 import { ItemDemo } from "@/components/demo/item-demo";
 import { PopoverDemo } from "@/components/demo/popover-demo";
@@ -869,7 +870,8 @@ export function GlanceCardDemo() {
         name: "glance-color-<color>",
         type: "class",
         defaultValue: "white",
-        description: "Highlight color; accepts theme colors or arbitrary values, e.g. glance-color-sky-300 or glance-color-[#378ADD].",
+        description:
+          "Highlight color; accepts theme colors or arbitrary values, e.g. glance-color-sky-300 or glance-color-[#378ADD].",
       },
       {
         name: "glance-opacity-<number>",
@@ -1069,6 +1071,69 @@ export function AlertDemo() {
   )
 }`,
     api: [glassVariantFor("GlassAlert"), inheritedProps("GlassAlert", "React.ComponentProps<typeof Alert>")],
+  },
+  {
+    slug: "highlight-phrase",
+    registryName: "highlight-phrase",
+    title: "Highlight Phrase",
+    description:
+      "Hover to preview text, videos, and rich content. Click or tap to keep it open; press Escape to dismiss.",
+    installName: "@glasscn/highlight-phrase",
+    importPath: "@/components/ui/glasscn/highlight-phrase",
+    Demo: HighlightPhraseDemo,
+    defaultVariant: "frosted",
+    usageCode: String.raw`import {
+  HighlightPhraseTrigger,
+  HighlightPhraseContent,
+} from "@/components/ui/glasscn/highlight-phrase"
+import { Popover, PopoverDescription, PopoverTitle } from "@/components/ui/popover"
+
+export function Preview() {
+  return (
+    <Popover>
+      <p>
+        Take a closer look at the <HighlightPhraseTrigger>glass details</HighlightPhraseTrigger>.
+      </p>
+      <HighlightPhraseContent glassVariant="frosted">
+        <video
+          autoPlay
+          muted
+          playsInline
+          src="/preview.mp4"
+          aria-label="Video preview"
+        />
+        <PopoverTitle>A closer look</PopoverTitle>
+        <PopoverDescription>More detail without leaving the page.</PopoverDescription>
+      </HighlightPhraseContent>
+    </Popover>
+  )
+}`,
+    api: [
+      { ...glassVariantFor("HighlightPhraseContent"), defaultValue: '"frosted"' },
+      {
+        component: "HighlightPhraseTrigger",
+        name: "highlight",
+        type: "boolean",
+        defaultValue: "true",
+        description:
+          "Applies the default semibold red wavy underline. Disable it for buttons or fully custom triggers.",
+      },
+      {
+        component: "HighlightPhraseTrigger",
+        name: "delay / closeDelay",
+        type: "number",
+        defaultValue: "180 / 180",
+        description: "Hover opening and closing delays in milliseconds. The pointer can move into the card.",
+      },
+      {
+        component: "HighlightPhraseContent",
+        name: "children",
+        type: "React.ReactNode",
+        description: "Text, video, links, or any composed React content.",
+      },
+      inheritedProps("HighlightPhraseTrigger", "React.ComponentProps<typeof PopoverTrigger>"),
+      inheritedProps("HighlightPhraseContent", "React.ComponentProps<typeof GlassPopoverContent>"),
+    ],
   },
   {
     slug: "glass-popover",

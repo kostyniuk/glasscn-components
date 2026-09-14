@@ -32,6 +32,7 @@ const data = {
         { title: "Contact Pill", url: "/components/glass-contact-pill" },
         { title: "Dropdown Menu", url: "/components/glass-dropdown-menu" },
         { title: "Glance", url: "/components/glance" },
+        { title: "Highlight Phrase", url: "/components/highlight-phrase" },
         { title: "Icon", url: "/components/glass-icon" },
         { title: "Input", url: "/components/glass-input" },
         { title: "Item", url: "/components/glass-item" },

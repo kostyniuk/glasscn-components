@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-phrase",
+  "title": "Highlight Phrase",
+  "description": "A smooth glass hover popover for text, video, and rich content, with click and keyboard access.",
+  "registryDependencies": [
+    "@glasscn/utils",
+    "@glasscn/popover",
+    "@glasscn/glass-popover"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glasscn/highlight-phrase.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { PopoverTrigger } from \"@/components/ui/popover\";\nimport { cn } from \"@/lib/utils\";\n\nimport { GlassPopoverContent } from \"./glass-popover\";\n\ntype HighlightPhraseTriggerProps = React.ComponentProps<typeof PopoverTrigger> & { highlight?: boolean };\n\nfunction HighlightPhraseTrigger({\n  className,\n  delay = 180,\n  closeDelay = 180,\n  highlight = true,\n  ...props\n}: HighlightPhraseTriggerProps) {\n  return (\n    <PopoverTrigger\n      openOnHover\n      delay={delay}\n      closeDelay={closeDelay}\n      className={cn(\n        highlight &&\n          \"cursor-help rounded-sm font-semibold text-foreground underline decoration-red-500 decoration-wavy decoration-2 underline-offset-[6px] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 dark:decoration-red-400\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction HighlightPhraseContent({\n  className,\n  sideOffset = 10,\n  glassVariant = \"frosted\",\n  ...props\n}: React.ComponentProps<typeof GlassPopoverContent>) {\n  return (\n    <GlassPopoverContent\n      data-slot=\"highlight-phrase-content\"\n      glassVariant={glassVariant}\n      sideOffset={sideOffset}\n      className={cn(\n        \"w-80 max-w-[calc(100vw-2rem)] gap-3 rounded-2xl p-4 duration-200 ease-out motion-reduce:animate-none\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { HighlightPhraseTrigger, HighlightPhraseContent };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
