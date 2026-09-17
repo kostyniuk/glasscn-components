@@ -80,5 +80,5 @@ export default function Page() {
 
 ### Liquid variants
 
-- **`liquid`** — pure CSS. Heavy saturation + sheen + multi-layer bevel. Zero setup.
+- **`liquid`** — pure CSS. Heavy saturation + sheen + multi-layer bevel. Zero JS.
 - **`liquid-refract`** — SVG displacement filter. Real lens-like refraction with curved glass effect.
